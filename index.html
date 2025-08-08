@@ -1,154 +1,1343 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Agnostic Agility</title>
-  <meta name="description" content="Agility for the Chaotic, the Complex, the Human." />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
-  <style>
-    :root {
-      --aa-purple: #8c52ff;
-      --aa-neon: #00f0ff;
-      --aa-dark: #0e0e1a;
-    }
-    body {
-      background-color: var(--aa-dark);
-      color: #ffffff;
-    }
-    .text-brand {
-      color: var(--aa-neon);
-    }
-    .btn-brand {
-      background-color: var(--aa-purple);
-    }
-    .btn-brand:hover {
-      background-color: #a56dff;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agnostic Agility - Agility for the Chaos, the Complex, the Human</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-purple: #8c52ff;
+            --cyan: #00f0ff;
+            --dark-navy: #0e0e1a;
+            --deep-purple: #7616d4;
+            --darkest: #140028;
+            --blue: #4386dd;
+            --medium-purple: #8b38d7;
+            --light-purple: #cf92ff;
+            --coral: #dd5858;
+            --new-purple: #1800ad;
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            line-height: 1.6;
+            color: var(--dark-navy);
+            background: linear-gradient(135deg, var(--darkest) 0%, #0f0066 20%, var(--new-purple) 40%, var(--deep-purple) 60%, #0a0014 80%, var(--darkest) 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(14, 14, 26, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            gap: 3rem;
+        }
+
+        .logo {
+            font-size: 50px;
+            font-weight: 700;
+            color: white;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.3rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--cyan);
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 85vh;
+            display: flex;
+            background: linear-gradient(135deg, var(--darkest) 0%, #0f0066 20%, var(--new-purple) 40%, var(--deep-purple) 60%, #0a0014 80%, var(--darkest) 100%);
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            display: flex;
+            width: 100%;
+            height: calc(85vh - 80px);
+        }
+
+        .logo-section {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo-placeholder {
+            width: 500px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .message-section {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            padding: 4rem;
+        }
+
+        .hero-text {
+            color: white;
+            width: 100%;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            background: linear-gradient(135deg, var(--cyan), var(--light-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            color: var(--cyan);
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .hero-description {
+            font-size: 1.3rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            opacity: 0.95;
+        }
+
+        .quote {
+            font-size: 1.2rem;
+            color: white;
+            border-left: 4px solid var(--cyan);
+            padding-left: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-purple), var(--deep-purple));
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(140, 82, 255, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(140, 82, 255, 0.4);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cta-button.secondary {
+            background: linear-gradient(135deg, var(--cyan), var(--blue));
+            color: var(--dark-navy);
+        }
+
+        .cta-button.secondary:hover {
+            background: linear-gradient(135deg, var(--blue), var(--cyan));
+            box-shadow: 0 15px 40px rgba(0, 240, 255, 0.4);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 6rem 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            color: var(--dark-navy);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, #0f0066, var(--new-purple), var(--deep-purple), #0a0014);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            box-shadow: 0 15px 40px rgba(24, 0, 173, 0.4);
+            position: relative;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-card h3 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            font-size: 1.3rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .learn-more-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .learn-more-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateX(5px);
+        }
+
+        .arrow {
+            transition: transform 0.3s ease;
+        }
+
+        .learn-more-btn:hover .arrow {
+            transform: translateX(3px);
+        }
+
+        /* Core Values Section */
+        .values {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, var(--darkest) 0%, #0f0066 25%, var(--new-purple) 50%, var(--deep-purple) 75%, #0a0014 100%);
+            color: white;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .value-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(140, 82, 255, 0.3);
+        }
+
+        .value-card h3 {
+            color: var(--cyan);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .value-icon {
+            width: 40px;
+            height: 40px;
+            fill: var(--cyan);
+        }
+
+        .value-card p {
+            font-size: 1.3rem;
+            line-height: 1.7;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 6rem 0;
+            background: white;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .contact-form {
+            background: linear-gradient(135deg, #0f0066, var(--new-purple), var(--deep-purple), #0a0014);
+            padding: 3rem;
+            border-radius: 20px;
+            color: white;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            font-size: 1.3rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 10px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: var(--cyan);
+            color: var(--dark-navy);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: var(--light-purple);
+            transform: translateY(-2px);
+        }
+
+        .contact-info h3 {
+            color: var(--new-purple);
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-info p {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-purple), var(--cyan));
+            color: white;
+            text-align: center;
+            line-height: 50px;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--darkest);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        /* Page Sections (Hidden by default) */
+        .page-section {
+            display: none;
+            min-height: 100vh;
+            padding: 6rem 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: relative;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        .page-logo {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            width: 150px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed var(--primary-purple);
+            border-radius: 15px;
+            background: rgba(140, 82, 255, 0.05);
+            color: var(--primary-purple);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-align: center;
+            z-index: 10;
+        }
+
+        .page-section h2 {
+            font-size: 4.5rem;
+            color: var(--new-purple);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .page-content {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .hero-content {
+                flex-direction: column;
+                height: auto;
+            }
+
+            .logo-section {
+                padding: 2rem;
+            }
+
+            .message-section {
+                padding: 2rem;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .logo-placeholder {
+                width: 300px;
+                height: 100%;
+                font-size: 1.5rem;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid,
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
 </head>
-<body class="font-sans">
-
-  <!-- Header -->
-  <header class="bg-black bg-opacity-90 p-4 sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto flex justify-between items-center">
-      <div class="flex items-center space-x-4">
-        <img src="Logo2.png" alt="Agnostic Agility Logo" class="h-10 w-10 rounded-full" />
-        <h1 class="text-2xl font-bold text-brand">Agnostic Agility</h1>
-      </div>
-      <nav class="space-x-4 text-white">
-        <a href="#about" class="hover:underline">About</a>
-        <a href="#services" class="hover:underline">Services</a>
-        <a href="#case-studies" class="hover:underline">Case Studies</a>
-        <a href="#social" class="hover:underline">Social</a>
-        <a href="#contact" class="hover:underline">Contact</a>
-      </nav>
-    </div>
-  </header>
-
-  <!-- Hero Section -->
-  <section class="text-center py-24 px-4 bg-gradient-to-br from-black via-purple-800 to-black">
-    <img src="Logo2.png" alt="Agnostic Agility Icon" class="mx-auto w-32 mb-6" />
-    <h2 class="text-4xl font-extrabold text-white">Agility for the Chaotic, the Complex, the Human.</h2>
-    <p class="mt-4 text-xl text-brand">Real-world transformation led by real people — not dogma.</p>
-    <a href="#contact" class="mt-6 inline-block btn-brand text-white font-bold py-2 px-6 rounded shadow hover:shadow-lg">Start a Conversation</a>
-  </section>
-
-  <!-- About Section -->
-  <section id="about" class="max-w-6xl mx-auto py-16 px-4">
-    <h3 class="text-3xl font-bold text-center text-brand mb-10">Our Story</h3>
-    <div class="text-lg max-w-3xl mx-auto space-y-4">
-      <p>The world doesn’t need another agile consultancy. It needs clarity. It needs courage. And most of all — it needs people who actually deliver.</p>
-      <p>Agnostic Agility was born after 24 years in the trenches of transformation. From financial services to defence, we’ve led change not from the sidelines, but from within.</p>
-      <p>We saw the patterns: bloated processes, disconnected teams, agile in name but not in outcome. We were done with the theatre — and ready to make agility human again.</p>
-      <p>We are agnostic — because one size never fits all. We are agile — because staying still is not an option. And we are human — because nothing truly changes without people.</p>
-      <p class="font-semibold italic">That’s our story. And if it sounds like yours — we’re ready to build something better. Together.</p>
-    </div>
-  </section>
-
-  <!-- Services Section -->
-  <section id="services" class="max-w-6xl mx-auto py-16 px-4">
-    <h3 class="text-3xl font-bold text-center text-brand mb-10">Our Services</h3>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-      <div class="bg-black p-6 rounded shadow border border-purple-700">
-        <h4 class="text-xl font-bold text-white">Agile & Scaled Delivery</h4>
-        <p class="mt-2 text-gray-300">SAFe, Scrum, Kanban — implemented with pragmatism and people-focus, not process worship.</p>
-      </div>
-      <div class="bg-black p-6 rounded shadow border border-purple-700">
-        <h4 class="text-xl font-bold text-white">Change Management</h4>
-        <p class="mt-2 text-gray-300">Guiding teams through disruption, with a sharp human lens and proven delivery frameworks.</p>
-      </div>
-      <div class="bg-black p-6 rounded shadow border border-purple-700">
-        <h4 class="text-xl font-bold text-white">Project Leadership</h4>
-        <p class="mt-2 text-gray-300">Enterprise-grade delivery from discovery to go-live. Hands-on, governance-ready, and outcome-driven.</p>
-      </div>
-      <div class="bg-black p-6 rounded shadow border border-purple-700">
-        <h4 class="text-xl font-bold text-white">Agile Training & Coaching</h4>
-        <p class="mt-2 text-gray-300">Accredited training, coaching, and capability uplift in SAFe, Scrum, Agile Coaching and Change Leadership.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Case Studies -->
-  <section id="case-studies" class="bg-gray-900 py-16 px-4">
-    <div class="max-w-6xl mx-auto">
-      <h3 class="text-3xl font-bold text-center text-brand mb-10">Case Studies</h3>
-      <div class="grid gap-6">
-        <div class="bg-black p-6 rounded shadow border border-indigo-700">
-          <h4 class="font-bold text-xl text-white">Regulatory Reporting Transformation – VW Bank</h4>
-          <p class="mt-2 text-gray-300">Led multi-country delivery of a regulatory reporting platform, integrating DevOps and Agile teams to ensure zero compliance delays across UK & EU regulators.</p>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Agnostic Agility</div>
+            <ul class="nav-links">
+                <li><a href="#" onclick="showSection('home')">Home</a></li>
+                <li><a href="#" onclick="showSection('about')">About Us</a></li>
+                <li><a href="#" onclick="showSection('services')">Services</a></li>
+                <li><a href="#" onclick="showSection('values')">Core Values</a></li>
+                <li><a href="#" onclick="showSection('success')">Success Stories</a></li>
+                <li><a href="#" onclick="showSection('blog')">Blog/Events</a></li>
+                <li><a href="#" onclick="showSection('contact')">Contact</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
-        <div class="bg-black p-6 rounded shadow border border-indigo-700">
-          <h4 class="font-bold text-xl text-white">Cloud Migration & Agile Office – Kagool UK</h4>
-          <p class="mt-2 text-gray-300">Scaled Agile Delivery across a £50M post-M&A transformation, reducing manual effort by 60% and unifying delivery across finance, HR, and engineering.</p>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="page-section active">
+        <!-- Hero Section -->
+        <div class="hero">
+            <div class="hero-content">
+                <div class="logo-section">
+                    <div class="logo-placeholder">
+                        <!-- Replace this div with your mp4 logo -->
+                        <div>
+                            <svg width="200" height="150" viewBox="0 0 200 150" fill="none">
+                                <circle cx="100" cy="75" r="60" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="2"/>
+                                <path d="M70 60 L100 90 L130 60" stroke="white" stroke-width="3" fill="none"/>
+                                <text x="100" y="120" text-anchor="middle" fill="white" font-size="14" font-weight="bold">AGNOSTIC</text>
+                                <text x="100" y="135" text-anchor="middle" fill="white" font-size="14" font-weight="bold">AGILITY</text>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="message-section">
+                    <div class="hero-text">
+                        <h1>Empowering Human Potential. Driving Real Change.</h1>
+                        <p class="tagline">Agility for the Chaos, the Complex, the Human.</p>
+                        <p class="hero-description">
+                            In a world defined by volatility, noise, and nonstop transformation, Agnostic Agility helps organizations move with clarity, speed, and purpose.
+                        </p>
+                        <p class="hero-description">
+                            We're an Agnostic project management, Agile, and change consultancy—without the framework dogma. Our approach adapts to your unique environment, industry, and people—not the other way around.
+                        </p>
+                        <div class="quote">
+                            The tools will keep changing. The pace will only accelerate. What won't change? The need to lead with clarity, focus on people, and make change stick. That's where we come in.
+                        </div>
+                        <div class="quote">
+                            We don't sell frameworks. We build capability. We don't push process. We design progress—rooted in your context, and delivered at human speed.
+                        </div>
+                        <div class="cta-buttons">
+                            <a href="#" onclick="showSection('contact')" class="cta-button">Get Started Today</a>
+                            <a href="#" onclick="showSection('services')" class="cta-button secondary">Explore Services</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Social Section -->
-  <section id="social" class="max-w-6xl mx-auto py-16 px-4">
-    <h3 class="text-3xl font-bold text-center text-brand mb-10">Community & Insights</h3>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <div class="bg-black p-4 rounded shadow border border-purple-800">
-        <h4 class="text-xl font-bold text-white">Blog: Why Agile Fails</h4>
-        <p class="mt-2 text-gray-300">We break down the real reasons Agile fails in organisations — and how to make it work in the real world.</p>
-      </div>
-      <div class="bg-black p-4 rounded shadow border border-purple-800">
-        <h4 class="text-xl font-bold text-white">Blog: The Human Cost of Change</h4>
-        <p class="mt-2 text-gray-300">Our latest blog post explores the emotional impact of transformation — and how we can make it more humane.</p>
-      </div>
-      <div class="bg-black p-4 rounded shadow border border-purple-800">
-        <h4 class="text-xl font-bold text-white">Follow Us</h4>
-        <p class="mt-2 text-gray-300">
-          Connect with us:
-          <br>
-          <a href="https://www.linkedin.com/in/agnostic-agility-878132379/" class="text-brand underline block mt-2" target="_blank">LinkedIn</a>
-          <a href="https://www.instagram.com/agnosticagility/" class="text-brand underline block" target="_blank">Instagram</a>
-          <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://www.linkedin.com/in/agnostic-agility-878132379/" alt="LinkedIn QR Code" class="mt-4 mx-auto">
-        </p>
-      </div>
-    </div>
-  </section>
+        <!-- Services Preview -->
+        <div class="services">
+            <div class="container">
+                <h2 class="section-title">Our Services</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <h3>Business Agility</h3>
+                        <p>Transform your organization's ability to adapt and thrive in changing markets.</p>
+                        <a href="#" onclick="showSection('services')" class="learn-more-btn">
+                            Learn More <span class="arrow">→</span>
+                        </a>
+                    </div>
+                    <div class="service-card">
+                        <h3>Project Agility</h3>
+                        <p>Deliver projects with speed, quality, and human-centered approaches.</p>
+                        <a href="#" onclick="showSection('services')" class="learn-more-btn">
+                            Learn More <span class="arrow">→</span>
+                        </a>
+                    </div>
+                    <div class="service-card">
+                        <h3>Process Optimisation</h3>
+                        <p>Streamline workflows while keeping people at the center of change.</p>
+                        <a href="#" onclick="showSection('services')" class="learn-more-btn">
+                            Learn More <span class="arrow">→</span>
+                        </a>
+                    </div>
+                    <div class="service-card">
+                        <h3>AI-Project Agility</h3>
+                        <p>Integrate AI capabilities into your project delivery with human oversight.</p>
+                        <a href="#" onclick="showSection('services')" class="learn-more-btn">
+                            Learn More <span class="arrow">→</span>
+                        </a>
+                    </div>
+                    <div class="service-card">
+                        <h3>People Development</h3>
+                        <p>Build capabilities that last, focusing on human potential and growth.</p>
+                        <a href="#" onclick="showSection('services')" class="learn-more-btn">
+                            Learn More <span class="arrow">→</span>
+                        </a>
+                    </div>
+                    <div class="service-card">
+                        <h3>Training & Development</h3>
+                        <p>Custom learning experiences that stick and create lasting change.</p>
+                        <a href="#" onclick="showSection('services')" class="learn-more-btn">
+                            Learn More <span class="arrow">→</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- Contact Section -->
-  <section id="contact" class="bg-black py-16 px-4">
-    <div class="max-w-2xl mx-auto text-center">
-      <h3 class="text-3xl font-bold mb-6 text-brand">Contact Us</h3>
-      <p class="mb-4 text-gray-300">Let’s explore how we can help you lead change that lasts.</p>
-      <form class="space-y-4">
-        <input type="text" placeholder="Your Name" class="w-full p-3 rounded border border-purple-700 bg-gray-800 text-white" />
-        <input type="email" placeholder="Your Email" class="w-full p-3 rounded border border-purple-700 bg-gray-800 text-white" />
-        <textarea placeholder="Your Message" rows="4" class="w-full p-3 rounded border border-purple-700 bg-gray-800 text-white"></textarea>
-        <button type="submit" class="btn-brand text-white py-3 px-6 rounded hover:shadow-lg">Send Message</button>
-      </form>
-    </div>
-  </section>
+    <!-- About Us Section -->
+    <section id="about" class="page-section" style="background: linear-gradient(135deg, #050008 0%, #060033 25%, #0c0056 50%, #380a6a 75%, #050007 100%); color: white;">
+        <div class="page-logo" style="border: 2px dashed var(--cyan); background: rgba(0, 240, 255, 0.1); color: var(--cyan);">
+            Company Logo<br>
+            <span style="font-size: 0.7rem; opacity: 0.7;">(150px × 100px)</span>
+        </div>
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 3rem; color: var(--cyan); text-shadow: 0 0 20px rgba(0, 240, 255, 0.5);">About Us</h2>
 
-  <!-- Footer -->
-  <footer class="bg-black border-t border-gray-800 py-4 text-center text-sm text-gray-400">
-    &copy; 2025 Agnostic Agility. All rights reserved.
-  </footer>
+            <div class="page-content">
+                <!-- Our Story Section -->
+                <div style="margin-bottom: 4rem; padding: 3rem; background: linear-gradient(135deg, rgba(0, 240, 255, 0.15), rgba(140, 82, 255, 0.15)); border-radius: 25px; border: 2px solid var(--cyan); box-shadow: 0 0 30px rgba(0, 240, 255, 0.3);">
+                    <h3 style="color: var(--cyan); font-size: 3rem; margin-bottom: 2rem; display: flex; align-items: center; gap: 1.5rem; text-shadow: 0 0 15px rgba(0, 240, 255, 0.5);">
+                        <div style="width: 50px; height: 50px; border: 3px solid var(--cyan); border-radius: 12px; display: flex; align-items: center; justify-content: center; background: rgba(0, 240, 255, 0.2); box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);">
+                            <span style="font-size: 12px; color: var(--cyan); font-weight: bold;">📖</span>
+                        </div>
+                        Our Story
+                    </h3>
+                    
+                    <p style="font-size: 1.4rem; line-height: 1.8; margin-bottom: 1.5rem; color: rgba(255, 255, 255, 0.95);">We are a <strong style="color: var(--light-purple);">human-centric consultancy</strong> that believes in agility without the dogma. Founded on the principle that every organization is unique, we reject one-size-fits-all approaches in favor of tailored solutions that work for your specific context, culture, and challenges.</p>
+                    
+                    <p style="font-size: 1.4rem; line-height: 1.8; margin-bottom: 1.5rem; color: rgba(255, 255, 255, 0.95);">Our team brings <strong style="color: var(--light-purple);">decades of experience</strong> across industries, frameworks, and transformation challenges. What sets us apart isn't just our expertise—it's our unwavering commitment to putting people first in every engagement.</p>
+                    
+                    <div style="background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(0, 240, 255, 0.1)); padding: 2.5rem; border-radius: 20px; margin-top: 2rem; box-shadow: 0 8px 25px rgba(0,0,0,0.3); border: 1px solid rgba(0, 240, 255, 0.3); backdrop-filter: blur(10px);">
+                        <p style="font-size: 1.5rem; font-weight: 700; color: var(--cyan); margin: 0; line-height: 1.6; font-style: italic; text-shadow: 0 0 10px rgba(0, 240, 255, 0.3);">
+                            <strong>"We've seen too many transformations fail because they focused on process over people, tools over outcomes, and frameworks over flexibility. That's why we built Agnostic Agility: to be the consultancy that adapts to you, not the other way around."</strong>
+                        </p>
+                    </div>
+                </div>
 
-</body>
+                <!-- Our Approach Section -->
+                <div style="margin-bottom: 4rem; padding: 3rem; background: linear-gradient(135deg, rgba(140, 82, 255, 0.15), rgba(207, 146, 255, 0.15)); border-radius: 25px; border: 2px solid var(--light-purple); box-shadow: 0 0 30px rgba(207, 146, 255, 0.3);">
+                    <h3 style="color: var(--light-purple); font-size: 3rem; margin-bottom: 2rem; display: flex; align-items: center; gap: 1.5rem; text-shadow: 0 0 15px rgba(207, 146, 255, 0.5);">
+                        <div style="width: 50px; height: 50px; border: 3px solid var(--light-purple); border-radius: 12px; display: flex; align-items: center; justify-content: center; background: rgba(207, 146, 255, 0.2); box-shadow: 0 0 20px rgba(207, 146, 255, 0.4);">
+                            <span style="font-size: 12px; color: var(--light-purple); font-weight: bold;">🎯</span>
+                        </div>
+                        Our Approach
+                    </h3>
+                    
+                    <p style="font-size: 1.6rem; margin-bottom: 2rem; color: var(--cyan); font-weight: 700; text-shadow: 0 0 10px rgba(0, 240, 255, 0.3);">Our Approach = Human First + Outcome Obsessed + Framework Neutral</p>
+                    
+                    <p style="font-size: 1.4rem; line-height: 1.8; margin-bottom: 2rem; color: rgba(255, 255, 255, 0.95);">Whether it's a failing transformation, regulatory crunch, digital chaos, or cultural resistance—our approach stays grounded in:</p>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
+                        <div style="background: linear-gradient(135deg, rgba(0, 240, 255, 0.1), rgba(140, 82, 255, 0.1)); padding: 2rem; border-radius: 20px; border: 1px solid rgba(0, 240, 255, 0.3); box-shadow: 0 8px 25px rgba(0,0,0,0.2);">
+                            <h4 style="color: var(--cyan); margin-bottom: 1rem; font-size: 1.5rem; display: flex; align-items: center; gap: 1rem; text-shadow: 0 0 8px rgba(0, 240, 255, 0.3);">
+                                <div style="width: 35px; height: 35px; border: 2px solid var(--cyan); border-radius: 8px; display: flex; align-items: center; justify-content: center; background: rgba(0, 240, 255, 0.2);">
+                                    <span style="font-size: 10px; color: var(--cyan); font-weight: bold;">👥</span>
+                                </div>
+                                Human-Centered Design
+                            </h4>
+                            <p style="margin: 0; line-height: 1.6; color: rgba(255, 255, 255, 0.9);">We put people at the heart of every solution, ensuring change works for humans, not just processes.</p>
+                        </div>
+                        <div style="background: linear-gradient(135deg, rgba(207, 146, 255, 0.1), rgba(140, 82, 255, 0.1)); padding: 2rem; border-radius: 20px; border: 1px solid rgba(207, 146, 255, 0.3); box-shadow: 0 8px 25px rgba(0,0,0,0.2);">
+                            <h4 style="color: var(--light-purple); margin-bottom: 1rem; font-size: 1.5rem; display: flex; align-items: center; gap: 1rem; text-shadow: 0 0 8px rgba(207, 146, 255, 0.3);">
+                                <div style="width: 35px; height: 35px; border: 2px solid var(--light-purple); border-radius: 8px; display: flex; align-items: center; justify-content: center; background: rgba(207, 146, 255, 0.2);">
+                                    <span style="font-size: 10px; color: var(--light-purple); font-weight: bold;">🎯</span>
+                                </div>
+                                Strategic Delivery Thinking
+                            </h4>
+                            <p style="margin: 0; line-height: 1.6; color: rgba(255, 255, 255, 0.9);">We align tactical execution with strategic vision, ensuring every change drives meaningful business outcomes.</p>
+                        </div>
+                        <div style="background: linear-gradient(135deg, rgba(140, 82, 255, 0.1), rgba(118, 22, 212, 0.1)); padding: 2rem; border-radius: 20px; border: 1px solid rgba(140, 82, 255, 0.3); box-shadow: 0 8px 25px rgba(0,0,0,0.2);">
+                            <h4 style="color: var(--primary-purple); margin-bottom: 1rem; font-size: 1.5rem; display: flex; align-items: center; gap: 1rem; text-shadow: 0 0 8px rgba(140, 82, 255, 0.3);">
+                                <div style="width: 35px; height: 35px; border: 2px solid var(--primary-purple); border-radius: 8px; display: flex; align-items: center; justify-content: center; background: rgba(140, 82, 255, 0.2);">
+                                    <span style="font-size: 10px; color: var(--primary-purple); font-weight: bold;">⚡</span>
+                                </div>
+                                Deep Agile Expertise
+                            </h4>
+                            <p style="margin: 0; line-height: 1.6; color: rgba(255, 255, 255, 0.9);">We bring decades of real-world agile experience across industries and contexts.</p>
+                        </div>
+                        <div style="background: linear-gradient(135deg, rgba(67, 134, 221, 0.1), rgba(0, 240, 255, 0.1)); padding: 2rem; border-radius: 20px; border: 1px solid rgba(67, 134, 221, 0.3); box-shadow: 0 8px 25px rgba(0,0,0,0.2);">
+                            <h4 style="color: var(--blue); margin-bottom: 1rem; font-size: 1.5rem; display: flex; align-items: center; gap: 1rem; text-shadow: 0 0 8px rgba(67, 134, 221, 0.3);">
+                                <div style="width: 35px; height: 35px; border: 2px solid var(--blue); border-radius: 8px; display: flex; align-items: center; justify-content: center; background: rgba(67, 134, 221, 0.2);">
+                                    <span style="font-size: 10px; color: var(--blue); font-weight: bold;">🏢</span>
+                                </div>
+                                Respect for Your Context
+                            </h4>
+                            <p style="margin: 0; line-height: 1.6; color: rgba(255, 255, 255, 0.9);">We adapt our methods to your unique culture, constraints, and business environment.</p>
+                        </div>
+                    </div>
+                    
+                    <div style="background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(207, 146, 255, 0.1)); padding: 2.5rem; border-radius: 20px; margin-top: 2rem; box-shadow: 0 8px 25px rgba(0,0,0,0.3); border: 1px solid rgba(207, 146, 255, 0.3); backdrop-filter: blur(10px);">
+                        <p style="font-size: 1.5rem; font-weight: 700; color: var(--light-purple); margin: 0; line-height: 1.6; font-style: italic; text-shadow: 0 0 10px rgba(207, 146, 255, 0.3);">
+                            <strong>"Whether you're a startup scaling rapidly, an enterprise navigating complex change, or anywhere in between, we meet you where you are and help you get where you need to go."</strong>
+                        </p>
+                    </div>
+                </div>
+
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; margin-bottom: 4rem;">
+                <!-- Our Story Section -->
+                <div style="padding: 3rem; background: linear-gradient(135deg, rgba(0, 240, 255, 0.15), rgba(140, 82, 255, 0.15)); border-radius: 25px; border: 2px solid var(--cyan); box-shadow: 0 0 30px rgba(0, 240, 255, 0.3);">
+                    <h3 style="color: var(--cyan); font-size: 2.5rem; margin-bottom: 2rem; display: flex; align-items: center; gap: 1rem; text-shadow: 0 0 15px rgba(0, 240, 255, 0.5);">
+                        <div style="width: 40px; height: 40px; border: 3px solid var(--cyan); border-radius: 10px; display: flex; align-items: center; justify-content: center; background: rgba(0, 240, 255, 0.2); box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);">
+                            <span style="font-size: 10px; color: var(--cyan); font-weight: bold;">📖</span>
+                        </div>
+                        Our Story
+                    </h3>
+                    
+                    <p style="font-size: 1.2rem; line-height: 1.7; margin-bottom: 1.5rem; color: rgba(255, 255, 255, 0.95);">We are a <strong style="color: var(--light-purple);">human-centric consultancy</strong> that believes in agility without the dogma. Founded on the principle that every organization is unique, we reject one-size-fits-all approaches in favor of tailored solutions that work for your specific context, culture, and challenges.</p>
+                    
+                    <p style="font-size: 1.2rem; line-height: 1.7; margin-bottom: 1.5rem; color: rgba(255, 255, 255, 0.95);">Our team brings <strong style="color: var(--light-purple);">decades of experience</strong> across industries, frameworks, and transformation challenges. What sets us apart isn't just our expertise—it's our unwavering commitment to putting people first in every engagement.</p>
+                    
+                    <div style="background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(0, 240, 255, 0.1)); padding: 2rem; border-radius: 15px; margin-top: 2rem; box-shadow: 0 8px 25px rgba(0,0,0,0.3); border: 1px solid rgba(0, 240, 255, 0.3); backdrop-filter: blur(10px);">
+                        <p style="font-size: 1.2rem; font-weight: 700; color: var(--cyan); margin: 0; line-height: 1.6; font-style: italic; text-shadow: 0 0 10px rgba(0, 240, 255, 0.3);">
+                            <strong>"We've seen too many transformations fail because they focused on process over people, tools over outcomes, and frameworks over flexibility. That's why we built Agnostic Agility: to be the consultancy that adapts to you, not the other way around."</strong>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Our Approach Section -->
+                <div style="padding: 3rem; background: linear-gradient(135deg, rgba(140, 82, 255, 0.15), rgba(207, 146, 255, 0.15)); border-radius: 25px; border: 2px solid var(--light-purple); box-shadow: 0 0 30px rgba(207, 146, 255, 0.3);">
+                    <h3 style="color: var(--light-purple); font-size: 2.5rem; margin-bottom: 2rem; display: flex; align-items: center; gap: 1rem; text-shadow: 0 0 15px rgba(207, 146, 255, 0.5);">
+                        <div style="width: 40px; height: 40px; border: 3px solid var(--light-purple); border-radius: 10px; display: flex; align-items: center; justify-content: center; background: rgba(207, 146, 255, 0.2); box-shadow: 0 0 20px rgba(207, 146, 255, 0.4);">
+                            <span style="font-size: 10px; color: var(--light-purple); font-weight: bold;">🎯</span>
+                        </div>
+                        Our Approach
+                    </h3>
+                    
+                    <p style="font-size: 1.3rem; margin-bottom: 1.5rem; color: var(--cyan); font-weight: 700; text-shadow: 0 0 10px rgba(0, 240, 255, 0.3);">Human First + Outcome Obsessed + Framework Neutral</p>
+                    
+                    <p style="font-size: 1.2rem; line-height: 1.7; margin-bottom: 1.5rem; color: rgba(255, 255, 255, 0.95);">Whether it's a failing transformation, regulatory crunch, digital chaos, or cultural resistance—our approach stays grounded in:</p>
+                    
+                    <div style="display: grid; gap: 1.5rem; margin-bottom: 1.5rem;">
+                        <div style="background: linear-gradient(135deg, rgba(0, 240, 255, 0.1), rgba(140, 82, 255, 0.1)); padding: 1.5rem; border-radius: 15px; border: 1px solid rgba(0, 240, 255, 0.3);">
+                            <h4 style="color: var(--cyan); margin-bottom: 0.5rem; font-size: 1.2rem; display: flex; align-items: center; gap: 0.5rem;">
+                                <span style="font-size: 8px;">👥</span>
+                                Human-Centered Design
+                            </h4>
+                            <p style="margin: 0; line-height: 1.5; color: rgba(255, 255, 255, 0.9); font-size: 1rem;">We put people at the heart of every solution, ensuring change works for humans, not just processes.</p>
+                        </div>
+                        <div style="background: linear-gradient(135deg, rgba(207, 146, 255, 0.1), rgba(140, 82, 255, 0.1)); padding: 1.5rem; border-radius: 15px; border: 1px solid rgba(207, 146, 255, 0.3);">
+                            <h4 style="color: var(--light-purple); margin-bottom: 0.5rem; font-size: 1.2rem; display: flex; align-items: center; gap: 0.5rem;">
+                                <span style="font-size: 8px;">🎯</span>
+                                Strategic Delivery Thinking
+                            </h4>
+                            <p style="margin: 0; line-height: 1.5; color: rgba(255, 255, 255, 0.9); font-size: 1rem;">We align tactical execution with strategic vision, ensuring every change drives meaningful business outcomes.</p>
+                        </div>
+                        <div style="background: linear-gradient(135deg, rgba(140, 82, 255, 0.1), rgba(118, 22, 212, 0.1)); padding: 1.5rem; border-radius: 15px; border: 1px solid rgba(140, 82, 255, 0.3);">
+                            <h4 style="color: var(--primary-purple); margin-bottom: 0.5rem; font-size: 1.2rem; display: flex; align-items: center; gap: 0.5rem;">
+                                <span style="font-size: 8px;">⚡</span>
+                                Deep Agile Expertise
+                            </h4>
+                            <p style="margin: 0; line-height: 1.5; color: rgba(255, 255, 255, 0.9); font-size: 1rem;">We bring decades of real-world agile experience across industries and contexts.</p>
+                        </div>
+                        <div style="background: linear-gradient(135deg, rgba(67, 134, 221, 0.1), rgba(0, 240, 255, 0.1)); padding: 1.5rem; border-radius: 15px; border: 1px solid rgba(67, 134, 221, 0.3);">
+                            <h4 style="color: var(--blue); margin-bottom: 0.5rem; font-size: 1.2rem; display: flex; align-items: center; gap: 0.5rem;">
+                                <span style="font-size: 8px;">🏢</span>
+                                Respect for Your Context
+                            </h4>
+                            <p style="margin: 0; line-height: 1.5; color: rgba(255, 255, 255, 0.9); font-size: 1rem;">We adapt our methods to your unique culture, constraints, and business environment.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Why Choose Agnostic Agility Section -->
+                <div style="margin-bottom: 4rem; padding: 3rem; background: linear-gradient(135deg, rgba(139, 56, 215, 0.15), rgba(207, 146, 255, 0.15)); border-radius: 25px; border: 2px solid var(--medium-purple); box-shadow: 0 0 30px rgba(139, 56, 215, 0.3);">
+                    <h3 style="color: var(--medium-purple); font-size: 3rem; margin-bottom: 2rem; display: flex; align-items: center; gap: 1.5rem; text-shadow: 0 0 15px rgba(139, 56, 215, 0.5);">
+                        <div style="width: 50px; height: 50px; border: 3px solid var(--medium-purple); border-radius: 12px; display: flex; align-items: center; justify-content: center; background: rgba(139, 56, 215, 0.2); box-shadow: 0 0 20px rgba(139, 56, 215, 0.4);">
+                            <span style="font-size: 12px; color: var(--medium-purple); font-weight: bold;">⭐</span>
+                        </div>
+                        Why Choose Agnostic Agility?
+                    </h3>
+                    
+                    <p style="font-size: 1.4rem; line-height: 1.8; margin-bottom: 2rem; color: rgba(255, 255, 255, 0.95);">We're not just another consultancy. We're your partners in building sustainable, human-centered transformation that actually works in the real world.</p>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
+                        <div style="background: linear-gradient(135deg, rgba(139, 56, 215, 0.1), rgba(207, 146, 255, 0.1)); padding: 2rem; border-radius: 20px; border: 1px solid rgba(139, 56, 215, 0.3); box-shadow: 0 8px 25px rgba(0,0,0,0.2);">
+                            <h4 style="color: var(--medium-purple); margin-bottom: 1rem; font-size: 1.5rem; display: flex; align-items: center; gap: 1rem; text-shadow: 0 0 8px rgba(139, 56, 215, 0.3);">
+                                <div style="width: 35px; height: 35px; border: 2px solid var(--medium-purple); border-radius: 8px; display: flex; align-items: center; justify-content: center; background: rgba(139, 56, 215, 0.2);">
+                                    <span style="font-size: 10px; color: var(--medium-purple); font-weight: bold;">👥</span>
+                                </div>
+                                Human-Centric by Design
+                            </h4>
+                            <p style="margin: 0; line-height: 1.6; color: rgba(255, 255, 255, 0.9);">People are the priority. We create environments where individuals thrive, teams collaborate authentically, and organisations evolve naturally.</p>
+                        </div>
+                        
+                        <div style="background: linear-gradient(135deg, rgba(207, 146, 255, 0.1), rgba(140, 82, 255, 0.1)); padding: 2rem; border-radius: 20px; border: 1px solid rgba(207, 146, 255, 0.3); box-shadow: 0 8px 25px rgba(0,0,0,0.2);">
+                            <h4 style="color: var(--light-purple); margin-bottom: 1rem; font-size: 1.5rem; display: flex; align-items: center; gap: 1rem; text-shadow: 0 0 8px rgba(207, 146, 255, 0.3);">
+                                <div style="width: 35px; height: 35px; border: 2px solid var(--light-purple); border-radius: 8px; display: flex; align-items: center; justify-content: center; background: rgba(207, 146, 255, 0.2);">
+                                    <span style="font-size: 10px; color: var(--light-purple); font-weight: bold;">🎯</span>
+                                </div>
+                                Leadership that Inspires
+                            </h4>
+                            <p style="margin: 0; line-height: 1.6; color: rgba(255, 255, 255, 0.9);">We coach leaders to lead with empathy, clarity, and vision—transforming hierarchical cultures into collaborative ones.</p>
+                        </div>
+                        
+                        <div style="background: linear-gradient(135deg, rgba(0, 240, 255, 0.1), rgba(67, 134, 221, 0.1)); padding: 2rem; border-radius: 20px; border: 1px solid rgba(0, 240, 255, 0.3); box-shadow: 0 8px 25px rgba(0,0,0,0.2);">
+                            <h4 style="color: var(--cyan); margin-bottom: 1rem; font-size: 1.5rem; display: flex; align-items: center; gap: 1rem; text-shadow: 0 0 8px rgba(0, 240, 255, 0.3);">
+                                <div style="width: 35px; height: 35px; border: 2px solid var(--cyan); border-radius: 8px; display: flex; align-items: center; justify-content: center; background: rgba(0, 240, 255, 0.2);">
+                                    <span style="font-size: 10px; color: var(--cyan); font-weight: bold;">💡</span>
+                                </div>
+                                Customer-Centricity Starts Within
+                            </h4>
+                            <p style="margin: 0; line-height: 1.6; color: rgba(255, 255, 255, 0.9);">We align internal agility with customer value delivery. Happy, empowered employees serve customers better—and faster.</p>
+                        </div>
+                        
+                        <div style="background: linear-gradient(135deg, rgba(140, 82, 255, 0.1), rgba(118, 22, 212, 0.1)); padding: 2rem; border-radius: 20px; border: 1px solid rgba(140, 82, 255, 0.3); box-shadow: 0 8px 25px rgba(0,0,0,0.2);">
+                            <h4 style="color: var(--primary-purple); margin-bottom: 1rem; font-size: 1.5rem; display: flex; align-items: center; gap: 1rem; text-shadow: 0 0 8px rgba(140, 82, 255, 0.3);">
+                                <div style="width: 35px; height: 35px; border: 2px solid var(--primary-purple); border-radius: 8px; display: flex; align-items: center; justify-content: center; background: rgba(140, 82, 255, 0.2);">
+                                    <span style="font-size: 10px; color: var(--primary-purple); font-weight: bold;">🌱</span>
+                                </div>
+                                Sustainable Transformation
+                            </h4>
+                            <p style="margin: 0; line-height: 1.6; color: rgba(255, 255, 255, 0.9);">We design processes that adapt to neurodiversity, inclusion, and emotional well-being—building agility that supports every individual.</p>
+                        </div>
+                        
+                        <div style="background: linear-gradient(135deg, rgba(67, 134, 221, 0.1), rgba(24, 0, 173, 0.1)); padding: 2rem; border-radius: 20px; border: 1px solid rgba(67, 134, 221, 0.3); box-shadow: 0 8px 25px rgba(0,0,0,0.2);">
+                            <h4 style="color: var(--blue); margin-bottom: 1rem; font-size: 1.5rem; display: flex; align-items: center; gap: 1rem; text-shadow: 0 0 8px rgba(67, 134, 221, 0.3);">
+                                <div style="width: 35px; height: 35px; border: 2px solid var(--blue); border-radius: 8px; display: flex; align-items: center; justify-content: center; background: rgba(67, 134, 221, 0.2);">
+                                    <span style="font-size: 10px; color: var(--blue); font-weight: bold;">🚀</span>
+                                </div>
+                                Real Business Change
+                            </h4>
+                            <p style="margin: 0; line-height: 1.6; color: rgba(255, 255, 255, 0.9);">We don't just run ceremonies. We align your operating model, leadership, and culture to deliver real, sustainable transformation.</p>
+                        </div>
+                        
+                        <div style="background: linear-gradient(135deg, rgba(221, 88, 88, 0.1), rgba(255, 165, 0, 0.1)); padding: 2rem; border-radius: 20px; border: 1px solid rgba(255, 140, 0, 0.3); box-shadow: 0 8px 25px rgba(0,0,0,0.2);">
+                            <h4 style="color: #ff8c00; margin-bottom: 1rem; font-size: 1.5rem; display: flex; align-items: center; gap: 1rem; text-shadow: 0 0 8px rgba(255, 140, 0, 0.3);">
+                                <div style="width: 35px; height: 35px; border: 2px solid #ff8c00; border-radius: 8px; display: flex; align-items: center; justify-content: center; background: rgba(255, 140, 0, 0.2);">
+                                    <span style="font-size: 10px; color: #ff8c00; font-weight: bold;">⭐</span>
+                                </div>
+                                Led by Proven Industry Expert
+                            </h4>
+                            <p style="margin: 0; line-height: 1.6; color: rgba(255, 255, 255, 0.9);">With 24+ years of delivery experience across sectors—banking, defence, insurance, fintech—our founder has driven over 250 large-scale transformation programmes globally.</p>
+                        </div>
+                    </div>
+                    
+                    <div style="background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(139, 56, 215, 0.1)); padding: 2.5rem; border-radius: 20px; margin-top: 2rem; box-shadow: 0 8px 25px rgba(0,0,0,0.3); border: 1px solid rgba(139, 56, 215, 0.3); backdrop-filter: blur(10px);">
+                        <p style="font-size: 1.5rem; font-weight: 700; color: var(--medium-purple); margin: 0; line-height: 1.6; font-style: italic; text-shadow: 0 0 10px rgba(139, 56, 215, 0.3);">
+                            <strong>"We're not here to sell you a framework. We're here to build your capability to thrive in whatever comes next."</strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="page-section">
+        <div class="page-logo">
+            Company Logo<br>
+            <span style="font-size: 0.7rem; opacity: 0.7;">(150px × 100px)</span>
+        </div>
+        <div class="container">
+            <div class="page-content">
+                <h2>Our Services</h2>
+                
+                <!-- Business Agility -->
+                <div style="margin-bottom: 4rem; padding: 2.5rem; background: linear-gradient(135deg, rgba(140, 82, 255, 0.1), rgba(0, 240, 255, 0.1)); border-radius: 20px; border-left: 5px solid var(--primary-purple);">
+                    <div style="display: flex; align-items: center; gap: 1.5rem; margin-bottom: 1.5rem;">
+                        <div style="width: 80px; height: 80px; background: rgba(140, 82, 255, 0.2); border-radius: 15px; display: flex; align-items: center; justify-content: center; border: 2px solid var(--primary-purple);">
+                            <!-- Icon placeholder - replace with your chosen icon -->
+                            <div style="width: 50px; height: 50px; background: var(--primary-purple); border-radius: 8px; opacity: 0.3;"></div>
+                        </div>
+                        <h3 style="color: var(--primary-purple); font-size: 2.5rem; margin: 0;">Business Agility</h3>
+                    </div>
+                    <p style="font-size: 1.4rem; margin-bottom: 2rem; color: var(--new-purple); font-weight: 600;">Transform your entire organization's ability to adapt and thrive in rapidly changing markets.</p>
+                    
+                    <div style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--deep-purple); margin-bottom: 1rem; font-size: 1.6rem;">What We Offer:</h4>
+                        <ul style="margin-left: 2rem; line-height: 1.8;">
+                            <li><strong>Organizational assessment and agility roadmapping</strong></li>
+                            <li><strong>Culture transformation and change management</strong></li>
+                            <li><strong>Leadership development for agile organizations</strong></li>
+                            <li><strong>Metrics and measurement frameworks</strong></li>
+                            <li><strong>Scaling agile practices across the enterprise</strong></li>
+                        </ul>
+                    </div>
+                    
+                    <div style="background: white; padding: 2rem; border-radius: 15px; margin-top: 2rem; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                        <p style="font-size: 1.3rem; font-weight: 700; color: #2d1b69; margin: 0; line-height: 1.6;"><strong style="color: var(--primary-purple); font-size: 1.4rem;">Typical Outcomes:</strong> 30-50% improvement in time-to-market, increased employee engagement, better customer satisfaction</p>
+                    </div>
+                </div>
+
+                <!-- Project Agility -->
+                <div style="margin-bottom: 4rem; padding: 2.5rem; background: linear-gradient(135deg, rgba(67, 134, 221, 0.1), rgba(0, 240, 255, 0.1)); border-radius: 20px; border-left: 5px solid var(--blue);">
+                    <div style="display: flex; align-items: center; gap: 1.5rem; margin-bottom: 1.5rem;">
+                        <div style="width: 80px; height: 80px; background: rgba(67, 134, 221, 0.2); border-radius: 15px; display: flex; align-items: center; justify-content: center; border: 2px solid var(--blue);">
+                            <!-- Icon placeholder - replace with your chosen icon -->
+                            <div style="width: 50px; height: 50px; background: var(--blue); border-radius: 8px; opacity: 0.3;"></div>
+                        </div>
+                        <h3 style="color: var(--blue); font-size: 2.5rem; margin: 0;">Project Agility</h3>
+                    </div>
+                    <p style="font-size: 1.4rem; margin-bottom: 2rem; color: var(--new-purple); font-weight: 600;">Deliver projects faster, with higher quality, and greater stakeholder satisfaction.</p>
+                    
+                    <div style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--deep-purple); margin-bottom: 1rem; font-size: 1.6rem;">What We Offer:</h4>
+                        <ul style="margin-left: 2rem; line-height: 1.8;">
+                            <li><strong>Adaptive project management implementation</strong></li>
+                            <li><strong>Cross-functional team formation and coaching</strong></li>
+                            <li><strong>Stakeholder engagement and communication strategies</strong></li>
+                            <li><strong>Risk management and uncertainty navigation</strong></li>
+                            <li><strong>Value-driven delivery frameworks</strong></li>
+                        </ul>
+                    </div>
+                    
+                    <div style="background: white; padding: 2rem; border-radius: 15px; margin-top: 2rem; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                        <p style="font-size: 1.3rem; font-weight: 700; color: #2d1b69; margin: 0; line-height: 1.6;"><strong style="color: var(--blue); font-size: 1.4rem;">Typical Outcomes:</strong> 40% reduction in project delivery time, 60% improvement in stakeholder satisfaction, reduced project risk</p>
+                    </div>
+                </div>
+
+                <!-- Process Optimization -->
+                <div style="margin-bottom: 4rem; padding: 2.5rem; background: linear-gradient(135deg, rgba(139, 56, 215, 0.1), rgba(207, 146, 255, 0.1)); border-radius: 20px; border-left: 5px solid var(--medium-purple);">
+                    <div style="display: flex; align-items: center; gap: 1.5rem; margin-bottom: 1.5rem;">
+                        <div style="width: 80px; height: 80px; background: rgba(139, 56, 215, 0.2); border-radius: 15px; display: flex; align-items: center; justify-content: center; border: 2px solid var(--medium-purple);">
+                            <!-- Icon placeholder - replace with your chosen icon -->
+                            <div style="width: 50px; height: 50px; background: var(--medium-purple); border-radius: 8px; opacity: 0.3;"></div>
+                        </div>
+                        <h3 style="color: var(--medium-purple); font-size: 2.5rem; margin: 0;">Process Optimization</h3>
+                    </div>
+                    <p style="font-size: 1.4rem; margin-bottom: 2rem; color: var(--new-purple); font-weight: 600;">Streamline workflows while maintaining focus on human experience and business outcomes.</p>
+                    
+                    <div style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--deep-purple); margin-bottom: 1rem; font-size: 1.6rem;">What We Offer:</h4>
+                        <ul style="margin-left: 2rem; line-height: 1.8;">
+                            <li><strong>Value stream mapping and analysis</strong></li>
+                            <li><strong>Waste elimination and flow optimization</strong></li>
+                            <li><strong>Automation strategy and implementation</strong></li>
+                            <li><strong>Quality management systems</strong></li>
+                            <li><strong>Continuous improvement culture development</strong></li>
+                        </ul>
+                    </div>
+                    
+                    <div style="background: white; padding: 2rem; border-radius: 15px; margin-top: 2rem; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                        <p style="font-size: 1.3rem; font-weight: 700; color: #2d1b69; margin: 0; line-height: 1.6;"><strong style="color: var(--medium-purple); font-size: 1.4rem;">Typical Outcomes:</strong> 25-40% efficiency gains, reduced cycle times, improved quality metrics, higher employee satisfaction</p>
+                    </div>
+                </div>
+
+                <!-- AI-Project Agility -->
+                <div style="margin-bottom: 4rem; padding: 2.5rem; background: linear-gradient(135deg, rgba(0, 240, 255, 0.1), rgba(140, 82, 255, 0.1)); border-radius: 20px; border-left: 5px solid var(--cyan);">
+                    <div style="display: flex; align-items: center; gap: 1.5rem; margin-bottom: 1.5rem;">
+                        <div style="width: 80px; height: 80px; background: rgba(0, 240, 255, 0.2); border-radius: 15px; display: flex; align-items: center; justify-content: center; border: 2px solid var(--cyan);">
+                            <!-- Icon placeholder - replace with your chosen icon -->
+                            <div style="width: 50px; height: 50px; background: var(--cyan); border-radius: 8px; opacity: 0.3;"></div>
+                        </div>
+                        <h3 style="color: var(--cyan); font-size: 2.5rem; margin: 0;">AI-Project Agility</h3>
+                    </div>
+                    <p style="font-size: 1.4rem; margin-bottom: 2rem; color: var(--new-purple); font-weight: 600;">Leverage AI-powered tools and methodologies to accelerate project delivery and enhance decision-making capabilities.</p>
+                    
+                    <div style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--deep-purple); margin-bottom: 1rem; font-size: 1.6rem;">What We Offer:</h4>
+                        <ul style="margin-left: 2rem; line-height: 1.8;">
+                            <li><strong>AI-enhanced project planning and risk assessment</strong></li>
+                            <li><strong>Intelligent resource allocation and capacity planning</strong></li>
+                            <li><strong>Automated workflow optimization and bottleneck detection</strong></li>
+                            <li><strong>Predictive analytics for project outcomes</strong></li>
+                            <li><strong>AI-powered stakeholder communication and reporting</strong></li>
+                            <li><strong>Machine learning-driven continuous improvement</strong></li>
+                        </ul>
+                    </div>
+                    
+                    <div style="background: white; padding: 2rem; border-radius: 15px; margin-top: 2rem; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                        <p style="font-size: 1.3rem; font-weight: 700; color: #2d1b69; margin: 0; line-height: 1.6;"><strong style="color: var(--cyan); font-size: 1.4rem;">Typical Outcomes:</strong> 50-60% reduction in planning time, 35% improvement in delivery predictability, enhanced decision-making speed</p>
+                    </div>
+                </div>
+
+                <!-- People Development -->
+                <div style="margin-bottom: 4rem; padding: 2.5rem; background: linear-gradient(135deg, rgba(221, 88, 88, 0.1), rgba(207, 146, 255, 0.1)); border-radius: 20px; border-left: 5px solid var(--coral);">
+                    <div style="display: flex; align-items: center; gap: 1.5rem; margin-bottom: 1.5rem;">
+                        <div style="width: 80px; height: 80px; background: rgba(221, 88, 88, 0.2); border-radius: 15px; display: flex; align-items: center; justify-content: center; border: 2px solid var(--coral);">
+                            <!-- Icon placeholder - replace with your chosen icon -->
+                            <div style="width: 50px; height: 50px; background: var(--coral); border-radius: 8px; opacity: 0.3;"></div>
+                        </div>
+                        <h3 style="color: var(--coral); font-size: 2.5rem; margin: 0;">People Development</h3>
+                    </div>
+                    <p style="font-size: 1.4rem; margin-bottom: 2rem; color: var(--new-purple); font-weight: 600;">Build high-performing, adaptive teams through comprehensive people development programs.</p>
+                    
+                    <div style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--deep-purple); margin-bottom: 1rem; font-size: 1.6rem;">What We Offer:</h4>
+                        <ul style="margin-left: 2rem; line-height: 1.8;">
+                            <li><strong>Team coaching and facilitation</strong></li>
+                            <li><strong>Individual mentoring and career development</strong></li>
+                            <li><strong>Skills assessment and capability building</strong></li>
+                            <li><strong>Psychological safety and team dynamics</strong></li>
+                            <li><strong>Performance management transformation</strong></li>
+                        </ul>
+                    </div>
+                    
+                    <div style="background: white; padding: 2rem; border-radius: 15px; margin-top: 2rem; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                        <p style="font-size: 1.3rem; font-weight: 700; color: #2d1b69; margin: 0; line-height: 1.6;"><strong style="color: var(--coral); font-size: 1.4rem;">Typical Outcomes:</strong> 50-70% improvement in team performance metrics, increased retention rates, higher engagement scores</p>
+                    </div>
+                </div>
+
+                <!-- Training & Development -->
+                <div style="margin-bottom: 4rem; padding: 2.5rem; background: linear-gradient(135deg, rgba(118, 22, 212, 0.1), rgba(140, 82, 255, 0.1)); border-radius: 20px; border-left: 5px solid var(--deep-purple);">
+                    <div style="display: flex; align-items: center; gap: 1.5rem; margin-bottom: 1.5rem;">
+                        <div style="width: 80px; height: 80px; background: rgba(118, 22, 212, 0.2); border-radius: 15px; display: flex; align-items: center; justify-content: center; border: 2px solid var(--deep-purple);">
+                            <!-- Icon placeholder - replace with your chosen icon -->
+                            <div style="width: 50px; height: 50px; background: var(--deep-purple); border-radius: 8px; opacity: 0.3;"></div>
+                        </div>
+                        <h3 style="color: var(--deep-purple); font-size: 2.5rem; margin: 0;">Training & Development</h3>
+                    </div>
+                    <p style="font-size: 1.4rem; margin-bottom: 2rem; color: var(--new-purple); font-weight: 600;">Build internal capability with our comprehensive training programs.</p>
+                    
+                    <div style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--deep-purple); margin-bottom: 1rem; font-size: 1.6rem;">What We Offer:</h4>
+                        
+                        <div style="margin-bottom: 1.5rem; padding: 1.5rem; background: rgba(255, 255, 255, 0.5); border-radius: 10px;">
+                            <h5 style="color: var(--new-purple); margin-bottom: 0.5rem; font-size: 1.3rem;">Leadership Training</h5>
+                            <p style="margin: 0;">Develop agile leaders who can navigate complexity and inspire teams to achieve extraordinary results.</p>
+                        </div>
+                        
+                        <div style="margin-bottom: 1.5rem; padding: 1.5rem; background: rgba(255, 255, 255, 0.5); border-radius: 10px;">
+                            <h5 style="color: var(--new-purple); margin-bottom: 0.5rem; font-size: 1.3rem;">Practitioner Workshops</h5>
+                            <p style="margin: 0;">Hands-on workshops that build practical skills in agile methodologies and human-centric practices.</p>
+                        </div>
+                        
+                        <div style="margin-bottom: 1.5rem; padding: 1.5rem; background: rgba(255, 255, 255, 0.5); border-radius: 10px;">
+                            <h5 style="color: var(--new-purple); margin-bottom: 0.5rem; font-size: 1.3rem;">Certification Programs</h5>
+                            <p style="margin: 0;">Industry-recognized certifications that validate expertise in modern agility practices and frameworks.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Values Section -->
+    <section id="values" class="page-section">
+        <div class="page-logo">
+            Company Logo<br>
+            <span style="font-size: 0.7rem; opacity: 0.7;">(150px × 100px)</span>
+        </div>
+        <div class="values">
+            <div class="container">
+                <h2 class="section-title" style="color: white;">Our Core Values</h2>
+                <div class="values-grid">
+                    <div class="value-card">
+                        <h3>
+                            <svg class="value-icon" viewBox="0 0 24 24">
+                                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                            </svg>
+                            Human First
+                        </h3>
+                        <p>We put people at the center of every transformation. Tools don't create change — humans do.</p>
+                    </div>
+                    <div class="value-card">
+                        <h3>
+                            <svg class="value-icon" viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                            Clarity in Chaos
+                        </h3>
+                        <p>In a world of uncertainty, we lead with clarity, calm, and direction — never noise.</p>
+                    </div>
+                    <div class="value-card">
+                        <h3>
+                            <svg class="value-icon" viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                            Pragmatism Over Dogma
+                        </h3>
+                        <p>We're framework-agnostic. We use what works, tailor what doesn't, and always deliver with context.</p>
+                    </div>
+                    <div class="value-card">
+                        <h3>
+                            <svg class="value-icon" viewBox="0 0 24 24">
+                                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            Integrity in Action
+                        </h3>
+                        <p>We show up with honesty, follow through with ownership, and deliver with excellence.</p>
+                    </div>
+                    <div class="value-card">
+                        <h3>
+                            <svg class="value-icon" viewBox="0 0 24 24">
+                                <path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9z"/>
+                            </svg>
+                            Adaptability & Impact
+                        </h3>
+                        <p>We embrace complexity, shifting needs, and new realities — agility isn't what we do, it's who we are.</p>
+                    </div>
+                    <div class="value-card">
+                        <h3>
+                            <svg class="value-icon" viewBox="0 0 24 24">
+                                <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/>
+                            </svg>
+                            Continuous Growth
+                        </h3>
+                        <p>We evolve constantly — learning from our clients, our challenges, and each other.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Stories Section -->
+    <section id="success" class="page-section">
+        <div class="page-logo">
+            Company Logo<br>
+            <span style="font-size: 0.7rem; opacity: 0.7;">(150px × 100px)</span>
+        </div>
+        <div class="container">
+            <div class="page-content">
+                <h2>Real World Success Stories</h2>
+                
+                <div style="margin-bottom: 3rem; padding: 2rem; background: linear-gradient(135deg, var(--primary-purple), var(--deep-purple)); color: white; border-radius: 15px;">
+                    <h3 style="margin-bottom: 1rem;">Global Tech Transformation</h3>
+                    <p>Helped a Fortune 500 technology company transform their project delivery across 15 countries, reducing time-to-market by 40% while improving team satisfaction scores by 60%.</p>
+                    <p style="font-style: italic; margin-top: 1rem;">"Agnostic Agility didn't just give us a framework—they gave us a way of thinking that adapted to each of our unique markets." - VP of Global Operations</p>
+                </div>
+                
+                <div style="margin-bottom: 3rem; padding: 2rem; background: linear-gradient(135deg, var(--blue), var(--cyan)); color: white; border-radius: 15px;">
+                    <h3 style="margin-bottom: 1rem;">Healthcare Innovation</h3>
+                    <p>Supported a healthcare startup in scaling from 50 to 500 employees while maintaining their culture of innovation and patient-first focus. Implemented agile practices that reduced product development cycles by 50%.</p>
+                    <p style="font-style: italic; margin-top: 1rem;">"They understood that in healthcare, agility isn't just about speed—it's about getting life-saving solutions to patients faster." - Chief Product Officer</p>
+                </div>
+                
+                <div style="margin-bottom: 3rem; padding: 2rem; background: linear-gradient(135deg, var(--medium-purple), var(--light-purple)); color: white; border-radius: 15px;">
+                    <h3 style="margin-bottom: 1rem;">Financial Services Modernization</h3>
+                    <p>Guided a traditional bank through digital transformation, helping them launch new digital products 3x faster while maintaining regulatory compliance and risk management standards.</p>
+                    <p style="font-style: italic; margin-top: 1rem;">"They proved that you can be agile and compliant at the same time. Our customers now get better products, faster." - Head of Digital Innovation</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog/Events Section -->
+    <section id="blog" class="page-section">
+        <div class="page-logo">
+            Company Logo<br>
+            <span style="font-size: 0.7rem; opacity: 0.7;">(150px × 100px)</span>
+        </div>
+        <div class="container">
+            <div class="page-content">
+                <h2>Insights, Events & Community</h2>
+                
+                <h3 style="color: var(--primary-purple); margin-bottom: 1rem;">Latest Insights</h3>
+                <div style="margin-bottom: 3rem;">
+                    <h4 style="margin-bottom: 0.5rem;">The Human Side of AI in Project Management</h4>
+                    <p style="color: #666; margin-bottom: 1rem;">Published: March 2024</p>
+                    <p>Exploring how AI can enhance human decision-making in project delivery without replacing the critical human elements of leadership, empathy, and contextual judgment.</p>
+                </div>
+                
+                <div style="margin-bottom: 3rem;">
+                    <h4 style="margin-bottom: 0.5rem;">Framework Agnostic: Why One Size Never Fits All</h4>
+                    <p style="color: #666; margin-bottom: 1rem;">Published: February 2024</p>
+                    <p>A deep dive into why organizations need to move beyond rigid frameworks and embrace adaptive approaches that fit their unique context and culture.</p>
+                </div>
+                
+                <h3 style="color: var(--primary-purple); margin-bottom: 1rem; margin-top: 3rem;">Upcoming Events</h3>
+                <div style="margin-bottom: 2rem;">
+                    <h4 style="margin-bottom: 0.5rem;">Webinar: "Leading Change in Uncertain Times"</h4>
+                    <p style="color: #666; margin-bottom: 1rem;">April 15, 2024 | 2:00 PM GMT</p>
+                    <p>Join our founders for an interactive discussion on maintaining clarity and direction when everything around you is changing.</p>
+                </div>
+                
+                <div style="margin-bottom: 2rem;">
+                    <h4 style="margin-bottom: 0.5rem;">Workshop: "Human-Centered Agile Practices"</h4>
+                    <p style="color: #666; margin-bottom: 1rem;">May 3, 2024 | London</p>
+                    <p>A hands-on workshop exploring how to implement agile practices that actually work for real people in real organizations.</p>
+                </div>
+                
+                <h3 style="color: var(--primary-purple); margin-bottom: 1rem; margin-top: 3rem;">Connect With Us</h3>
+                <p>Follow our journey and join the conversation about human-centered agility, practical change management, and building organizations that thrive in complexity.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="page-section">
+        <div class="page-logo">
+            Company Logo<br>
+            <span style="font-size: 0.7rem; opacity: 0.7;">(150px × 100px)</span>
+        </div>
+        <div class="contact">
+            <div class="container">
+                <h2 class="section-title">Get In Touch</h2>
+                <div class="contact-content">
+                    <div class="contact-form">
+                        <h3 style="margin-bottom: 2rem;">Start Your Transformation</h3>
+                        <form>
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="company">Company</label>
+                                <input type="text" id="company" name="company">
+                            </div>
+                            <div class="form-group">
+                                <label for="message">How can we help?</label>
+                                <textarea id="message" name="message" placeholder="Tell us about your challenges, goals, or questions..." required></textarea>
+                            </div>
+                            <button type="submit" class="submit-btn">Send Message</button>
+                        </form>
+                    </div>
+                    <div class="contact-info">
+                        <h3>Let's Talk</h3>
+                        <p>Ready to transform how your organization approaches change? We'd love to hear about your challenges and explore how we can help.</p>
+                        <p><strong>Email:</strong> contactus@agnosticagility.co.uk</p>
+                        <p><strong>Response Time:</strong> Within 24 hours</p>
+                        
+                        <h4 style="color: var(--primary-purple); margin-top: 2rem; margin-bottom: 1rem;">What Happens Next?</h4>
+                        <p>1. We'll respond within 24 hours</p>
+                        <p>2. Schedule a no-obligation discovery call</p>
+                        <p>3. Understand your unique context and challenges</p>
+                        <p>4. Explore how we can help you succeed</p>
+                        
+                        <div class="social-links">
+                            <a href="#" title="LinkedIn">in</a>
+                            <a href="#" title="Twitter">tw</a>
+                            <a href="#" title="Medium">md</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Agnostic Agility. All rights reserved.</p>
+            <p style="margin-top: 1rem; font-style: italic;">Agility for the Chaos, the Complex, the Human.</p>
+        </div>
+    </footer>
+
+    <script>
+        function showSection(sectionName) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.page-section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show the selected section
+            const targetSection = document.getElementById(sectionName);
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        // Form submission handler
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Create a custom modal for form submission
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.8);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 10000;
+            `;
+            
+            const modalContent = document.createElement('div');
+            modalContent.style.cssText = `
+                background: white;
+                padding: 3rem;
+                border-radius: 20px;
+                text-align: center;
+                max-width: 500px;
+                margin: 20px;
+            `;
+            
+            modalContent.innerHTML = `
+                <h3 style="color: var(--primary-purple); margin-bottom: 1rem;">Thank You!</h3>
+                <p style="margin-bottom: 2rem;">Your message has been received. We'll get back to you within 24 hours.</p>
+                <button onclick="this.closest('.modal').remove()" style="background: var(--primary-purple); color: white; border: none; padding: 1rem 2rem; border-radius: 50px; cursor: pointer; font-weight: 600;">Close</button>
+            `;
+            
+            modal.className = 'modal';
+            modal.appendChild(modalContent);
+            document.body.appendChild(modal);
+            
+            // Reset form
+            this.reset();
+        });
+
+        // Mobile menu toggle (basic implementation)
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96bae58f30f90762',t:'MTc1NDYxMjkzOC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
