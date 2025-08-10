@@ -63,13 +63,11 @@
             width: 100%;
             height: 200px;
             background: linear-gradient(45deg, rgba(0, 240, 255, 0.1), rgba(140, 82, 255, 0.1));
-            border: 2px solid #00f0ff;
             border-radius: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 2rem;
-            box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
             color: #00f0ff;
             font-size: 1.1rem;
             text-align: center;
@@ -768,7 +766,7 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo-container-nav">
-                <video width="100" height="100" autoplay muted loop playsinline>
+                <video width="200" height="200" autoplay muted loop playsinline>
                 <source src="AgnosticAgility_Logo_Canva.mp4" type="video/mp4">
                 Your browser does not support the video tag.
                 </video>
@@ -801,7 +799,7 @@
             <div class="home-content">
                 <div class="logo-container">
                     <div class="logo-placeholder">
-                        <video width="600" height="600" autoplay muted loop playsinline>
+                       <video width="800" height="800" autoplay muted loop playsinline>
                         <source src="AgnosticAgility_Logo_Canva.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                         </video>
@@ -1548,9 +1546,13 @@ This message was sent from the Agnostic Agility website contact form.`
             // Add smooth transitions
             document.body.style.transition = 'all 0.3s ease';
             
-            // Initialize with home section
+            // Initialize with home section and trigger home button click effect
+            const homeLink = document.querySelector('.nav-link[onclick="showSection(\'home\')"]');
+            if (homeLink) {
+                homeLink.classList.add('active');
+            }
             showSection('home');
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96d22ba956b6b328',t:'MTc1NDg1Njk4Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96d2410467e6b36a',t:'MTc1NDg1Nzg1Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
