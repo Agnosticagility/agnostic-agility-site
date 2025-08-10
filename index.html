@@ -1369,7 +1369,8 @@
             <!-- Contact Form - Centered -->
             <div style="max-width: 800px; margin: 0 auto;">
                 <div class="contact-form">
-                    <form id="contactForm" onsubmit="handleSubmit(event)">
+                    <!--form id="contactForm" onsubmit="handleSubmit(event)"-->
+                    <form name="contact" method="POST" data-netlify="true">
                         <div class="form-group">
                             <label for="name">Full Name</label>
                             <input type="text" id="name" name="name" required>
