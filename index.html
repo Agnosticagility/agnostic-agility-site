@@ -109,19 +109,63 @@
             margin: 0 auto;
         }
 
-        .logo-container-nav {
-            height: 60px;
-            width: 200px;
-            background: linear-gradient(45deg, rgba(0, 240, 255, 0.1), rgba(140, 82, 255, 0.1));
-            border-radius: 10px;
+        .logo-text-nav {
+            font-family: 'Cormorant Garamond', serif;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            background: transparent;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            animation: logoGlow 3s ease-in-out infinite alternate;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            color: #00f0ff;
-            font-size: 0.9rem;
             text-align: center;
+        }
+
+        .logo-main-text {
+            font-size: 2.2rem;
+            font-weight: 700;
+            text-shadow: 
+                0 0 10px rgba(0, 240, 255, 0.8),
+                0 0 20px rgba(0, 240, 255, 0.6),
+                0 0 30px rgba(0, 240, 255, 0.4);
+            margin-bottom: 0.2rem;
+        }
+
+        .logo-tagline {
+            font-size: 0.9rem;
+            font-weight: 500;
             font-style: italic;
-            border: 2px solid #00f0ff;
+            color: white;
+            text-shadow: 
+                0 0 8px rgba(255, 255, 255, 0.8),
+                0 0 15px rgba(255, 255, 255, 0.6);
+            line-height: 1.2;
+        }
+
+        @keyframes logoGlow {
+            0% {
+                text-shadow: 
+                    0 0 10px rgba(0, 240, 255, 0.8),
+                    0 0 20px rgba(0, 240, 255, 0.6),
+                    0 0 30px rgba(0, 240, 255, 0.4);
+            }
+            100% {
+                text-shadow: 
+                    0 0 15px rgba(0, 240, 255, 1),
+                    0 0 30px rgba(0, 240, 255, 0.8),
+                    0 0 45px rgba(140, 82, 255, 0.6);
+            }
+        }
+
+        .logo-text-nav:hover {
+            transform: scale(1.05);
+            color: white;
+            text-shadow: 
+                0 0 15px rgba(0, 240, 255, 1),
+                0 0 30px rgba(140, 82, 255, 0.8),
+                0 0 45px rgba(207, 146, 255, 0.6);
         }
 
         .nav-menu {
@@ -401,7 +445,7 @@
         .service-card {
             background: linear-gradient(135deg, rgba(140, 82, 255, 0.1), rgba(0, 240, 255, 0.05));
             padding: 2rem;
-            border-radius: 15px;
+            border-radius: 0px;
             border: 2px solid #8c52ff;
             box-shadow: 0 0 20px rgba(140, 82, 255, 0.3);
             transition: all 0.3s ease;
@@ -721,10 +765,16 @@
                 display: flex;
             }
 
-            .logo-container-nav {
-                width: 150px;
-                height: 50px;
-                font-size: 0.8rem;
+            .logo-text-nav {
+                padding: 0.6rem 1rem;
+            }
+
+            .logo-main-text {
+                font-size: 1.8rem;
+            }
+
+            .logo-tagline {
+                font-size: 0.75rem;
             }
 
             .nav-link {
@@ -818,11 +868,9 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <div class="logo-container-nav">
-                <video width=50" height="50" autoplay muted loop playsinline>
-                <source src="AgnosticAgility_Logo_Canva.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-                </video>
+            <div class="logo-text-nav">
+                <div class="logo-main-text">Agnostic Agility</div>
+                <div class="logo-tagline">Agility for the Chaotic, the Complex, the Human</div>
             </div>
             <div class="mobile-menu-toggle" onclick="toggleMobileMenu()">
                 <span></span>
@@ -852,10 +900,10 @@
             <div class="home-content">
                 <div class="logo-container">
                     <div class="logo-placeholder">
-                	<video width="600" height="600" autoplay muted loop playsinline>
-	                <source src="AgnosticAgility_Logo_Canva.mp4" type="video/mp4">
-        	        Your browser does not support the video tag.
-                	</video>
+                        <video width="600" height="600" autoplay muted loop playsinline>
+	                	<source src="AgnosticAgility_Logo_Canva.mp4" type="video/mp4">
+        	        	Your browser does not support the video tag.
+                		</video>
                     </div>
                 </div>
                 <div class="hero-content">
@@ -1417,13 +1465,15 @@
             // Add smooth transitions
             document.body.style.transition = 'all 0.3s ease';
             
-            // Initialize with home section and trigger home button click effect
+            // Initialize with home section active
+            document.getElementById('home').classList.add('active');
+            
+            // Set home button as active on page load
             const homeLink = document.querySelector('.nav-link[onclick="showSection(\'home\')"]');
             if (homeLink) {
                 homeLink.classList.add('active');
             }
-            showSection('home');
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96e048c7008ca16d',t:'MTc1NTAwNDk3NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96e085c7911aeb13',t:'MTc1NTAwNzQ3NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
