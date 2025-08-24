@@ -1007,33 +1007,35 @@
     <!-- Services Section -->
     <section id="services" class="page-section">
         <div class="content-section">
-
             <div class="services-grid">
                 <div class="service-card">
-                    <div style="height: 150px; background: linear-gradient(45deg, rgba(0, 255, 255, 0.3), rgba(255, 0, 255, 0.2), rgba(0, 255, 0, 0.1)); border-radius: 15px; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; color: #00ffff; font-style: italic; font-size: 1rem; border: 2px solid #00ffff; box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);">
-                        <img src="BusinessAgility_277x140_icon.png" alt="Business Agility Icon" width: "100px"/>
-                    </div>
-                    <h3>Business Agility</h3>
-                    <div class="service-summary">
-                        <p>Transform your organization's ability to adapt and respond to market changes with sustainable agility practices.</p>
-                        <button class="learn-more-btn" onclick="toggleServiceDetails(this)">Learn More →</button>
-                    </div>
-                    <div class="service-details" style="display: none;">
-                        <p style="font-size: 1rem; margin-bottom: 1rem;">Transform your entire organization's ability to adapt and thrive in rapidly changing markets.</p>
-                        <p style="font-size: 0.95rem; margin-bottom: 1rem;"><strong>What we offer:</strong><br>
-                        • Organizational assessment and agility roadmapping<br>
-                        • Culture transformation and change management<br>
-                        • Leadership development for agile organizations<br>
-                        • Metrics and measurement frameworks<br>
-                        • Scaling agile practices across the enterprise</p>
-                        <p style="font-size: 0.95rem; margin-bottom: 1rem; color: #00ffff;"><strong>Typical outcomes:</strong> 30-50% improvement in time-to-market, increased employee engagement, better customer satisfaction.</p>
-                        <button class="learn-more-btn" onclick="toggleServiceDetails(this)">Show Less ↑</button>
-                    </div>
-                </div>
-                
-                <div class="service-card">
-                    <div style="height: 150px; background: linear-gradient(45deg, rgba(0, 255, 255, 0.3), rgba(255, 0, 255, 0.2), rgba(0, 255, 0, 0.1)); border-radius: 15px; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; color: #00ffff; font-style: italic; font-size: 1rem; border: 2px solid #00ffff; box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);">
-                        <img src="Project Agility_277x140_icon.png" alt="Project Agility Icon" width: "100px" />
+                    <div style="height: 150px; background: linear-gradient(45deg, rgba(0, 255, 255, 0.3), rgba(255, 0, 255, 0.2), rgba(0, 255, 0, 0.1)); border-radius: 15px; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; color: #00ffff; font-style: italic; font-size: 1rem; border: 2px solid #00ffff; box-shadow: 0 0 20px rgba(0, 255, 255, 0.5); position: relative; overflow: hidden;">
+                        <svg width="120" height="120" viewBox="0 0 120 120" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                            <!-- Sprint cycles visualization -->
+                            <circle cx="60" cy="60" r="40" fill="none" stroke="#00ffff" stroke-width="3" opacity="0.6" stroke-dasharray="10,5">
+                                <animateTransform attributeName="transform" type="rotate" values="0 60 60;360 60 60" dur="8s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="60" cy="60" r="25" fill="none" stroke="#ff00ff" stroke-width="2" opacity="0.7" stroke-dasharray="8,4">
+                                <animateTransform attributeName="transform" type="rotate" values="360 60 60;0 60 60" dur="5s" repeatCount="indefinite"/>
+                            </circle>
+                            <!-- Project milestones -->
+                            <rect x="55" y="20" width="10" height="10" fill="#00ff00" opacity="0.8" rx="2">
+                                <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/>
+                            </rect>
+                            <rect x="95" y="55" width="10" height="10" fill="#ffff00" opacity="0.7" rx="2">
+                                <animate attributeName="opacity" values="0.7;1;0.7" dur="2.5s" repeatCount="indefinite"/>
+                            </rect>
+                            <rect x="55" y="95" width="10" height="10" fill="#ff6600" opacity="0.9" rx="2">
+                                <animate attributeName="opacity" values="0.9;1;0.9" dur="1.8s" repeatCount="indefinite"/>
+                            </rect>
+                            <rect x="15" y="55" width="10" height="10" fill="#ff00ff" opacity="0.6" rx="2">
+                                <animate attributeName="opacity" values="0.6;1;0.6" dur="3s" repeatCount="indefinite"/>
+                            </rect>
+                            <!-- Central hub -->
+                            <circle cx="60" cy="60" r="8" fill="#ffffff" opacity="0.9">
+                                <animate attributeName="r" values="8;12;8" dur="3s" repeatCount="indefinite"/>
+                            </circle>
+                        </svg>
                     </div>
                     <h3>Project Agility</h3>
                     <div class="service-summary">
@@ -1047,15 +1049,56 @@
                         • Cross-functional team formation and coaching<br>
                         • Stakeholder engagement and communication strategies<br>
                         • Risk management and uncertainty navigation<br>
-                        • Value-driven delivery frameworks</p>
+                        • Value-driven delivery frameworks<br>
+                        • Data transformation and migration projects<br>
+                        • SAP S/4 HANA implementation and optimization<br>
+                        • Complex project end-to-end delivery management</p>
                         <p style="font-size: 0.95rem; margin-bottom: 1rem; color: #00ffff;"><strong>Typical outcomes:</strong> 40% reduction in project delivery time, 60% improvement in stakeholder satisfaction, reduced project risk.</p>
                         <button class="learn-more-btn" onclick="toggleServiceDetails(this)">Show Less ↑</button>
                     </div>
                 </div>
                 
                 <div class="service-card">
-                    <div style="height: 150px; background: linear-gradient(45deg, rgba(0, 255, 255, 0.3), rgba(255, 0, 255, 0.2), rgba(0, 255, 0, 0.1)); border-radius: 15px; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; color: #00ffff; font-style: italic; font-size: 1rem; border: 2px solid #00ffff; box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);">
-                        <img src="Process optimisation_277x140_icon.png" alt="Process Optimisation Icon" width: "100px" />
+                    <div style="height: 150px; background: linear-gradient(45deg, rgba(0, 255, 255, 0.3), rgba(255, 0, 255, 0.2), rgba(0, 255, 0, 0.1)); border-radius: 15px; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; color: #00ffff; font-style: italic; font-size: 1rem; border: 2px solid #00ffff; box-shadow: 0 0 20px rgba(0, 255, 255, 0.5); position: relative; overflow: hidden;">
+                        <svg width="120" height="120" viewBox="0 0 120 120" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                            <!-- Process flow visualization -->
+                            <path d="M20 60 Q40 40 60 60 Q80 80 100 60" fill="none" stroke="#00ffff" stroke-width="4" opacity="0.7">
+                                <animate attributeName="stroke-dasharray" values="0,200;200,0" dur="3s" repeatCount="indefinite"/>
+                            </path>
+                            <!-- Process nodes -->
+                            <circle cx="20" cy="60" r="6" fill="#00ff00" opacity="0.8">
+                                <animate attributeName="r" values="6;10;6" dur="2s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="60" cy="60" r="8" fill="#ffff00" opacity="0.9">
+                                <animate attributeName="r" values="8;12;8" dur="2.5s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="100" cy="60" r="6" fill="#ff6600" opacity="0.8">
+                                <animate attributeName="r" values="6;10;6" dur="1.8s" repeatCount="indefinite"/>
+                            </circle>
+                            <!-- Optimization arrows -->
+                            <path d="M30 30 L50 50" stroke="#ff00ff" stroke-width="3" opacity="0.6" marker-end="url(#arrowhead)">
+                                <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite"/>
+                            </path>
+                            <path d="M70 50 L90 30" stroke="#ff00ff" stroke-width="3" opacity="0.6" marker-end="url(#arrowhead)">
+                                <animate attributeName="opacity" values="0.6;1;0.6" dur="2.2s" repeatCount="indefinite"/>
+                            </path>
+                            <!-- Arrow marker definition -->
+                            <defs>
+                                <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                                    <polygon points="0 0, 10 3.5, 0 7" fill="#ff00ff"/>
+                                </marker>
+                            </defs>
+                            <!-- Efficiency indicators -->
+                            <rect x="10" y="80" width="20" height="8" fill="#00ff00" opacity="0.7" rx="4">
+                                <animate attributeName="width" values="20;35;20" dur="3s" repeatCount="indefinite"/>
+                            </rect>
+                            <rect x="50" y="80" width="25" height="8" fill="#ffff00" opacity="0.8" rx="4">
+                                <animate attributeName="width" values="25;40;25" dur="2.5s" repeatCount="indefinite"/>
+                            </rect>
+                            <rect x="85" y="80" width="22" height="8" fill="#ff6600" opacity="0.7" rx="4">
+                                <animate attributeName="width" values="22;37;22" dur="2.8s" repeatCount="indefinite"/>
+                            </rect>
+                        </svg>
                     </div>
                     <h3>Process Optimization</h3>
                     <div class="service-summary">
@@ -1076,8 +1119,56 @@
                 </div>
                 
                 <div class="service-card">
-                    <div style="height: 150px; background: linear-gradient(45deg, rgba(0, 255, 255, 0.3), rgba(255, 0, 255, 0.2), rgba(0, 255, 0, 0.1)); border-radius: 15px; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; color: #00ffff; font-style: italic; font-size: 1rem; border: 2px solid #00ffff; box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);">
-                        [Image Space - AI-Project Agility]
+                    <div style="height: 150px; background: linear-gradient(45deg, rgba(0, 255, 255, 0.3), rgba(255, 0, 255, 0.2), rgba(0, 255, 0, 0.1)); border-radius: 15px; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; color: #00ffff; font-style: italic; font-size: 1rem; border: 2px solid #00ffff; box-shadow: 0 0 20px rgba(0, 255, 255, 0.5); position: relative; overflow: hidden;">
+                        <svg width="120" height="120" viewBox="0 0 120 120" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                            <!-- AI brain/neural network -->
+                            <circle cx="60" cy="60" r="35" fill="none" stroke="#00ffff" stroke-width="2" opacity="0.4" stroke-dasharray="5,3">
+                                <animateTransform attributeName="transform" type="rotate" values="0 60 60;360 60 60" dur="10s" repeatCount="indefinite"/>
+                            </circle>
+                            <!-- Neural nodes -->
+                            <circle cx="60" cy="35" r="4" fill="#ff00ff" opacity="0.8">
+                                <animate attributeName="opacity" values="0.8;1;0.8" dur="1.5s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="85" cy="50" r="3" fill="#00ff00" opacity="0.7">
+                                <animate attributeName="opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="85" cy="70" r="4" fill="#ffff00" opacity="0.9">
+                                <animate attributeName="opacity" values="0.9;1;0.9" dur="1.8s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="60" cy="85" r="3" fill="#ff6600" opacity="0.8">
+                                <animate attributeName="opacity" values="0.8;1;0.8" dur="2.2s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="35" cy="70" r="4" fill="#ff00ff" opacity="0.7">
+                                <animate attributeName="opacity" values="0.7;1;0.7" dur="1.7s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="35" cy="50" r="3" fill="#00ffff" opacity="0.8">
+                                <animate attributeName="opacity" values="0.8;1;0.8" dur="2.5s" repeatCount="indefinite"/>
+                            </circle>
+                            <!-- Central AI core -->
+                            <circle cx="60" cy="60" r="12" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.6">
+                                <animate attributeName="r" values="12;16;12" dur="3s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="60" cy="60" r="6" fill="#ffffff" opacity="0.9">
+                                <animate attributeName="opacity" values="0.9;1;0.9" dur="2s" repeatCount="indefinite"/>
+                            </circle>
+                            <!-- Data flow lines -->
+                            <line x1="60" y1="35" x2="60" y2="48" stroke="#ff00ff" stroke-width="2" opacity="0.5">
+                                <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
+                            </line>
+                            <line x1="85" y1="50" x2="72" y2="55" stroke="#00ff00" stroke-width="2" opacity="0.4">
+                                <animate attributeName="opacity" values="0.4;0.9;0.4" dur="2.5s" repeatCount="indefinite"/>
+                            </line>
+                            <line x1="85" y1="70" x2="72" y2="65" stroke="#ffff00" stroke-width="2" opacity="0.6">
+                                <animate attributeName="opacity" values="0.6;1;0.6" dur="1.8s" repeatCount="indefinite"/>
+                            </line>
+                            <!-- Predictive analytics waves -->
+                            <path d="M20 60 Q30 50 40 60 Q50 70 60 60" fill="none" stroke="#00ffff" stroke-width="1" opacity="0.3">
+                                <animate attributeName="opacity" values="0.3;0.8;0.3" dur="3s" repeatCount="indefinite"/>
+                            </path>
+                            <path d="M60 60 Q70 50 80 60 Q90 70 100 60" fill="none" stroke="#ff00ff" stroke-width="1" opacity="0.3">
+                                <animate attributeName="opacity" values="0.3;0.8;0.3" dur="2.5s" repeatCount="indefinite"/>
+                            </path>
+                        </svg>
                     </div>
                     <h3>AI-Project Agility</h3>
                     <div class="service-summary">
@@ -1098,8 +1189,63 @@
                 </div>
                 
                 <div class="service-card">
-                    <div style="height: 150px; background: linear-gradient(45deg, rgba(0, 255, 255, 0.3), rgba(255, 0, 255, 0.2), rgba(0, 255, 0, 0.1)); border-radius: 15px; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; color: #00ffff; font-style: italic; font-size: 1rem; border: 2px solid #00ffff; box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);">
-                        [Image Space - People Development]
+                    <div style="height: 150px; background: linear-gradient(45deg, rgba(0, 255, 255, 0.3), rgba(255, 0, 255, 0.2), rgba(0, 255, 0, 0.1)); border-radius: 15px; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; color: #00ffff; font-style: italic; font-size: 1rem; border: 2px solid #00ffff; box-shadow: 0 0 20px rgba(0, 255, 255, 0.5); position: relative; overflow: hidden;">
+                        <svg width="120" height="120" viewBox="0 0 120 120" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                            <!-- People figures -->
+                            <g transform="translate(30, 40)">
+                                <circle cx="0" cy="0" r="8" fill="#00ffff" opacity="0.8">
+                                    <animate attributeName="r" values="8;12;8" dur="2s" repeatCount="indefinite"/>
+                                </circle>
+                                <rect x="-6" y="8" width="12" height="20" fill="#00ffff" opacity="0.7" rx="6"/>
+                                <!-- Growth arrow -->
+                                <path d="M0 -15 L-3 -10 L3 -10 Z" fill="#00ff00" opacity="0.8">
+                                    <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/>
+                                </path>
+                            </g>
+                            
+                            <g transform="translate(60, 35)">
+                                <circle cx="0" cy="0" r="10" fill="#ff00ff" opacity="0.9">
+                                    <animate attributeName="r" values="10;14;10" dur="2.5s" repeatCount="indefinite"/>
+                                </circle>
+                                <rect x="-7" y="10" width="14" height="22" fill="#ff00ff" opacity="0.8" rx="7"/>
+                                <!-- Growth arrow -->
+                                <path d="M0 -18 L-4 -12 L4 -12 Z" fill="#00ff00" opacity="0.9">
+                                    <animate attributeName="opacity" values="0.9;1;0.9" dur="1.8s" repeatCount="indefinite"/>
+                                </path>
+                            </g>
+                            
+                            <g transform="translate(90, 42)">
+                                <circle cx="0" cy="0" r="7" fill="#ffff00" opacity="0.8">
+                                    <animate attributeName="r" values="7;11;7" dur="2.2s" repeatCount="indefinite"/>
+                                </circle>
+                                <rect x="-5" y="7" width="10" height="18" fill="#ffff00" opacity="0.7" rx="5"/>
+                                <!-- Growth arrow -->
+                                <path d="M0 -14 L-3 -9 L3 -9 Z" fill="#00ff00" opacity="0.8">
+                                    <animate attributeName="opacity" values="0.8;1;0.8" dur="2.3s" repeatCount="indefinite"/>
+                                </path>
+                            </g>
+                            
+                            <!-- Skill development rings -->
+                            <circle cx="60" cy="75" r="25" fill="none" stroke="#00ff00" stroke-width="2" opacity="0.4" stroke-dasharray="8,4">
+                                <animateTransform attributeName="transform" type="rotate" values="0 60 75;360 60 75" dur="6s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="60" cy="75" r="15" fill="none" stroke="#ff6600" stroke-width="2" opacity="0.5" stroke-dasharray="6,3">
+                                <animateTransform attributeName="transform" type="rotate" values="360 60 75;0 60 75" dur="4s" repeatCount="indefinite"/>
+                            </circle>
+                            
+                            <!-- Connection lines showing collaboration -->
+                            <line x1="30" y1="55" x2="60" y2="50" stroke="#ffffff" stroke-width="2" opacity="0.3">
+                                <animate attributeName="opacity" values="0.3;0.8;0.3" dur="3s" repeatCount="indefinite"/>
+                            </line>
+                            <line x1="60" y1="50" x2="90" y2="55" stroke="#ffffff" stroke-width="2" opacity="0.3">
+                                <animate attributeName="opacity" values="0.3;0.8;0.3" dur="2.5s" repeatCount="indefinite"/>
+                            </line>
+                            
+                            <!-- Mentoring/coaching symbol -->
+                            <path d="M45 85 Q60 70 75 85" fill="none" stroke="#ff00ff" stroke-width="3" opacity="0.6">
+                                <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite"/>
+                            </path>
+                        </svg>
                     </div>
                     <h3>People Development</h3>
                     <div class="service-summary">
@@ -1120,8 +1266,84 @@
                 </div>
                 
                 <div class="service-card">
-                    <div style="height: 150px; background: linear-gradient(45deg, rgba(0, 255, 255, 0.3), rgba(255, 0, 255, 0.2), rgba(0, 255, 0, 0.1)); border-radius: 15px; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; color: #00ffff; font-style: italic; font-size: 1rem; border: 2px solid #00ffff; box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);">
-                        [Image Space - Training & Development]
+                    <div style="height: 150px; background: linear-gradient(45deg, rgba(0, 255, 255, 0.3), rgba(255, 0, 255, 0.2), rgba(0, 255, 0, 0.1)); border-radius: 15px; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; color: #00ffff; font-style: italic; font-size: 1rem; border: 2px solid #00ffff; box-shadow: 0 0 20px rgba(0, 255, 255, 0.5); position: relative; overflow: hidden;">
+                        <svg width="120" height="120" viewBox="0 0 120 120" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                            <!-- Knowledge transfer visualization -->
+                            <!-- Central knowledge hub -->
+                            <circle cx="60" cy="60" r="20" fill="none" stroke="#00ffff" stroke-width="3" opacity="0.6">
+                                <animate attributeName="r" values="20;25;20" dur="3s" repeatCount="indefinite"/>
+                            </circle>
+                            
+                            <!-- Book/learning symbol in center -->
+                            <rect x="52" y="52" width="16" height="16" fill="#ffffff" opacity="0.8" rx="2">
+                                <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/>
+                            </rect>
+                            <line x1="55" y1="55" x2="65" y2="55" stroke="#00ffff" stroke-width="1"/>
+                            <line x1="55" y1="58" x2="65" y2="58" stroke="#00ffff" stroke-width="1"/>
+                            <line x1="55" y1="61" x2="65" y2="61" stroke="#00ffff" stroke-width="1"/>
+                            <line x1="55" y1="64" x2="62" y2="64" stroke="#00ffff" stroke-width="1"/>
+                            
+                            <!-- Learning participants around the circle -->
+                            <g transform="translate(60, 25)">
+                                <circle cx="0" cy="0" r="6" fill="#ff00ff" opacity="0.8">
+                                    <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/>
+                                </circle>
+                                <rect x="-4" y="6" width="8" height="12" fill="#ff00ff" opacity="0.7" rx="4"/>
+                            </g>
+                            
+                            <g transform="translate(95, 60)">
+                                <circle cx="0" cy="0" r="6" fill="#00ff00" opacity="0.8">
+                                    <animate attributeName="opacity" values="0.8;1;0.8" dur="2.2s" repeatCount="indefinite"/>
+                                </circle>
+                                <rect x="-4" y="6" width="8" height="12" fill="#00ff00" opacity="0.7" rx="4"/>
+                            </g>
+                            
+                            <g transform="translate(60, 95)">
+                                <circle cx="0" cy="0" r="6" fill="#ffff00" opacity="0.8">
+                                    <animate attributeName="opacity" values="0.8;1;0.8" dur="1.8s" repeatCount="indefinite"/>
+                                </circle>
+                                <rect x="-4" y="6" width="8" height="12" fill="#ffff00" opacity="0.7" rx="4"/>
+                            </g>
+                            
+                            <g transform="translate(25, 60)">
+                                <circle cx="0" cy="0" r="6" fill="#ff6600" opacity="0.8">
+                                    <animate attributeName="opacity" values="0.8;1;0.8" dur="2.5s" repeatCount="indefinite"/>
+                                </circle>
+                                <rect x="-4" y="6" width="8" height="12" fill="#ff6600" opacity="0.7" rx="4"/>
+                            </g>
+                            
+                            <!-- Knowledge flow arrows -->
+                            <path d="M60 40 L60 45" stroke="#ffffff" stroke-width="2" opacity="0.6" marker-end="url(#arrow1)">
+                                <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite"/>
+                            </path>
+                            <path d="M80 60 L75 60" stroke="#ffffff" stroke-width="2" opacity="0.6" marker-end="url(#arrow1)">
+                                <animate attributeName="opacity" values="0.6;1;0.6" dur="2.2s" repeatCount="indefinite"/>
+                            </path>
+                            <path d="M60 80 L60 75" stroke="#ffffff" stroke-width="2" opacity="0.6" marker-end="url(#arrow1)">
+                                <animate attributeName="opacity" values="0.6;1;0.6" dur="1.8s" repeatCount="indefinite"/>
+                            </path>
+                            <path d="M40 60 L45 60" stroke="#ffffff" stroke-width="2" opacity="0.6" marker-end="url(#arrow1)">
+                                <animate attributeName="opacity" values="0.6;1;0.6" dur="2.5s" repeatCount="indefinite"/>
+                            </path>
+                            
+                            <!-- Arrow marker -->
+                            <defs>
+                                <marker id="arrow1" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+                                    <polygon points="0 0, 8 3, 0 6" fill="#ffffff"/>
+                                </marker>
+                            </defs>
+                            
+                            <!-- Certification badges -->
+                            <circle cx="85" cy="35" r="8" fill="#00ff00" opacity="0.7">
+                                <animate attributeName="opacity" values="0.7;1;0.7" dur="3s" repeatCount="indefinite"/>
+                            </circle>
+                            <text x="85" y="38" text-anchor="middle" fill="#ffffff" font-size="8" font-weight="bold">✓</text>
+                            
+                            <circle cx="35" cy="35" r="8" fill="#ffff00" opacity="0.7">
+                                <animate attributeName="opacity" values="0.7;1;0.7" dur="2.8s" repeatCount="indefinite"/>
+                            </circle>
+                            <text x="35" y="38" text-anchor="middle" fill="#000000" font-size="8" font-weight="bold">★</text>
+                        </svg>
                     </div>
                     <h3>Training and Development</h3>
                     <div class="service-summary">
@@ -1312,111 +1534,363 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="page-section">
+    <!-- Services Section -->
+    <section id="services" class="page-section">
         <div class="content-section">
-            <h1 class="section-title">Contact Us</h1>
-            
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;">
-                <div>
-                    <h2 style="font-size: 1.8rem; color: #00f0ff; margin-bottom: 1.5rem;">Get In Touch</h2>
-                    <p style="font-size: 1.2rem; color: white; line-height: 1.7; margin-bottom: 2rem;">
-                        Ready to transform your organization with agnostic agility? Let's start a conversation about your unique challenges and how we can help you build sustainable change.
-                    </p>
-                    
-                    <div style="background: linear-gradient(135deg, rgba(140, 82, 255, 0.1), rgba(0, 240, 255, 0.05)); padding: 2rem; border-radius: 15px; border: 2px solid #8c52ff; box-shadow: 0 0 20px rgba(140, 82, 255, 0.3); margin-bottom: 2rem;">
-                        <h3 style="color: #cf92ff; margin-bottom: 1rem; font-size: 1.3rem;">Why Choose Agnostic Agility?</h3>
-                        <ul style="color: white; font-size: 1.1rem; line-height: 1.6; list-style: none; padding: 0;">
-                            <li style="margin-bottom: 0.5rem;">✓ Framework-neutral approach tailored to your context</li>
-                            <li style="margin-bottom: 0.5rem;">✓ People-first transformation that sticks</li>
-                            <li style="margin-bottom: 0.5rem;">✓ Proven results across multiple industries</li>
-                            <li style="margin-bottom: 0.5rem;">✓ Capability building, not just consulting</li>
-                        </ul>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div style="height: 150px; background: linear-gradient(45deg, rgba(0, 255, 255, 0.3), rgba(255, 0, 255, 0.2), rgba(0, 255, 0, 0.1)); border-radius: 15px; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; color: #00ffff; font-style: italic; font-size: 1rem; border: 2px solid #00ffff; box-shadow: 0 0 20px rgba(0, 255, 255, 0.5); position: relative; overflow: hidden;">
+                        <svg width="120" height="120" viewBox="0 0 120 120" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                            <!-- Sprint cycles visualization -->
+                            <circle cx="60" cy="60" r="40" fill="none" stroke="#00ffff" stroke-width="3" opacity="0.6" stroke-dasharray="10,5">
+                                <animateTransform attributeName="transform" type="rotate" values="0 60 60;360 60 60" dur="8s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="60" cy="60" r="25" fill="none" stroke="#ff00ff" stroke-width="2" opacity="0.7" stroke-dasharray="8,4">
+                                <animateTransform attributeName="transform" type="rotate" values="360 60 60;0 60 60" dur="5s" repeatCount="indefinite"/>
+                            </circle>
+                            <!-- Project milestones -->
+                            <rect x="55" y="20" width="10" height="10" fill="#00ff00" opacity="0.8" rx="2">
+                                <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/>
+                            </rect>
+                            <rect x="95" y="55" width="10" height="10" fill="#ffff00" opacity="0.7" rx="2">
+                                <animate attributeName="opacity" values="0.7;1;0.7" dur="2.5s" repeatCount="indefinite"/>
+                            </rect>
+                            <rect x="55" y="95" width="10" height="10" fill="#ff6600" opacity="0.9" rx="2">
+                                <animate attributeName="opacity" values="0.9;1;0.9" dur="1.8s" repeatCount="indefinite"/>
+                            </rect>
+                            <rect x="15" y="55" width="10" height="10" fill="#ff00ff" opacity="0.6" rx="2">
+                                <animate attributeName="opacity" values="0.6;1;0.6" dur="3s" repeatCount="indefinite"/>
+                            </rect>
+                            <!-- Central hub -->
+                            <circle cx="60" cy="60" r="8" fill="#ffffff" opacity="0.9">
+                                <animate attributeName="r" values="8;12;8" dur="3s" repeatCount="indefinite"/>
+                            </circle>
+                        </svg>
                     </div>
-                    
-                    <div style="background: linear-gradient(135deg, rgba(0, 240, 255, 0.1), rgba(140, 82, 255, 0.05)); padding: 1.5rem; border-radius: 10px; border: 2px solid #00f0ff; box-shadow: 0 0 15px rgba(0, 240, 255, 0.3); margin-bottom: 2rem;">
-                        <p style="color: #00f0ff; font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 600;">📧 Email:</p>
-                        <p style="color: white; font-size: 1rem; margin-bottom: 1rem;">hello@agnosticagility.com</p>
-                        
-                        <p style="color: #00f0ff; font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 600;">📱 Phone:</p>
-                        <p style="color: white; font-size: 1rem; margin-bottom: 1rem;">+44 (0) 123 456 7890</p>
-                        
-                        <p style="color: #00f0ff; font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 600;">🌍 Location:</p>
-                        <p style="color: white; font-size: 1rem;">United Kingdom (Remote & On-site)</p>
+                    <h3>Project Agility</h3>
+                    <div class="service-summary">
+                        <p>Deliver projects faster and with higher quality through adaptive project management approaches.</p>
+                        <button class="learn-more-btn" onclick="toggleServiceDetails(this)">Learn More →</button>
                     </div>
-                    
-                    <div style="background: linear-gradient(135deg, rgba(140, 82, 255, 0.1), rgba(0, 240, 255, 0.05)); padding: 2rem; border-radius: 15px; border: 2px solid #8c52ff; box-shadow: 0 0 20px rgba(140, 82, 255, 0.3); margin-bottom: 2rem;">
-                        <h3 style="color: #cf92ff; margin-bottom: 1.5rem; font-size: 1.4rem;">🎯 Next Steps</h3>
-                        <div style="color: white; font-size: 1.1rem; line-height: 1.6;">
-                            <p style="margin-bottom: 0.8rem;">1. Discovery call to understand your challenges</p>
-                            <p style="margin-bottom: 0.8rem;">2. Tailored approach proposal</p>
-                            <p style="margin-bottom: 1.5rem;">3. Pilot engagement planning</p>
-                        </div>
-                        
-                        <h3 style="color: #00f0ff; margin-bottom: 1rem; font-size: 1.4rem;">🤝 Consultation</h3>
-                        <p style="color: white; font-size: 1.1rem; line-height: 1.6;">
-                            Complimentary 30-minute strategy session to explore how we can support your business and transformation goals.
-                        </p>
+                    <div class="service-details" style="display: none;">
+                        <p style="font-size: 1rem; margin-bottom: 1rem;">Deliver projects faster, with higher quality, and greater stakeholder satisfaction.</p>
+                        <p style="font-size: 0.95rem; margin-bottom: 1rem;"><strong>What we offer:</strong><br>
+                        • Adaptive project management implementation<br>
+                        • Cross-functional team formation and coaching<br>
+                        • Stakeholder engagement and communication strategies<br>
+                        • Risk management and uncertainty navigation<br>
+                        • Value-driven delivery frameworks<br>
+                        • Data transformation and migration projects<br>
+                        • SAP S/4 HANA implementation and optimization<br>
+                        • Complex project end-to-end delivery management</p>
+                        <p style="font-size: 0.95rem; margin-bottom: 1rem; color: #00ffff;"><strong>Typical outcomes:</strong> 40% reduction in project delivery time, 60% improvement in stakeholder satisfaction, reduced project risk.</p>
+                        <button class="learn-more-btn" onclick="toggleServiceDetails(this)">Show Less ↑</button>
                     </div>
                 </div>
                 
-                <div class="contact-form">
-                    <h2 style="color: #00f0ff; margin-bottom: 1.5rem; font-size: 1.8rem; text-align: center;">Start Your Transformation Journey</h2>
-                    <form id="contactForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-                        <input type="hidden" name="form-name" value="contact" />
-                        <p style="display: none;">
-                            <label>Don't fill this out if you're human: <input name="bot-field" /></label>
-                        </p>
-                        
-                        <div class="form-group">
-                            <label for="name">Full Name *</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email">Email Address *</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="company">Company/Organization</label>
-                            <input type="text" id="company" name="company">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="role">Your Role</label>
-                            <input type="text" id="role" name="role" placeholder="e.g., CEO, Project Manager, Transformation Lead">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="service">Service of Interest</label>
-                            <select id="service" name="service" style="width: 100%; padding: 1rem; border: 2px solid #7616d4; border-radius: 8px; background: rgba(14, 14, 26, 0.5); color: white; font-family: 'Cormorant Garamond', serif; font-size: 1rem; transition: all 0.3s ease;">
-                                <option value="" style="background: rgba(14, 14, 26, 0.9); color: white;">Select a service...</option>
-                                <option value="project-agility" style="background: rgba(14, 14, 26, 0.9); color: white;">Project Agility</option>
-                                <option value="process-optimization" style="background: rgba(14, 14, 26, 0.9); color: white;">Process Optimization</option>
-                                <option value="ai-project-agility" style="background: rgba(14, 14, 26, 0.9); color: white;">AI-Project Agility</option>
-                                <option value="people-development" style="background: rgba(14, 14, 26, 0.9); color: white;">People Development</option>
-                                <option value="training-development" style="background: rgba(14, 14, 26, 0.9); color: white;">Training and Development</option>
-                                <option value="other" style="background: rgba(14, 14, 26, 0.9); color: white;">Other</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="challenge">What's Your Biggest Challenge? *</label>
-                            <textarea id="challenge" name="challenge" required placeholder="Tell us about your transformation challenges, goals, or what you'd like to achieve..."></textarea>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="timeline">Preferred Timeline</label>
-                            <input type="text" id="timeline" name="timeline" placeholder="e.g., ASAP, Q1 2024, 6 months">
-                        </div>
-                        
-                        <button type="submit" class="submit-btn">Send Message & Start Conversation</button>
-                        
-                        <p style="font-size: 0.9rem; color: #cf92ff; text-align: center; margin-top: 1rem; font-style: italic;">
-                            We typically respond within 24 hours with next steps tailored to your situation.
-                        </p>
-                    </form>
+                <div class="service-card">
+                    <div style="height: 150px; background: linear-gradient(45deg, rgba(0, 255, 255, 0.3), rgba(255, 0, 255, 0.2), rgba(0, 255, 0, 0.1)); border-radius: 15px; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; color: #00ffff; font-style: italic; font-size: 1rem; border: 2px solid #00ffff; box-shadow: 0 0 20px rgba(0, 255, 255, 0.5); position: relative; overflow: hidden;">
+                        <svg width="120" height="120" viewBox="0 0 120 120" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                            <!-- Process flow visualization -->
+                            <path d="M20 60 Q40 40 60 60 Q80 80 100 60" fill="none" stroke="#00ffff" stroke-width="4" opacity="0.7">
+                                <animate attributeName="stroke-dasharray" values="0,200;200,0" dur="3s" repeatCount="indefinite"/>
+                            </path>
+                            <!-- Process nodes -->
+                            <circle cx="20" cy="60" r="6" fill="#00ff00" opacity="0.8">
+                                <animate attributeName="r" values="6;10;6" dur="2s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="60" cy="60" r="8" fill="#ffff00" opacity="0.9">
+                                <animate attributeName="r" values="8;12;8" dur="2.5s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="100" cy="60" r="6" fill="#ff6600" opacity="0.8">
+                                <animate attributeName="r" values="6;10;6" dur="1.8s" repeatCount="indefinite"/>
+                            </circle>
+                            <!-- Optimization arrows -->
+                            <path d="M30 30 L50 50" stroke="#ff00ff" stroke-width="3" opacity="0.6" marker-end="url(#arrowhead)">
+                                <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite"/>
+                            </path>
+                            <path d="M70 50 L90 30" stroke="#ff00ff" stroke-width="3" opacity="0.6" marker-end="url(#arrowhead)">
+                                <animate attributeName="opacity" values="0.6;1;0.6" dur="2.2s" repeatCount="indefinite"/>
+                            </path>
+                            <!-- Arrow marker definition -->
+                            <defs>
+                                <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                                    <polygon points="0 0, 10 3.5, 0 7" fill="#ff00ff"/>
+                                </marker>
+                            </defs>
+                            <!-- Efficiency indicators -->
+                            <rect x="10" y="80" width="20" height="8" fill="#00ff00" opacity="0.7" rx="4">
+                                <animate attributeName="width" values="20;35;20" dur="3s" repeatCount="indefinite"/>
+                            </rect>
+                            <rect x="50" y="80" width="25" height="8" fill="#ffff00" opacity="0.8" rx="4">
+                                <animate attributeName="width" values="25;40;25" dur="2.5s" repeatCount="indefinite"/>
+                            </rect>
+                            <rect x="85" y="80" width="22" height="8" fill="#ff6600" opacity="0.7" rx="4">
+                                <animate attributeName="width" values="22;37;22" dur="2.8s" repeatCount="indefinite"/>
+                            </rect>
+                        </svg>
+                    </div>
+                    <h3>Process Optimization</h3>
+                    <div class="service-summary">
+                        <p>Streamline workflows and eliminate waste while maintaining focus on human experience and outcomes.</p>
+                        <button class="learn-more-btn" onclick="toggleServiceDetails(this)">Learn More →</button>
+                    </div>
+                    <div class="service-details" style="display: none;">
+                        <p style="font-size: 1rem; margin-bottom: 1rem;">Streamline workflows while maintaining focus on human experience and business outcomes.</p>
+                        <p style="font-size: 0.95rem; margin-bottom: 1rem;"><strong>What we offer:</strong><br>
+                        • Value stream mapping and analysis<br>
+                        • Waste elimination and flow optimization<br>
+                        • Automation strategy and implementation<br>
+                        • Quality management systems<br>
+                        • Continuous improvement culture development</p>
+                        <p style="font-size: 0.95rem; margin-bottom: 1rem; color: #00ffff;"><strong>Typical outcomes:</strong> 25-40% efficiency gains, reduced cycle times, improved quality metrics, higher employee satisfaction.</p>
+                        <button class="learn-more-btn" onclick="toggleServiceDetails(this)">Show Less ↑</button>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div style="height: 150px; background: linear-gradient(45deg, rgba(0, 255, 255, 0.3), rgba(255, 0, 255, 0.2), rgba(0, 255, 0, 0.1)); border-radius: 15px; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; color: #00ffff; font-style: italic; font-size: 1rem; border: 2px solid #00ffff; box-shadow: 0 0 20px rgba(0, 255, 255, 0.5); position: relative; overflow: hidden;">
+                        <svg width="120" height="120" viewBox="0 0 120 120" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                            <!-- AI brain/neural network -->
+                            <circle cx="60" cy="60" r="35" fill="none" stroke="#00ffff" stroke-width="2" opacity="0.4" stroke-dasharray="5,3">
+                                <animateTransform attributeName="transform" type="rotate" values="0 60 60;360 60 60" dur="10s" repeatCount="indefinite"/>
+                            </circle>
+                            <!-- Neural nodes -->
+                            <circle cx="60" cy="35" r="4" fill="#ff00ff" opacity="0.8">
+                                <animate attributeName="opacity" values="0.8;1;0.8" dur="1.5s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="85" cy="50" r="3" fill="#00ff00" opacity="0.7">
+                                <animate attributeName="opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="85" cy="70" r="4" fill="#ffff00" opacity="0.9">
+                                <animate attributeName="opacity" values="0.9;1;0.9" dur="1.8s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="60" cy="85" r="3" fill="#ff6600" opacity="0.8">
+                                <animate attributeName="opacity" values="0.8;1;0.8" dur="2.2s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="35" cy="70" r="4" fill="#ff00ff" opacity="0.7">
+                                <animate attributeName="opacity" values="0.7;1;0.7" dur="1.7s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="35" cy="50" r="3" fill="#00ffff" opacity="0.8">
+                                <animate attributeName="opacity" values="0.8;1;0.8" dur="2.5s" repeatCount="indefinite"/>
+                            </circle>
+                            <!-- Central AI core -->
+                            <circle cx="60" cy="60" r="12" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.6">
+                                <animate attributeName="r" values="12;16;12" dur="3s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="60" cy="60" r="6" fill="#ffffff" opacity="0.9">
+                                <animate attributeName="opacity" values="0.9;1;0.9" dur="2s" repeatCount="indefinite"/>
+                            </circle>
+                            <!-- Data flow lines -->
+                            <line x1="60" y1="35" x2="60" y2="48" stroke="#ff00ff" stroke-width="2" opacity="0.5">
+                                <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
+                            </line>
+                            <line x1="85" y1="50" x2="72" y2="55" stroke="#00ff00" stroke-width="2" opacity="0.4">
+                                <animate attributeName="opacity" values="0.4;0.9;0.4" dur="2.5s" repeatCount="indefinite"/>
+                            </line>
+                            <line x1="85" y1="70" x2="72" y2="65" stroke="#ffff00" stroke-width="2" opacity="0.6">
+                                <animate attributeName="opacity" values="0.6;1;0.6" dur="1.8s" repeatCount="indefinite"/>
+                            </line>
+                            <!-- Predictive analytics waves -->
+                            <path d="M20 60 Q30 50 40 60 Q50 70 60 60" fill="none" stroke="#00ffff" stroke-width="1" opacity="0.3">
+                                <animate attributeName="opacity" values="0.3;0.8;0.3" dur="3s" repeatCount="indefinite"/>
+                            </path>
+                            <path d="M60 60 Q70 50 80 60 Q90 70 100 60" fill="none" stroke="#ff00ff" stroke-width="1" opacity="0.3">
+                                <animate attributeName="opacity" values="0.3;0.8;0.3" dur="2.5s" repeatCount="indefinite"/>
+                            </path>
+                        </svg>
+                    </div>
+                    <h3>AI-Project Agility</h3>
+                    <div class="service-summary">
+                        <p>Leverage AI-powered tools and methodologies to accelerate project delivery and enhance decision-making.</p>
+                        <button class="learn-more-btn" onclick="toggleServiceDetails(this)">Learn More →</button>
+                    </div>
+                    <div class="service-details" style="display: none;">
+                        <p style="font-size: 1rem; margin-bottom: 1rem;">Harness the power of AI to transform project delivery and strategic decision-making capabilities.</p>
+                        <p style="font-size: 0.95rem; margin-bottom: 1rem;"><strong>What we offer:</strong><br>
+                        • AI-powered project analytics and insights<br>
+                        • Intelligent resource allocation and planning<br>
+                        • Automated risk detection and mitigation<br>
+                        • Predictive project performance modeling<br>
+                        • AI-enhanced stakeholder communication</p>
+                        <p style="font-size: 0.95rem; margin-bottom: 1rem; color: #00ffff;"><strong>Typical outcomes:</strong> 50% faster project planning, 35% improvement in resource utilization, enhanced predictive accuracy.</p>
+                        <button class="learn-more-btn" onclick="toggleServiceDetails(this)">Show Less ↑</button>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div style="height: 150px; background: linear-gradient(45deg, rgba(0, 255, 255, 0.3), rgba(255, 0, 255, 0.2), rgba(0, 255, 0, 0.1)); border-radius: 15px; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; color: #00ffff; font-style: italic; font-size: 1rem; border: 2px solid #00ffff; box-shadow: 0 0 20px rgba(0, 255, 255, 0.5); position: relative; overflow: hidden;">
+                        <svg width="120" height="120" viewBox="0 0 120 120" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                            <!-- People figures -->
+                            <g transform="translate(30, 40)">
+                                <circle cx="0" cy="0" r="8" fill="#00ffff" opacity="0.8">
+                                    <animate attributeName="r" values="8;12;8" dur="2s" repeatCount="indefinite"/>
+                                </circle>
+                                <rect x="-6" y="8" width="12" height="20" fill="#00ffff" opacity="0.7" rx="6"/>
+                                <!-- Growth arrow -->
+                                <path d="M0 -15 L-3 -10 L3 -10 Z" fill="#00ff00" opacity="0.8">
+                                    <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/>
+                                </path>
+                            </g>
+                            
+                            <g transform="translate(60, 35)">
+                                <circle cx="0" cy="0" r="10" fill="#ff00ff" opacity="0.9">
+                                    <animate attributeName="r" values="10;14;10" dur="2.5s" repeatCount="indefinite"/>
+                                </circle>
+                                <rect x="-7" y="10" width="14" height="22" fill="#ff00ff" opacity="0.8" rx="7"/>
+                                <!-- Growth arrow -->
+                                <path d="M0 -18 L-4 -12 L4 -12 Z" fill="#00ff00" opacity="0.9">
+                                    <animate attributeName="opacity" values="0.9;1;0.9" dur="1.8s" repeatCount="indefinite"/>
+                                </path>
+                            </g>
+                            
+                            <g transform="translate(90, 42)">
+                                <circle cx="0" cy="0" r="7" fill="#ffff00" opacity="0.8">
+                                    <animate attributeName="r" values="7;11;7" dur="2.2s" repeatCount="indefinite"/>
+                                </circle>
+                                <rect x="-5" y="7" width="10" height="18" fill="#ffff00" opacity="0.7" rx="5"/>
+                                <!-- Growth arrow -->
+                                <path d="M0 -14 L-3 -9 L3 -9 Z" fill="#00ff00" opacity="0.8">
+                                    <animate attributeName="opacity" values="0.8;1;0.8" dur="2.3s" repeatCount="indefinite"/>
+                                </path>
+                            </g>
+                            
+                            <!-- Skill development rings -->
+                            <circle cx="60" cy="75" r="25" fill="none" stroke="#00ff00" stroke-width="2" opacity="0.4" stroke-dasharray="8,4">
+                                <animateTransform attributeName="transform" type="rotate" values="0 60 75;360 60 75" dur="6s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="60" cy="75" r="15" fill="none" stroke="#ff6600" stroke-width="2" opacity="0.5" stroke-dasharray="6,3">
+                                <animateTransform attributeName="transform" type="rotate" values="360 60 75;0 60 75" dur="4s" repeatCount="indefinite"/>
+                            </circle>
+                            
+                            <!-- Connection lines showing collaboration -->
+                            <line x1="30" y1="55" x2="60" y2="50" stroke="#ffffff" stroke-width="2" opacity="0.3">
+                                <animate attributeName="opacity" values="0.3;0.8;0.3" dur="3s" repeatCount="indefinite"/>
+                            </line>
+                            <line x1="60" y1="50" x2="90" y2="55" stroke="#ffffff" stroke-width="2" opacity="0.3">
+                                <animate attributeName="opacity" values="0.3;0.8;0.3" dur="2.5s" repeatCount="indefinite"/>
+                            </line>
+                            
+                            <!-- Mentoring/coaching symbol -->
+                            <path d="M45 85 Q60 70 75 85" fill="none" stroke="#ff00ff" stroke-width="3" opacity="0.6">
+                                <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite"/>
+                            </path>
+                        </svg>
+                    </div>
+                    <h3>People Development</h3>
+                    <div class="service-summary">
+                        <p>Build high-performing, adaptive teams through coaching, mentoring, and capability development.</p>
+                        <button class="learn-more-btn" onclick="toggleServiceDetails(this)">Learn More →</button>
+                    </div>
+                    <div class="service-details" style="display: none;">
+                        <p style="font-size: 1rem; margin-bottom: 1rem;">Develop high-performing, adaptive teams that can thrive in any environment.</p>
+                        <p style="font-size: 0.95rem; margin-bottom: 1rem;"><strong>What we offer:</strong><br>
+                        • Individual and team coaching programs<br>
+                        • Leadership development pathways<br>
+                        • Skills assessment and development planning<br>
+                        • Mentoring and knowledge transfer<br>
+                        • Performance improvement strategies</p>
+                        <p style="font-size: 0.95rem; margin-bottom: 1rem; color: #00ffff;"><strong>Typical outcomes:</strong> 45% improvement in team performance, increased retention rates, enhanced leadership capabilities.</p>
+                        <button class="learn-more-btn" onclick="toggleServiceDetails(this)">Show Less ↑</button>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div style="height: 150px; background: linear-gradient(45deg, rgba(0, 255, 255, 0.3), rgba(255, 0, 255, 0.2), rgba(0, 255, 0, 0.1)); border-radius: 15px; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; color: #00ffff; font-style: italic; font-size: 1rem; border: 2px solid #00ffff; box-shadow: 0 0 20px rgba(0, 255, 255, 0.5); position: relative; overflow: hidden;">
+                        <svg width="120" height="120" viewBox="0 0 120 120" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                            <!-- Knowledge transfer visualization -->
+                            <!-- Central knowledge hub -->
+                            <circle cx="60" cy="60" r="20" fill="none" stroke="#00ffff" stroke-width="3" opacity="0.6">
+                                <animate attributeName="r" values="20;25;20" dur="3s" repeatCount="indefinite"/>
+                            </circle>
+                            
+                            <!-- Book/learning symbol in center -->
+                            <rect x="52" y="52" width="16" height="16" fill="#ffffff" opacity="0.8" rx="2">
+                                <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/>
+                            </rect>
+                            <line x1="55" y1="55" x2="65" y2="55" stroke="#00ffff" stroke-width="1"/>
+                            <line x1="55" y1="58" x2="65" y2="58" stroke="#00ffff" stroke-width="1"/>
+                            <line x1="55" y1="61" x2="65" y2="61" stroke="#00ffff" stroke-width="1"/>
+                            <line x1="55" y1="64" x2="62" y2="64" stroke="#00ffff" stroke-width="1"/>
+                            
+                            <!-- Learning participants around the circle -->
+                            <g transform="translate(60, 25)">
+                                <circle cx="0" cy="0" r="6" fill="#ff00ff" opacity="0.8">
+                                    <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/>
+                                </circle>
+                                <rect x="-4" y="6" width="8" height="12" fill="#ff00ff" opacity="0.7" rx="4"/>
+                            </g>
+                            
+                            <g transform="translate(95, 60)">
+                                <circle cx="0" cy="0" r="6" fill="#00ff00" opacity="0.8">
+                                    <animate attributeName="opacity" values="0.8;1;0.8" dur="2.2s" repeatCount="indefinite"/>
+                                </circle>
+                                <rect x="-4" y="6" width="8" height="12" fill="#00ff00" opacity="0.7" rx="4"/>
+                            </g>
+                            
+                            <g transform="translate(60, 95)">
+                                <circle cx="0" cy="0" r="6" fill="#ffff00" opacity="0.8">
+                                    <animate attributeName="opacity" values="0.8;1;0.8" dur="1.8s" repeatCount="indefinite"/>
+                                </circle>
+                                <rect x="-4" y="6" width="8" height="12" fill="#ffff00" opacity="0.7" rx="4"/>
+                            </g>
+                            
+                            <g transform="translate(25, 60)">
+                                <circle cx="0" cy="0" r="6" fill="#ff6600" opacity="0.8">
+                                    <animate attributeName="opacity" values="0.8;1;0.8" dur="2.5s" repeatCount="indefinite"/>
+                                </circle>
+                                <rect x="-4" y="6" width="8" height="12" fill="#ff6600" opacity="0.7" rx="4"/>
+                            </g>
+                            
+                            <!-- Knowledge flow arrows -->
+                            <path d="M60 40 L60 45" stroke="#ffffff" stroke-width="2" opacity="0.6" marker-end="url(#arrow1)">
+                                <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite"/>
+                            </path>
+                            <path d="M80 60 L75 60" stroke="#ffffff" stroke-width="2" opacity="0.6" marker-end="url(#arrow1)">
+                                <animate attributeName="opacity" values="0.6;1;0.6" dur="2.2s" repeatCount="indefinite"/>
+                            </path>
+                            <path d="M60 80 L60 75" stroke="#ffffff" stroke-width="2" opacity="0.6" marker-end="url(#arrow1)">
+                                <animate attributeName="opacity" values="0.6;1;0.6" dur="1.8s" repeatCount="indefinite"/>
+                            </path>
+                            <path d="M40 60 L45 60" stroke="#ffffff" stroke-width="2" opacity="0.6" marker-end="url(#arrow1)">
+                                <animate attributeName="opacity" values="0.6;1;0.6" dur="2.5s" repeatCount="indefinite"/>
+                            </path>
+                            
+                            <!-- Arrow marker -->
+                            <defs>
+                                <marker id="arrow1" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+                                    <polygon points="0 0, 8 3, 0 6" fill="#ffffff"/>
+                                </marker>
+                            </defs>
+                            
+                            <!-- Certification badges -->
+                            <circle cx="85" cy="35" r="8" fill="#00ff00" opacity="0.7">
+                                <animate attributeName="opacity" values="0.7;1;0.7" dur="3s" repeatCount="indefinite"/>
+                            </circle>
+                            <text x="85" y="38" text-anchor="middle" fill="#ffffff" font-size="8" font-weight="bold">✓</text>
+                            
+                            <circle cx="35" cy="35" r="8" fill="#ffff00" opacity="0.7">
+                                <animate attributeName="opacity" values="0.7;1;0.7" dur="2.8s" repeatCount="indefinite"/>
+                            </circle>
+                            <text x="35" y="38" text-anchor="middle" fill="#000000" font-size="8" font-weight="bold">★</text>
+                        </svg>
+                    </div>
+                    <h3>Training and Development</h3>
+                    <div class="service-summary">
+                        <p>Build internal capability with our comprehensive training programs designed for lasting impact.</p>
+                        <button class="learn-more-btn" onclick="toggleServiceDetails(this)">Learn More →</button>
+                    </div>
+                    <div class="service-details" style="display: none;">
+                        <p style="font-size: 1rem; margin-bottom: 1rem;">Comprehensive training programs that build lasting internal capability and expertise.</p>
+                        <p style="font-size: 0.95rem; margin-bottom: 1rem;"><strong>What we offer:</strong><br>
+                        • Agile and project management certifications<br>
+                        • Custom workshop design and delivery<br>
+                        • Train-the-trainer programs<br>
+                        • Digital learning platform development<br>
+                        • Competency frameworks and assessments</p>
+                        <p style="font-size: 0.95rem; margin-bottom: 1rem; color: #00ffff;"><strong>Typical outcomes:</strong> 90% certification success rates, improved team confidence, sustainable skill development.</p>
+                        <button class="learn-more-btn" onclick="toggleServiceDetails(this)">Show Less ↑</button>
+                    </div>
                 </div>
             </div>
         </div>
