@@ -1907,7 +1907,116 @@
             </div>
         </div>
     </section>
-	
+
+	  <!-- Contact Section -->
+    <section id="contact" class="page-section">
+        <div class="content-section">
+            <h1 class="section-title">Contact Us</h1>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;">
+                <div>
+                    <h2 style="font-size: 1.8rem; color: #00f0ff; margin-bottom: 1.5rem;">Get In Touch</h2>
+                    <p style="font-size: 1.2rem; color: white; line-height: 1.7; margin-bottom: 2rem;">
+                        Ready to transform your organization with agnostic agility? Let's start a conversation about your unique challenges and how we can help you build sustainable change.
+                    </p>
+                    
+                    <div style="background: linear-gradient(135deg, rgba(140, 82, 255, 0.1), rgba(0, 240, 255, 0.05)); padding: 2rem; border-radius: 15px; border: 2px solid #8c52ff; box-shadow: 0 0 20px rgba(140, 82, 255, 0.3); margin-bottom: 2rem;">
+                        <h3 style="color: #cf92ff; margin-bottom: 1rem; font-size: 1.3rem;">Why Choose Agnostic Agility?</h3>
+                        <ul style="color: white; font-size: 1.1rem; line-height: 1.6; list-style: none; padding: 0;">
+                            <li style="margin-bottom: 0.5rem;">✓ Framework-neutral approach tailored to your context</li>
+                            <li style="margin-bottom: 0.5rem;">✓ People-first transformation that sticks</li>
+                            <li style="margin-bottom: 0.5rem;">✓ Proven results across multiple industries</li>
+                            <li style="margin-bottom: 0.5rem;">✓ Capability building, not just consulting</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="background: linear-gradient(135deg, rgba(0, 240, 255, 0.1), rgba(140, 82, 255, 0.05)); padding: 1.5rem; border-radius: 10px; border: 2px solid #00f0ff; box-shadow: 0 0 15px rgba(0, 240, 255, 0.3); margin-bottom: 2rem;">
+                        <p style="color: #00f0ff; font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 600;">📧 Email:</p>
+                        <p style="color: white; font-size: 1rem; margin-bottom: 1rem;">hello@agnosticagility.com</p>
+                        
+                        <p style="color: #00f0ff; font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 600;">📱 Phone:</p>
+                        <p style="color: white; font-size: 1rem; margin-bottom: 1rem;">+44 (0) 123 456 7890</p>
+                        
+                        <p style="color: #00f0ff; font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 600;">🌍 Location:</p>
+                        <p style="color: white; font-size: 1rem;">United Kingdom (Remote & On-site)</p>
+                    </div>
+                    
+                    <div style="background: linear-gradient(135deg, rgba(140, 82, 255, 0.1), rgba(0, 240, 255, 0.05)); padding: 2rem; border-radius: 15px; border: 2px solid #8c52ff; box-shadow: 0 0 20px rgba(140, 82, 255, 0.3); margin-bottom: 2rem;">
+                        <h3 style="color: #cf92ff; margin-bottom: 1.5rem; font-size: 1.4rem;">🎯 Next Steps</h3>
+                        <div style="color: white; font-size: 1.1rem; line-height: 1.6;">
+                            <p style="margin-bottom: 0.8rem;">1. Discovery call to understand your challenges</p>
+                            <p style="margin-bottom: 0.8rem;">2. Tailored approach proposal</p>
+                            <p style="margin-bottom: 1.5rem;">3. Pilot engagement planning</p>
+                        </div>
+                        
+                        <h3 style="color: #00f0ff; margin-bottom: 1rem; font-size: 1.4rem;">🤝 Consultation</h3>
+                        <p style="color: white; font-size: 1.1rem; line-height: 1.6;">
+                            Complimentary 30-minute strategy session to explore how we can support your business and transformation goals.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h2 style="color: #00f0ff; margin-bottom: 1.5rem; font-size: 1.8rem; text-align: center;">Start Your Transformation Journey</h2>
+                    <form id="contactForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                        <input type="hidden" name="form-name" value="contact" />
+                        <p style="display: none;">
+                            <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+                        </p>
+                        
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="company">Company/Organization</label>
+                            <input type="text" id="company" name="company">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="role">Your Role</label>
+                            <input type="text" id="role" name="role" placeholder="e.g., CEO, Project Manager, Transformation Lead">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="service">Service of Interest</label>
+                            <select id="service" name="service" style="width: 100%; padding: 1rem; border: 2px solid #7616d4; border-radius: 8px; background: rgba(14, 14, 26, 0.5); color: white; font-family: 'Cormorant Garamond', serif; font-size: 1rem; transition: all 0.3s ease;">
+                                <option value="" style="background: rgba(14, 14, 26, 0.9); color: white;">Select a service...</option>
+                                <option value="project-agility" style="background: rgba(14, 14, 26, 0.9); color: white;">Project Agility</option>
+                                <option value="process-optimization" style="background: rgba(14, 14, 26, 0.9); color: white;">Process Optimization</option>
+                                <option value="ai-project-agility" style="background: rgba(14, 14, 26, 0.9); color: white;">AI-Project Agility</option>
+                                <option value="people-development" style="background: rgba(14, 14, 26, 0.9); color: white;">People Development</option>
+                                <option value="training-development" style="background: rgba(14, 14, 26, 0.9); color: white;">Training and Development</option>
+                                <option value="other" style="background: rgba(14, 14, 26, 0.9); color: white;">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="challenge">What's Your Biggest Challenge? *</label>
+                            <textarea id="challenge" name="challenge" required placeholder="Tell us about your transformation challenges, goals, or what you'd like to achieve..."></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="timeline">Preferred Timeline</label>
+                            <input type="text" id="timeline" name="timeline" placeholder="e.g., ASAP, Q1 2024, 6 months">
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">Send Message & Start Conversation</button>
+                        
+                        <p style="font-size: 0.9rem; color: #cf92ff; text-align: center; margin-top: 1rem; font-style: italic;">
+                            We typically respond within 24 hours with next steps tailored to your situation.
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
     <script>
         // Navigation functionality
         function showSection(sectionName) {
