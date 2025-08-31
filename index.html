@@ -35,6 +35,8 @@
                 0 0 80px rgba(140, 82, 255, 0.3),
                 inset 0 0 30px rgba(0, 240, 255, 0.1);
             animation: navbarGlow 4s ease-in-out infinite alternate;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         @keyframes navbarGlow {
@@ -115,12 +117,14 @@
             padding: 0.8rem 1.5rem;
             background: transparent;
             transition: all 0.3s ease;
-            white-space: nowrap;
             animation: logoGlow 3s ease-in-out infinite alternate;
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
+            cursor: pointer;
+            flex-shrink: 1;
+            min-width: 0;
         }
 
         .logo-main-text {
@@ -237,11 +241,18 @@
             display: none;
             flex-direction: column;
             cursor: pointer;
-            padding: 0.5rem;
+            padding: 0.8rem;
             border: 2px solid #00ffff;
             border-radius: 8px;
             background: linear-gradient(135deg, rgba(0, 255, 255, 0.2), rgba(255, 0, 255, 0.1));
             box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+            flex-shrink: 0;
+            width: 50px;
+            height: 50px;
+            justify-content: center;
+            align-items: center;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
         }
 
         .mobile-menu-toggle span {
@@ -472,90 +483,11 @@
             margin-bottom: 1rem;
         }
 
-        /* Values grid layout */
-        .values-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 3rem;
-        }
-
-        .values-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 2rem auto;
-        }
-
-        .value-card {
-            background: linear-gradient(135deg, rgba(140, 82, 255, 0.15), rgba(0, 240, 255, 0.1));
-            padding: 2rem;
-            border-radius: 20px;
-            border: 3px solid transparent;
-            box-shadow: 0 0 25px rgba(140, 82, 255, 0.4);
-            transition: all 0.4s ease;
-            text-align: center;
-            overflow: hidden;
-            backdrop-filter: blur(10px);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            min-height: 250px;
-        }
-
-        .value-card::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, #00f0ff, #8c52ff, #cf92ff, #00f0ff);
-            border-radius: 20px;
-            z-index: -1;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .value-card:hover::before {
-            opacity: 1;
-        }
-
-        .value-card:hover {
-            transform: translateY(-8px) scale(1.05);
-            box-shadow: 0 15px 40px rgba(140, 82, 255, 0.6);
-            background: linear-gradient(135deg, rgba(140, 82, 255, 0.25), rgba(0, 240, 255, 0.15));
-        }
-
-        .value-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            display: block;
-            text-shadow: 0 0 20px rgba(0, 240, 255, 0.8);
-        }
-
-        .value-card h3 {
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: #00f0ff;
-            text-shadow: 0 0 15px rgba(0, 240, 255, 0.6);
-        }
-
-        .value-card p {
-            font-size: 1rem;
-            line-height: 1.6;
-            color: white;
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
-        }
-
         /* Contact form */
         .contact-form {
             max-width: 600px;
             margin: 0 auto;
-            background: linear-gradient(135deg, rgba(140, 82, 255, 0.1), rgba(0, 240, 255, 0.05));
+            background: linear-gradient(135deg, rgba(20, 10, 40, 0.9), rgba(10, 5, 25, 0.8));
             padding: 2rem;
             border-radius: 15px;
             border: 2px solid #8c52ff;
@@ -575,7 +507,8 @@
         }
 
         .form-group input,
-        .form-group textarea {
+        .form-group textarea,
+        .form-group select {
             width: 100%;
             padding: 1rem;
             border: 2px solid #7616d4;
@@ -588,7 +521,8 @@
         }
 
         .form-group input:focus,
-        .form-group textarea:focus {
+        .form-group textarea:focus,
+        .form-group select:focus {
             outline: none;
             border-color: #00f0ff;
             box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
@@ -619,43 +553,71 @@
             background: linear-gradient(45deg, rgba(140, 82, 255, 0.5), rgba(0, 240, 255, 0.3));
         }
 
-        /* Success stories */
-        .story-card {
-            background: linear-gradient(135deg, rgba(139, 56, 215, 0.1), rgba(207, 146, 255, 0.1));
-            padding: 2rem;
-            border-radius: 15px;
-            border: 2px solid #8b38d7;
-            box-shadow: 0 0 20px rgba(139, 56, 215, 0.3);
-            margin-bottom: 2rem;
+        .learn-more-btn {
+            background: linear-gradient(45deg, rgba(0, 240, 255, 0.2), rgba(140, 82, 255, 0.1));
+            border: 2px solid #00f0ff;
+            color: #00f0ff;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            font-weight: 600;
             transition: all 0.3s ease;
+            margin-top: 1rem;
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+            text-decoration: none;
+            display: inline-block;
         }
 
-        .story-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(139, 56, 215, 0.5);
-        }
-
-        .story-card h3 {
-            font-size: 1.8rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: #00f0ff;
-        }
-
-        .story-card p {
-            font-size: 1.3rem;
-            line-height: 1.7;
-            color: white;
-            margin-bottom: 1rem;
-        }
-
-        .story-result {
-            font-weight: 600;
-            color: #00f0ff;
-            font-size: 1.2rem;
+        .learn-more-btn:hover {
+            background: linear-gradient(45deg, rgba(0, 240, 255, 0.3), rgba(140, 82, 255, 0.2));
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.5);
+            transform: translateY(-2px);
         }
 
         /* Blog/Events section */
+        .blog-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 3rem;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .blog-tab {
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, rgba(140, 82, 255, 0.1), rgba(0, 240, 255, 0.05));
+            border: 2px solid #8c52ff;
+            border-radius: 10px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .blog-tab.active {
+            background: linear-gradient(135deg, rgba(0, 240, 255, 0.3), rgba(140, 82, 255, 0.2));
+            border-color: #00f0ff;
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .blog-tab:hover {
+            background: linear-gradient(135deg, rgba(140, 82, 255, 0.2), rgba(0, 240, 255, 0.1));
+            border-color: #00f0ff;
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+        }
+
+        .blog-content {
+            display: none;
+        }
+
+        .blog-content.active {
+            display: block;
+        }
+
         .blog-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -676,6 +638,20 @@
             transform: translateY(-5px);
             box-shadow: 0 10px 30px rgba(67, 134, 221, 0.5);
             border-color: #00f0ff;
+        }
+
+        .blog-image {
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(45deg, rgba(67, 134, 221, 0.3), rgba(140, 82, 255, 0.2));
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4386dd;
+            font-style: italic;
+            border: 2px solid #4386dd;
         }
 
         .blog-date {
@@ -711,37 +687,56 @@
             text-shadow: 0 0 5px rgba(140, 82, 255, 0.5);
         }
 
-        /* Learn More Button */
-        .learn-more-btn {
-            background: linear-gradient(45deg, rgba(0, 240, 255, 0.2), rgba(140, 82, 255, 0.1));
-            border: 2px solid #00f0ff;
-            color: #00f0ff;
-            padding: 0.8rem 1.5rem;
-            border-radius: 8px;
-            cursor: pointer;
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            margin-top: 1rem;
-            box-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
-        }
-
-        .learn-more-btn:hover {
-            background: linear-gradient(45deg, rgba(0, 240, 255, 0.3), rgba(140, 82, 255, 0.2));
-            box-shadow: 0 0 20px rgba(0, 240, 255, 0.5);
-            transform: translateY(-2px);
-        }
-
         /* Responsive design */
+        /* Tablet styles (768px - 1024px) */
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .content-section {
+                padding: 3rem 1.5rem;
+            }
+            
+            .home-content {
+                gap: 2rem;
+            }
+            
+            .logo-placeholder {
+                width: 300px;
+                height: 300px;
+            }
+            
+            .hero-title {
+                font-size: 2.6rem;
+            }
+            
+            .about-grid,
+            .services-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+            
+            /* Contact section tablet layout */
+            #contact .content-section > div[style*="grid-template-columns"] {
+                grid-template-columns: 1fr !important;
+                gap: 2.5rem !important;
+            }
+        }
+
+        /* Mobile and small tablet styles (up to 768px) */
         @media (max-width: 768px) {
+            .navbar {
+                height: 70px;
+            }
+
             .nav-container {
                 padding: 0 1rem;
+                flex-wrap: nowrap;
+                height: 70px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
             }
 
             .nav-menu {
                 position: fixed;
-                top: 80px;
+                top: 70px;
                 left: 0;
                 right: 0;
                 background: linear-gradient(135deg, rgba(14, 14, 26, 0.98), rgba(20, 0, 40, 0.98));
@@ -754,6 +749,9 @@
                 transition: all 0.3s ease;
                 border-bottom: 3px solid #00f0ff;
                 box-shadow: 0 10px 30px rgba(0, 240, 255, 0.3);
+                z-index: 999;
+                max-height: calc(100vh - 70px);
+                overflow-y: auto;
             }
 
             .nav-menu.active {
@@ -763,25 +761,49 @@
 
             .mobile-menu-toggle {
                 display: flex;
+                flex-shrink: 0;
+                order: 2;
             }
 
             .logo-text-nav {
-                padding: 0.6rem 1rem;
+                padding: 0.4rem 0.2rem;
+                flex: 1;
+                min-width: 0;
+                order: 1;
+                overflow: hidden;
             }
 
             .logo-main-text {
-                font-size: 1.8rem;
+                font-size: 1.3rem;
+                line-height: 1.1;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
             }
 
             .logo-tagline {
-                font-size: 0.75rem;
+                font-size: 0.6rem;
+                line-height: 1;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
             }
 
             .nav-link {
-                padding: 1rem;
+                padding: 1.2rem;
                 font-size: 1.1rem;
                 text-align: center;
                 transform: none !important;
+                width: 100%;
+                box-sizing: border-box;
+                display: block;
+                min-height: 50px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                touch-action: manipulation;
+                -webkit-tap-highlight-color: transparent;
+                cursor: pointer;
             }
 
             .nav-link:hover {
@@ -793,78 +815,439 @@
             }
 
             .page-section {
-                padding-top: 100px;
-            }
-
-            .home-content {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .logo-placeholder {
-                width: 250px;
-                height: 250px;
-                font-size: 1rem;
-            }
-
-            .hero-title {
-                font-size: 2.5rem;
-            }
-
-            .hero-text {
-                font-size: 1.1rem;
-            }
-
-            .section-title {
-                font-size: 2.2rem;
-            }
-
-            .cta-buttons {
-                justify-content: center;
-            }
-
-            .about-grid,
-            .services-grid,
-            .blog-grid {
-                grid-template-columns: 1fr;
-            }
-
-            /* Contact section mobile layout */
-            #contact .content-section > div[style*="grid-template-columns"] {
-                grid-template-columns: 1fr !important;
-                gap: 2rem !important;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .nav-container {
-                padding: 1rem;
-            }
-
-            .logo-text {
-                font-size: 24px;
+                padding-top: 80px;
             }
 
             .content-section {
                 padding: 2rem 1rem;
             }
 
+            .home-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .logo-container {
+                flex: none;
+                padding-top: 1rem;
+            }
+
+            .logo-placeholder {
+                width: 250px;
+                height: 250px;
+                font-size: 0.9rem;
+                margin: 0 auto;
+            }
+
+            .hero-content {
+                padding: 1rem;
+                padding-top: 1rem;
+            }
+
             .hero-title {
-                font-size: 2rem;
+                font-size: 2.2rem;
+                line-height: 1.2;
+                margin-bottom: 1.5rem;
+            }
+
+            .hero-text {
+                font-size: 1.1rem;
+                line-height: 1.6;
+                margin-bottom: 2rem;
             }
 
             .section-title {
+                font-size: 2rem;
+                line-height: 1.2;
+                margin-bottom: 2rem;
+            }
+
+            .cta-buttons {
+                justify-content: center;
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .cta-button {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
+                padding: 1.2rem 2rem;
+                font-size: 1.1rem;
+            }
+
+            .about-grid,
+            .services-grid,
+            .blog-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .about-card,
+            .service-card,
+            .blog-card {
+                padding: 1.5rem;
+            }
+
+            .about-card h3,
+            .service-card h3,
+            .blog-card h3 {
+                font-size: 1.4rem;
+                line-height: 1.3;
+            }
+
+            .about-card p,
+            .service-card p,
+            .blog-card p {
+                font-size: 1rem;
+                line-height: 1.6;
+            }
+
+            .blog-tabs {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+            }
+
+            .blog-tab {
+                width: 100%;
+                max-width: 280px;
+                text-align: center;
+                padding: 0.8rem 1.5rem;
+                font-size: 1rem;
+            }
+
+            /* Contact section mobile layout */
+            #contact .content-section > div[style*="grid-template-columns"] {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 2rem !important;
+            }
+
+            .contact-form {
+                order: -1;
+                margin-bottom: 2rem;
+            }
+
+            .form-group input,
+            .form-group textarea,
+            .form-group select {
+                padding: 0.8rem;
+                font-size: 1rem;
+            }
+
+            .submit-btn {
+                padding: 1rem;
+                font-size: 1.1rem;
+            }
+
+            /* Founder profile section mobile */
+            .content-section div[style*="display: flex"] {
+                flex-direction: column !important;
+                text-align: center !important;
+                gap: 1.5rem !important;
+            }
+
+            .content-section div[style*="flex: 0 0 200px"] {
+                flex: none !important;
+            }
+
+            .content-section div[style*="flex: 1"] {
+                flex: none !important;
+                text-align: center !important;
+                min-width: auto !important;
+            }
+        }
+
+        /* Small mobile styles (up to 480px) */
+        @media (max-width: 480px) {
+            .navbar {
+                height: 65px;
+            }
+
+            .nav-menu {
+                top: 65px;
+                max-height: calc(100vh - 65px);
+            }
+
+            .nav-container {
+                padding: 0 0.8rem;
+                height: 65px;
+            }
+
+            .logo-text-nav {
+                padding: 0.3rem 0.2rem;
+            }
+
+            .logo-main-text {
+                font-size: 1.1rem;
+            }
+
+            .logo-tagline {
+                font-size: 0.55rem;
+            }
+
+            .mobile-menu-toggle {
+                width: 45px;
+                height: 45px;
+                padding: 0.6rem;
+            }
+
+            .mobile-menu-toggle span {
+                width: 20px;
+                height: 2px;
+            }
+
+            .page-section {
+                padding-top: 75px;
+            }
+
+            .content-section {
+                padding: 1.5rem 0.8rem;
+            }
+
+            .hero-title {
                 font-size: 1.8rem;
+                line-height: 1.1;
+            }
+
+            .hero-text {
+                font-size: 1rem;
+                line-height: 1.5;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+                line-height: 1.1;
             }
 
             .logo-placeholder {
                 width: 200px;
                 height: 200px;
+                font-size: 0.8rem;
+            }
+
+            .about-card,
+            .service-card,
+            .blog-card {
+                padding: 1.2rem;
+            }
+
+            .about-card h3,
+            .service-card h3,
+            .blog-card h3 {
+                font-size: 1.2rem;
+            }
+
+            .about-card p,
+            .service-card p,
+            .blog-card p {
+                font-size: 0.95rem;
+            }
+
+            .cta-button {
+                padding: 1rem 1.5rem;
+                font-size: 1rem;
+            }
+
+            .blog-tab {
+                max-width: 250px;
+                padding: 0.7rem 1.2rem;
+                font-size: 0.95rem;
+            }
+
+            .contact-form {
+                padding: 1.5rem;
+            }
+
+            .form-group input,
+            .form-group textarea,
+            .form-group select {
+                padding: 0.7rem;
+                font-size: 0.95rem;
+            }
+
+            .submit-btn {
+                padding: 0.9rem;
+                font-size: 1rem;
+            }
+
+            /* Ensure text doesn't overflow on very small screens */
+            * {
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+            }
+        }
+
+        /* Landscape mobile styles */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .navbar {
+                height: 60px;
+            }
+
+            .nav-menu {
+                top: 60px;
+            }
+
+            .nav-container {
+                height: 60px;
+            }
+
+            .page-section {
+                padding-top: 70px;
+            }
+
+            .logo-placeholder {
+                width: 150px;
+                height: 150px;
+            }
+
+            .hero-title {
+                font-size: 1.6rem;
+            }
+
+            .section-title {
+                font-size: 1.4rem;
+            }
+        }
+
+        /* Ensure proper touch targets on all devices */
+        @media (hover: none) and (pointer: coarse) {
+            .nav-link,
+            .cta-button,
+            .learn-more-btn,
+            .submit-btn,
+            .blog-tab {
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
         }
     </style>
 </head>
 <body>
+    <script>
+        // Navigation functionality
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.page-section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show the selected section
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
+            
+            // Update navigation active state
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            // Find and activate the corresponding nav link
+            const activeLink = document.querySelector(`[onclick="showSection('${sectionId}')"]`);
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
+            
+            // Close mobile menu if open
+            const navMenu = document.getElementById('navMenu');
+            const mobileToggle = document.querySelector('.mobile-menu-toggle');
+            if (navMenu && mobileToggle) {
+                navMenu.classList.remove('active');
+                mobileToggle.classList.remove('active');
+            }
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+        
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const navMenu = document.getElementById('navMenu');
+            const mobileToggle = document.querySelector('.mobile-menu-toggle');
+            
+            if (navMenu && mobileToggle) {
+                navMenu.classList.toggle('active');
+                mobileToggle.classList.toggle('active');
+            }
+        }
+        
+        // Service details toggle
+        function toggleServiceDetails(button) {
+            const serviceCard = button.closest('.service-card');
+            const summary = serviceCard.querySelector('.service-summary');
+            const details = serviceCard.querySelector('.service-details');
+            
+            if (details.style.display === 'none' || details.style.display === '') {
+                summary.style.display = 'none';
+                details.style.display = 'block';
+            } else {
+                summary.style.display = 'block';
+                details.style.display = 'none';
+            }
+        }
+        
+        // Blog content switching
+        function showBlogContent(contentId) {
+            // Hide all blog content
+            const blogContents = document.querySelectorAll('.blog-content');
+            blogContents.forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Show selected content
+            const targetContent = document.getElementById(contentId);
+            if (targetContent) {
+                targetContent.classList.add('active');
+            }
+            
+            // Update tab active state
+            const blogTabs = document.querySelectorAll('.blog-tab');
+            blogTabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Find and activate the corresponding tab
+            const activeTab = document.querySelector(`[onclick="showBlogContent('${contentId}')"]`);
+            if (activeTab) {
+                activeTab.classList.add('active');
+            }
+        }
+        
+        // Form submission handling
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('contactForm');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    // Form will be handled by Netlify, but we can add client-side validation here if needed
+                    const name = document.getElementById('name').value;
+                    const email = document.getElementById('email').value;
+                    const message = document.getElementById('challenge').value;
+                    
+                    if (!name || !email || !message) {
+                        e.preventDefault();
+                        alert('Please fill in all required fields.');
+                        return false;
+                    }
+                    
+                    // Basic email validation
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailRegex.test(email)) {
+                        e.preventDefault();
+                        alert('Please enter a valid email address.');
+                        return false;
+                    }
+                });
+            }
+        });
+    </script>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
@@ -900,7 +1283,7 @@
             <div class="home-content">
                 <div class="logo-container">
                     <div class="logo-placeholder">
-                        <video width="600" height="600" autoplay muted loop playsinline>
+                        <video width="800" height="800" autoplay muted loop playsinline>
 	                	<source src="AgnosticAgility_Logo_Canva.mp4" type="video/mp4">
         	        	Your browser does not support the video tag.
                 		</video>
@@ -947,7 +1330,7 @@
             <div style="background: linear-gradient(135deg, rgba(140, 82, 255, 0.15), rgba(0, 240, 255, 0.1)); padding: 3rem; border-radius: 20px; border: 2px solid #8c52ff; box-shadow: 0 0 30px rgba(140, 82, 255, 0.4); margin-bottom: 4rem; text-align: center;">
                 <div style="display: flex; align-items: center; justify-content: center; gap: 3rem; flex-wrap: wrap;">
                     <div style="flex: 0 0 200px;">
-                        <img src="https://media.licdn.com/dms/image/v2/C4D03AQH00UhMqlPgxw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1628888062001?e=1758758400&v=beta&t=WrGg9C85UJHo3uD6JrtGPFjPUKrUGOb63q9sLu8_ZFI" 
+                        <img src="https://media.licdn.com/dms/image/v2/D4E03AQGxWzQQQQQQQQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1234567890123?e=1234567890&v=beta&t=abcdefghijklmnopqrstuvwxyz" 
                              alt="Kiranmaye Cartier - Founder of Agnostic Agility" 
                              style="width: 200px; height: 200px; border-radius: 50%; border: 4px solid #00f0ff; box-shadow: 0 0 25px rgba(0, 240, 255, 0.5); object-fit: cover;"
                              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
@@ -1381,80 +1764,409 @@
     <!-- Core Values Section -->
     <section id="values" class="page-section">
         <div class="content-section">
+            <h1 class="section-title">Core Values</h1>
+            <p style="text-align: center; font-size: 1.4rem; color: #00f0ff; margin-bottom: 3rem; font-style: italic;">
+                The principles that guide every transformation we lead
+            </p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
+                <!-- Human-Centric -->
+                <div style="background: linear-gradient(135deg, rgba(255, 107, 107, 0.15), rgba(255, 154, 158, 0.1)); padding: 2rem; border-radius: 15px; border: 2px solid #ff6b6b; box-shadow: 0 0 25px rgba(255, 107, 107, 0.3); transition: all 0.3s ease; position: relative; overflow: hidden;">
+                    <div style="position: absolute; top: -20px; right: -20px; width: 80px; height: 80px; background: linear-gradient(45deg, rgba(255, 107, 107, 0.2), rgba(255, 154, 158, 0.1)); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='scale(1.1) rotate(5deg)'; this.style.boxShadow='0 0 30px rgba(255, 107, 107, 0.6)'" onmouseout="this.style.transform='scale(1) rotate(0deg)'; this.style.boxShadow='none'">
+                        <svg width="40" height="40" viewBox="0 0 40 40" style="color: #ff6b6b;">
+                            <!-- Human figure with heart -->
+                            <circle cx="20" cy="12" r="6" fill="currentColor" opacity="0.8">
+                                <animate attributeName="r" values="6;7;6" dur="3s" repeatCount="indefinite"/>
+                            </circle>
+                            <path d="M10 18 Q10 16 12 16 L28 16 Q30 16 30 18 L30 35 Q30 37 28 37 L12 37 Q10 37 10 35 Z" fill="currentColor" opacity="0.7">
+                                <animateTransform attributeName="transform" type="scale" values="1;1.02;1" dur="4s" repeatCount="indefinite"/>
+                            </path>
+                            <!-- Heart in chest -->
+                            <path d="M16 22 C16 20 18 19 20 21 C22 19 24 20 24 22 C24 24 20 27 20 27 C20 27 16 24 16 22 Z" fill="#ff9a9e" opacity="0.9">
+                                <animate attributeName="opacity" values="0.9;1;0.9" dur="1.5s" repeatCount="indefinite"/>
+                                <animateTransform attributeName="transform" type="scale" values="1;1.2;1" dur="1.5s" repeatCount="indefinite"/>
+                            </path>
+                            <!-- Connecting lines to represent relationships -->
+                            <circle cx="8" cy="25" r="3" fill="currentColor" opacity="0.6">
+                                <animate attributeName="r" values="3;4;3" dur="2s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="32" cy="25" r="3" fill="currentColor" opacity="0.6">
+                                <animate attributeName="r" values="3;4;3" dur="2.2s" repeatCount="indefinite"/>
+                            </circle>
+                            <line x1="11" y1="25" x2="17" y2="25" stroke="currentColor" stroke-width="2" opacity="0.5">
+                                <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
+                                <animate attributeName="stroke-width" values="2;3;2" dur="2s" repeatCount="indefinite"/>
+                            </line>
+                            <line x1="23" y1="25" x2="29" y2="25" stroke="currentColor" stroke-width="2" opacity="0.5">
+                                <animate attributeName="opacity" values="0.5;1;0.5" dur="1.8s" repeatCount="indefinite"/>
+                                <animate attributeName="stroke-width" values="2;3;2" dur="1.8s" repeatCount="indefinite"/>
+                            </line>
+                            <!-- Empathy waves -->
+                            <circle cx="20" cy="25" r="15" fill="none" stroke="#ff9a9e" stroke-width="1" opacity="0.3">
+                                <animate attributeName="r" values="15;20;15" dur="3s" repeatCount="indefinite"/>
+                                <animate attributeName="opacity" values="0.3;0;0.3" dur="3s" repeatCount="indefinite"/>
+                            </circle>
+                        </svg>
+                    </div>
+                    <h3 style="color: #ff6b6b; font-size: 1.6rem; margin-bottom: 1rem; font-weight: 700;">Human-Centric</h3>
+                    <p style="color: white; font-size: 1.1rem; line-height: 1.7;">
+                        People are at the heart of every transformation. We design solutions that work for humans, not the other way around.
+                    </p>
+                </div>
 
-            <div class="values-container">
-                <div class="values-grid">
-                    <div class="value-card">
-                        <span class="value-icon">👥</span>
-                        <h3>Human-Centric</h3>
-                        <p>People are at the heart of every transformation. We design solutions that work for humans, not the other way around.</p>
+                <!-- Framework Agnostic -->
+                <div style="background: linear-gradient(135deg, rgba(74, 144, 226, 0.15), rgba(80, 227, 194, 0.1)); padding: 2rem; border-radius: 15px; border: 2px solid #4a90e2; box-shadow: 0 0 25px rgba(74, 144, 226, 0.3); transition: all 0.3s ease; position: relative; overflow: hidden;">
+                    <div style="position: absolute; top: -20px; right: -20px; width: 80px; height: 80px; background: linear-gradient(45deg, rgba(74, 144, 226, 0.2), rgba(80, 227, 194, 0.1)); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='scale(1.15) rotate(-10deg)'; this.style.boxShadow='0 0 35px rgba(74, 144, 226, 0.7)'" onmouseout="this.style.transform='scale(1) rotate(0deg)'; this.style.boxShadow='none'">
+                        <svg width="40" height="40" viewBox="0 0 40 40" style="color: #4a90e2;">
+                            <!-- Multiple framework symbols interconnected -->
+                            <rect x="5" y="5" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" opacity="0.7" rx="2">
+                                <animate attributeName="opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite"/>
+                                <animateTransform attributeName="transform" type="rotate" values="0 11 11;360 11 11" dur="8s" repeatCount="indefinite"/>
+                            </rect>
+                            <circle cx="30" cy="11" r="6" fill="none" stroke="currentColor" stroke-width="2" opacity="0.6">
+                                <animate attributeName="opacity" values="0.6;1;0.6" dur="2.5s" repeatCount="indefinite"/>
+                                <animate attributeName="r" values="6;8;6" dur="3s" repeatCount="indefinite"/>
+                            </circle>
+                            <polygon points="11,25 5,35 17,35" fill="none" stroke="currentColor" stroke-width="2" opacity="0.8">
+                                <animate attributeName="opacity" values="0.8;1;0.8" dur="1.8s" repeatCount="indefinite"/>
+                                <animateTransform attributeName="transform" type="scale" values="1;1.1;1" dur="2.5s" repeatCount="indefinite"/>
+                            </polygon>
+                            <path d="M25 25 L35 25 L30 35 Z" fill="none" stroke="currentColor" stroke-width="2" opacity="0.7">
+                                <animate attributeName="opacity" values="0.7;1;0.7" dur="2.2s" repeatCount="indefinite"/>
+                                <animateTransform attributeName="transform" type="rotate" values="0 30 28;-360 30 28" dur="6s" repeatCount="indefinite"/>
+                            </path>
+                            <!-- Connecting adaptive lines -->
+                            <path d="M17 11 Q20 15 24 11" stroke="#50e3c2" stroke-width="2" opacity="0.5">
+                                <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
+                                <animate attributeName="stroke-width" values="2;4;2" dur="2s" repeatCount="indefinite"/>
+                            </path>
+                            <path d="M11 17 Q15 20 11 24" stroke="#50e3c2" stroke-width="2" opacity="0.5">
+                                <animate attributeName="opacity" values="0.5;1;0.5" dur="1.8s" repeatCount="indefinite"/>
+                                <animate attributeName="stroke-width" values="2;4;2" dur="1.8s" repeatCount="indefinite"/>
+                            </path>
+                            <path d="M24 17 Q28 20 25 25" stroke="#50e3c2" stroke-width="2" opacity="0.5">
+                                <animate attributeName="opacity" values="0.5;1;0.5" dur="2.3s" repeatCount="indefinite"/>
+                                <animate attributeName="stroke-width" values="2;4;2" dur="2.3s" repeatCount="indefinite"/>
+                            </path>
+                            <!-- Adaptation indicator -->
+                            <circle cx="20" cy="20" r="12" fill="none" stroke="#50e3c2" stroke-width="1" opacity="0.2">
+                                <animate attributeName="r" values="12;16;12" dur="4s" repeatCount="indefinite"/>
+                                <animate attributeName="opacity" values="0.2;0;0.2" dur="4s" repeatCount="indefinite"/>
+                            </circle>
+                        </svg>
                     </div>
-                    <div class="value-card">
-                        <span class="value-icon">🔧</span>
-                        <h3>Framework Agnostic</h3>
-                        <p>No dogma, no one-size-fits-all. We choose the right tools and methods for your unique context and challenges.</p>
+                    <h3 style="color: #4a90e2; font-size: 1.6rem; margin-bottom: 1rem; font-weight: 700;">Framework Agnostic</h3>
+                    <p style="color: white; font-size: 1.1rem; line-height: 1.7;">
+                        No dogma, no one-size-fits-all. We choose the right tools and methods for your unique context and challenges.
+                    </p>
+                </div>
+
+                <!-- Practical Solutions -->
+                <div style="background: linear-gradient(135deg, rgba(255, 193, 7, 0.15), rgba(255, 235, 59, 0.1)); padding: 2rem; border-radius: 15px; border: 2px solid #ffc107; box-shadow: 0 0 25px rgba(255, 193, 7, 0.3); transition: all 0.3s ease; position: relative; overflow: hidden;">
+                    <div style="position: absolute; top: -20px; right: -20px; width: 80px; height: 80px; background: linear-gradient(45deg, rgba(255, 193, 7, 0.2), rgba(255, 235, 59, 0.1)); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='scale(1.2) rotate(15deg)'; this.style.boxShadow='0 0 40px rgba(255, 193, 7, 0.8)'" onmouseout="this.style.transform='scale(1) rotate(0deg)'; this.style.boxShadow='none'">
+                        <svg width="40" height="40" viewBox="0 0 40 40" style="color: #ffc107;">
+                            <!-- Toolbox with tools -->
+                            <rect x="8" y="20" width="24" height="15" fill="currentColor" opacity="0.7" rx="2">
+                                <animateTransform attributeName="transform" type="scale" values="1;1.05;1" dur="3s" repeatCount="indefinite"/>
+                            </rect>
+                            <rect x="6" y="18" width="28" height="4" fill="currentColor" opacity="0.8" rx="2">
+                                <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/>
+                            </rect>
+                            <!-- Handle -->
+                            <rect x="18" y="15" width="4" height="6" fill="currentColor" opacity="0.6" rx="2">
+                                <animateTransform attributeName="transform" type="scale" values="1;1.1;1" dur="2.5s" repeatCount="indefinite"/>
+                            </rect>
+                            <!-- Tools sticking out -->
+                            <rect x="12" y="12" width="2" height="8" fill="#ffeb3b" opacity="0.8" rx="1">
+                                <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/>
+                                <animateTransform attributeName="transform" type="translate" values="0,0;0,-2;0,0" dur="2s" repeatCount="indefinite"/>
+                            </rect>
+                            <rect x="15" y="10" width="2" height="10" fill="#ffeb3b" opacity="0.9" rx="1">
+                                <animate attributeName="opacity" values="0.9;1;0.9" dur="1.8s" repeatCount="indefinite"/>
+                                <animateTransform attributeName="transform" type="translate" values="0,0;0,-3;0,0" dur="1.8s" repeatCount="indefinite"/>
+                            </rect>
+                            <rect x="23" y="11" width="2" height="9" fill="#ffeb3b" opacity="0.8" rx="1">
+                                <animate attributeName="opacity" values="0.8;1;0.8" dur="2.2s" repeatCount="indefinite"/>
+                                <animateTransform attributeName="transform" type="translate" values="0,0;0,-2;0,0" dur="2.2s" repeatCount="indefinite"/>
+                            </rect>
+                            <rect x="26" y="13" width="2" height="7" fill="#ffeb3b" opacity="0.9" rx="1">
+                                <animate attributeName="opacity" values="0.9;1;0.9" dur="1.9s" repeatCount="indefinite"/>
+                                <animateTransform attributeName="transform" type="translate" values="0,0;0,-1;0,0" dur="1.9s" repeatCount="indefinite"/>
+                            </rect>
+                            <!-- Gear symbol for practical application -->
+                            <circle cx="20" cy="27" r="4" fill="none" stroke="#ffeb3b" stroke-width="1.5" opacity="0.7">
+                                <animateTransform attributeName="transform" type="rotate" values="0 20 27;360 20 27" dur="3s" repeatCount="indefinite"/>
+                                <animate attributeName="r" values="4;5;4" dur="2s" repeatCount="indefinite"/>
+                            </circle>
+                            <!-- Gear teeth -->
+                            <path d="M20 23 L21 25 L20 27 L19 25 Z" fill="#ffeb3b" opacity="0.8">
+                                <animateTransform attributeName="transform" type="rotate" values="0 20 27;360 20 27" dur="3s" repeatCount="indefinite"/>
+                            </path>
+                            <path d="M24 27 L26 28 L24 29 L22 28 Z" fill="#ffeb3b" opacity="0.8">
+                                <animateTransform attributeName="transform" type="rotate" values="0 20 27;360 20 27" dur="3s" repeatCount="indefinite"/>
+                            </path>
+                            <!-- Work sparks -->
+                            <circle cx="30" cy="15" r="1" fill="#ffeb3b" opacity="0.6">
+                                <animate attributeName="opacity" values="0.6;1;0.6" dur="1.5s" repeatCount="indefinite"/>
+                                <animate attributeName="r" values="1;2;1" dur="1.5s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="35" cy="20" r="1" fill="#ffeb3b" opacity="0.7">
+                                <animate attributeName="opacity" values="0.7;1;0.7" dur="1.8s" repeatCount="indefinite"/>
+                                <animate attributeName="r" values="1;1.5;1" dur="1.8s" repeatCount="indefinite"/>
+                            </circle>
+                        </svg>
                     </div>
-                    <div class="value-card">
-                        <span class="value-icon">⚡</span>
-                        <h3>Practical Solutions</h3>
-                        <p>Real-world applicability over theoretical perfection. Our solutions work in the messy reality of business.</p>
+                    <h3 style="color: #ffc107; font-size: 1.6rem; margin-bottom: 1rem; font-weight: 700;">Practical Solutions</h3>
+                    <p style="color: white; font-size: 1.1rem; line-height: 1.7;">
+                        Real-world applicability over theoretical perfection. Our solutions work in the messy reality of business.
+                    </p>
+                </div>
+
+                <!-- Sustainable Change -->
+                <div style="background: linear-gradient(135deg, rgba(76, 175, 80, 0.15), rgba(129, 199, 132, 0.1)); padding: 2rem; border-radius: 15px; border: 2px solid #4caf50; box-shadow: 0 0 25px rgba(76, 175, 80, 0.3); transition: all 0.3s ease; position: relative; overflow: hidden;">
+                    <div style="position: absolute; top: -20px; right: -20px; width: 80px; height: 80px; background: linear-gradient(45deg, rgba(76, 175, 80, 0.2), rgba(129, 199, 132, 0.1)); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='scale(1.1) rotate(8deg)'; this.style.boxShadow='0 0 35px rgba(76, 175, 80, 0.8)'" onmouseout="this.style.transform='scale(1) rotate(0deg)'; this.style.boxShadow='none'">
+                        <svg width="40" height="40" viewBox="0 0 40 40" style="color: #4caf50;">
+                            <!-- Tree growing with roots -->
+                            <path d="M20 35 L20 25" stroke="currentColor" stroke-width="3" opacity="0.8">
+                                <animate attributeName="stroke-width" values="3;4;3" dur="3s" repeatCount="indefinite"/>
+                            </path>
+                            <!-- Roots -->
+                            <path d="M20 35 Q15 37 10 35" stroke="currentColor" stroke-width="2" opacity="0.6">
+                                <animate attributeName="opacity" values="0.6;0.9;0.6" dur="2.5s" repeatCount="indefinite"/>
+                                <animate attributeName="stroke-width" values="2;3;2" dur="2.5s" repeatCount="indefinite"/>
+                            </path>
+                            <path d="M20 35 Q25 37 30 35" stroke="currentColor" stroke-width="2" opacity="0.6">
+                                <animate attributeName="opacity" values="0.6;0.9;0.6" dur="2.8s" repeatCount="indefinite"/>
+                                <animate attributeName="stroke-width" values="2;3;2" dur="2.8s" repeatCount="indefinite"/>
+                            </path>
+                            <path d="M20 35 Q18 38 15 38" stroke="currentColor" stroke-width="1.5" opacity="0.5">
+                                <animate attributeName="opacity" values="0.5;0.8;0.5" dur="3.2s" repeatCount="indefinite"/>
+                            </path>
+                            <path d="M20 35 Q22 38 25 38" stroke="currentColor" stroke-width="1.5" opacity="0.5">
+                                <animate attributeName="opacity" values="0.5;0.8;0.5" dur="3.5s" repeatCount="indefinite"/>
+                            </path>
+                            <!-- Tree crown -->
+                            <circle cx="20" cy="18" r="8" fill="currentColor" opacity="0.7">
+                                <animate attributeName="r" values="8;10;8" dur="4s" repeatCount="indefinite"/>
+                                <animate attributeName="opacity" values="0.7;0.9;0.7" dur="4s" repeatCount="indefinite"/>
+                            </circle>
+                            <!-- Growth rings -->
+                            <circle cx="20" cy="18" r="6" fill="none" stroke="#81c784" stroke-width="1" opacity="0.5">
+                                <animate attributeName="r" values="6;8;6" dur="3s" repeatCount="indefinite"/>
+                                <animate attributeName="opacity" values="0.5;0.8;0.5" dur="3s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="20" cy="18" r="4" fill="none" stroke="#81c784" stroke-width="1" opacity="0.6">
+                                <animate attributeName="r" values="4;6;4" dur="2.5s" repeatCount="indefinite"/>
+                                <animate attributeName="opacity" values="0.6;0.9;0.6" dur="2.5s" repeatCount="indefinite"/>
+                            </circle>
+                            <!-- Leaves/capabilities growing -->
+                            <circle cx="15" cy="12" r="2" fill="#81c784" opacity="0.8">
+                                <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/>
+                                <animate attributeName="r" values="2;3;2" dur="2s" repeatCount="indefinite"/>
+                                <animateTransform attributeName="transform" type="translate" values="0,0;-1,-1;0,0" dur="2s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="25" cy="14" r="2" fill="#81c784" opacity="0.7">
+                                <animate attributeName="opacity" values="0.7;1;0.7" dur="2.3s" repeatCount="indefinite"/>
+                                <animate attributeName="r" values="2;3;2" dur="2.3s" repeatCount="indefinite"/>
+                                <animateTransform attributeName="transform" type="translate" values="0,0;1,-1;0,0" dur="2.3s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="18" cy="8" r="1.5" fill="#81c784" opacity="0.9">
+                                <animate attributeName="opacity" values="0.9;1;0.9" dur="1.8s" repeatCount="indefinite"/>
+                                <animate attributeName="r" values="1.5;2.5;1.5" dur="1.8s" repeatCount="indefinite"/>
+                                <animateTransform attributeName="transform" type="translate" values="0,0;0,-2;0,0" dur="1.8s" repeatCount="indefinite"/>
+                            </circle>
+                            <!-- New growth indicators -->
+                            <circle cx="22" cy="10" r="1" fill="#81c784" opacity="0.6">
+                                <animate attributeName="opacity" values="0.6;1;0.6" dur="2.5s" repeatCount="indefinite"/>
+                                <animate attributeName="r" values="1;2;1" dur="2.5s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="13" cy="16" r="1.5" fill="#81c784" opacity="0.7">
+                                <animate attributeName="opacity" values="0.7;1;0.7" dur="2.1s" repeatCount="indefinite"/>
+                                <animate attributeName="r" values="1.5;2.5;1.5" dur="2.1s" repeatCount="indefinite"/>
+                            </circle>
+                            <!-- Sustainability aura -->
+                            <circle cx="20" cy="20" r="18" fill="none" stroke="#81c784" stroke-width="1" opacity="0.2">
+                                <animate attributeName="r" values="18;22;18" dur="5s" repeatCount="indefinite"/>
+                                <animate attributeName="opacity" values="0.2;0;0.2" dur="5s" repeatCount="indefinite"/>
+                            </circle>
+                        </svg>
                     </div>
-                    <div class="value-card">
-                        <span class="value-icon">🌱</span>
-                        <h3>Sustainable Change</h3>
-                        <p>We build capability, not dependency. Our success is measured by your team's ability to thrive independently.</p>
+                    <h3 style="color: #4caf50; font-size: 1.6rem; margin-bottom: 1rem; font-weight: 700;">Sustainable Change</h3>
+                    <p style="color: white; font-size: 1.1rem; line-height: 1.7;">
+                        We build capability, not dependency. Our success is measured by your team's ability to thrive independently.
+                    </p>
+                </div>
+
+                <!-- Outcome Focused -->
+                <div style="background: linear-gradient(135deg, rgba(156, 39, 176, 0.15), rgba(186, 104, 200, 0.1)); padding: 2rem; border-radius: 15px; border: 2px solid #9c27b0; box-shadow: 0 0 25px rgba(156, 39, 176, 0.3); transition: all 0.3s ease; position: relative; overflow: hidden;">
+                    <div style="position: absolute; top: -20px; right: -20px; width: 80px; height: 80px; background: linear-gradient(45deg, rgba(156, 39, 176, 0.2), rgba(186, 104, 200, 0.1)); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='scale(1.15) rotate(-8deg)'; this.style.boxShadow='0 0 40px rgba(156, 39, 176, 0.9)'" onmouseout="this.style.transform='scale(1) rotate(0deg)'; this.style.boxShadow='none'">
+                        <svg width="40" height="40" viewBox="0 0 40 40" style="color: #9c27b0;">
+                            <!-- Target with arrow hitting bullseye -->
+                            <circle cx="20" cy="20" r="15" fill="none" stroke="currentColor" stroke-width="2" opacity="0.4">
+                                <animate attributeName="opacity" values="0.4;0.7;0.4" dur="3s" repeatCount="indefinite"/>
+                                <animateTransform attributeName="transform" type="rotate" values="0 20 20;360 20 20" dur="8s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="20" cy="20" r="10" fill="none" stroke="currentColor" stroke-width="2" opacity="0.6">
+                                <animate attributeName="opacity" values="0.6;0.9;0.6" dur="2.5s" repeatCount="indefinite"/>
+                                <animateTransform attributeName="transform" type="rotate" values="360 20 20;0 20 20" dur="6s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="20" cy="20" r="5" fill="none" stroke="currentColor" stroke-width="2" opacity="0.8">
+                                <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/>
+                                <animate attributeName="stroke-width" values="2;3;2" dur="2s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="20" cy="20" r="2" fill="currentColor" opacity="1">
+                                <animate attributeName="r" values="2;4;2" dur="1.5s" repeatCount="indefinite"/>
+                                <animate attributeName="opacity" values="1;0.8;1" dur="1.5s" repeatCount="indefinite"/>
+                            </circle>
+                            <!-- Arrow hitting target -->
+                            <path d="M8 12 L18 18 L16 20 L6 14 Z" fill="#ba68c8" opacity="0.8">
+                                <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/>
+                                <animateTransform attributeName="transform" type="scale" values="1;1.1;1" dur="2s" repeatCount="indefinite"/>
+                            </path>
+                            <line x1="6" y1="14" x2="18" y2="18" stroke="#ba68c8" stroke-width="2" opacity="0.7">
+                                <animate attributeName="stroke-width" values="2;3;2" dur="2s" repeatCount="indefinite"/>
+                            </line>
+                            <!-- Arrow fletching -->
+                            <path d="M6 14 L4 12 L4 16 Z" fill="#ba68c8" opacity="0.6">
+                                <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite"/>
+                            </path>
+                            <!-- Results indicators -->
+                            <rect x="25" y="8" width="8" height="3" fill="#ba68c8" opacity="0.7" rx="1">
+                                <animate attributeName="width" values="8;13;8" dur="2.5s" repeatCount="indefinite"/>
+                                <animate attributeName="opacity" values="0.7;1;0.7" dur="2.5s" repeatCount="indefinite"/>
+                            </rect>
+                            <rect x="25" y="13" width="10" height="3" fill="#ba68c8" opacity="0.8" rx="1">
+                                <animate attributeName="width" values="10;15;10" dur="2s" repeatCount="indefinite"/>
+                                <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/>
+                            </rect>
+                            <rect x="25" y="18" width="6" height="3" fill="#ba68c8" opacity="0.6" rx="1">
+                                <animate attributeName="width" values="6;11;6" dur="2.8s" repeatCount="indefinite"/>
+                                <animate attributeName="opacity" values="0.6;1;0.6" dur="2.8s" repeatCount="indefinite"/>
+                            </rect>
+                            <!-- Success indicators -->
+                            <circle cx="32" cy="25" r="1.5" fill="#ba68c8" opacity="0.7">
+                                <animate attributeName="opacity" values="0.7;1;0.7" dur="1.8s" repeatCount="indefinite"/>
+                                <animate attributeName="r" values="1.5;2.5;1.5" dur="1.8s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="28" cy="28" r="1" fill="#ba68c8" opacity="0.8">
+                                <animate attributeName="opacity" values="0.8;1;0.8" dur="2.2s" repeatCount="indefinite"/>
+                                <animate attributeName="r" values="1;2;1" dur="2.2s" repeatCount="indefinite"/>
+                            </circle>
+                            <!-- Impact waves -->
+                            <circle cx="20" cy="20" r="18" fill="none" stroke="#ba68c8" stroke-width="1" opacity="0.3">
+                                <animate attributeName="r" values="18;25;18" dur="4s" repeatCount="indefinite"/>
+                                <animate attributeName="opacity" values="0.3;0;0.3" dur="4s" repeatCount="indefinite"/>
+                            </circle>
+                        </svg>
                     </div>
-                    <div class="value-card">
-                        <span class="value-icon">🎯</span>
-                        <h3>Outcome Focused</h3>
-                        <p>Results matter more than process. We optimize for business outcomes and measurable value delivery.</p>
+                    <h3 style="color: #9c27b0; font-size: 1.6rem; margin-bottom: 1rem; font-weight: 700;">Outcome Focused</h3>
+                    <p style="color: white; font-size: 1.1rem; line-height: 1.7;">
+                        Results matter more than process. We optimize for business outcomes and measurable value delivery.
+                    </p>
+                </div>
+
+                <!-- Continuous Learning -->
+                <div style="background: linear-gradient(135deg, rgba(255, 87, 34, 0.15), rgba(255, 138, 101, 0.1)); padding: 2rem; border-radius: 15px; border: 2px solid #ff5722; box-shadow: 0 0 25px rgba(255, 87, 34, 0.3); transition: all 0.3s ease; position: relative; overflow: hidden;">
+                    <div style="position: absolute; top: -20px; right: -20px; width: 80px; height: 80px; background: linear-gradient(45deg, rgba(255, 87, 34, 0.2), rgba(255, 138, 101, 0.1)); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='scale(1.2) rotate(12deg)'; this.style.boxShadow='0 0 45px rgba(255, 87, 34, 0.9)'" onmouseout="this.style.transform='scale(1) rotate(0deg)'; this.style.boxShadow='none'">
+                        <svg width="40" height="40" viewBox="0 0 40 40" style="color: #ff5722;">
+                            <!-- Continuous learning cycle -->
+                            <circle cx="20" cy="20" r="12" fill="none" stroke="currentColor" stroke-width="2" opacity="0.6" stroke-dasharray="8,4">
+                                <animateTransform attributeName="transform" type="rotate" values="0 20 20;360 20 20" dur="4s" repeatCount="indefinite"/>
+                                <animate attributeName="opacity" values="0.6;1;0.6" dur="3s" repeatCount="indefinite"/>
+                            </circle>
+                            <!-- Secondary learning ring -->
+                            <circle cx="20" cy="20" r="16" fill="none" stroke="#ff8a65" stroke-width="1" opacity="0.3" stroke-dasharray="6,6">
+                                <animateTransform attributeName="transform" type="rotate" values="360 20 20;0 20 20" dur="8s" repeatCount="indefinite"/>
+                                <animate attributeName="opacity" values="0.3;0.7;0.3" dur="4s" repeatCount="indefinite"/>
+                            </circle>
+                            <!-- Learning nodes around the circle -->
+                            <circle cx="20" cy="8" r="3" fill="currentColor" opacity="0.8">
+                                <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/>
+                                <animate attributeName="r" values="3;4;3" dur="2s" repeatCount="indefinite"/>
+                                <animateTransform attributeName="transform" type="rotate" values="0 20 20;360 20 20" dur="12s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="32" cy="20" r="3" fill="currentColor" opacity="0.7">
+                                <animate attributeName="opacity" values="0.7;1;0.7" dur="2.3s" repeatCount="indefinite"/>
+                                <animate attributeName="r" values="3;4;3" dur="2.3s" repeatCount="indefinite"/>
+                                <animateTransform attributeName="transform" type="rotate" values="0 20 20;360 20 20" dur="12s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="20" cy="32" r="3" fill="currentColor" opacity="0.9">
+                                <animate attributeName="opacity" values="0.9;1;0.9" dur="1.8s" repeatCount="indefinite"/>
+                                <animate attributeName="r" values="3;4;3" dur="1.8s" repeatCount="indefinite"/>
+                                <animateTransform attributeName="transform" type="rotate" values="0 20 20;360 20 20" dur="12s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="8" cy="20" r="3" fill="currentColor" opacity="0.8">
+                                <animate attributeName="opacity" values="0.8;1;0.8" dur="2.5s" repeatCount="indefinite"/>
+                                <animate attributeName="r" values="3;4;3" dur="2.5s" repeatCount="indefinite"/>
+                                <animateTransform attributeName="transform" type="rotate" values="0 20 20;360 20 20" dur="12s" repeatCount="indefinite"/>
+                            </circle>
+                            <!-- Central brain/knowledge hub -->
+                            <circle cx="20" cy="20" r="5" fill="none" stroke="#ff8a65" stroke-width="2" opacity="0.7">
+                                <animate attributeName="r" values="5;7;5" dur="2.5s" repeatCount="indefinite"/>
+                                <animate attributeName="opacity" values="0.7;1;0.7" dur="2.5s" repeatCount="indefinite"/>
+                            </circle>
+                            <!-- Inner core -->
+                            <circle cx="20" cy="20" r="2" fill="#ff8a65" opacity="0.8">
+                                <animate attributeName="r" values="2;3;2" dur="2s" repeatCount="indefinite"/>
+                                <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/>
+                            </circle>
+                            <!-- Synapses/connections -->
+                            <line x1="20" y1="11" x2="20" y2="15" stroke="#ff8a65" stroke-width="1.5" opacity="0.6">
+                                <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite"/>
+                                <animate attributeName="stroke-width" values="1.5;3;1.5" dur="2s" repeatCount="indefinite"/>
+                            </line>
+                            <line x1="29" y1="20" x2="25" y2="20" stroke="#ff8a65" stroke-width="1.5" opacity="0.6">
+                                <animate attributeName="opacity" values="0.6;1;0.6" dur="2.3s" repeatCount="indefinite"/>
+                                <animate attributeName="stroke-width" values="1.5;3;1.5" dur="2.3s" repeatCount="indefinite"/>
+                            </line>
+                            <line x1="20" y1="29" x2="20" y2="25" stroke="#ff8a65" stroke-width="1.5" opacity="0.6">
+                                <animate attributeName="opacity" values="0.6;1;0.6" dur="1.8s" repeatCount="indefinite"/>
+                                <animate attributeName="stroke-width" values="1.5;3;1.5" dur="1.8s" repeatCount="indefinite"/>
+                            </line>
+                            <line x1="11" y1="20" x2="15" y2="20" stroke="#ff8a65" stroke-width="1.5" opacity="0.6">
+                                <animate attributeName="opacity" values="0.6;1;0.6" dur="2.5s" repeatCount="indefinite"/>
+                                <animate attributeName="stroke-width" values="1.5;3;1.5" dur="2.5s" repeatCount="indefinite"/>
+                            </line>
+                            <!-- Knowledge sparks -->
+                            <circle cx="14" cy="14" r="1" fill="#ff8a65" opacity="0.5">
+                                <animate attributeName="opacity" values="0.5;1;0.5" dur="1.5s" repeatCount="indefinite"/>
+                                <animate attributeName="r" values="1;2;1" dur="1.5s" repeatCount="indefinite"/>
+                                <animateTransform attributeName="transform" type="rotate" values="0 20 20;360 20 20" dur="10s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="26" cy="14" r="1" fill="#ff8a65" opacity="0.6">
+                                <animate attributeName="opacity" values="0.6;1;0.6" dur="1.8s" repeatCount="indefinite"/>
+                                <animate attributeName="r" values="1;2;1" dur="1.8s" repeatCount="indefinite"/>
+                                <animateTransform attributeName="transform" type="rotate" values="0 20 20;360 20 20" dur="10s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="26" cy="26" r="1" fill="#ff8a65" opacity="0.7">
+                                <animate attributeName="opacity" values="0.7;1;0.7" dur="2.1s" repeatCount="indefinite"/>
+                                <animate attributeName="r" values="1;2;1" dur="2.1s" repeatCount="indefinite"/>
+                                <animateTransform attributeName="transform" type="rotate" values="0 20 20;360 20 20" dur="10s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="14" cy="26" r="1" fill="#ff8a65" opacity="0.4">
+                                <animate attributeName="opacity" values="0.4;1;0.4" dur="1.9s" repeatCount="indefinite"/>
+                                <animate attributeName="r" values="1;2;1" dur="1.9s" repeatCount="indefinite"/>
+                                <animateTransform attributeName="transform" type="rotate" values="0 20 20;360 20 20" dur="10s" repeatCount="indefinite"/>
+                            </circle>
+                        </svg>
                     </div>
-                    <div class="value-card">
-                        <span class="value-icon">📈</span>
-                        <h3>Continuous Learning</h3>
-                        <p>We embrace experimentation, learn from failures, and continuously evolve our approaches based on evidence.</p>
-                    </div>
+                    <h3 style="color: #ff5722; font-size: 1.6rem; margin-bottom: 1rem; font-weight: 700;">Continuous Learning</h3>
+                    <p style="color: white; font-size: 1.1rem; line-height: 1.7;">
+                        We embrace experimentation, learn from failures, and continuously evolve our approaches based on evidence.
+                    </p>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Success Stories Section -->
-    <section id="stories" class="page-section">
-        <div class="content-section">
-            <!-- Watch This Space Visual -->
-            <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 60vh; text-align: center;">
-                <div style="position: relative; width: 400px; height: 400px; margin-bottom: 2rem;">
-                    <!-- Animated circles -->
-                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 300px; height: 300px; border: 3px solid #00f0ff; border-radius: 50%; animation: pulse 3s ease-in-out infinite;"></div>
-                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 200px; height: 200px; border: 2px solid #8c52ff; border-radius: 50%; animation: pulse 3s ease-in-out infinite 0.5s;"></div>
-                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100px; height: 100px; border: 2px solid #cf92ff; border-radius: 50%; animation: pulse 3s ease-in-out infinite 1s;"></div>
-                    
-                    <!-- Central icon -->
-                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 4rem; color: #00f0ff; text-shadow: 0 0 30px rgba(0, 240, 255, 0.8); animation: glow 2s ease-in-out infinite alternate;">
-                        🚀
-                    </div>
-                </div>
-                
-                <h2 style="font-size: 3rem; font-weight: 700; background: linear-gradient(45deg, #00f0ff, #8c52ff, #cf92ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 1rem; animation: textShimmer 3s ease-in-out infinite;">
-                    Watch This Space
-                </h2>
-                
-                <p style="font-size: 1.4rem; color: white; max-width: 600px; line-height: 1.6; text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);">
-                    Amazing success stories are coming soon! We're currently working with incredible organizations to deliver transformational results. Check back soon to see how we're helping businesses thrive.
+            <!-- Values Summary -->
+            <div style="background: linear-gradient(135deg, rgba(0, 240, 255, 0.1), rgba(140, 82, 255, 0.1)); padding: 3rem; border-radius: 20px; border: 2px solid #00f0ff; box-shadow: 0 0 30px rgba(0, 240, 255, 0.3); text-align: center;">
+                <h2 style="font-size: 2.2rem; color: #00f0ff; margin-bottom: 1.5rem; font-weight: 700;">Our Promise</h2>
+                <p style="font-size: 1.3rem; color: white; line-height: 1.8; max-width: 800px; margin: 0 auto;">
+                    These values aren't just words on a page—they're the foundation of every engagement, every decision, and every outcome we deliver. When you work with Agnostic Agility, you're partnering with a team that puts people first, chooses pragmatism over perfection, and builds lasting change that empowers your organization to thrive independently.
                 </p>
-                
-                <div style="margin-top: 2rem; padding: 1.5rem; background: linear-gradient(135deg, rgba(0, 240, 255, 0.1), rgba(140, 82, 255, 0.1)); border-radius: 15px; border: 2px solid #00f0ff; box-shadow: 0 0 25px rgba(0, 240, 255, 0.3);">
-                    <p style="color: #00f0ff; font-size: 1.2rem; font-weight: 600; margin-bottom: 0.5rem;">Coming Soon:</p>
-                    <p style="color: white; font-size: 1rem;">• Healthcare Technology Transformations</p>
-                    <p style="color: white; font-size: 1rem;">• Financial Services Digital Evolution</p>
-                    <p style="color: white; font-size: 1rem;">• Manufacturing Process Optimization</p>
-                    <p style="color: white; font-size: 1rem;">• And many more inspiring stories...</p>
-                </div>
             </div>
         </div>
     </section>
-
+	
     <!-- Blog/Events/Socials Section -->
     <section id="blog" class="page-section">
         <div class="content-section">
@@ -1546,369 +2258,203 @@
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services" class="page-section">
+    <!-- Success Stories Section -->
+    <section id="stories" class="page-section">
         <div class="content-section">
-            <div class="services-grid">
-                <div class="service-card">
-                    <div style="height: 150px; background: linear-gradient(45deg, rgba(0, 255, 255, 0.3), rgba(255, 0, 255, 0.2), rgba(0, 255, 0, 0.1)); border-radius: 15px; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; color: #00ffff; font-style: italic; font-size: 1rem; border: 2px solid #00ffff; box-shadow: 0 0 20px rgba(0, 255, 255, 0.5); position: relative; overflow: hidden;">
-                        <svg width="120" height="120" viewBox="0 0 120 120" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-                            <!-- Sprint cycles visualization -->
-                            <circle cx="60" cy="60" r="40" fill="none" stroke="#00ffff" stroke-width="3" opacity="0.6" stroke-dasharray="10,5">
-                                <animateTransform attributeName="transform" type="rotate" values="0 60 60;360 60 60" dur="8s" repeatCount="indefinite"/>
-                            </circle>
-                            <circle cx="60" cy="60" r="25" fill="none" stroke="#ff00ff" stroke-width="2" opacity="0.7" stroke-dasharray="8,4">
-                                <animateTransform attributeName="transform" type="rotate" values="360 60 60;0 60 60" dur="5s" repeatCount="indefinite"/>
-                            </circle>
-                            <!-- Project milestones -->
-                            <rect x="55" y="20" width="10" height="10" fill="#00ff00" opacity="0.8" rx="2">
-                                <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/>
-                            </rect>
-                            <rect x="95" y="55" width="10" height="10" fill="#ffff00" opacity="0.7" rx="2">
-                                <animate attributeName="opacity" values="0.7;1;0.7" dur="2.5s" repeatCount="indefinite"/>
-                            </rect>
-                            <rect x="55" y="95" width="10" height="10" fill="#ff6600" opacity="0.9" rx="2">
-                                <animate attributeName="opacity" values="0.9;1;0.9" dur="1.8s" repeatCount="indefinite"/>
-                            </rect>
-                            <rect x="15" y="55" width="10" height="10" fill="#ff00ff" opacity="0.6" rx="2">
-                                <animate attributeName="opacity" values="0.6;1;0.6" dur="3s" repeatCount="indefinite"/>
-                            </rect>
-                            <!-- Central hub -->
-                            <circle cx="60" cy="60" r="8" fill="#ffffff" opacity="0.9">
-                                <animate attributeName="r" values="8;12;8" dur="3s" repeatCount="indefinite"/>
-                            </circle>
-                        </svg>
+            <h1 class="section-title">Success Stories</h1>
+            <p style="text-align: center; font-size: 1.3rem; color: #00f0ff; margin-bottom: 3rem; font-style: italic;">
+                Real transformations across banking, defence, and technology sectors
+            </p>
+            
+            <div class="about-grid">
+                <div class="about-card" style="border-color: #8b38d7; box-shadow: 0 0 20px rgba(139, 56, 215, 0.3);">
+                    <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                        <div style="width: 60px; height: 60px; background: linear-gradient(45deg, #8b38d7, #cf92ff); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 1rem; font-size: 1.5rem;">🏢</div>
+                        <div>
+                            <h3 style="color: #8b38d7; margin-bottom: 0.5rem;">Accelerating Digital Transformation in a Global Enterprise</h3>
+                            <p style="color: #cf92ff; font-size: 0.9rem; margin: 0;">Multinational Technology & Manufacturing</p>
+                        </div>
                     </div>
-                    <h3>Project Agility</h3>
-                    <div class="service-summary">
-                        <p>Deliver projects faster and with higher quality through adaptive project management approaches.</p>
-                        <button class="learn-more-btn" onclick="toggleServiceDetails(this)">Learn More →</button>
+                    
+                    <div style="margin-bottom: 1.5rem;">
+                        <h4 style="color: #cf92ff; font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 600;">Customer Profile – Background & Industry</h4>
+                        <p style="margin-bottom: 1rem;">A multinational organization in the technology and manufacturing sector embarked on a large-scale modernization program, migrating core platforms and embedding agile practices across thousands of staff.</p>
                     </div>
-                    <div class="service-details" style="display: none;">
-                        <p style="font-size: 1rem; margin-bottom: 1rem;">Deliver projects faster, with higher quality, and greater stakeholder satisfaction.</p>
-                        <p style="font-size: 0.95rem; margin-bottom: 1rem;"><strong>What we offer:</strong><br>
-                        • Adaptive project management implementation<br>
-                        • Cross-functional team formation and coaching<br>
-                        • Stakeholder engagement and communication strategies<br>
-                        • Risk management and uncertainty navigation<br>
-                        • Value-driven delivery frameworks<br>
-                        • Data transformation and migration projects<br>
-                        • SAP S/4 HANA implementation and optimization<br>
-                        • Complex project end-to-end delivery management</p>
-                        <p style="font-size: 0.95rem; margin-bottom: 1rem; color: #00ffff;"><strong>Typical outcomes:</strong> 40% reduction in project delivery time, 60% improvement in stakeholder satisfaction, reduced project risk.</p>
-                        <button class="learn-more-btn" onclick="toggleServiceDetails(this)">Show Less ↑</button>
+                    
+                    <div style="margin-bottom: 1.5rem;">
+                        <h4 style="color: #cf92ff; font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 600;">Challenges Faced</h4>
+                        <p style="margin-bottom: 0.5rem;">• Siloed departments with competing priorities</p>
+                        <p style="margin-bottom: 0.5rem;">• Slow delivery cycles and frequent bottlenecks</p>
+                        <p style="margin-bottom: 1rem;">• Change fatigue and limited buy-in from business and technology leaders</p>
                     </div>
-                </div>
-                
-                <div class="service-card">
-                    <div style="height: 150px; background: linear-gradient(45deg, rgba(0, 255, 255, 0.3), rgba(255, 0, 255, 0.2), rgba(0, 255, 0, 0.1)); border-radius: 15px; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; color: #00ffff; font-style: italic; font-size: 1rem; border: 2px solid #00ffff; box-shadow: 0 0 20px rgba(0, 255, 255, 0.5); position: relative; overflow: hidden;">
-                        <svg width="120" height="120" viewBox="0 0 120 120" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-                            <!-- Process flow visualization -->
-                            <path d="M20 60 Q40 40 60 60 Q80 80 100 60" fill="none" stroke="#00ffff" stroke-width="4" opacity="0.7">
-                                <animate attributeName="stroke-dasharray" values="0,200;200,0" dur="3s" repeatCount="indefinite"/>
-                            </path>
-                            <!-- Process nodes -->
-                            <circle cx="20" cy="60" r="6" fill="#00ff00" opacity="0.8">
-                                <animate attributeName="r" values="6;10;6" dur="2s" repeatCount="indefinite"/>
-                            </circle>
-                            <circle cx="60" cy="60" r="8" fill="#ffff00" opacity="0.9">
-                                <animate attributeName="r" values="8;12;8" dur="2.5s" repeatCount="indefinite"/>
-                            </circle>
-                            <circle cx="100" cy="60" r="6" fill="#ff6600" opacity="0.8">
-                                <animate attributeName="r" values="6;10;6" dur="1.8s" repeatCount="indefinite"/>
-                            </circle>
-                            <!-- Optimization arrows -->
-                            <path d="M30 30 L50 50" stroke="#ff00ff" stroke-width="3" opacity="0.6" marker-end="url(#arrowhead)">
-                                <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite"/>
-                            </path>
-                            <path d="M70 50 L90 30" stroke="#ff00ff" stroke-width="3" opacity="0.6" marker-end="url(#arrowhead)">
-                                <animate attributeName="opacity" values="0.6;1;0.6" dur="2.2s" repeatCount="indefinite"/>
-                            </path>
-                            <!-- Arrow marker definition -->
-                            <defs>
-                                <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-                                    <polygon points="0 0, 10 3.5, 0 7" fill="#ff00ff"/>
-                                </marker>
-                            </defs>
-                            <!-- Efficiency indicators -->
-                            <rect x="10" y="80" width="20" height="8" fill="#00ff00" opacity="0.7" rx="4">
-                                <animate attributeName="width" values="20;35;20" dur="3s" repeatCount="indefinite"/>
-                            </rect>
-                            <rect x="50" y="80" width="25" height="8" fill="#ffff00" opacity="0.8" rx="4">
-                                <animate attributeName="width" values="25;40;25" dur="2.5s" repeatCount="indefinite"/>
-                            </rect>
-                            <rect x="85" y="80" width="22" height="8" fill="#ff6600" opacity="0.7" rx="4">
-                                <animate attributeName="width" values="22;37;22" dur="2.8s" repeatCount="indefinite"/>
-                            </rect>
-                        </svg>
+                    
+                    <div style="margin-bottom: 1.5rem;">
+                        <h4 style="color: #cf92ff; font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 600;">Our Approach (Step by Step)</h4>
+                        <p style="margin-bottom: 0.5rem;"><strong>Discovery & Alignment</strong> – Clarify business outcomes; align executives around value, scope, and success metrics (OKRs/KPIs).</p>
+                        <p style="margin-bottom: 0.5rem;"><strong>Current-State Mapping</strong> – Map value streams, dependencies, and bottlenecks across product, platform, data, and compliance.</p>
+                        <p style="margin-bottom: 0.5rem;"><strong>Operating Model Design</strong> – Define a framework-agnostic agile operating model (cadences, roles, governance) tailored to context.</p>
+                        <p style="margin-bottom: 0.5rem;"><strong>Pilot & Prove</strong> – Launch 2–3 cross-functional pilot teams to validate practices, tooling, and delivery cadence.</p>
+                        <p style="margin-bottom: 0.5rem;"><strong>Scale & Synchronize</strong> – Introduce lightweight portfolio governance, predictability measures, and dependency management.</p>
+                        <p style="margin-bottom: 0.5rem;"><strong>Capability Uplift</strong> – Coach leaders and teams; build internal communities of practice; establish playbooks.</p>
+                        <p style="margin-bottom: 1rem;"><strong>Measure & Iterate</strong> – Use leading/lagging indicators to refine ways of working; sunset practices that don't add value.</p>
                     </div>
-                    <h3>Process Optimization</h3>
-                    <div class="service-summary">
-                        <p>Streamline workflows and eliminate waste while maintaining focus on human experience and outcomes.</p>
-                        <button class="learn-more-btn" onclick="toggleServiceDetails(this)">Learn More →</button>
+                    
+                    <div style="margin-bottom: 1.5rem;">
+                        <h4 style="color: #cf92ff; font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 600;">Solutions Implemented</h4>
+                        <p style="margin-bottom: 0.5rem;">• Introduced a context-specific agile delivery model grounded in design thinking and systems thinking</p>
+                        <p style="margin-bottom: 0.5rem;">• Built cross-functional value-stream teams and executive steering ceremonies</p>
+                        <p style="margin-bottom: 1rem;">• Implemented OKRs/KPIs and dashboards for transparency</p>
                     </div>
-                    <div class="service-details" style="display: none;">
-                        <p style="font-size: 1rem; margin-bottom: 1rem;">Streamline workflows while maintaining focus on human experience and business outcomes.</p>
-                        <p style="font-size: 0.95rem; margin-bottom: 1rem;"><strong>What we offer:</strong><br>
-                        • Value stream mapping and analysis<br>
-                        • Waste elimination and flow optimization<br>
-                        • Automation strategy and implementation<br>
-                        • Quality management systems<br>
-                        • Continuous improvement culture development</p>
-                        <p style="font-size: 0.95rem; margin-bottom: 1rem; color: #00ffff;"><strong>Typical outcomes:</strong> 25-40% efficiency gains, reduced cycle times, improved quality metrics, higher employee satisfaction.</p>
-                        <button class="learn-more-btn" onclick="toggleServiceDetails(this)">Show Less ↑</button>
+                    
+                    <div style="background: linear-gradient(135deg, rgba(139, 56, 215, 0.2), rgba(207, 146, 255, 0.1)); padding: 1.5rem; border-radius: 10px; margin: 1rem 0; border: 1px solid #8b38d7;">
+                        <p style="color: #8b38d7; font-weight: 600; margin-bottom: 0.5rem;">Measurable Results:</p>
+                        <p style="margin-bottom: 0.5rem;">• Faster delivery cadence and predictability</p>
+                        <p style="margin-bottom: 0.5rem;">• Improved stakeholder alignment</p>
+                        <p style="margin: 0;">• A sustainable culture of agility</p>
                     </div>
                 </div>
                 
-                <div class="service-card">
-                    <div style="height: 150px; background: linear-gradient(45deg, rgba(0, 255, 255, 0.3), rgba(255, 0, 255, 0.2), rgba(0, 255, 0, 0.1)); border-radius: 15px; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; color: #00ffff; font-style: italic; font-size: 1rem; border: 2px solid #00ffff; box-shadow: 0 0 20px rgba(0, 255, 255, 0.5); position: relative; overflow: hidden;">
-                        <svg width="120" height="120" viewBox="0 0 120 120" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-                            <!-- AI brain/neural network -->
-                            <circle cx="60" cy="60" r="35" fill="none" stroke="#00ffff" stroke-width="2" opacity="0.4" stroke-dasharray="5,3">
-                                <animateTransform attributeName="transform" type="rotate" values="0 60 60;360 60 60" dur="10s" repeatCount="indefinite"/>
-                            </circle>
-                            <!-- Neural nodes -->
-                            <circle cx="60" cy="35" r="4" fill="#ff00ff" opacity="0.8">
-                                <animate attributeName="opacity" values="0.8;1;0.8" dur="1.5s" repeatCount="indefinite"/>
-                            </circle>
-                            <circle cx="85" cy="50" r="3" fill="#00ff00" opacity="0.7">
-                                <animate attributeName="opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite"/>
-                            </circle>
-                            <circle cx="85" cy="70" r="4" fill="#ffff00" opacity="0.9">
-                                <animate attributeName="opacity" values="0.9;1;0.9" dur="1.8s" repeatCount="indefinite"/>
-                            </circle>
-                            <circle cx="60" cy="85" r="3" fill="#ff6600" opacity="0.8">
-                                <animate attributeName="opacity" values="0.8;1;0.8" dur="2.2s" repeatCount="indefinite"/>
-                            </circle>
-                            <circle cx="35" cy="70" r="4" fill="#ff00ff" opacity="0.7">
-                                <animate attributeName="opacity" values="0.7;1;0.7" dur="1.7s" repeatCount="indefinite"/>
-                            </circle>
-                            <circle cx="35" cy="50" r="3" fill="#00ffff" opacity="0.8">
-                                <animate attributeName="opacity" values="0.8;1;0.8" dur="2.5s" repeatCount="indefinite"/>
-                            </circle>
-                            <!-- Central AI core -->
-                            <circle cx="60" cy="60" r="12" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.6">
-                                <animate attributeName="r" values="12;16;12" dur="3s" repeatCount="indefinite"/>
-                            </circle>
-                            <circle cx="60" cy="60" r="6" fill="#ffffff" opacity="0.9">
-                                <animate attributeName="opacity" values="0.9;1;0.9" dur="2s" repeatCount="indefinite"/>
-                            </circle>
-                            <!-- Data flow lines -->
-                            <line x1="60" y1="35" x2="60" y2="48" stroke="#ff00ff" stroke-width="2" opacity="0.5">
-                                <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
-                            </line>
-                            <line x1="85" y1="50" x2="72" y2="55" stroke="#00ff00" stroke-width="2" opacity="0.4">
-                                <animate attributeName="opacity" values="0.4;0.9;0.4" dur="2.5s" repeatCount="indefinite"/>
-                            </line>
-                            <line x1="85" y1="70" x2="72" y2="65" stroke="#ffff00" stroke-width="2" opacity="0.6">
-                                <animate attributeName="opacity" values="0.6;1;0.6" dur="1.8s" repeatCount="indefinite"/>
-                            </line>
-                            <!-- Predictive analytics waves -->
-                            <path d="M20 60 Q30 50 40 60 Q50 70 60 60" fill="none" stroke="#00ffff" stroke-width="1" opacity="0.3">
-                                <animate attributeName="opacity" values="0.3;0.8;0.3" dur="3s" repeatCount="indefinite"/>
-                            </path>
-                            <path d="M60 60 Q70 50 80 60 Q90 70 100 60" fill="none" stroke="#ff00ff" stroke-width="1" opacity="0.3">
-                                <animate attributeName="opacity" values="0.3;0.8;0.3" dur="2.5s" repeatCount="indefinite"/>
-                            </path>
-                        </svg>
+                <div class="about-card" style="border-color: #4386dd; box-shadow: 0 0 20px rgba(67, 134, 221, 0.3);">
+                    <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                        <div style="width: 60px; height: 60px; background: linear-gradient(45deg, #4386dd, #00f0ff); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 1rem; font-size: 1.5rem;">🔄</div>
+                        <div>
+                            <h3 style="color: #4386dd; margin-bottom: 0.5rem;">Unlocking Agility Without Framework Dogma</h3>
+                            <p style="color: #00f0ff; font-size: 0.9rem; margin: 0;">Cross-Industry (Healthcare, Banking, High-Tech)</p>
+                        </div>
                     </div>
-                    <h3>AI-Project Agility</h3>
-                    <div class="service-summary">
-                        <p>Leverage AI-powered tools and methodologies to accelerate project delivery and enhance decision-making.</p>
-                        <button class="learn-more-btn" onclick="toggleServiceDetails(this)">Learn More →</button>
+                    
+                    <div style="margin-bottom: 1.5rem;">
+                        <h4 style="color: #00f0ff; font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 600;">Customer Profile – Background & Industry</h4>
+                        <p style="margin-bottom: 1rem;">Organizations from healthcare, banking, and high-tech approached Kiranmaye seeking faster innovation, higher team performance, and better stakeholder satisfaction.</p>
                     </div>
-                    <div class="service-details" style="display: none;">
-                        <p style="font-size: 1rem; margin-bottom: 1rem;">Harness the power of AI to transform project delivery and strategic decision-making capabilities.</p>
-                        <p style="font-size: 0.95rem; margin-bottom: 1rem;"><strong>What we offer:</strong><br>
-                        • AI-powered project analytics and insights<br>
-                        • Intelligent resource allocation and planning<br>
-                        • Automated risk detection and mitigation<br>
-                        • Predictive project performance modeling<br>
-                        • AI-enhanced stakeholder communication</p>
-                        <p style="font-size: 0.95rem; margin-bottom: 1rem; color: #00ffff;"><strong>Typical outcomes:</strong> 50% faster project planning, 35% improvement in resource utilization, enhanced predictive accuracy.</p>
-                        <button class="learn-more-btn" onclick="toggleServiceDetails(this)">Show Less ↑</button>
+                    
+                    <div style="margin-bottom: 1.5rem;">
+                        <h4 style="color: #00f0ff; font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 600;">Challenges Faced</h4>
+                        <p style="margin-bottom: 0.5rem;">• One-size-fits-all frameworks failing in diverse, regulated contexts</p>
+                        <p style="margin-bottom: 0.5rem;">• Slow time-to-market and fractured collaboration</p>
+                        <p style="margin-bottom: 1rem;">• Low engagement and resistance to change</p>
+                    </div>
+                    
+                    <div style="margin-bottom: 1.5rem;">
+                        <h4 style="color: #00f0ff; font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 600;">Our Approach (Step by Step)</h4>
+                        <p style="margin-bottom: 0.5rem;"><strong>Context Assessment</strong> – Diagnose constraints (regulatory, cultural, technical) and desired business outcomes.</p>
+                        <p style="margin-bottom: 0.5rem;"><strong>Hypothesis-Driven Plan</strong> – Co-create a transformation hypothesis and short, testable interventions.</p>
+                        <p style="margin-bottom: 0.5rem;"><strong>Team Enablement</strong> – Provide role-based coaching; clarify decision rights; set working agreements.</p>
+                        <p style="margin-bottom: 0.5rem;"><strong>Flow Optimization</strong> – Apply value stream mapping; reduce WIP; tighten feedback loops; introduce automated quality gates.</p>
+                        <p style="margin-bottom: 0.5rem;"><strong>AI-Assisted Planning</strong> – Use AI where appropriate to improve backlog refinement, forecasting, and risk scanning.</p>
+                        <p style="margin-bottom: 0.5rem;"><strong>Leadership Enablement</strong> – Train leaders on outcome-driven governance and funding models aligned to value.</p>
+                        <p style="margin-bottom: 1rem;"><strong>Scale What Works</strong> – Replicate successful practices; codify playbooks; retire non-value practices.</p>
+                    </div>
+                    
+                    <div style="margin-bottom: 1.5rem;">
+                        <h4 style="color: #00f0ff; font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 600;">Solutions Implemented</h4>
+                        <p style="margin-bottom: 0.5rem;">• Delivered human-first, framework-agnostic transformations via targeted interventions</p>
+                        <p style="margin-bottom: 0.5rem;">• Combined team coaching, value-stream redesign, and leadership workshops</p>
+                        <p style="margin-bottom: 1rem;">• Introduced AI-supported planning and decision support where it added clear value</p>
+                    </div>
+                    
+                    <div style="background: linear-gradient(135deg, rgba(67, 134, 221, 0.2), rgba(0, 240, 255, 0.1)); padding: 1.5rem; border-radius: 10px; margin: 1rem 0; border: 1px solid #4386dd;">
+                        <p style="color: #4386dd; font-weight: 600; margin-bottom: 0.5rem;">Measurable Results:</p>
+                        <p style="margin-bottom: 0.5rem;">• Technology client: ~40% faster time-to-market and higher stakeholder satisfaction</p>
+                        <p style="margin-bottom: 0.5rem;">• Healthcare client: scaled from startup to enterprise while reducing delivery cycles by ~50%</p>
+                        <p style="margin: 0;">• Financial services client: launched digital solutions ~3× faster while maintaining compliance</p>
                     </div>
                 </div>
                 
-                <div class="service-card">
-                    <div style="height: 150px; background: linear-gradient(45deg, rgba(0, 255, 255, 0.3), rgba(255, 0, 255, 0.2), rgba(0, 255, 0, 0.1)); border-radius: 15px; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; color: #00ffff; font-style: italic; font-size: 1rem; border: 2px solid #00ffff; box-shadow: 0 0 20px rgba(0, 255, 255, 0.5); position: relative; overflow: hidden;">
-                        <svg width="120" height="120" viewBox="0 0 120 120" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-                            <!-- People figures -->
-                            <g transform="translate(30, 40)">
-                                <circle cx="0" cy="0" r="8" fill="#00ffff" opacity="0.8">
-                                    <animate attributeName="r" values="8;12;8" dur="2s" repeatCount="indefinite"/>
-                                </circle>
-                                <rect x="-6" y="8" width="12" height="20" fill="#00ffff" opacity="0.7" rx="6"/>
-                                <!-- Growth arrow -->
-                                <path d="M0 -15 L-3 -10 L3 -10 Z" fill="#00ff00" opacity="0.8">
-                                    <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/>
-                                </path>
-                            </g>
-                            
-                            <g transform="translate(60, 35)">
-                                <circle cx="0" cy="0" r="10" fill="#ff00ff" opacity="0.9">
-                                    <animate attributeName="r" values="10;14;10" dur="2.5s" repeatCount="indefinite"/>
-                                </circle>
-                                <rect x="-7" y="10" width="14" height="22" fill="#ff00ff" opacity="0.8" rx="7"/>
-                                <!-- Growth arrow -->
-                                <path d="M0 -18 L-4 -12 L4 -12 Z" fill="#00ff00" opacity="0.9">
-                                    <animate attributeName="opacity" values="0.9;1;0.9" dur="1.8s" repeatCount="indefinite"/>
-                                </path>
-                            </g>
-                            
-                            <g transform="translate(90, 42)">
-                                <circle cx="0" cy="0" r="7" fill="#ffff00" opacity="0.8">
-                                    <animate attributeName="r" values="7;11;7" dur="2.2s" repeatCount="indefinite"/>
-                                </circle>
-                                <rect x="-5" y="7" width="10" height="18" fill="#ffff00" opacity="0.7" rx="5"/>
-                                <!-- Growth arrow -->
-                                <path d="M0 -14 L-3 -9 L3 -9 Z" fill="#00ff00" opacity="0.8">
-                                    <animate attributeName="opacity" values="0.8;1;0.8" dur="2.3s" repeatCount="indefinite"/>
-                                </path>
-                            </g>
-                            
-                            <!-- Skill development rings -->
-                            <circle cx="60" cy="75" r="25" fill="none" stroke="#00ff00" stroke-width="2" opacity="0.4" stroke-dasharray="8,4">
-                                <animateTransform attributeName="transform" type="rotate" values="0 60 75;360 60 75" dur="6s" repeatCount="indefinite"/>
-                            </circle>
-                            <circle cx="60" cy="75" r="15" fill="none" stroke="#ff6600" stroke-width="2" opacity="0.5" stroke-dasharray="6,3">
-                                <animateTransform attributeName="transform" type="rotate" values="360 60 75;0 60 75" dur="4s" repeatCount="indefinite"/>
-                            </circle>
-                            
-                            <!-- Connection lines showing collaboration -->
-                            <line x1="30" y1="55" x2="60" y2="50" stroke="#ffffff" stroke-width="2" opacity="0.3">
-                                <animate attributeName="opacity" values="0.3;0.8;0.3" dur="3s" repeatCount="indefinite"/>
-                            </line>
-                            <line x1="60" y1="50" x2="90" y2="55" stroke="#ffffff" stroke-width="2" opacity="0.3">
-                                <animate attributeName="opacity" values="0.3;0.8;0.3" dur="2.5s" repeatCount="indefinite"/>
-                            </line>
-                            
-                            <!-- Mentoring/coaching symbol -->
-                            <path d="M45 85 Q60 70 75 85" fill="none" stroke="#ff00ff" stroke-width="3" opacity="0.6">
-                                <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite"/>
-                            </path>
-                        </svg>
+                <div class="about-card" style="border-color: #ff6b6b; box-shadow: 0 0 20px rgba(255, 107, 107, 0.3);">
+                    <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                        <div style="width: 60px; height: 60px; background: linear-gradient(45deg, #ff6b6b, #ff9a9e); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 1rem; font-size: 1.5rem;">🏦</div>
+                        <div>
+                            <h3 style="color: #ff6b6b; margin-bottom: 0.5rem;">Driving Agile Compliance in Financial Services</h3>
+                            <p style="color: #ff9a9e; font-size: 0.9rem; margin: 0;">Major Financial Services Organization</p>
+                        </div>
                     </div>
-                    <h3>People Development</h3>
-                    <div class="service-summary">
-                        <p>Build high-performing, adaptive teams through coaching, mentoring, and capability development.</p>
-                        <button class="learn-more-btn" onclick="toggleServiceDetails(this)">Learn More →</button>
+                    
+                    <div style="margin-bottom: 1.5rem;">
+                        <h4 style="color: #ff9a9e; font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 600;">Customer Profile – Background & Industry</h4>
+                        <p style="margin-bottom: 1rem;">A major financial services organization faced challenging regulatory deadlines while modernizing its digital estate.</p>
                     </div>
-                    <div class="service-details" style="display: none;">
-                        <p style="font-size: 1rem; margin-bottom: 1rem;">Develop high-performing, adaptive teams that can thrive in any environment.</p>
-                        <p style="font-size: 0.95rem; margin-bottom: 1rem;"><strong>What we offer:</strong><br>
-                        • Individual and team coaching programs<br>
-                        • Leadership development pathways<br>
-                        • Skills assessment and development planning<br>
-                        • Mentoring and knowledge transfer<br>
-                        • Performance improvement strategies</p>
-                        <p style="font-size: 0.95rem; margin-bottom: 1rem; color: #00ffff;"><strong>Typical outcomes:</strong> 45% improvement in team performance, increased retention rates, enhanced leadership capabilities.</p>
-                        <button class="learn-more-btn" onclick="toggleServiceDetails(this)">Show Less ↑</button>
+                    
+                    <div style="margin-bottom: 1.5rem;">
+                        <h4 style="color: #ff9a9e; font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 600;">Challenges Faced</h4>
+                        <p style="margin-bottom: 0.5rem;">• Complex compliance requirements with fixed timelines</p>
+                        <p style="margin-bottom: 0.5rem;">• Traditional delivery approaches limiting responsiveness</p>
+                        <p style="margin-bottom: 1rem;">• Limited visibility into release performance and quality</p>
+                    </div>
+                    
+                    <div style="margin-bottom: 1.5rem;">
+                        <h4 style="color: #ff9a9e; font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 600;">Our Approach (Step by Step)</h4>
+                        <p style="margin-bottom: 0.5rem;"><strong>Regulatory Decomposition</strong> – Translate regulations into clear, testable requirements and acceptance criteria.</p>
+                        <p style="margin-bottom: 0.5rem;"><strong>Risk-Prioritized Backlog</strong> – Build an integrated compliance+product backlog, prioritized by business risk and value.</p>
+                        <p style="margin-bottom: 0.5rem;"><strong>Dual-Track Delivery</strong> – Run discovery (policy, controls, data lineage) alongside delivery (build, test, release).</p>
+                        <p style="margin-bottom: 0.5rem;"><strong>Controls by Design</strong> – Embed controls and auditability into pipelines (traceability, segregation of duties, evidence).</p>
+                        <p style="margin-bottom: 0.5rem;"><strong>Quality & Readiness Gates</strong> – Establish definition of ready/done with compliance checkpoints and automated reporting.</p>
+                        <p style="margin-bottom: 0.5rem;"><strong>Release Orchestration</strong> – Coordinate change, testing, and cutovers with clear go/no-go criteria and rollback plans.</p>
+                        <p style="margin-bottom: 1rem;"><strong>Transparency & Governance</strong> – Provide real-time dashboards for executives; run outcome-based steering.</p>
+                    </div>
+                    
+                    <div style="margin-bottom: 1.5rem;">
+                        <h4 style="color: #ff9a9e; font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 600;">Solutions Implemented</h4>
+                        <p style="margin-bottom: 0.5rem;">• Blended agile delivery with regulatory rigor across cross-functional teams</p>
+                        <p style="margin-bottom: 0.5rem;">• Implemented real-time dashboards for flow, risk, and compliance evidence</p>
+                        <p style="margin-bottom: 1rem;">• Orchestrated testing and releases to meet fixed deadlines without sacrificing quality</p>
+                    </div>
+                    
+                    <div style="background: linear-gradient(135deg, rgba(255, 107, 107, 0.2), rgba(255, 154, 158, 0.1)); padding: 1.5rem; border-radius: 10px; margin: 1rem 0; border: 1px solid #ff6b6b;">
+                        <p style="color: #ff6b6b; font-weight: 600; margin-bottom: 0.5rem;">Measurable Results:</p>
+                        <p style="margin-bottom: 0.5rem;">• Compliance objectives met on time while sustaining delivery velocity</p>
+                        <p style="margin-bottom: 0.5rem;">• Faster, data-driven decision-making and improved audit readiness</p>
+                        <p style="margin: 0;">• More predictable releases and strengthened stakeholder trust</p>
                     </div>
                 </div>
                 
-                <div class="service-card">
-                    <div style="height: 150px; background: linear-gradient(45deg, rgba(0, 255, 255, 0.3), rgba(255, 0, 255, 0.2), rgba(0, 255, 0, 0.1)); border-radius: 15px; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; color: #00ffff; font-style: italic; font-size: 1rem; border: 2px solid #00ffff; box-shadow: 0 0 20px rgba(0, 255, 255, 0.5); position: relative; overflow: hidden;">
-                        <svg width="120" height="120" viewBox="0 0 120 120" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-                            <!-- Knowledge transfer visualization -->
-                            <!-- Central knowledge hub -->
-                            <circle cx="60" cy="60" r="20" fill="none" stroke="#00ffff" stroke-width="3" opacity="0.6">
-                                <animate attributeName="r" values="20;25;20" dur="3s" repeatCount="indefinite"/>
-                            </circle>
-                            
-                            <!-- Book/learning symbol in center -->
-                            <rect x="52" y="52" width="16" height="16" fill="#ffffff" opacity="0.8" rx="2">
-                                <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/>
-                            </rect>
-                            <line x1="55" y1="55" x2="65" y2="55" stroke="#00ffff" stroke-width="1"/>
-                            <line x1="55" y1="58" x2="65" y2="58" stroke="#00ffff" stroke-width="1"/>
-                            <line x1="55" y1="61" x2="65" y2="61" stroke="#00ffff" stroke-width="1"/>
-                            <line x1="55" y1="64" x2="62" y2="64" stroke="#00ffff" stroke-width="1"/>
-                            
-                            <!-- Learning participants around the circle -->
-                            <g transform="translate(60, 25)">
-                                <circle cx="0" cy="0" r="6" fill="#ff00ff" opacity="0.8">
-                                    <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/>
-                                </circle>
-                                <rect x="-4" y="6" width="8" height="12" fill="#ff00ff" opacity="0.7" rx="4"/>
-                            </g>
-                            
-                            <g transform="translate(95, 60)">
-                                <circle cx="0" cy="0" r="6" fill="#00ff00" opacity="0.8">
-                                    <animate attributeName="opacity" values="0.8;1;0.8" dur="2.2s" repeatCount="indefinite"/>
-                                </circle>
-                                <rect x="-4" y="6" width="8" height="12" fill="#00ff00" opacity="0.7" rx="4"/>
-                            </g>
-                            
-                            <g transform="translate(60, 95)">
-                                <circle cx="0" cy="0" r="6" fill="#ffff00" opacity="0.8">
-                                    <animate attributeName="opacity" values="0.8;1;0.8" dur="1.8s" repeatCount="indefinite"/>
-                                </circle>
-                                <rect x="-4" y="6" width="8" height="12" fill="#ffff00" opacity="0.7" rx="4"/>
-                            </g>
-                            
-                            <g transform="translate(25, 60)">
-                                <circle cx="0" cy="0" r="6" fill="#ff6600" opacity="0.8">
-                                    <animate attributeName="opacity" values="0.8;1;0.8" dur="2.5s" repeatCount="indefinite"/>
-                                </circle>
-                                <rect x="-4" y="6" width="8" height="12" fill="#ff6600" opacity="0.7" rx="4"/>
-                            </g>
-                            
-                            <!-- Knowledge flow arrows -->
-                            <path d="M60 40 L60 45" stroke="#ffffff" stroke-width="2" opacity="0.6" marker-end="url(#arrow1)">
-                                <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite"/>
-                            </path>
-                            <path d="M80 60 L75 60" stroke="#ffffff" stroke-width="2" opacity="0.6" marker-end="url(#arrow1)">
-                                <animate attributeName="opacity" values="0.6;1;0.6" dur="2.2s" repeatCount="indefinite"/>
-                            </path>
-                            <path d="M60 80 L60 75" stroke="#ffffff" stroke-width="2" opacity="0.6" marker-end="url(#arrow1)">
-                                <animate attributeName="opacity" values="0.6;1;0.6" dur="1.8s" repeatCount="indefinite"/>
-                            </path>
-                            <path d="M40 60 L45 60" stroke="#ffffff" stroke-width="2" opacity="0.6" marker-end="url(#arrow1)">
-                                <animate attributeName="opacity" values="0.6;1;0.6" dur="2.5s" repeatCount="indefinite"/>
-                            </path>
-                            
-                            <!-- Arrow marker -->
-                            <defs>
-                                <marker id="arrow1" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
-                                    <polygon points="0 0, 8 3, 0 6" fill="#ffffff"/>
-                                </marker>
-                            </defs>
-                            
-                            <!-- Certification badges -->
-                            <circle cx="85" cy="35" r="8" fill="#00ff00" opacity="0.7">
-                                <animate attributeName="opacity" values="0.7;1;0.7" dur="3s" repeatCount="indefinite"/>
-                            </circle>
-                            <text x="85" y="38" text-anchor="middle" fill="#ffffff" font-size="8" font-weight="bold">✓</text>
-                            
-                            <circle cx="35" cy="35" r="8" fill="#ffff00" opacity="0.7">
-                                <animate attributeName="opacity" values="0.7;1;0.7" dur="2.8s" repeatCount="indefinite"/>
-                            </circle>
-                            <text x="35" y="38" text-anchor="middle" fill="#000000" font-size="8" font-weight="bold">★</text>
-                        </svg>
+                <div class="about-card" style="border-color: #4caf50; box-shadow: 0 0 20px rgba(76, 175, 80, 0.3);">
+                    <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                        <div style="width: 60px; height: 60px; background: linear-gradient(45deg, #4caf50, #81c784); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 1rem; font-size: 1.5rem;">🚄</div>
+                        <div>
+                            <h3 style="color: #4caf50; margin-bottom: 0.5rem;">Innovating in Defence & Transport: Driverless Trains</h3>
+                            <p style="color: #81c784; font-size: 0.9rem; margin: 0;">Defence & Transport Systems Supplier</p>
+                        </div>
                     </div>
-                    <h3>Training and Development</h3>
-                    <div class="service-summary">
-                        <p>Build internal capability with our comprehensive training programs designed for lasting impact.</p>
-                        <button class="learn-more-btn" onclick="toggleServiceDetails(this)">Learn More →</button>
+                    
+                    <div style="margin-bottom: 1.5rem;">
+                        <h4 style="color: #81c784; font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 600;">Customer Profile – Background & Industry</h4>
+                        <p style="margin-bottom: 1rem;">A defence and transport systems supplier was building driverless train control and monitoring systems for a major project, operating in a high-safety, regulated industry.</p>
                     </div>
-                    <div class="service-details" style="display: none;">
-                        <p style="font-size: 1rem; margin-bottom: 1rem;">Comprehensive training programs that build lasting internal capability and expertise.</p>
-                        <p style="font-size: 0.95rem; margin-bottom: 1rem;"><strong>What we offer:</strong><br>
-                        • Agile and project management certifications<br>
-                        • Custom workshop design and delivery<br>
-                        • Train-the-trainer programs<br>
-                        • Digital learning platform development<br>
-                        • Competency frameworks and assessments</p>
-                        <p style="font-size: 0.95rem; margin-bottom: 1rem; color: #00ffff;"><strong>Typical outcomes:</strong> 90% certification success rates, improved team confidence, sustainable skill development.</p>
-                        <button class="learn-more-btn" onclick="toggleServiceDetails(this)">Show Less ↑</button>
+                    
+                    <div style="margin-bottom: 1.5rem;">
+                        <h4 style="color: #81c784; font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 600;">Challenges Faced</h4>
+                        <p style="margin-bottom: 0.5rem;">• Extremely complex safety-critical requirements with no room for error</p>
+                        <p style="margin-bottom: 0.5rem;">• Hardware, software, and systems engineering teams working in silos</p>
+                        <p style="margin-bottom: 1rem;">• Long integration cycles that delayed testing and slowed progress</p>
+                    </div>
+                    
+                    <div style="margin-bottom: 1.5rem;">
+                        <h4 style="color: #81c784; font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 600;">Our Approach (Step by Step)</h4>
+                        <p style="margin-bottom: 0.5rem;"><strong>Requirements Harmonisation</strong> – Brought software, hardware, and systems teams together to jointly refine safety-critical user stories.</p>
+                        <p style="margin-bottom: 0.5rem;"><strong>Agile Pilot Teams</strong> – Established small cross-functional squads integrating system engineers, testers, and developers.</p>
+                        <p style="margin-bottom: 0.5rem;"><strong>Incremental Builds</strong> – Shifted from long-cycle releases to short, iterative increments with frequent integration.</p>
+                        <p style="margin-bottom: 0.5rem;"><strong>Continuous Testing</strong> – Embedded automated testing in simulation environments to validate driverless controls early.</p>
+                        <p style="margin-bottom: 0.5rem;"><strong>Stakeholder Reviews</strong> – Ran frequent demos with project sponsors, engineers, and safety authorities to maintain transparency.</p>
+                        <p style="margin-bottom: 0.5rem;"><strong>Culture Change</strong> – Trained leaders and engineers to adopt collaborative, feedback-driven practices.</p>
+                        <p style="margin-bottom: 1rem;"><strong>Scaling</strong> – Expanded practices across all delivery streams once pilots proved value.</p>
+                    </div>
+                    
+                    <div style="margin-bottom: 1.5rem;">
+                        <h4 style="color: #81c784; font-size: 1.1rem; margin-bottom: 0.5rem; font-weight: 600;">Solutions Implemented</h4>
+                        <p style="margin-bottom: 0.5rem;">• Introduced agile and iterative engineering practices in a traditionally waterfall, compliance-heavy environment</p>
+                        <p style="margin-bottom: 0.5rem;">• Unified siloed teams to co-deliver functionality in shorter cycles</p>
+                        <p style="margin-bottom: 1rem;">• Brought transparency through continuous demos and inspection with safety stakeholders</p>
+                    </div>
+                    
+                    <div style="background: linear-gradient(135deg, rgba(76, 175, 80, 0.2), rgba(129, 199, 132, 0.1)); padding: 1.5rem; border-radius: 10px; margin: 1rem 0; border: 1px solid #4caf50;">
+                        <p style="color: #4caf50; font-weight: 600; margin-bottom: 0.5rem;">Measurable Results:</p>
+                        <p style="margin-bottom: 0.5rem;">• Integration time reduced significantly, leading to earlier discovery of safety-critical issues</p>
+                        <p style="margin-bottom: 0.5rem;">• Faster cycle of feedback from engineers and safety authorities improved confidence in delivery</p>
+                        <p style="margin: 0;">• Stronger culture of collaboration across engineering disciplines</p>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-	  <!-- Contact Section -->
+<!-- Contact Section -->
     <section id="contact" class="page-section">
         <div class="content-section">
             <h1 class="section-title">Contact Us</h1>
@@ -2017,85 +2563,5 @@
             </div>
         </div>
     </section>
-    <script>
-        // Navigation functionality
-        function showSection(sectionName) {
-            // Hide all sections
-            const sections = document.querySelectorAll('.page-section');
-            sections.forEach(section => {
-                section.classList.remove('active');
-            });
-            
-            // Show selected section
-            document.getElementById(sectionName).classList.add('active');
-            
-            // Section header is now hidden, no need to update title
-            
-            // Update active nav link
-            const navLinks = document.querySelectorAll('.nav-link');
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-            });
-            event.target.classList.add('active');
-            
-            // Close mobile menu if open
-            document.getElementById('navMenu').classList.remove('active');
-            document.querySelector('.mobile-menu-toggle').classList.remove('active');
-        }
-
-        // Mobile menu toggle
-        function toggleMobileMenu() {
-            const navMenu = document.getElementById('navMenu');
-            const mobileToggle = document.querySelector('.mobile-menu-toggle');
-            
-            navMenu.classList.toggle('active');
-            mobileToggle.classList.toggle('active');
-        }
-
-        // Service details toggle functionality
-        function toggleServiceDetails(button) {
-            const serviceCard = button.closest('.service-card');
-            const summary = serviceCard.querySelector('.service-summary');
-            const details = serviceCard.querySelector('.service-details');
-            
-            if (details.style.display === 'none') {
-                // Show details
-                summary.style.display = 'none';
-                details.style.display = 'block';
-            } else {
-                // Show summary
-                details.style.display = 'none';
-                summary.style.display = 'block';
-            }
-        }
-
-        // Form submission is now handled by Netlify
-        // No custom JavaScript needed for form handling
-
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', function(event) {
-            const navMenu = document.getElementById('navMenu');
-            const mobileToggle = document.querySelector('.mobile-menu-toggle');
-            
-            if (!navMenu.contains(event.target) && !mobileToggle.contains(event.target)) {
-                navMenu.classList.remove('active');
-            }
-        });
-
-        // Smooth scrolling for better UX
-        document.addEventListener('DOMContentLoaded', function() {
-            // Add smooth transitions
-            document.body.style.transition = 'all 0.3s ease';
-            
-            // Initialize with home section active
-            document.getElementById('home').classList.add('active');
-            
-            // Set home button as active on page load
-            const homeLink = document.querySelector('.nav-link[onclick="showSection(\'home\')"]');
-            if (homeLink) {
-                homeLink.classList.add('active');
-            }
-        });
-    </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96e085c7911aeb13',t:'MTc1NTAwNzQ3NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
-</html>
+				
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'977dc315d7fcf837',t:'MTc1NjY1NjI0OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
