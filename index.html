@@ -1229,11 +1229,12 @@
                     // Form will be handled by Netlify, but we can add client-side validation here if needed
                     const name = document.getElementById('name').value;
                     const email = document.getElementById('email').value;
+					const phone = document.getElementById('phone').value;
                     const message = document.getElementById('challenge').value;
                     
-                    if (!name || !email || !message) {
+                    if (!name || !email || !message || !phone) {
                         e.preventDefault();
-                        alert('Please fill in all required fields.');
+                        alert('Please fill in Name, Phone number, Email and a message as minimum required fields for form submission.');
                         return false;
                     }
                     
@@ -1243,6 +1244,15 @@
                         e.preventDefault();
                         alert('Please enter a valid email address.');
                         return false;
+                    }
+					// Basic phone validation (optional field)
+                    if (phone && phone.trim() !== '') {
+                        const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
+                        if (!phoneRegex.test(phone.replace(/[\s\-\(\)]/g, ''))) {
+                            e.preventDefault();
+                            alert('Please enter a valid phone number.');
+                            return false;
+                        }
                     }
                 });
             }
@@ -2530,6 +2540,13 @@
                         </div>
                         
                         <div class="form-group">
+                            <label for="phone">Phone number<br/>
+							<small>Format +<country code> <10-digit number> eg. for UK +441234567891</small>
+							</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+						
+						<div class="form-group">
                             <label for="role">Your Role</label>
                             <input type="text" id="role" name="role" placeholder="e.g., CEO, Project Manager, Transformation Lead">
                         </div>
