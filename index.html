@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agnostic Agility - Agility without dogma, delivery without burnout</title>
+    <title>Agnostic Agility - Coming Soon</title>
     <style>
         body {
             box-sizing: border-box;
@@ -280,6 +280,11 @@
             width: 100%;
             height: 300px;
             overflow: hidden;
+            transition: height 0.3s ease;
+        }
+
+        .banner.video-loaded {
+            height: auto;
         }
 
         .banner-video-container {
@@ -1680,10 +1685,7 @@
         <nav class="container">
             <div class="logo">
                 <div class="logo-space">
-                        <video width="100" height="100" autoplay muted loop playsinline>
-	                	<source src="AgnosticAgilityLogo-MP4-06102025.mp4" type="video/mp4">
-        	        	Your browser does not support the video tag.
-                		</video>
+                    Logo<br>Space
                 </div>
                 <span>Agnostic Agility</span>
             </div>
@@ -1729,6 +1731,12 @@
                 <video class="banner-video" autoplay muted loop playsinline>
                     <source src="AgnosticAgilityLogo-MP4-06102025.mp4" type="video/mp4">
                 </video>
+                <div class="banner-video-placeholder">
+                    <div class="banner-video-placeholder-text">
+                        🎬 MP4 Video Banner<br>
+                        <small>Replace "your-video.mp4" with your MP4 file path</small>
+                    </div>
+                </div>
                 <div class="banner-overlay">
                     <div class="container">
                         <div class="banner-content">
@@ -2526,19 +2534,48 @@
         document.addEventListener('DOMContentLoaded', function() {
             const video = document.querySelector('.banner-video');
             const placeholder = document.querySelector('.banner-video-placeholder');
+            const banner = document.querySelector('.banner');
             
             if (video) {
-                // Hide placeholder when video loads successfully
-                video.addEventListener('loadeddata', function() {
-                    if (placeholder) {
-                        placeholder.style.display = 'none';
+                // Function to resize banner to video dimensions
+                function resizeBannerToVideo() {
+                    if (video.videoWidth && video.videoHeight) {
+                        const containerWidth = banner.offsetWidth;
+                        const videoAspectRatio = video.videoWidth / video.videoHeight;
+                        const newHeight = containerWidth / videoAspectRatio;
+                        
+                        banner.style.height = newHeight + 'px';
+                        banner.classList.add('video-loaded');
+                        
+                        if (placeholder) {
+                            placeholder.style.display = 'none';
+                        }
                     }
+                }
+                
+                // Hide placeholder and resize when video loads successfully
+                video.addEventListener('loadedmetadata', function() {
+                    resizeBannerToVideo();
+                });
+                
+                video.addEventListener('loadeddata', function() {
+                    resizeBannerToVideo();
                 });
                 
                 // Show placeholder if video fails to load
                 video.addEventListener('error', function() {
                     if (placeholder) {
                         placeholder.style.display = 'flex';
+                    }
+                    // Reset to default height if video fails
+                    banner.style.height = '300px';
+                    banner.classList.remove('video-loaded');
+                });
+                
+                // Resize banner when window is resized
+                window.addEventListener('resize', function() {
+                    if (banner.classList.contains('video-loaded')) {
+                        resizeBannerToVideo();
                     }
                 });
                 
@@ -2551,5 +2588,5 @@
             }
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98a70073e6eab346',t:'MTc1OTc3MzAzMy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98a71c2fa45bb346',t:'MTc1OTc3NDE2OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
