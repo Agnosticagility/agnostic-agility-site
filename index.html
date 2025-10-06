@@ -44,6 +44,23 @@
             font-size: 24px;
             font-weight: 700;
             color: #011037;
+            flex: 0 0 auto;
+            min-width: 200px;
+        }
+
+        .logo-space {
+            width: 60px;
+            height: 60px;
+            border: 2px dashed rgba(85, 59, 132, 0.3);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.5);
+            font-size: 12px;
+            color: #553B84;
+            text-align: center;
+            line-height: 1.2;
         }
 
         .logo-icon {
@@ -257,16 +274,21 @@
             color: #94598F;
         }
 
-        /* Hero Section */
-        .hero {
-            text-align: center;
-            padding: 80px 0 120px;
+        /* Banner Section */
+        .banner {
             position: relative;
+            width: 100%;
+            height: 300px;
             overflow: hidden;
-            background: linear-gradient(135deg, rgba(11, 30, 73, 0.02), rgba(1, 16, 55, 0.02));
         }
 
-        .hero-video {
+        .banner-video-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .banner-video {
             position: absolute;
             top: 0;
             left: 0;
@@ -274,41 +296,22 @@
             height: 100%;
             object-fit: cover;
             z-index: 1;
-            opacity: 0.3;
         }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 30% 20%, rgba(148, 89, 143, 0.15) 0%, transparent 50%),
-                        radial-gradient(circle at 70% 80%, rgba(101, 95, 167, 0.15) 0%, transparent 50%);
-            pointer-events: none;
-            z-index: 2;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 3;
-        }
-
-        .video-placeholder {
+        .banner-video-placeholder {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(11, 30, 73, 0.05), rgba(50, 62, 138, 0.05));
+            background: linear-gradient(135deg, rgba(11, 30, 73, 0.1), rgba(50, 62, 138, 0.1));
             display: flex;
             align-items: center;
             justify-content: center;
             z-index: 1;
         }
 
-        .video-placeholder-text {
+        .banner-video-placeholder-text {
             color: #553B84;
             font-size: 1.2rem;
             font-weight: 600;
@@ -319,57 +322,37 @@
             border: 2px dashed rgba(85, 59, 132, 0.3);
         }
 
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            margin-bottom: 20px;
-            line-height: 1.1;
-            color: #011037;
+        .banner-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(1, 16, 55, 0.4);
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
         }
 
-        .tagline {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: #553B84;
-            font-weight: 600;
+        .banner-content {
+            padding-right: 40px;
         }
 
-        .subtitle {
-            font-size: 1.2rem;
-            margin-bottom: 40px;
-            color: #452C54;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .coming-soon-badge {
-            display: inline-block;
-            background: linear-gradient(135deg, #323E8A, #553B84);
-            color: #FFFFFF;
-            padding: 12px 30px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            margin-bottom: 40px;
-            box-shadow: 0 10px 30px rgba(50, 62, 138, 0.3);
-        }
-
-        .contact-btn {
-            display: inline-block;
+        .banner-contact-btn {
             background: linear-gradient(135deg, #94598F, #655FA7);
             color: #FFFFFF;
-            text-decoration: none;
+            border: none;
             padding: 15px 40px;
             border-radius: 50px;
             font-weight: 600;
             font-size: 1.1rem;
-            margin-top: 30px;
+            cursor: pointer;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             box-shadow: 0 10px 30px rgba(148, 89, 143, 0.3);
         }
 
-        .contact-btn:hover {
+        .banner-contact-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 15px 40px rgba(148, 89, 143, 0.4);
         }
@@ -1382,18 +1365,6 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .tagline {
-                font-size: 1.2rem;
-            }
-
-            .subtitle {
-                font-size: 1rem;
-            }
-
             .nav-links {
                 display: none;
             }
@@ -1424,12 +1395,27 @@
             }
 
             .logo {
-                font-size: 20px;
+                font-size: 18px;
+                min-width: 150px;
             }
 
-            .logo-icon {
-                width: 35px;
-                height: 35px;
+            .logo-space {
+                width: 50px;
+                height: 50px;
+                font-size: 10px;
+            }
+
+            .banner {
+                height: 200px;
+            }
+
+            .banner-content {
+                padding-right: 20px;
+            }
+
+            .banner-contact-btn {
+                padding: 12px 30px;
+                font-size: 1rem;
             }
         }
 
@@ -1693,12 +1679,8 @@
     <header>
         <nav class="container">
             <div class="logo">
-                <div class="logo-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="white" stroke-width="2" stroke-linejoin="round"/>
-                        <path d="M2 17L12 22L22 17" stroke="white" stroke-width="2" stroke-linejoin="round"/>
-                        <path d="M2 12L12 17L22 12" stroke="white" stroke-width="2" stroke-linejoin="round"/>
-                    </svg>
+                <div class="logo-space">
+                    Logo<br>Space
                 </div>
                 <span>Agnostic Agility</span>
             </div>
@@ -1739,42 +1721,23 @@
     </header>
 
     <main>
-        <section class="hero">
-            <!-- Video Background -->
-			<video width="600" height="600" autoplay muted loop playsinline>
-	        			<source src="AgnosticAgilityLogo-MP4-06102025.mp4" type="video/mp4">
-        	        	Your browser does not support the video tag.
-            </video>
-            
-            <!-- Video Placeholder (shown when no video is loaded) -->
-            <div class="video-placeholder">
-                <div class="video-placeholder-text">
-                    🎬 Video Background Space<br>
-                    <small>Replace "your-video.mp4" with your MP4 file path</small>
+        <section class="banner">
+            <div class="banner-video-container">
+                <video class="banner-video" autoplay muted loop playsinline>
+                    <source src="AgnosticAgilityLogo-MP4-06102025.mp4" type="video/mp4">
+                </video>
+                <div class="banner-video-placeholder">
+                    <div class="banner-video-placeholder-text">
+                        🎬 MP4 Video Banner<br>
+                        <small>Replace "your-video.mp4" with your MP4 file path</small>
+                    </div>
                 </div>
-            </div>
-            <section class="hero">
-            <!-- Video Background -->
-            <video class="hero-video" autoplay muted loop playsinline>
-                <source src="AgnosticAgilityLogo-MP4-06102025.mp4" type="video/mp4">
-                <!-- Fallback for browsers that don't support video -->
-            </video>
-            
-            <!-- Video Placeholder (shown when no video is loaded) -->
-            <div class="video-placeholder">
-                <div class="video-placeholder-text">
-                    🎬 Video Background Space<br>
-                    <small>AgnosticAgilityLogo-MP4-06102025.mp4</small>
-                </div>
-            </div>
-
-            <div class="container">
-                <div class="hero-content">
-                    <div class="coming-soon-badge">🚀 Coming Soon</div>
-                    <h1>Agnostic Agility</h1>
-                    <p class="tagline">Agility without dogma, delivery without burnout</p>
-                    <p class="subtitle">Balancing value, velocity, and humanity</p>
-                    <a href="#contact" class="contact-btn">Contact Us</a>
+                <div class="banner-overlay">
+                    <div class="container">
+                        <div class="banner-content">
+                            <button class="banner-contact-btn" onclick="openContactForm()">Contact Us</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -2562,10 +2525,10 @@
             });
         });
 
-        // Video background handling
+        // Banner video handling
         document.addEventListener('DOMContentLoaded', function() {
-            const video = document.querySelector('.hero-video');
-            const placeholder = document.querySelector('.video-placeholder');
+            const video = document.querySelector('.banner-video');
+            const placeholder = document.querySelector('.banner-video-placeholder');
             
             if (video) {
                 // Hide placeholder when video loads successfully
@@ -2591,5 +2554,5 @@
             }
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98a6e436745e220a',t:'MTc1OTc3MTg3Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98a70073e6eab346',t:'MTc1OTc3MzAzMy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
