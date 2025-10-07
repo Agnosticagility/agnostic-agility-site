@@ -754,7 +754,75 @@
             <div class="grid md:grid-cols-3 gap-8">
                 <!-- Blog Post 1 -->
                 <div id="blog-1" class="bg-white rounded-lg shadow-lg overflow-hidden card-hover">
-                    <div class="h-48 bg-gradient-to-r from-primary-blue to-primary-purple"></div>
+                    <div class="h-48 bg-gradient-to-r from-primary-blue to-primary-purple relative overflow-hidden">
+                        <svg class="absolute inset-0 w-full h-full" viewBox="0 0 400 200" fill="none">
+                            <!-- Burnout visualization with stressed figures and recovery elements -->
+                            <!-- Stressed figure on left -->
+                            <g transform="translate(50, 60)">
+                                <circle cx="20" cy="20" r="12" fill="#FFFFFF" opacity="0.9">
+                                    <animate attributeName="opacity" values="0.9;0.5;0.9" dur="3s" repeatCount="indefinite"/>
+                                </circle>
+                                <path d="M20 32 C15 32 10 37 10 45 L30 45 C30 37 25 32 20 32 Z" fill="#FFFFFF" opacity="0.8">
+                                    <animate attributeName="opacity" values="0.8;0.4;0.8" dur="3s" repeatCount="indefinite"/>
+                                </path>
+                                <!-- Stress indicators around figure -->
+                                <circle cx="35" cy="15" r="3" fill="#FF6B6B" opacity="0.7">
+                                    <animate attributeName="r" values="2;5;2" dur="2s" repeatCount="indefinite"/>
+                                    <animate attributeName="opacity" values="0.3;0.8;0.3" dur="2s" repeatCount="indefinite"/>
+                                </circle>
+                                <circle cx="5" cy="25" r="2" fill="#FF6B6B" opacity="0.6">
+                                    <animate attributeName="r" values="1;4;1" dur="2.5s" repeatCount="indefinite"/>
+                                    <animate attributeName="opacity" values="0.2;0.7;0.2" dur="2.5s" repeatCount="indefinite"/>
+                                </circle>
+                                <circle cx="30" cy="35" r="2.5" fill="#FF6B6B" opacity="0.5">
+                                    <animate attributeName="r" values="1.5;4.5;1.5" dur="1.8s" repeatCount="indefinite"/>
+                                    <animate attributeName="opacity" values="0.2;0.6;0.2" dur="1.8s" repeatCount="indefinite"/>
+                                </circle>
+                            </g>
+                            
+                            <!-- Arrow showing transformation -->
+                            <path d="M120 100 L180 100" stroke="#FFFFFF" stroke-width="3" fill="none" opacity="0.8">
+                                <animate attributeName="stroke-dasharray" values="0,60;30,30;60,0" dur="3s" repeatCount="indefinite"/>
+                            </path>
+                            <path d="M170 95 L180 100 L170 105" stroke="#FFFFFF" stroke-width="3" fill="none" opacity="0.8">
+                                <animate attributeName="opacity" values="0.4;1;0.4" dur="3s" repeatCount="indefinite"/>
+                            </path>
+                            
+                            <!-- Wellness/recovery figure on right -->
+                            <g transform="translate(250, 60)">
+                                <circle cx="20" cy="20" r="12" fill="#FFFFFF" opacity="1">
+                                    <animate attributeName="r" values="12;14;12" dur="4s" repeatCount="indefinite"/>
+                                </circle>
+                                <path d="M20 32 C15 32 10 37 10 45 L30 45 C30 37 25 32 20 32 Z" fill="#FFFFFF" opacity="0.9"/>
+                                <!-- Wellness indicators -->
+                                <circle cx="20" cy="20" r="20" stroke="#4ECDC4" stroke-width="2" fill="none" opacity="0.4">
+                                    <animate attributeName="r" values="18;25;18" dur="5s" repeatCount="indefinite"/>
+                                    <animate attributeName="stroke-opacity" values="0.2;0.6;0.2" dur="5s" repeatCount="indefinite"/>
+                                </circle>
+                                <circle cx="20" cy="20" r="30" stroke="#4ECDC4" stroke-width="1" fill="none" opacity="0.3">
+                                    <animate attributeName="r" values="25;35;25" dur="6s" repeatCount="indefinite"/>
+                                    <animate attributeName="stroke-opacity" values="0.1;0.4;0.1" dur="6s" repeatCount="indefinite"/>
+                                </circle>
+                                <!-- Positive energy particles -->
+                                <circle cx="35" cy="15" r="2" fill="#4ECDC4" opacity="0.8">
+                                    <animate attributeName="cy" values="15;10;15" dur="3s" repeatCount="indefinite"/>
+                                    <animate attributeName="opacity" values="0.4;0.9;0.4" dur="3s" repeatCount="indefinite"/>
+                                </circle>
+                                <circle cx="5" cy="25" r="1.5" fill="#4ECDC4" opacity="0.7">
+                                    <animate attributeName="cy" values="25;20;25" dur="3.5s" repeatCount="indefinite"/>
+                                    <animate attributeName="opacity" values="0.3;0.8;0.3" dur="3.5s" repeatCount="indefinite"/>
+                                </circle>
+                            </g>
+                            
+                            <!-- Background wellness waves -->
+                            <path d="M0 150 Q100 130 200 150 T400 150 L400 200 L0 200 Z" fill="#FFFFFF" opacity="0.1">
+                                <animate attributeName="d" values="M0 150 Q100 130 200 150 T400 150 L400 200 L0 200 Z;M0 150 Q100 170 200 150 T400 150 L400 200 L0 200 Z;M0 150 Q100 130 200 150 T400 150 L400 200 L0 200 Z" dur="8s" repeatCount="indefinite"/>
+                            </path>
+                            <path d="M0 160 Q150 140 300 160 T600 160 L600 200 L0 200 Z" fill="#FFFFFF" opacity="0.05">
+                                <animate attributeName="d" values="M0 160 Q150 140 300 160 T600 160 L600 200 L0 200 Z;M0 160 Q150 180 300 160 T600 160 L600 200 L0 200 Z;M0 160 Q150 140 300 160 T600 160 L600 200 L0 200 Z" dur="10s" repeatCount="indefinite"/>
+                            </path>
+                        </svg>
+                    </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold text-primary-dark mb-3">Resilient Delivery: Embedding People Wellness</h3>
                         <p class="text-gray-600 mb-4 mobile-font">
@@ -770,14 +838,136 @@
 
                 <!-- Blog Post 2 -->
                 <div id="blog-2" class="bg-white rounded-lg shadow-lg overflow-hidden card-hover">
-                    <div class="h-48 bg-gradient-to-r from-primary-purple to-primary-mauve"></div>
+                    <div class="h-48 bg-gradient-to-r from-primary-purple to-primary-mauve relative overflow-hidden">
+                        <svg class="absolute inset-0 w-full h-full" viewBox="0 0 400 200" fill="none">
+                            <!-- Team wellness visualization with connected figures and growth -->
+                            <!-- Team members in a circle formation -->
+                            <g transform="translate(200, 100)">
+                                <!-- Central connection hub -->
+                                <circle cx="0" cy="0" r="8" fill="#FFFFFF" opacity="0.9">
+                                    <animate attributeName="r" values="6;12;6" dur="4s" repeatCount="indefinite"/>
+                                    <animate attributeName="opacity" values="0.7;1;0.7" dur="4s" repeatCount="indefinite"/>
+                                </circle>
+                                
+                                <!-- Team member 1 (top) -->
+                                <g transform="translate(0, -50)">
+                                    <circle cx="0" cy="0" r="10" fill="#FFFFFF" opacity="0.95">
+                                        <animate attributeName="r" values="8;12;8" dur="3s" repeatCount="indefinite"/>
+                                    </circle>
+                                    <circle cx="0" cy="0" r="18" stroke="#4ECDC4" stroke-width="2" fill="none" opacity="0.4">
+                                        <animate attributeName="r" values="15;22;15" dur="5s" repeatCount="indefinite"/>
+                                        <animate attributeName="stroke-opacity" values="0.2;0.6;0.2" dur="5s" repeatCount="indefinite"/>
+                                    </circle>
+                                    <!-- Connection line to center -->
+                                    <path d="M0 10 L0 40" stroke="#FFFFFF" stroke-width="2" opacity="0.6">
+                                        <animate attributeName="stroke-dasharray" values="0,30;15,15;30,0" dur="3s" repeatCount="indefinite"/>
+                                    </path>
+                                </g>
+                                
+                                <!-- Team member 2 (top-right) -->
+                                <g transform="translate(43, -25)">
+                                    <circle cx="0" cy="0" r="10" fill="#FFFFFF" opacity="0.95">
+                                        <animate attributeName="r" values="8;12;8" dur="3s" begin="0.6s" repeatCount="indefinite"/>
+                                    </circle>
+                                    <circle cx="0" cy="0" r="18" stroke="#4ECDC4" stroke-width="2" fill="none" opacity="0.4">
+                                        <animate attributeName="r" values="15;22;15" dur="5s" begin="0.6s" repeatCount="indefinite"/>
+                                        <animate attributeName="stroke-opacity" values="0.2;0.6;0.2" dur="5s" begin="0.6s" repeatCount="indefinite"/>
+                                    </circle>
+                                    <path d="M-8 5 L-35 20" stroke="#FFFFFF" stroke-width="2" opacity="0.6">
+                                        <animate attributeName="stroke-dasharray" values="0,30;15,15;30,0" dur="3s" begin="0.6s" repeatCount="indefinite"/>
+                                    </path>
+                                </g>
+                                
+                                <!-- Team member 3 (bottom-right) -->
+                                <g transform="translate(43, 25)">
+                                    <circle cx="0" cy="0" r="10" fill="#FFFFFF" opacity="0.95">
+                                        <animate attributeName="r" values="8;12;8" dur="3s" begin="1.2s" repeatCount="indefinite"/>
+                                    </circle>
+                                    <circle cx="0" cy="0" r="18" stroke="#4ECDC4" stroke-width="2" fill="none" opacity="0.4">
+                                        <animate attributeName="r" values="15;22;15" dur="5s" begin="1.2s" repeatCount="indefinite"/>
+                                        <animate attributeName="stroke-opacity" values="0.2;0.6;0.2" dur="5s" begin="1.2s" repeatCount="indefinite"/>
+                                    </circle>
+                                    <path d="M-8 -5 L-35 -20" stroke="#FFFFFF" stroke-width="2" opacity="0.6">
+                                        <animate attributeName="stroke-dasharray" values="0,30;15,15;30,0" dur="3s" begin="1.2s" repeatCount="indefinite"/>
+                                    </path>
+                                </g>
+                                
+                                <!-- Team member 4 (bottom) -->
+                                <g transform="translate(0, 50)">
+                                    <circle cx="0" cy="0" r="10" fill="#FFFFFF" opacity="0.95">
+                                        <animate attributeName="r" values="8;12;8" dur="3s" begin="1.8s" repeatCount="indefinite"/>
+                                    </circle>
+                                    <circle cx="0" cy="0" r="18" stroke="#4ECDC4" stroke-width="2" fill="none" opacity="0.4">
+                                        <animate attributeName="r" values="15;22;15" dur="5s" begin="1.8s" repeatCount="indefinite"/>
+                                        <animate attributeName="stroke-opacity" values="0.2;0.6;0.2" dur="5s" begin="1.8s" repeatCount="indefinite"/>
+                                    </circle>
+                                    <path d="M0 -10 L0 -40" stroke="#FFFFFF" stroke-width="2" opacity="0.6">
+                                        <animate attributeName="stroke-dasharray" values="0,30;15,15;30,0" dur="3s" begin="1.8s" repeatCount="indefinite"/>
+                                    </path>
+                                </g>
+                                
+                                <!-- Team member 5 (bottom-left) -->
+                                <g transform="translate(-43, 25)">
+                                    <circle cx="0" cy="0" r="10" fill="#FFFFFF" opacity="0.95">
+                                        <animate attributeName="r" values="8;12;8" dur="3s" begin="2.4s" repeatCount="indefinite"/>
+                                    </circle>
+                                    <circle cx="0" cy="0" r="18" stroke="#4ECDC4" stroke-width="2" fill="none" opacity="0.4">
+                                        <animate attributeName="r" values="15;22;15" dur="5s" begin="2.4s" repeatCount="indefinite"/>
+                                        <animate attributeName="stroke-opacity" values="0.2;0.6;0.2" dur="5s" begin="2.4s" repeatCount="indefinite"/>
+                                    </circle>
+                                    <path d="M8 -5 L35 -20" stroke="#FFFFFF" stroke-width="2" opacity="0.6">
+                                        <animate attributeName="stroke-dasharray" values="0,30;15,15;30,0" dur="3s" begin="2.4s" repeatCount="indefinite"/>
+                                    </path>
+                                </g>
+                                
+                                <!-- Team member 6 (top-left) -->
+                                <g transform="translate(-43, -25)">
+                                    <circle cx="0" cy="0" r="10" fill="#FFFFFF" opacity="0.95">
+                                        <animate attributeName="r" values="8;12;8" dur="3s" begin="3s" repeatCount="indefinite"/>
+                                    </circle>
+                                    <circle cx="0" cy="0" r="18" stroke="#4ECDC4" stroke-width="2" fill="none" opacity="0.4">
+                                        <animate attributeName="r" values="15;22;15" dur="5s" begin="3s" repeatCount="indefinite"/>
+                                        <animate attributeName="stroke-opacity" values="0.2;0.6;0.2" dur="5s" begin="3s" repeatCount="indefinite"/>
+                                    </circle>
+                                    <path d="M8 5 L35 20" stroke="#FFFFFF" stroke-width="2" opacity="0.6">
+                                        <animate attributeName="stroke-dasharray" values="0,30;15,15;30,0" dur="3s" begin="3s" repeatCount="indefinite"/>
+                                    </path>
+                                </g>
+                                
+                                <!-- Outer wellness aura -->
+                                <circle cx="0" cy="0" r="80" stroke="#FFFFFF" stroke-width="1" fill="none" opacity="0.2">
+                                    <animate attributeName="r" values="70;90;70" dur="8s" repeatCount="indefinite"/>
+                                    <animate attributeName="stroke-opacity" values="0.1;0.3;0.1" dur="8s" repeatCount="indefinite"/>
+                                </circle>
+                            </g>
+                            
+                            <!-- Floating wellness particles -->
+                            <circle cx="50" cy="50" r="3" fill="#FFFFFF" opacity="0.6">
+                                <animate attributeName="cy" values="50;30;50" dur="4s" repeatCount="indefinite"/>
+                                <animate attributeName="opacity" values="0.3;0.8;0.3" dur="4s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="350" cy="150" r="2" fill="#FFFFFF" opacity="0.5">
+                                <animate attributeName="cy" values="150;130;150" dur="5s" repeatCount="indefinite"/>
+                                <animate attributeName="opacity" values="0.2;0.7;0.2" dur="5s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="80" cy="170" r="2.5" fill="#FFFFFF" opacity="0.4">
+                                <animate attributeName="cy" values="170;150;170" dur="6s" repeatCount="indefinite"/>
+                                <animate attributeName="opacity" values="0.2;0.6;0.2" dur="6s" repeatCount="indefinite"/>
+                            </circle>
+                            
+                            <!-- Background growth waves -->
+                            <path d="M0 180 Q100 160 200 180 T400 180 L400 200 L0 200 Z" fill="#FFFFFF" opacity="0.1">
+                                <animate attributeName="d" values="M0 180 Q100 160 200 180 T400 180 L400 200 L0 200 Z;M0 180 Q100 200 200 180 T400 180 L400 200 L0 200 Z;M0 180 Q100 160 200 180 T400 180 L400 200 L0 200 Z" dur="10s" repeatCount="indefinite"/>
+                            </path>
+                        </svg>
+                    </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold text-primary-dark mb-3">When Teams Thrive, Projects Flourish</h3>
                         <p class="text-gray-600 mb-4 mobile-font">
                             Elevating team wellness as non-negotiable for sustainable project delivery in volatile times.
                         </p>
                         <div class="flex justify-between items-center">
-                            <span class="text-sm text-gray-500">Sept 29, 2025</span>
+                            <span class="text-sm text-gray-500">Oct 08, 2025</span>
                             <button onclick="showBlogPost('team-wellness')" 
                                class="text-primary-purple hover:text-primary-mauve font-semibold">Read More →</button>
                         </div>
@@ -786,14 +976,134 @@
 
                 <!-- Blog Post 3 -->
                 <div id="blog-3" class="bg-white rounded-lg shadow-lg overflow-hidden card-hover">
-                    <div class="h-48 bg-gradient-to-r from-primary-mauve to-primary-light-purple"></div>
+                    <div class="h-48 bg-gradient-to-r from-primary-mauve to-primary-light-purple relative overflow-hidden">
+                        <svg class="absolute inset-0 w-full h-full" viewBox="0 0 400 200" fill="none">
+                            <!-- PMO Excellence visualization showing transformation from bureaucracy to enablement -->
+                            
+                            <!-- Left side: Bureaucratic PMO (rigid, blocking) -->
+                            <g transform="translate(80, 100)">
+                                <!-- Rigid structure -->
+                                <rect x="-25" y="-30" width="50" height="60" rx="5" stroke="#FFFFFF" stroke-width="2" fill="none" opacity="0.7">
+                                    <animate attributeName="stroke-opacity" values="0.7;0.4;0.7" dur="3s" repeatCount="indefinite"/>
+                                </rect>
+                                <!-- Blocking barriers -->
+                                <path d="M-35 -20 L35 -20" stroke="#FF6B6B" stroke-width="3" opacity="0.8">
+                                    <animate attributeName="stroke-dasharray" values="0,70;35,35;70,0" dur="2s" repeatCount="indefinite"/>
+                                </path>
+                                <path d="M-35 0 L35 0" stroke="#FF6B6B" stroke-width="3" opacity="0.8">
+                                    <animate attributeName="stroke-dasharray" values="0,70;35,35;70,0" dur="2s" begin="0.5s" repeatCount="indefinite"/>
+                                </path>
+                                <path d="M-35 20 L35 20" stroke="#FF6B6B" stroke-width="3" opacity="0.8">
+                                    <animate attributeName="stroke-dasharray" values="0,70;35,35;70,0" dur="2s" begin="1s" repeatCount="indefinite"/>
+                                </path>
+                                
+                                <!-- Frustrated team members trying to get through -->
+                                <circle cx="-45" cy="-10" r="6" fill="#FFFFFF" opacity="0.6">
+                                    <animate attributeName="cx" values="-45;-35;-45" dur="2s" repeatCount="indefinite"/>
+                                    <animate attributeName="opacity" values="0.6;0.3;0.6" dur="2s" repeatCount="indefinite"/>
+                                </circle>
+                                <circle cx="-45" cy="10" r="6" fill="#FFFFFF" opacity="0.6">
+                                    <animate attributeName="cx" values="-45;-35;-45" dur="2s" begin="0.7s" repeatCount="indefinite"/>
+                                    <animate attributeName="opacity" values="0.6;0.3;0.6" dur="2s" begin="0.7s" repeatCount="indefinite"/>
+                                </circle>
+                            </g>
+                            
+                            <!-- Transformation arrow -->
+                            <path d="M140 100 L200 100" stroke="#FFFFFF" stroke-width="4" fill="none" opacity="0.9">
+                                <animate attributeName="stroke-dasharray" values="0,60;30,30;60,0" dur="3s" repeatCount="indefinite"/>
+                            </path>
+                            <path d="M190 95 L200 100 L190 105" stroke="#FFFFFF" stroke-width="4" fill="none" opacity="0.9">
+                                <animate attributeName="opacity" values="0.5;1;0.5" dur="3s" repeatCount="indefinite"/>
+                            </path>
+                            
+                            <!-- Right side: Enabling PMO (supportive, facilitating) -->
+                            <g transform="translate(320, 100)">
+                                <!-- Supportive structure -->
+                                <circle cx="0" cy="0" r="35" stroke="#FFFFFF" stroke-width="2" fill="none" opacity="0.8">
+                                    <animate attributeName="r" values="30;40;30" dur="4s" repeatCount="indefinite"/>
+                                    <animate attributeName="stroke-opacity" values="0.6;1;0.6" dur="4s" repeatCount="indefinite"/>
+                                </circle>
+                                
+                                <!-- Central enabling hub -->
+                                <circle cx="0" cy="0" r="12" fill="#FFFFFF" opacity="0.9">
+                                    <animate attributeName="r" values="10;15;10" dur="3s" repeatCount="indefinite"/>
+                                </circle>
+                                
+                                <!-- Support pathways radiating outward -->
+                                <path d="M0 -12 L0 -25" stroke="#4ECDC4" stroke-width="3" opacity="0.8">
+                                    <animate attributeName="stroke-dasharray" values="0,13;6.5,6.5;13,0" dur="2s" repeatCount="indefinite"/>
+                                </path>
+                                <path d="M8.5 -8.5 L17 -17" stroke="#4ECDC4" stroke-width="3" opacity="0.8">
+                                    <animate attributeName="stroke-dasharray" values="0,12;6,6;12,0" dur="2s" begin="0.3s" repeatCount="indefinite"/>
+                                </path>
+                                <path d="M12 0 L25 0" stroke="#4ECDC4" stroke-width="3" opacity="0.8">
+                                    <animate attributeName="stroke-dasharray" values="0,13;6.5,6.5;13,0" dur="2s" begin="0.6s" repeatCount="indefinite"/>
+                                </path>
+                                <path d="M8.5 8.5 L17 17" stroke="#4ECDC4" stroke-width="3" opacity="0.8">
+                                    <animate attributeName="stroke-dasharray" values="0,12;6,6;12,0" dur="2s" begin="0.9s" repeatCount="indefinite"/>
+                                </path>
+                                <path d="M0 12 L0 25" stroke="#4ECDC4" stroke-width="3" opacity="0.8">
+                                    <animate attributeName="stroke-dasharray" values="0,13;6.5,6.5;13,0" dur="2s" begin="1.2s" repeatCount="indefinite"/>
+                                </path>
+                                <path d="M-8.5 8.5 L-17 17" stroke="#4ECDC4" stroke-width="3" opacity="0.8">
+                                    <animate attributeName="stroke-dasharray" values="0,12;6,6;12,0" dur="2s" begin="1.5s" repeatCount="indefinite"/>
+                                </path>
+                                <path d="M-12 0 L-25 0" stroke="#4ECDC4" stroke-width="3" opacity="0.8">
+                                    <animate attributeName="stroke-dasharray" values="0,13;6.5,6.5;13,0" dur="2s" begin="1.8s" repeatCount="indefinite"/>
+                                </path>
+                                <path d="M-8.5 -8.5 L-17 -17" stroke="#4ECDC4" stroke-width="3" opacity="0.8">
+                                    <animate attributeName="stroke-dasharray" values="0,12;6,6;12,0" dur="2s" begin="2.1s" repeatCount="indefinite"/>
+                                </path>
+                                
+                                <!-- Empowered team members flowing freely -->
+                                <circle cx="0" cy="-40" r="6" fill="#FFFFFF" opacity="0.9">
+                                    <animate attributeName="cy" values="-40;-30;-40" dur="3s" repeatCount="indefinite"/>
+                                    <animate attributeName="opacity" values="0.7;1;0.7" dur="3s" repeatCount="indefinite"/>
+                                </circle>
+                                <circle cx="28" cy="-28" r="6" fill="#FFFFFF" opacity="0.9">
+                                    <animate attributeName="cx" values="28;35;28" dur="3s" begin="0.5s" repeatCount="indefinite"/>
+                                    <animate attributeName="cy" values="-28;-35;-28" dur="3s" begin="0.5s" repeatCount="indefinite"/>
+                                    <animate attributeName="opacity" values="0.7;1;0.7" dur="3s" begin="0.5s" repeatCount="indefinite"/>
+                                </circle>
+                                <circle cx="40" cy="0" r="6" fill="#FFFFFF" opacity="0.9">
+                                    <animate attributeName="cx" values="40;47;40" dur="3s" begin="1s" repeatCount="indefinite"/>
+                                    <animate attributeName="opacity" values="0.7;1;0.7" dur="3s" begin="1s" repeatCount="indefinite"/>
+                                </circle>
+                                <circle cx="28" cy="28" r="6" fill="#FFFFFF" opacity="0.9">
+                                    <animate attributeName="cx" values="28;35;28" dur="3s" begin="1.5s" repeatCount="indefinite"/>
+                                    <animate attributeName="cy" values="28;35;28" dur="3s" begin="1.5s" repeatCount="indefinite"/>
+                                    <animate attributeName="opacity" values="0.7;1;0.7" dur="3s" begin="1.5s" repeatCount="indefinite"/>
+                                </circle>
+                            </g>
+                            
+                            <!-- Success indicators -->
+                            <g transform="translate(350, 50)">
+                                <path d="M-10 0 L-5 5 L10 -10" stroke="#4ECDC4" stroke-width="3" fill="none" opacity="0.8">
+                                    <animate attributeName="stroke-dasharray" values="0,25;12.5,12.5;25,0" dur="2s" repeatCount="indefinite"/>
+                                </path>
+                            </g>
+                            <g transform="translate(370, 60)">
+                                <path d="M-8 0 L-4 4 L8 -8" stroke="#4ECDC4" stroke-width="2" fill="none" opacity="0.7">
+                                    <animate attributeName="stroke-dasharray" values="0,20;10,10;20,0" dur="2s" begin="0.5s" repeatCount="indefinite"/>
+                                </path>
+                            </g>
+                            
+                            <!-- Background flow waves -->
+                            <path d="M0 170 Q100 150 200 170 T400 170 L400 200 L0 200 Z" fill="#FFFFFF" opacity="0.1">
+                                <animate attributeName="d" values="M0 170 Q100 150 200 170 T400 170 L400 200 L0 200 Z;M0 170 Q100 190 200 170 T400 170 L400 200 L0 200 Z;M0 170 Q100 150 200 170 T400 170 L400 200 L0 200 Z" dur="8s" repeatCount="indefinite"/>
+                            </path>
+                            <path d="M0 180 Q150 160 300 180 T600 180 L600 200 L0 200 Z" fill="#FFFFFF" opacity="0.05">
+                                <animate attributeName="d" values="M0 180 Q150 160 300 180 T600 180 L600 200 L0 200 Z;M0 180 Q150 200 300 180 T600 180 L600 200 L0 200 Z;M0 180 Q150 160 300 180 T600 180 L600 200 L0 200 Z" dur="10s" repeatCount="indefinite"/>
+                            </path>
+                        </svg>
+                    </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold text-primary-dark mb-3">PMO Excellence: Enabling vs. Enforcing</h3>
                         <p class="text-gray-600 mb-4 mobile-font">
                             Transform your PMO from a bureaucratic bottleneck into a delivery enabler that teams actually value.
                         </p>
                         <div class="flex justify-between items-center">
-                            <span class="text-sm text-gray-500">March 1, 2024</span>
+                            <span class="text-sm text-gray-500">Oct 13, 2025</span>
                             <a href="https://example.com/blog/pmo-excellence" target="_blank" rel="noopener noreferrer" 
                                class="text-primary-purple hover:text-primary-mauve font-semibold">Read More →</a>
                         </div>
@@ -1237,12 +1547,15 @@
                     </p>
 
                     <div class="bg-gray-50 p-8 rounded-lg mb-8">
-                        <div class="flex flex-col md:flex-row gap-6 mb-6">
+                        <div class="flex flex-col md:flex-row gap-8 mb-6">
                             <div class="flex-shrink-0">
-                                <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80" 
-                                     alt="Kiranmaye Cartier - Founder of Agnostic Agility" 
-                                     class="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover shadow-lg mx-auto md:mx-0"
-                                     onerror="this.src=''; this.alt='Photo failed to load'; this.style.display='none';">
+                                <!-- Space reserved for KC's professional photo -->
+                                <div class="w-40 h-40 md:w-48 md:h-48 rounded-full bg-gradient-to-br from-primary-blue to-primary-purple flex items-center justify-center shadow-lg mx-auto md:mx-0">
+                                    <div class="text-white text-center">
+                                        <div class="text-4xl md:text-5xl font-bold mb-2">KC</div>
+                                        <div class="text-sm opacity-90">Photo Coming Soon</div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="flex-1">
                                 <h2 class="text-xl font-bold text-primary-dark mb-4">About the Author</h2>
@@ -1342,7 +1655,7 @@
             },
             'team-wellness': {
                 title: 'When Teams Thrive, Projects Flourish: Elevating Team Wellness as Non-Negotiable',
-                date: 'Sept 29, 2025',
+                date: 'Oct 08, 2025',
                 content: `
                     <h2 class="text-xl font-bold text-primary-dark mb-6">What is the Problem?</h2>
                     <p class="text-gray-700 mb-6 text-base leading-relaxed">
@@ -1635,12 +1948,15 @@
                     </div>
 
                     <div class="bg-gray-50 p-8 rounded-lg mb-8">
-                        <div class="flex flex-col md:flex-row gap-6 mb-6">
+                        <div class="flex flex-col md:flex-row gap-8 mb-6">
                             <div class="flex-shrink-0">
-                                <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80" 
-                                     alt="Kiranmaye Cartier - Founder of Agnostic Agility" 
-                                     class="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover shadow-lg mx-auto md:mx-0"
-                                     onerror="this.src=''; this.alt='Photo failed to load'; this.style.display='none';">
+                                <!-- Space reserved for KC's professional photo -->
+                                <div class="w-40 h-40 md:w-48 md:h-48 rounded-full bg-gradient-to-br from-primary-blue to-primary-purple flex items-center justify-center shadow-lg mx-auto md:mx-0">
+                                    <div class="text-white text-center">
+                                        <div class="text-4xl md:text-5xl font-bold mb-2">KC</div>
+                                        <div class="text-sm opacity-90">Photo Coming Soon</div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="flex-1">
                                 <h2 class="text-xl font-bold text-primary-dark mb-4">About the Author</h2>
@@ -1878,5 +2194,5 @@
             });
         }
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98a940365234a2cb',t:'MTc1OTc5NjYxNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98a9543e9071a2cb',t:'MTc1OTc5NzQzNy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
