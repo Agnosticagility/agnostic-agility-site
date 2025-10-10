@@ -17,11 +17,10 @@
                         'primary-purple': '#553B84',
                         'primary-mauve': '#94598F',
                         'primary-dark-purple': '#452C54',
-                        'primary-light-purple': '#655FA7',
-                        'secondary': '#10b981',
-                        'accent': '#f59e0b',
-                        'neutral': '#6b7280',
-                        'light': '#f8fafc'
+                        'primary-light-purple': '#655FA7'
+                    },
+                    fontFamily: {
+                        'serif': ['Georgia', 'Times New Roman', 'serif'],
                     }
                 }
             }
@@ -30,11 +29,16 @@
     <style>
         body {
             box-sizing: border-box;
-            font-family: 'Georgia', 'Times New Roman', serif;
         }
         
-        .gradient-bg {
-            background: linear-gradient(135deg, #0B1E49 0%, #011037 100%);
+        .mobile-font {
+            font-size: 0.875rem;
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-font {
+                font-size: 0.75rem;
+            }
         }
         
         .card-hover {
@@ -46,8 +50,28 @@
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
         }
         
-        .animate-float {
-            animation: float 3s ease-in-out infinite;
+        .animate-pulse-slow {
+            animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        .animate-bounce-slow {
+            animation: bounce 2s infinite;
+        }
+        
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        }
+        
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         
         @keyframes float {
@@ -55,33 +79,22 @@
             50% { transform: translateY(-10px); }
         }
         
-
-        
-        .mobile-menu {
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-10px);
-            transition: all 0.3s ease;
-        }
-        
-        .mobile-menu.show {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
         }
     </style>
 </head>
-<body class="bg-white">
+<body class="bg-white font-serif">
     <!-- Navigation -->
-    <nav class="gradient-bg shadow-lg sticky top-0 z-50">
+    <nav class="bg-primary-dark shadow-lg sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center py-4">
                 <div class="flex flex-col">
-                    <h1 class="text-white text-xl md:text-2xl font-bold">Agnostic Agility Ltd</h1>
-                    <p class="text-blue-100 text-xs md:text-sm">Agility without dogma, delivery without burnout</p>
+                    <h1 class="text-white text-xl md:text-2xl font-bold">Agnostic Agility</h1>
+                    <p class="text-white text-xs md:text-sm mobile-font">Agility without dogma, delivery without burnout</p>
                 </div>
                 
-                <!-- Hamburger Menu Button -->
+                <!-- Hamburger Menu for All Devices -->
                 <div class="relative">
                     <button id="mobile-menu-btn" class="text-white focus:outline-none">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -90,55 +103,63 @@
                     </button>
                     
                     <!-- Dropdown Menu -->
-                    <div id="mobile-menu" class="mobile-menu absolute top-full right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-50">
-                        <a href="#home" class="block px-4 py-2 text-primary-dark hover:bg-gray-100 text-sm">Home</a>
-                        <a href="#about" class="block px-4 py-2 text-primary-dark hover:bg-gray-100 text-sm">About Us</a>
-                        <a href="#services" class="block px-4 py-2 text-primary-dark hover:bg-gray-100 text-sm">Services</a>
-                        <a href="#approach" class="block px-4 py-2 text-primary-dark hover:bg-gray-100 text-sm">Our GROWTH Approach</a>
-                        <a href="#socials" class="block px-4 py-2 text-primary-dark hover:bg-gray-100 text-sm">Socials</a>
-                        <a href="#contact" class="block px-4 py-2 text-primary-dark hover:bg-gray-100 text-sm">Contact Us</a>
+                    <div id="mobile-menu" class="absolute top-full right-0 mt-2 w-48 bg-white rounded-md shadow-lg opacity-0 invisible transition-all duration-300 z-50">
+                        <a href="#home" class="block px-4 py-2 text-primary-dark hover:bg-gray-100 mobile-font">Home</a>
+                        <a href="#about" class="block px-4 py-2 text-primary-dark hover:bg-gray-100 mobile-font">About Us</a>
+                        <a href="#services" class="block px-4 py-2 text-primary-dark hover:bg-gray-100 mobile-font">Services</a>
+                        <a href="#socials" class="block px-4 py-2 text-primary-dark hover:bg-gray-100 mobile-font">Socials</a>
+                        <a href="#contact" class="block px-4 py-2 text-primary-dark hover:bg-gray-100 mobile-font">Contact Us</a>
                     </div>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Banner -->
-    <section id="home" class="gradient-bg min-h-screen flex items-center justify-center">
-        <div class="text-center text-white p-8 max-w-4xl mx-auto">
-            <h1 class="text-4xl md:text-6xl font-bold mb-6">Agnostic Agility Ltd</h1>
-            <p class="text-xl md:text-2xl mb-8 text-blue-100">Agility without dogma, delivery without burnout</p>
-            <p class="text-lg mb-8 max-w-2xl mx-auto">Transform your project delivery through people-centered, framework-agnostic approaches that prioritize sustainable success over rigid processes.</p>
-            <button id="get-started-btn" class="bg-primary-purple hover:bg-primary-mauve text-white px-8 py-3 rounded-lg text-lg transition-colors">
-                Get Started
-            </button>
+    <!-- Hero Banner with Video -->
+    <section id="home" class="relative">
+        <div class="video-container">
+            <video autoplay muted loop class="w-full h-full object-cover">
+                <source src="AgnosticAgilityLogo-MP4-06102025.mp4" type="video/mp4">                
+            </video>
+        </div>
+        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+            <div class="text-center text-white p-8">
+                <button onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})" class="bg-primary-purple hover:bg-primary-mauve text-white px-8 py-3 rounded-lg text-lg transition-colors">
+                    Get Started
+                </button>
+            </div>
         </div>
     </section>
 
     <!-- About Us Section -->
-    <section id="about" class="py-20 bg-white">
+    <section id="about" class="py-16 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">About Us</h2>
-                <p class="text-xl text-neutral max-w-3xl mx-auto">Transforming project delivery through people-centered, framework-agnostic approaches</p>
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary-dark mb-4">About Us</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto mobile-font">
+                    Understanding our mission and why we exist in today's complex business landscape.
+                </p>
             </div>
             
-            <div class="grid md:grid-cols-2 gap-12 items-center mb-16">
-                <div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-6">Our Story</h3>
-                    <p class="text-neutral mb-4">
-                        At Agnostic Agility Ltd, we believe that successful project delivery shouldn't come at the cost of team wellbeing. Born from years of experience across diverse industries and methodologies, we've seen firsthand how rigid adherence to frameworks can stifle innovation and burn out talented teams.
-                    </p>
-                    <p class="text-neutral mb-4">
-                        Our approach is different. We're framework-agnostic, meaning we adapt proven methodologies to fit your unique context, culture, and constraints. Whether you're working with Agile, Waterfall, SAFe, or a hybrid approach, we focus on what works for your team and your goals.
-                    </p>
-                    <p class="text-neutral">
-                        We're passionate about creating sustainable delivery practices that empower teams, delight stakeholders, and drive real business value—all while maintaining the human element that makes great work possible.
-                    </p>
-                </div>
-                
-                <div class="bg-light p-8 rounded-lg">
-                    <h3 class="text-2xl font-bold mb-6 text-center">Our Mission</h3>
+            <div class="bg-white rounded-lg shadow-lg p-8 md:p-12">
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <h3 class="text-2xl font-bold text-primary-dark mb-6">Why We Started Agnostic Agility</h3>
+                        <p class="text-gray-700 mb-4 mobile-font">
+                            In today's complex and volatile market conditions, organizations are struggling more than ever. 
+                            We witnessed firsthand the devastating impact of rigid methodologies and one-size-fits-all approaches 
+                            on both project success and human wellbeing.
+                        </p>
+                        <p class="text-gray-700 mb-4 mobile-font">
+                            The statistics are alarming: burnout rates are at an all-time high, project failure rates continue 
+                            to climb, and teams are drowning in process overhead rather than delivering value. We knew there 
+                            had to be a better way.
+                        </p>
+                        <p class="text-gray-700 mobile-font">
+                            That's why we founded Agnostic Agility — to help organizations find their unique path to successful 
+                            delivery while keeping their people healthy, engaged, and productive.
+                        </p>
+                    </div>
                     <div class="text-center">
                         <svg class="w-64 h-64 mx-auto animate-float" viewBox="0 0 200 200" fill="none">
                             <circle cx="100" cy="100" r="80" fill="#553B84" opacity="0.1"/>
@@ -147,430 +168,572 @@
                             <path d="M100 60 L120 80 L100 100 L80 80 Z" fill="#0B1E49"/>
                             <circle cx="100" cy="100" r="8" fill="#FFFFFF"/>
                         </svg>
-                        <p class="text-lg text-neutral italic">
-                            "To deliver agility without dogma and results without burnout, creating sustainable success for teams and organizations worldwide."
-                        </p>
                     </div>
                 </div>
             </div>
-            
-            <!-- Core Values -->
+        </div>
+    </section>
+
+    <!-- Core Values Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
-                <h3 class="text-2xl font-bold text-gray-900 mb-4">Our Core Values</h3>
-                <p class="text-neutral max-w-2xl mx-auto">The principles that guide every decision we make and every solution we deliver</p>
+                <h2 class="text-3xl md:text-4xl font-bold text-primary-dark mb-4">Our Core Values</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto mobile-font">
+                    The principles that guide everything we do and every decision we make.
+                </p>
             </div>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="text-center p-6 bg-white rounded-lg shadow-lg card-hover border-t-4 border-primary-dark">
-                    <div class="w-16 h-16 bg-primary-dark rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                <!-- Adaptability Over Dogma -->
+                <div class="bg-white rounded-lg shadow-lg p-6 card-hover border-t-4 border-primary-blue">
+                    <div class="text-center mb-4">
+                        <svg class="w-16 h-16 mx-auto animate-pulse-slow" viewBox="0 0 100 100" fill="none">
+                            <path d="M50 10 L70 30 L50 50 L30 30 Z" fill="#323E8A"/>
+                            <path d="M50 50 L70 70 L50 90 L30 70 Z" fill="#553B84"/>
+                            <circle cx="50" cy="50" r="5" fill="#94598F"/>
                         </svg>
                     </div>
-                    <h4 class="text-xl font-bold mb-3">People Wellness First</h4>
-                    <p class="text-neutral text-sm">We prioritize the wellbeing and mental health of teams above all else. Healthy, engaged people are the foundation of sustainable delivery and lasting success.</p>
+                    <h3 class="text-xl font-bold text-primary-dark mb-3 text-center">Adaptability Over Dogma</h3>
+                    <p class="text-gray-600 text-center mobile-font">
+                        We believe in flexible, context-driven approaches rather than rigid adherence to any single methodology.
+                    </p>
                 </div>
-                
-                <div class="text-center p-6 bg-white rounded-lg shadow-lg card-hover border-t-4 border-primary-blue">
-                    <div class="w-16 h-16 bg-primary-blue rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+
+                <!-- People Before Process -->
+                <div class="bg-white rounded-lg shadow-lg p-6 card-hover border-t-4 border-primary-purple">
+                    <div class="text-center mb-4">
+                        <svg class="w-16 h-16 mx-auto animate-bounce-slow" viewBox="0 0 100 100" fill="none">
+                            <circle cx="50" cy="30" r="15" fill="#553B84"/>
+                            <path d="M50 45 C35 45 25 55 25 70 L75 70 C75 55 65 45 50 45 Z" fill="#94598F"/>
+                            <circle cx="40" cy="25" r="3" fill="#FFFFFF"/>
+                            <circle cx="60" cy="25" r="3" fill="#FFFFFF"/>
                         </svg>
                     </div>
-                    <h4 class="text-xl font-bold mb-3">Adaptability Over Dogma</h4>
-                    <p class="text-neutral text-sm">We choose flexibility and context-aware solutions over rigid adherence to frameworks. Every organization is unique and deserves a tailored approach.</p>
+                    <h3 class="text-xl font-bold text-primary-dark mb-3 text-center">People Before Process</h3>
+                    <p class="text-gray-600 text-center mobile-font">
+                        Human wellbeing and team dynamics are the foundation of sustainable delivery excellence.
+                    </p>
                 </div>
-                
-                <div class="text-center p-6 bg-white rounded-lg shadow-lg card-hover border-t-4 border-primary-purple">
-                    <div class="w-16 h-16 bg-primary-purple rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+
+                <!-- Outcomes Over Output -->
+                <div class="bg-white rounded-lg shadow-lg p-6 card-hover border-t-4 border-primary-mauve">
+                    <div class="text-center mb-4">
+                        <svg class="w-16 h-16 mx-auto animate-pulse-slow" viewBox="0 0 100 100" fill="none">
+                            <path d="M20 50 L40 70 L80 30" stroke="#94598F" stroke-width="6" fill="none"/>
+                            <circle cx="80" cy="30" r="8" fill="#553B84"/>
+                            <circle cx="40" cy="70" r="6" fill="#323E8A"/>
                         </svg>
                     </div>
-                    <h4 class="text-xl font-bold mb-3">Delivery Outcomes Over Output</h4>
-                    <p class="text-neutral text-sm">We focus on meaningful results and business value rather than just completing tasks. Success is measured by impact, not activity.</p>
+                    <h3 class="text-xl font-bold text-primary-dark mb-3 text-center">Outcomes Over Output</h3>
+                    <p class="text-gray-600 text-center mobile-font">
+                        We focus on meaningful results and business value, not just activity and deliverables.
+                    </p>
                 </div>
-                
-                <div class="text-center p-6 bg-white rounded-lg shadow-lg card-hover border-t-4 border-primary-mauve">
-                    <div class="w-16 h-16 bg-primary-mauve rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+
+                <!-- Growth Through Balance -->
+                <div class="bg-white rounded-lg shadow-lg p-6 card-hover border-t-4 border-primary-light-purple">
+                    <div class="text-center mb-4">
+                        <svg class="w-16 h-16 mx-auto animate-float" viewBox="0 0 100 100" fill="none">
+                            <path d="M50 20 L50 80" stroke="#655FA7" stroke-width="4"/>
+                            <circle cx="30" cy="40" r="12" fill="#553B84"/>
+                            <circle cx="70" cy="40" r="12" fill="#94598F"/>
+                            <path d="M20 40 L80 40" stroke="#323E8A" stroke-width="3"/>
                         </svg>
                     </div>
-                    <h4 class="text-xl font-bold mb-3">Sustainable Success & Continuous Learning</h4>
-                    <p class="text-neutral text-sm">We build practices that teams can maintain long-term while fostering a culture of growth, learning, and continuous improvement.</p>
+                    <h3 class="text-xl font-bold text-primary-dark mb-3 text-center">Growth Through Balance</h3>
+                    <p class="text-gray-600 text-center mobile-font">
+                        Sustainable improvement comes from balancing ambition with realistic capacity and wellbeing.
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="py-20 bg-light">
+    <section id="services" class="py-16 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Services</h2>
-                <p class="text-xl text-neutral max-w-3xl mx-auto">Comprehensive solutions organized into five key service categories</p>
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary-dark mb-4">Services - Where We Add Value</h2>
+                <div class="max-w-4xl mx-auto">
+                    <p class="text-lg text-gray-700 mb-6 mobile-font">
+                        Every organization delivers projects — but not every organization delivers them well.
+                    </p>
+                    <p class="text-lg text-gray-700 mb-6 mobile-font">
+                        Our Health Check services help you see where you really are — before you decide where to go next. 
+                        We assess how your people, processes, and delivery frameworks are performing in reality (not just on paper).
+                    </p>
+                    <p class="text-lg text-gray-700 mobile-font">
+                        From there, we provide actionable insights and practical coaching that restore focus, predictability, 
+                        and confidence in delivery — without imposing unnecessary frameworks or buzzwords.
+                    </p>
+                </div>
             </div>
-            
+
             <!-- Health Checks -->
             <div class="mb-16">
-                <div class="text-center mb-8">
-                    <div class="w-32 h-2 bg-gradient-to-r from-primary-dark to-primary-blue mx-auto mb-4 rounded-full shadow-lg"></div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Health Checks</h3>
-                    <p class="text-neutral">Comprehensive assessments to identify strengths and improvement opportunities</p>
-                </div>
-                
-                <!-- Comprehensive Health Check -->
-                <div class="bg-gradient-to-r from-primary-dark to-primary-blue p-8 rounded-lg shadow-xl mb-8 text-white">
-                    <div class="text-center mb-6">
-                        <h4 class="text-2xl font-bold mb-3">🏆 Agnostic Agility Comprehensive Health Check</h4>
-                        <p class="text-blue-100 text-lg">Our flagship assessment combining all four health check areas for a complete organizational view</p>
-                    </div>
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <div>
-                            <h5 class="font-semibold mb-3">What's Included:</h5>
-                            <ul class="text-blue-100 space-y-1 text-sm">
-                                <li>✓ Complete project delivery assessment</li>
-                                <li>✓ Methodology and approach evaluation</li>
-                                <li>✓ PMO structure and governance review</li>
-                                <li>✓ Team wellness and performance analysis</li>
-                                <li>✓ Cross-functional impact assessment</li>
-                                <li>✓ Integrated improvement roadmap</li>
-                            </ul>
+                <h3 class="text-2xl font-bold text-primary-dark mb-8 text-center">Health Checks</h3>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Project Delivery Health Check -->
+                    <div class="bg-white rounded-lg shadow-lg p-6 card-hover">
+                        <div class="flex items-center mb-4">
+                            <svg class="w-12 h-12 mr-4 animate-pulse-slow" viewBox="0 0 100 100" fill="none">
+                                <circle cx="50" cy="50" r="35" stroke="#323E8A" stroke-width="3" fill="none" opacity="0.3">
+                                    <animate attributeName="r" values="30;40;30" dur="3s" repeatCount="indefinite"/>
+                                    <animate attributeName="opacity" values="0.3;0.7;0.3" dur="3s" repeatCount="indefinite"/>
+                                </circle>
+                                <circle cx="50" cy="50" r="25" stroke="#553B84" stroke-width="2" fill="none">
+                                    <animate attributeName="stroke-dasharray" values="0,157;78.5,78.5;157,0" dur="2s" repeatCount="indefinite"/>
+                                </circle>
+                                <rect x="20" y="30" width="60" height="40" rx="5" fill="#323E8A" opacity="0.2">
+                                    <animate attributeName="opacity" values="0.2;0.4;0.2" dur="2.5s" repeatCount="indefinite"/>
+                                </rect>
+                                <path d="M30 45 L45 55 L70 35" stroke="#0B1E49" stroke-width="3" fill="none">
+                                    <animate attributeName="stroke-dasharray" values="0,50;25,25;50,0" dur="2s" repeatCount="indefinite"/>
+                                </path>
+                                <circle cx="50" cy="50" r="3" fill="#94598F">
+                                    <animate attributeName="r" values="2;5;2" dur="1.5s" repeatCount="indefinite"/>
+                                </circle>
+                            </svg>
+                            <h4 class="text-xl font-bold text-primary-dark">Project Delivery Health Check</h4>
                         </div>
-                        <div>
-                            <h5 class="font-semibold mb-3">Deliverables:</h5>
-                            <ul class="text-blue-100 space-y-1 text-sm">
-                                <li>• Comprehensive health score dashboard</li>
-                                <li>• Detailed findings report with evidence</li>
-                                <li>• Prioritized recommendation matrix</li>
-                                <li>• 90-day quick wins action plan</li>
-                                <li>• Long-term transformation roadmap</li>
-                                <li>• Executive summary presentation</li>
-                            </ul>
-                        </div>
+                        <p class="text-gray-700 mobile-font">
+                            Understand what's really driving or blocking delivery. Comprehensive assessment of your delivery 
+                            pipeline, identifying bottlenecks, risks, and opportunities for improved flow and quality.
+                        </p>
                     </div>
-                </div>
 
-                <!-- Individual Health Checks -->
-                <div class="text-center mb-6">
-                    <h4 class="text-xl font-bold text-gray-900 mb-2">Individual Health Check Services</h4>
-                    <p class="text-neutral">Need a focused assessment? Each component is also available as a standalone service</p>
-                </div>
-                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="bg-white p-6 rounded-lg shadow-lg card-hover border-l-4 border-primary-dark">
-                        <h4 class="font-bold mb-2">Project Delivery Health Check</h4>
-                        <p class="text-sm text-neutral mb-3">Understand what's really driving or blocking delivery. Comprehensive assessment of your delivery pipeline, identifying bottlenecks, risks, and opportunities for improved flow and quality.</p>
-                        <div class="text-xs text-gray-500">
-                            <strong>Focus Areas:</strong> Timeline adherence, budget control, quality metrics, stakeholder satisfaction
+                    <!-- Project Methodology Health Check -->
+                    <div class="bg-white rounded-lg shadow-lg p-6 card-hover">
+                        <div class="flex items-center mb-4">
+                            <svg class="w-12 h-12 mr-4 animate-float" viewBox="0 0 100 100" fill="none">
+                                <path d="M20 50 L40 30 L60 50 L80 30" stroke="#553B84" stroke-width="3" fill="none">
+                                    <animate attributeName="stroke-dasharray" values="0,120;60,60;120,0" dur="3s" repeatCount="indefinite"/>
+                                </path>
+                                <circle cx="40" cy="30" r="8" fill="#94598F">
+                                    <animate attributeName="r" values="6;10;6" dur="2s" repeatCount="indefinite"/>
+                                    <animate attributeName="fill-opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite"/>
+                                </circle>
+                                <circle cx="60" cy="50" r="8" fill="#323E8A">
+                                    <animate attributeName="r" values="6;10;6" dur="2s" begin="0.7s" repeatCount="indefinite"/>
+                                    <animate attributeName="fill-opacity" values="0.7;1;0.7" dur="2s" begin="0.7s" repeatCount="indefinite"/>
+                                </circle>
+                                <circle cx="80" cy="30" r="8" fill="#655FA7">
+                                    <animate attributeName="r" values="6;10;6" dur="2s" begin="1.4s" repeatCount="indefinite"/>
+                                    <animate attributeName="fill-opacity" values="0.7;1;0.7" dur="2s" begin="1.4s" repeatCount="indefinite"/>
+                                </circle>
+                                <path d="M15 70 L85 70" stroke="#0B1E49" stroke-width="2" opacity="0.3">
+                                    <animate attributeName="stroke-dasharray" values="0,70;35,35;70,0" dur="4s" repeatCount="indefinite"/>
+                                </path>
+                            </svg>
+                            <h4 class="text-xl font-bold text-primary-dark">Project Methodology & Approach Health Check</h4>
                         </div>
+                        <p class="text-gray-700 mobile-font">
+                            Agile, Waterfall, Hybrid — or something in between? Evaluate your current methodology effectiveness, 
+                            team adoption and alignment with business goals and whether your delivery approach truly fits your 
+                            context, culture, and constraints.
+                        </p>
                     </div>
-                    <div class="bg-white p-6 rounded-lg shadow-lg card-hover border-l-4 border-primary-dark">
-                        <h4 class="font-bold mb-2">Methodology & Approach Health Check</h4>
-                        <p class="text-sm text-neutral mb-3">Agile, Waterfall, Hybrid — or something in between? Evaluate your current methodology effectiveness, team adoption and alignment with business goals and whether your delivery approach truly fits your context, culture, and constraints.</p>
-                        <div class="text-xs text-gray-500">
-                            <strong>Focus Areas:</strong> Process efficiency, framework alignment, methodology adoption, workflow optimization
+
+                    <!-- PMO Health Check -->
+                    <div class="bg-white rounded-lg shadow-lg p-6 card-hover">
+                        <div class="flex items-center mb-4">
+                            <svg class="w-12 h-12 mr-4 animate-bounce-slow" viewBox="0 0 100 100" fill="none">
+                                <rect x="25" y="25" width="50" height="50" rx="5" stroke="#0B1E49" stroke-width="2" fill="none">
+                                    <animate attributeName="stroke-width" values="2;4;2" dur="2s" repeatCount="indefinite"/>
+                                    <animate attributeName="stroke-opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
+                                </rect>
+                                <path d="M35 40 L65 40" stroke="#553B84" stroke-width="2">
+                                    <animate attributeName="stroke-dasharray" values="0,30;15,15;30,0" dur="1.5s" repeatCount="indefinite"/>
+                                </path>
+                                <path d="M35 50 L65 50" stroke="#553B84" stroke-width="2">
+                                    <animate attributeName="stroke-dasharray" values="0,30;15,15;30,0" dur="1.5s" begin="0.5s" repeatCount="indefinite"/>
+                                </path>
+                                <path d="M35 60 L65 60" stroke="#553B84" stroke-width="2">
+                                    <animate attributeName="stroke-dasharray" values="0,30;15,15;30,0" dur="1.5s" begin="1s" repeatCount="indefinite"/>
+                                </path>
+                                <circle cx="50" cy="15" r="8" fill="#94598F">
+                                    <animate attributeName="r" values="6;12;6" dur="3s" repeatCount="indefinite"/>
+                                    <animate attributeName="fill-opacity" values="0.6;1;0.6" dur="3s" repeatCount="indefinite"/>
+                                </circle>
+                                <path d="M45 12 L50 17 L55 12" stroke="#FFFFFF" stroke-width="2" fill="none">
+                                    <animate attributeName="stroke-opacity" values="0;1;0" dur="3s" repeatCount="indefinite"/>
+                                </path>
+                            </svg>
+                            <h4 class="text-xl font-bold text-primary-dark">PMO Health Check</h4>
                         </div>
+                        <p class="text-gray-700 mobile-font">
+                            Is your PMO enabling delivery or enforcing bureaucracy? We review PMO maturity, tooling, and 
+                            governance models to ensure they're adding clarity, not friction — and align PMO functions 
+                            with business outcomes, not templates.
+                        </p>
                     </div>
-                    <div class="bg-white p-6 rounded-lg shadow-lg card-hover border-l-4 border-primary-dark">
-                        <h4 class="font-bold mb-2">PMO Health Check</h4>
-                        <p class="text-sm text-neutral mb-3">Is your PMO enabling delivery or enforcing bureaucracy? We review PMO maturity, tooling, and governance models to ensure they're adding clarity, not friction — and align PMO functions with business outcomes, not templates.</p>
-                        <div class="text-xs text-gray-500">
-                            <strong>Focus Areas:</strong> Governance effectiveness, portfolio alignment, resource optimization, value demonstration
+
+                    <!-- Team Health Check -->
+                    <div class="bg-white rounded-lg shadow-lg p-6 card-hover">
+                        <div class="flex items-center mb-4">
+                            <svg class="w-12 h-12 mr-4 animate-pulse-slow" viewBox="0 0 100 100" fill="none">
+                                <circle cx="35" cy="35" r="12" fill="#553B84">
+                                    <animate attributeName="r" values="10;14;10" dur="2s" repeatCount="indefinite"/>
+                                    <animate attributeName="fill-opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite"/>
+                                </circle>
+                                <circle cx="65" cy="35" r="12" fill="#94598F">
+                                    <animate attributeName="r" values="10;14;10" dur="2s" begin="0.7s" repeatCount="indefinite"/>
+                                    <animate attributeName="fill-opacity" values="0.7;1;0.7" dur="2s" begin="0.7s" repeatCount="indefinite"/>
+                                </circle>
+                                <circle cx="50" cy="65" r="12" fill="#323E8A">
+                                    <animate attributeName="r" values="10;14;10" dur="2s" begin="1.4s" repeatCount="indefinite"/>
+                                    <animate attributeName="fill-opacity" values="0.7;1;0.7" dur="2s" begin="1.4s" repeatCount="indefinite"/>
+                                </circle>
+                                <path d="M35 47 L50 53" stroke="#655FA7" stroke-width="2">
+                                    <animate attributeName="stroke-dasharray" values="0,20;10,10;20,0" dur="3s" repeatCount="indefinite"/>
+                                    <animate attributeName="stroke-width" values="2;4;2" dur="3s" repeatCount="indefinite"/>
+                                </path>
+                                <path d="M65 47 L50 53" stroke="#655FA7" stroke-width="2">
+                                    <animate attributeName="stroke-dasharray" values="0,20;10,10;20,0" dur="3s" begin="1s" repeatCount="indefinite"/>
+                                    <animate attributeName="stroke-width" values="2;4;2" dur="3s" begin="1s" repeatCount="indefinite"/>
+                                </path>
+                                <circle cx="35" cy="35" r="4" fill="#FFFFFF" opacity="0.8">
+                                    <animate attributeName="opacity" values="0.4;1;0.4" dur="2s" repeatCount="indefinite"/>
+                                </circle>
+                                <circle cx="65" cy="35" r="4" fill="#FFFFFF" opacity="0.8">
+                                    <animate attributeName="opacity" values="0.4;1;0.4" dur="2s" begin="0.7s" repeatCount="indefinite"/>
+                                </circle>
+                                <circle cx="50" cy="65" r="4" fill="#FFFFFF" opacity="0.8">
+                                    <animate attributeName="opacity" values="0.4;1;0.4" dur="2s" begin="1.4s" repeatCount="indefinite"/>
+                                </circle>
+                            </svg>
+                            <h4 class="text-xl font-bold text-primary-dark">Team Health Check</h4>
                         </div>
-                    </div>
-                    <div class="bg-white p-6 rounded-lg shadow-lg card-hover border-l-4 border-primary-dark">
-                        <h4 class="font-bold mb-2">Team Health Check</h4>
-                        <p class="text-sm text-neutral mb-3">Healthy teams deliver healthy projects. We examine workload balance, communication patterns, decision-making clarity, psychological safety, and identify early signs of burnout or disengagement — providing tangible actions to improve collaboration and reduce burnout.</p>
-                        <div class="text-xs text-gray-500">
-                            <strong>Focus Areas:</strong> Team wellness, collaboration effectiveness, skill gaps, engagement levels
-                        </div>
+                        <p class="text-gray-700 mobile-font">
+                            Healthy teams deliver healthy projects. We examine workload balance, communication patterns, 
+                            decision-making clarity, psychological safety, and identify early signs of burnout or disengagement 
+                            — providing tangible actions to improve collaboration and reduce burnout.
+                        </p>
                     </div>
                 </div>
             </div>
 
             <!-- Training -->
             <div class="mb-16">
-                <div class="text-center mb-8">
-                    <div class="w-32 h-2 bg-gradient-to-r from-primary-blue to-primary-purple mx-auto mb-4 rounded-full shadow-lg"></div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Training</h3>
-                    <p class="text-neutral">Skill development programs focused on sustainable delivery and team wellness</p>
-                </div>
+                <h3 class="text-2xl font-bold text-primary-dark mb-8 text-center">Training</h3>
                 <div class="grid md:grid-cols-2 gap-8">
-                    <div class="bg-white p-8 rounded-lg shadow-lg card-hover border-l-4 border-primary-blue">
-                        <h4 class="text-xl font-bold mb-4">People Wellness Training</h4>
-                        <p class="text-neutral mb-4">Comprehensive programs to build resilient, healthy teams that perform at their best without burning out.</p>
-                        <ul class="text-sm text-neutral space-y-1">
-                            <li>• Stress management and resilience building</li>
-                            <li>• Work-life balance strategies</li>
-                            <li>• Team communication and collaboration</li>
-                        </ul>
+                    <!-- People Wellness Training -->
+                    <div class="bg-white rounded-lg shadow-lg p-6 card-hover">
+                        <div class="flex items-center mb-4">
+                            <svg class="w-12 h-12 mr-4 animate-float" viewBox="0 0 100 100" fill="none">
+                                <path d="M50 25 C40 25 35 35 35 45 C35 55 50 75 50 75 C50 75 65 55 65 45 C65 35 60 25 50 25 Z" fill="#94598F">
+                                    <animate attributeName="fill-opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite"/>
+                                    <animateTransform attributeName="transform" type="scale" values="1;1.1;1" dur="3s" repeatCount="indefinite"/>
+                                </path>
+                                <circle cx="50" cy="45" r="8" fill="#FFFFFF">
+                                    <animate attributeName="r" values="6;10;6" dur="2s" repeatCount="indefinite"/>
+                                </circle>
+                                <path d="M45 40 L48 43 L55 36" stroke="#553B84" stroke-width="2" fill="none">
+                                    <animate attributeName="stroke-dasharray" values="0,15;7.5,7.5;15,0" dur="2s" repeatCount="indefinite"/>
+                                    <animate attributeName="stroke-width" values="2;3;2" dur="2s" repeatCount="indefinite"/>
+                                </path>
+                                <circle cx="50" cy="45" r="15" stroke="#94598F" stroke-width="1" fill="none" opacity="0.3">
+                                    <animate attributeName="r" values="12;18;12" dur="3s" repeatCount="indefinite"/>
+                                    <animate attributeName="stroke-opacity" values="0.1;0.5;0.1" dur="3s" repeatCount="indefinite"/>
+                                </circle>
+                                <circle cx="50" cy="45" r="20" stroke="#553B84" stroke-width="1" fill="none" opacity="0.2">
+                                    <animate attributeName="r" values="18;25;18" dur="4s" repeatCount="indefinite"/>
+                                    <animate attributeName="stroke-opacity" values="0.05;0.3;0.05" dur="4s" repeatCount="indefinite"/>
+                                </circle>
+                            </svg>
+                            <h4 class="text-xl font-bold text-primary-dark">People Wellness Training</h4>
+                        </div>
+                        <p class="text-gray-700 mobile-font">
+                            Team wellbeing and burnout prevention with animated wellness hearts and growth indicators. 
+                            Empowering teams to deliver better, together through tailored workshops and learning programs 
+                            focused on leadership, communication, and team effectiveness.
+                        </p>
                     </div>
-                    <div class="bg-white p-8 rounded-lg shadow-lg card-hover border-l-4 border-primary-blue">
-                        <h4 class="text-xl font-bold mb-4">Delivery Methodology Training</h4>
-                        <p class="text-neutral mb-4">Framework-agnostic training that adapts to your organization's unique context and needs.</p>
-                        <ul class="text-sm text-neutral space-y-1">
-                            <li>• Agile principles and practices</li>
-                            <li>• Lean delivery techniques</li>
-                            <li>• Hybrid methodology approaches</li>
-                        </ul>
+
+                    <!-- Project Methodology Training -->
+                    <div class="bg-white rounded-lg shadow-lg p-6 card-hover">
+                        <div class="flex items-center mb-4">
+                            <svg class="w-12 h-12 mr-4 animate-bounce-slow" viewBox="0 0 100 100" fill="none">
+                                <rect x="20" y="30" width="15" height="40" fill="#323E8A">
+                                    <animate attributeName="height" values="35;45;35" dur="2s" repeatCount="indefinite"/>
+                                    <animate attributeName="y" values="35;25;35" dur="2s" repeatCount="indefinite"/>
+                                    <animate attributeName="fill-opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite"/>
+                                </rect>
+                                <rect x="40" y="20" width="15" height="50" fill="#553B84">
+                                    <animate attributeName="height" values="45;55;45" dur="2s" begin="0.5s" repeatCount="indefinite"/>
+                                    <animate attributeName="y" values="25;15;25" dur="2s" begin="0.5s" repeatCount="indefinite"/>
+                                    <animate attributeName="fill-opacity" values="0.7;1;0.7" dur="2s" begin="0.5s" repeatCount="indefinite"/>
+                                </rect>
+                                <rect x="60" y="35" width="15" height="35" fill="#94598F">
+                                    <animate attributeName="height" values="30;40;30" dur="2s" begin="1s" repeatCount="indefinite"/>
+                                    <animate attributeName="y" values="40;30;40" dur="2s" begin="1s" repeatCount="indefinite"/>
+                                    <animate attributeName="fill-opacity" values="0.7;1;0.7" dur="2s" begin="1s" repeatCount="indefinite"/>
+                                </rect>
+                                <path d="M15 75 L85 75" stroke="#0B1E49" stroke-width="2">
+                                    <animate attributeName="stroke-dasharray" values="0,70;35,35;70,0" dur="3s" repeatCount="indefinite"/>
+                                    <animate attributeName="stroke-width" values="2;4;2" dur="3s" repeatCount="indefinite"/>
+                                </path>
+                                <circle cx="27.5" cy="25" r="3" fill="#FFFFFF" opacity="0.8">
+                                    <animate attributeName="opacity" values="0.4;1;0.4" dur="2s" repeatCount="indefinite"/>
+                                </circle>
+                                <circle cx="47.5" cy="15" r="3" fill="#FFFFFF" opacity="0.8">
+                                    <animate attributeName="opacity" values="0.4;1;0.4" dur="2s" begin="0.5s" repeatCount="indefinite"/>
+                                </circle>
+                                <circle cx="67.5" cy="30" r="3" fill="#FFFFFF" opacity="0.8">
+                                    <animate attributeName="opacity" values="0.4;1;0.4" dur="2s" begin="1s" repeatCount="indefinite"/>
+                                </circle>
+                            </svg>
+                            <h4 class="text-xl font-bold text-primary-dark">Project Methodology Training</h4>
+                        </div>
+                        <p class="text-gray-700 mobile-font">
+                            SAFe, Scrum, Kanban, Lean, and Wagile training with visual methodology frameworks. 
+                            Comprehensive training programs that help teams understand and apply the right methodology 
+                            for their specific context and challenges.
+                        </p>
                     </div>
                 </div>
             </div>
 
-            <!-- Transformation & Coaching -->
+            <!-- Coaching and Mentoring -->
             <div class="mb-16">
-                <div class="text-center mb-8">
-                    <div class="w-32 h-2 bg-gradient-to-r from-primary-purple to-primary-mauve mx-auto mb-4 rounded-full shadow-lg"></div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Transformation & Coaching</h3>
-                    <p class="text-neutral">Personalized guidance to develop an agnostic mindset and sustainable practices</p>
-                </div>
-                <div class="bg-white p-8 rounded-lg shadow-lg card-hover border-l-4 border-primary-purple max-w-4xl mx-auto">
-                    <h4 class="text-xl font-bold mb-4">Agnostic Mindset Coaching and Mentoring</h4>
-                    <p class="text-neutral mb-4">One-on-one and team coaching to develop flexible, context-aware approaches to project delivery that prioritize outcomes over rigid processes.</p>
-                    <div class="grid md:grid-cols-3 gap-4 text-sm text-neutral">
-                        <div>
-                            <strong>Individual Coaching:</strong>
-                            <ul class="mt-1 space-y-1">
-                                <li>• Leadership development</li>
-                                <li>• Decision-making frameworks</li>
-                                <li>• Adaptive thinking skills</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <strong>Team Mentoring:</strong>
-                            <ul class="mt-1 space-y-1">
-                                <li>• Collaborative problem-solving</li>
-                                <li>• Continuous improvement culture</li>
-                                <li>• Cross-functional alignment</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <strong>Organizational Guidance:</strong>
-                            <ul class="mt-1 space-y-1">
-                                <li>• Culture transformation</li>
-                                <li>• Change management support</li>
-                                <li>• Sustainable practice adoption</li>
-                            </ul>
-                        </div>
+                <h3 class="text-2xl font-bold text-primary-dark mb-8 text-center">Coaching and Mentoring</h3>
+                <div class="bg-white rounded-lg shadow-lg p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <svg class="w-12 h-12 mr-4 animate-pulse-slow" viewBox="0 0 100 100" fill="none">
+                            <circle cx="50" cy="40" r="15" fill="#553B84">
+                                <animate attributeName="r" values="12;18;12" dur="3s" repeatCount="indefinite"/>
+                                <animate attributeName="fill-opacity" values="0.7;1;0.7" dur="3s" repeatCount="indefinite"/>
+                            </circle>
+                            <path d="M30 60 L70 60" stroke="#94598F" stroke-width="3">
+                                <animate attributeName="stroke-dasharray" values="0,40;20,20;40,0" dur="2s" repeatCount="indefinite"/>
+                            </path>
+                            <path d="M35 70 L65 70" stroke="#94598F" stroke-width="3">
+                                <animate attributeName="stroke-dasharray" values="0,30;15,15;30,0" dur="2s" begin="0.5s" repeatCount="indefinite"/>
+                            </path>
+                            <path d="M40 80 L60 80" stroke="#94598F" stroke-width="3">
+                                <animate attributeName="stroke-dasharray" values="0,20;10,10;20,0" dur="2s" begin="1s" repeatCount="indefinite"/>
+                            </path>
+                            <circle cx="25" cy="25" r="8" fill="#323E8A">
+                                <animate attributeName="r" values="6;10;6" dur="2.5s" repeatCount="indefinite"/>
+                                <animate attributeName="fill-opacity" values="0.6;1;0.6" dur="2.5s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="75" cy="25" r="8" fill="#655FA7">
+                                <animate attributeName="r" values="6;10;6" dur="2.5s" begin="0.6s" repeatCount="indefinite"/>
+                                <animate attributeName="fill-opacity" values="0.6;1;0.6" dur="2.5s" begin="0.6s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="25" cy="75" r="8" fill="#94598F">
+                                <animate attributeName="r" values="6;10;6" dur="2.5s" begin="1.2s" repeatCount="indefinite"/>
+                                <animate attributeName="fill-opacity" values="0.6;1;0.6" dur="2.5s" begin="1.2s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="75" cy="75" r="8" fill="#452C54">
+                                <animate attributeName="r" values="6;10;6" dur="2.5s" begin="1.8s" repeatCount="indefinite"/>
+                                <animate attributeName="fill-opacity" values="0.6;1;0.6" dur="2.5s" begin="1.8s" repeatCount="indefinite"/>
+                            </circle>
+                            <path d="M33 33 L42 42" stroke="#0B1E49" stroke-width="2">
+                                <animate attributeName="stroke-dasharray" values="0,12;6,6;12,0" dur="3s" repeatCount="indefinite"/>
+                            </path>
+                            <path d="M67 33 L58 42" stroke="#0B1E49" stroke-width="2">
+                                <animate attributeName="stroke-dasharray" values="0,12;6,6;12,0" dur="3s" begin="0.5s" repeatCount="indefinite"/>
+                            </path>
+                            <path d="M33 67 L42 58" stroke="#0B1E49" stroke-width="2">
+                                <animate attributeName="stroke-dasharray" values="0,12;6,6;12,0" dur="3s" begin="1s" repeatCount="indefinite"/>
+                            </path>
+                            <path d="M67 67 L58 58" stroke="#0B1E49" stroke-width="2">
+                                <animate attributeName="stroke-dasharray" values="0,12;6,6;12,0" dur="3s" begin="1.5s" repeatCount="indefinite"/>
+                            </path>
+                            <circle cx="50" cy="40" r="5" fill="#FFFFFF" opacity="0.8">
+                                <animate attributeName="opacity" values="0.4;1;0.4" dur="3s" repeatCount="indefinite"/>
+                            </circle>
+                        </svg>
+                        <h4 class="text-xl font-bold text-primary-dark">Agnostic People Mindset Coaching and Mentoring</h4>
                     </div>
+                    <p class="text-gray-700 mobile-font">
+                        Because capability is built, not bought. We coach leaders, project managers, and delivery teams 
+                        to apply context-driven practices — helping them balance process discipline with human adaptability. 
+                        Features a central coach figure connected to multiple methodology symbols, emphasizing the agnostic approach.
+                    </p>
                 </div>
             </div>
 
-            <!-- Project Management -->
+            <!-- Project Management as a Service -->
             <div class="mb-16">
-                <div class="text-center mb-8">
-                    <div class="w-32 h-2 bg-gradient-to-r from-primary-mauve to-primary-light-purple mx-auto mb-4 rounded-full shadow-lg"></div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Project Management</h3>
-                    <p class="text-neutral">End-to-end project delivery using framework-agnostic approaches</p>
-                </div>
-                
-                <div class="bg-white p-8 rounded-lg shadow-lg card-hover border-l-4 border-primary-mauve mb-8">
-                    <h4 class="text-2xl font-bold mb-4">Framework-Agnostic Project Delivery</h4>
-                    <p class="text-neutral mb-6">End-to-end project management services using a framework-agnostic approach. We select and adapt the best methodologies for your unique context, delivering results without forcing rigid frameworks that don't fit your organization's culture, constraints, and goals.</p>
+                <h3 class="text-2xl font-bold text-primary-dark mb-8 text-center">Project Management as a Service</h3>
+                <div class="bg-white rounded-lg shadow-lg p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <svg class="w-12 h-12 mr-4 animate-pulse-slow" viewBox="0 0 100 100" fill="none">
+                            <circle cx="50" cy="50" r="35" stroke="#0B1E49" stroke-width="2" fill="none" opacity="0.3">
+                                <animate attributeName="r" values="30;40;30" dur="4s" repeatCount="indefinite"/>
+                                <animate attributeName="stroke-opacity" values="0.2;0.6;0.2" dur="4s" repeatCount="indefinite"/>
+                            </circle>
+                            <path d="M20 50 L35 35 L50 50 L65 35 L80 50" stroke="#553B84" stroke-width="3" fill="none">
+                                <animate attributeName="stroke-dasharray" values="0,120;60,60;120,0" dur="3s" repeatCount="indefinite"/>
+                                <animate attributeName="stroke-width" values="2;4;2" dur="3s" repeatCount="indefinite"/>
+                            </path>
+                            <circle cx="20" cy="50" r="6" fill="#94598F">
+                                <animate attributeName="r" values="4;8;4" dur="2s" repeatCount="indefinite"/>
+                                <animate attributeName="fill-opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="35" cy="35" r="6" fill="#323E8A">
+                                <animate attributeName="r" values="4;8;4" dur="2s" begin="0.4s" repeatCount="indefinite"/>
+                                <animate attributeName="fill-opacity" values="0.7;1;0.7" dur="2s" begin="0.4s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="50" cy="50" r="8" fill="#553B84">
+                                <animate attributeName="r" values="6;10;6" dur="2s" begin="0.8s" repeatCount="indefinite"/>
+                                <animate attributeName="fill-opacity" values="0.8;1;0.8" dur="2s" begin="0.8s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="65" cy="35" r="6" fill="#655FA7">
+                                <animate attributeName="r" values="4;8;4" dur="2s" begin="1.2s" repeatCount="indefinite"/>
+                                <animate attributeName="fill-opacity" values="0.7;1;0.7" dur="2s" begin="1.2s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="80" cy="50" r="6" fill="#452C54">
+                                <animate attributeName="r" values="4;8;4" dur="2s" begin="1.6s" repeatCount="indefinite"/>
+                                <animate attributeName="fill-opacity" values="0.7;1;0.7" dur="2s" begin="1.6s" repeatCount="indefinite"/>
+                            </circle>
+                            <path d="M15 70 L85 70" stroke="#0B1E49" stroke-width="2" opacity="0.4">
+                                <animate attributeName="stroke-dasharray" values="0,70;35,35;70,0" dur="5s" repeatCount="indefinite"/>
+                            </path>
+                            <rect x="45" y="65" width="10" height="10" rx="2" fill="#94598F" opacity="0.6">
+                                <animate attributeName="opacity" values="0.4;0.8;0.4" dur="3s" repeatCount="indefinite"/>
+                                <animate attributeName="width" values="8;12;8" dur="3s" repeatCount="indefinite"/>
+                                <animate attributeName="x" values="46;44;46" dur="3s" repeatCount="indefinite"/>
+                            </rect>
+                            <circle cx="50" cy="50" r="3" fill="#FFFFFF" opacity="0.9">
+                                <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" begin="0.8s" repeatCount="indefinite"/>
+                            </circle>
+                        </svg>
+                        <h4 class="text-xl font-bold text-primary-dark">Framework-Agnostic Project Delivery</h4>
+                    </div>
+                    <p class="text-gray-700 mobile-font mb-6">
+                        End-to-end project management services using a framework-agnostic approach. We select and adapt the best 
+                        methodologies for your unique context, delivering results without forcing rigid frameworks that don't fit 
+                        your organization's culture, constraints, and goals.
+                    </p>
                     
                     <div class="bg-gray-50 p-6 rounded-lg mb-6">
-                        <h5 class="text-lg font-bold mb-3 text-primary-dark">Our Framework-Agnostic Mindset</h5>
-                        <p class="text-neutral">We believe there's no "one-size-fits-all" methodology. Instead, we assess your specific context and blend the best practices from multiple frameworks to create a tailored approach that works for your team.</p>
-                    </div>
-                </div>
-
-                <!-- Methodology Grid -->
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-                    <div class="bg-white p-6 rounded-lg shadow-lg card-hover border-l-4 border-primary-mauve">
-                        <h5 class="font-bold mb-2 text-primary-dark">Agile & Scrum</h5>
-                        <p class="text-sm text-neutral">Iterative delivery, sprint planning, daily standups, retrospectives for adaptive teams</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-lg shadow-lg card-hover border-l-4 border-primary-mauve">
-                        <h5 class="font-bold mb-2 text-primary-dark">SAFe (Scaled Agile)</h5>
-                        <p class="text-sm text-neutral">Large-scale coordination, program increments, value streams for enterprise transformation</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-lg shadow-lg card-hover border-l-4 border-primary-mauve">
-                        <h5 class="font-bold mb-2 text-primary-dark">Waterfall</h5>
-                        <p class="text-sm text-neutral">Sequential phases, detailed planning, gate reviews for regulated or predictable environments</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-lg shadow-lg card-hover border-l-4 border-primary-mauve">
-                        <h5 class="font-bold mb-2 text-primary-dark">Hybrid Approaches</h5>
-                        <p class="text-sm text-neutral">Blending methodologies, "Wagile" approaches, tailored governance for complex contexts</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-lg shadow-lg card-hover border-l-4 border-primary-mauve">
-                        <h5 class="font-bold mb-2 text-primary-dark">Lean & Kanban</h5>
-                        <p class="text-sm text-neutral">Continuous flow, waste elimination, visual management for operational excellence</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-lg shadow-lg card-hover border-l-4 border-primary-mauve">
-                        <h5 class="font-bold mb-2 text-primary-dark">Custom Frameworks</h5>
-                        <p class="text-sm text-neutral">Bespoke approaches combining elements from multiple methodologies for unique needs</p>
-                    </div>
-                </div>
-
-                <!-- How We Choose Section -->
-                <div class="bg-gradient-to-r from-primary-mauve to-primary-purple p-8 rounded-lg shadow-xl text-white">
-                    <h4 class="text-xl font-bold mb-6 text-center">How We Choose the Right Approach</h4>
-                    <div class="grid md:grid-cols-2 gap-8">
-                        <div>
-                            <h5 class="font-semibold mb-4">Context Assessment</h5>
-                            <ul class="text-sm text-purple-100 space-y-2">
-                                <li>• Organizational culture and maturity</li>
-                                <li>• Project complexity and uncertainty</li>
-                                <li>• Regulatory and compliance requirements</li>
-                                <li>• Team size and distribution</li>
-                                <li>• Stakeholder preferences and constraints</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h5 class="font-semibold mb-4">Adaptive Implementation</h5>
-                            <ul class="text-sm text-purple-100 space-y-2">
-                                <li>• Start with proven practices that fit</li>
-                                <li>• Evolve approach based on feedback</li>
-                                <li>• Blend methodologies as needed</li>
-                                <li>• Focus on outcomes, not process purity</li>
-                                <li>• Maintain people wellness throughout</li>
-                            </ul>
+                        <h5 class="text-lg font-bold text-primary-dark mb-4">Our Framework-Agnostic Mindset</h5>
+                        <p class="text-gray-700 mobile-font mb-4">
+                            We believe there's no "one-size-fits-all" methodology. Instead, we assess your specific context and 
+                            blend the best practices from multiple frameworks to create a tailored approach that works for your team.
+                        </p>
+                        
+                        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-primary-blue">
+                                <h6 class="font-semibold text-primary-dark mb-2">Agile & Scrum</h6>
+                                <p class="text-gray-600 text-sm mobile-font">
+                                    Iterative delivery, sprint planning, daily standups, retrospectives for adaptive teams
+                                </p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-primary-purple">
+                                <h6 class="font-semibold text-primary-dark mb-2">SAFe (Scaled Agile)</h6>
+                                <p class="text-gray-600 text-sm mobile-font">
+                                    Large-scale coordination, program increments, value streams for enterprise transformation
+                                </p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-primary-mauve">
+                                <h6 class="font-semibold text-primary-dark mb-2">Waterfall</h6>
+                                <p class="text-gray-600 text-sm mobile-font">
+                                    Sequential phases, detailed planning, gate reviews for regulated or predictable environments
+                                </p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-primary-light-purple">
+                                <h6 class="font-semibold text-primary-dark mb-2">Hybrid Approaches</h6>
+                                <p class="text-gray-600 text-sm mobile-font">
+                                    Blending methodologies, "Wagile" approaches, tailored governance for complex contexts
+                                </p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-primary-navy">
+                                <h6 class="font-semibold text-primary-dark mb-2">Lean & Kanban</h6>
+                                <p class="text-gray-600 text-sm mobile-font">
+                                    Continuous flow, waste elimination, visual management for operational excellence
+                                </p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border-l-4 border-primary-dark-purple">
+                                <h6 class="font-semibold text-primary-dark mb-2">Custom Frameworks</h6>
+                                <p class="text-gray-600 text-sm mobile-font">
+                                    Bespoke approaches combining elements from multiple methodologies for unique needs
+                                </p>
+                            </div>
                         </div>
                     </div>
+                    
+                    <div class="bg-primary-dark text-white p-6 rounded-lg">
+                        <h5 class="text-lg font-bold mb-4">How We Choose the Right Approach</h5>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <h6 class="font-semibold mb-3">Context Assessment</h6>
+                                <ul class="space-y-2 text-sm">
+                                    <li>• Organizational culture and maturity</li>
+                                    <li>• Project complexity and uncertainty</li>
+                                    <li>• Regulatory and compliance requirements</li>
+                                    <li>• Team size and distribution</li>
+                                    <li>• Stakeholder preferences and constraints</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h6 class="font-semibold mb-3">Adaptive Implementation</h6>
+                                <ul class="space-y-2 text-sm">
+                                    <li>• Start with proven practices that fit</li>
+                                    <li>• Evolve approach based on feedback</li>
+                                    <li>• Blend methodologies as needed</li>
+                                    <li>• Focus on outcomes, not process purity</li>
+                                    <li>• Maintain people wellness throughout</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Change Management -->
+            <div>
+                <h3 class="text-2xl font-bold text-primary-dark mb-8 text-center">Change Management</h3>
+                <div class="bg-white rounded-lg shadow-lg p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <svg class="w-12 h-12 mr-4 animate-float" viewBox="0 0 100 100" fill="none">
+                            <path d="M30 70 Q50 30 70 70" stroke="#553B84" stroke-width="4" fill="none">
+                                <animate attributeName="stroke-dasharray" values="0,80;40,40;80,0" dur="3s" repeatCount="indefinite"/>
+                                <animate attributeName="stroke-width" values="3;5;3" dur="3s" repeatCount="indefinite"/>
+                            </path>
+                            <circle cx="30" cy="70" r="8" fill="#94598F">
+                                <animate attributeName="r" values="6;12;6" dur="2s" repeatCount="indefinite"/>
+                                <animate attributeName="fill-opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="70" cy="70" r="8" fill="#323E8A">
+                                <animate attributeName="r" values="6;12;6" dur="2s" begin="1s" repeatCount="indefinite"/>
+                                <animate attributeName="fill-opacity" values="0.7;1;0.7" dur="2s" begin="1s" repeatCount="indefinite"/>
+                            </circle>
+                            <path d="M65 65 L70 70 L75 65" stroke="#FFFFFF" stroke-width="2" fill="none">
+                                <animate attributeName="stroke-opacity" values="0.5;1;0.5" dur="2s" begin="1s" repeatCount="indefinite"/>
+                                <animate attributeName="stroke-width" values="2;4;2" dur="2s" begin="1s" repeatCount="indefinite"/>
+                            </path>
+                            <circle cx="50" cy="50" r="15" stroke="#553B84" stroke-width="1" fill="none" opacity="0.3">
+                                <animate attributeName="r" values="10;20;10" dur="4s" repeatCount="indefinite"/>
+                                <animate attributeName="stroke-opacity" values="0.1;0.5;0.1" dur="4s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="50" cy="50" r="25" stroke="#94598F" stroke-width="1" fill="none" opacity="0.2">
+                                <animate attributeName="r" values="20;30;20" dur="5s" repeatCount="indefinite"/>
+                                <animate attributeName="stroke-opacity" values="0.05;0.3;0.05" dur="5s" repeatCount="indefinite"/>
+                            </circle>
+                            <path d="M45 45 L50 50 L55 45" stroke="#655FA7" stroke-width="2" fill="none" opacity="0.6">
+                                <animate attributeName="stroke-opacity" values="0.3;0.8;0.3" dur="3s" repeatCount="indefinite"/>
+                                <animateTransform attributeName="transform" type="rotate" values="0 50 50;360 50 50" dur="6s" repeatCount="indefinite"/>
+                            </path>
+                        </svg>
+                        <h4 class="text-xl font-bold text-primary-dark">Change Management</h4>
+                    </div>
+                    <p class="text-gray-700 mobile-font">
+                        Turn resistance into readiness. We help organizations design and embed change in ways people 
+                        can embrace and sustain. Our approach focuses on human psychology and organizational culture 
+                        to ensure lasting transformation.
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Our Approach Section -->
-    <section id="approach" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our GROWTH Approach</h2>
-                <p class="text-xl text-neutral max-w-3xl mx-auto">A holistic framework that prioritizes people wellness while delivering exceptional results</p>
-            </div>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-                <!-- G - Gauge -->
-                <div class="bg-white p-8 rounded-lg shadow-lg card-hover border-l-4 border-primary-dark">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-primary-dark rounded-full flex items-center justify-center mr-4">
-                            <span class="text-white text-xl font-bold">G</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-primary-dark">Gauge</h3>
-                    </div>
-                    <p class="text-neutral mb-4">We start by understanding your current state - team dynamics, delivery challenges, and wellness indicators.</p>
-                    <ul class="text-sm text-neutral space-y-1">
-                        <li>• Team health assessments</li>
-                        <li>• Process efficiency analysis</li>
-                        <li>• Stakeholder alignment review</li>
-                    </ul>
-                </div>
-                
-                <!-- R - Reflect -->
-                <div class="bg-white p-8 rounded-lg shadow-lg card-hover border-l-4 border-primary-blue">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-primary-blue rounded-full flex items-center justify-center mr-4">
-                            <span class="text-white text-xl font-bold">R</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-primary-blue">Reflect</h3>
-                    </div>
-                    <p class="text-neutral mb-4">Together, we analyze findings and identify patterns, root causes, and opportunities for improvement.</p>
-                    <ul class="text-sm text-neutral space-y-1">
-                        <li>• Collaborative analysis sessions</li>
-                        <li>• Root cause identification</li>
-                        <li>• Success pattern recognition</li>
-                    </ul>
-                </div>
-                
-                <!-- O - Optimize -->
-                <div class="bg-white p-8 rounded-lg shadow-lg card-hover border-l-4 border-primary-purple">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-primary-purple rounded-full flex items-center justify-center mr-4">
-                            <span class="text-white text-xl font-bold">O</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-primary-purple">Optimize</h3>
-                    </div>
-                    <p class="text-neutral mb-4">We design tailored solutions that enhance delivery while maintaining team wellness and sustainability.</p>
-                    <ul class="text-sm text-neutral space-y-1">
-                        <li>• Process refinement</li>
-                        <li>• Workflow optimization</li>
-                        <li>• Resource allocation improvement</li>
-                    </ul>
-                </div>
-                
-                <!-- W - Wellness -->
-                <div class="bg-white p-8 rounded-lg shadow-lg card-hover border-l-4 border-primary-mauve">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-primary-mauve rounded-full flex items-center justify-center mr-4">
-                            <span class="text-white text-xl font-bold">W</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-primary-mauve">Wellness</h3>
-                    </div>
-                    <p class="text-neutral mb-4">People wellness is central to everything we do - healthy teams deliver better results sustainably.</p>
-                    <ul class="text-sm text-neutral space-y-1">
-                        <li>• Stress management strategies</li>
-                        <li>• Work-life balance initiatives</li>
-                        <li>• Team resilience building</li>
-                    </ul>
-                </div>
-                
-                <!-- T - Transform -->
-                <div class="bg-white p-8 rounded-lg shadow-lg card-hover border-l-4 border-primary-light-purple">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-primary-light-purple rounded-full flex items-center justify-center mr-4">
-                            <span class="text-white text-xl font-bold">T</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-primary-light-purple">Transform</h3>
-                    </div>
-                    <p class="text-neutral mb-4">We implement changes gradually, ensuring adoption is sustainable and aligned with your culture.</p>
-                    <ul class="text-sm text-neutral space-y-1">
-                        <li>• Incremental implementation</li>
-                        <li>• Change management support</li>
-                        <li>• Cultural alignment</li>
-                    </ul>
-                </div>
-                
-                <!-- H - Harmonize -->
-                <div class="bg-white p-8 rounded-lg shadow-lg card-hover border-l-4 border-primary-dark-purple">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-primary-dark-purple rounded-full flex items-center justify-center mr-4">
-                            <span class="text-white text-xl font-bold">H</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-primary-dark-purple">Harmonize</h3>
-                    </div>
-                    <p class="text-neutral mb-4">We ensure all elements work together seamlessly - people, processes, and technology in perfect balance.</p>
-                    <ul class="text-sm text-neutral space-y-1">
-                        <li>• System integration</li>
-                        <li>• Team alignment</li>
-                        <li>• Continuous monitoring</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <!-- GROWTH Process Flow -->
-            <div class="bg-gradient-to-r from-primary-dark to-primary-blue p-8 rounded-lg shadow-xl text-white">
-                <h3 class="text-2xl font-bold text-center mb-8">How GROWTH Works in Practice</h3>
-                <div class="grid md:grid-cols-3 gap-8 text-center">
-                    <div>
-                        <div class="bg-white bg-opacity-20 p-4 rounded-lg mb-4">
-                            <h4 class="font-bold text-lg mb-2">Phase 1: Assess</h4>
-                            <p class="text-blue-100 text-sm">Gauge current state and Reflect on lessons learned</p>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="bg-white bg-opacity-20 p-4 rounded-lg mb-4">
-                            <h4 class="font-bold text-lg mb-2">Phase 2: Design</h4>
-                            <p class="text-blue-100 text-sm">Optimize processes while prioritizing Wellness</p>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="bg-white bg-opacity-20 p-4 rounded-lg mb-4">
-                            <h4 class="font-bold text-lg mb-2">Phase 3: Implement</h4>
-                            <p class="text-blue-100 text-sm">Transform sustainably and Harmonize all elements</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="text-center mt-6">
-                    <p class="text-blue-100 italic">The GROWTH approach is cyclical - we continuously gauge, reflect, and adapt to ensure lasting positive change.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-        <!-- Blog Posts Section -->
-    <section id="Socials" class="py-16 bg-white">
+    <!-- Blog Posts Section -->
+    <section id="socials" class="py-16 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
                 <h2 class="text-3xl md:text-4xl font-bold text-primary-dark mb-4">Latest Blog Posts</h2>
@@ -1114,6 +1277,17 @@
             </div>
         </div>
     </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary-darker text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h3 class="text-xl font-bold mb-2">Agnostic Agility</h3>
+                <p class="text-primary-light-purple mb-4 mobile-font">Agility without dogma, delivery without burnout</p>
+                <p class="text-sm text-gray-400 mobile-font">© 2024 Agnostic Agility. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
     <script>
         // Mobile menu toggle
@@ -1760,7 +1934,43 @@
                             <p class="text-sm opacity-90">Because when teams thrive, projects don't just succeed—they flourish.</p>
                         </div>
                     </div>
-                                 `
+
+                    <div class="bg-gray-50 p-8 rounded-lg mb-8">
+                        <div class="flex flex-col md:flex-row gap-8 mb-6">
+                            <div class="flex-shrink-0">
+                                <!-- Space reserved for KC's professional photo -->
+                                <div class="w-40 h-40 md:w-48 md:h-48 rounded-full bg-gradient-to-br from-primary-blue to-primary-purple flex items-center justify-center shadow-lg mx-auto md:mx-0">
+                                     <img src="Kiranmaye Cartier pic 2.jpg">
+                                </div>
+                            </div>
+                            <div class="flex-1">
+                                <h2 class="text-xl font-bold text-primary-dark mb-4">About the Author</h2>
+                            </div>
+                        </div>
+                        <p class="text-gray-700 mb-4 text-base leading-relaxed">
+                            <strong>Kiranmaye Cartier</strong> is an experienced Project and Change Leader with over 25 years of global experience 
+                            guiding complex transformation programmes across financial services, public sector, technology, and regulatory landscapes.
+                        </p>
+                        <p class="text-gray-700 mb-4 text-base leading-relaxed">
+                            A Certified SAFe Program Consultant (SPC) and recognised expert in Agile, Lean, and organisational transformation, 
+                            Kiranmaye blends deep technical governance with a genuine passion for human-centred leadership. Her approach focuses 
+                            not just on frameworks and KPIs — but on the well-being, psychological safety, and resilience of the people delivering change.
+                        </p>
+                        <div class="bg-white p-4 rounded-lg border-l-4 border-primary-purple mb-4">
+                            <p class="text-gray-700 text-base italic">
+                                "The most successful projects I've led weren't the ones with the best methodology or the most resources. 
+                                They were the ones where the team felt safe, supported, and energized to do their best work. That's the 
+                                foundation everything else is built on."
+                            </p>
+                        </div>
+                        <p class="text-gray-700 text-base leading-relaxed flex items-center">
+                            <span class="mr-2">📍</span>
+                            Learn more about how Kiranmaye and the Agnostic Agility team can support your organisation at 
+                            <a href="https://agnosticagility.co.uk" target="_blank" rel="noopener noreferrer" 
+                               class="text-primary-purple hover:text-primary-mauve font-semibold ml-1">agnosticagility.co.uk</a>
+                        </p>
+                    </div>
+                `
             }
         };
 
@@ -1971,3 +2181,4 @@
     </script>
 <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98a9543e9071a2cb',t:'MTc1OTc5NzQzNy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
+
