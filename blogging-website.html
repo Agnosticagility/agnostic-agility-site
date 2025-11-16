@@ -136,6 +136,13 @@
             100% { left: 100%; }
         }
 
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+
+
         .hero-content {
             max-width: 800px;
             margin: 0 auto;
@@ -595,6 +602,8 @@
             .nav-container {
                 padding: 0 1rem;
             }
+
+
         }
 
         @media (max-width: 480px) {
@@ -641,8 +650,9 @@
   </header>
   <section class="hero section-offset" id="home">
    <video autoplay muted loop class="w-full h-full object-cover">
-        <source src="AgnosticAgilityLogo-MP4-06102025.mp4" type="video/mp4">  Your browser does not support the video tag.              
-     <div class="hero-overlay"></div>
+       <source src="AgnosticAgilityLogo-MP4-06102025.mp4" type="video/mp4">                
+   </video> Your browser does not support the video tag.
+   <div class="hero-overlay"></div>
    <div class="hero-content">
     <h1 id="hero-title">Agility &amp; Beyond</h1>
     <p id="hero-subtitle">Insights on Leadership, Transformation &amp; People Wellness</p>
@@ -746,9 +756,8 @@
     <h2 class="section-title" style="font-family: 'Playfair Display', 'Georgia', serif; font-style: italic; font-weight: 700; letter-spacing: 1px;">Kiranmaye Cartier</h2>
     <div style="max-width: 900px; margin: 0 auto; text-align: left;">
      <div style="text-align: center; margin-bottom: 3rem;">
-      <div style="width: 200px; height: 200px; margin: 0 auto 2rem; border-radius: 50%; background: linear-gradient(135deg, #e2e8f0, #cbd5e1); display: flex; align-items: center; justify-content: center;">
-       <svg width="80" height="80" fill="#6366f1" viewbox="0 0 24 24" opacity="0.6"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-       </svg>
+      <div style="width: 200px; height: 200px; margin: 0 auto 2rem; border-radius: 50%; overflow: hidden; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15); border: 4px solid white;">
+       <img src="Kiranmaye Cartier pic 2.jpg">
       </div>
       <p style="font-size: 1.2rem; color: #1e3a8a; font-weight: 600; line-height: 1.6;">Welcome to Agnostic Agility, the home of Kiranmaye Cartier's mission to transform organisations through practical, people-centred agile excellence.</p>
      </div>
@@ -932,8 +941,11 @@
             hero_subtitle: "Insights on Leadership, Transformation & People Wellness",
             blog_map_title: "Explore Our Blog Categories",
             latest_blogs_title: "Latest Insights",
-            hero_video_url: ""
+            hero_video_url: "",
+            author_photo_url: ""
         };
+
+
 
         // Initialize the page
         function initializePage() {
@@ -1179,7 +1191,7 @@
                 }
             });
 
-            // Handle video background
+            // Handle hero video background
             const videoUrl = config.hero_video_url || defaultConfig.hero_video_url;
             const videoElement = document.getElementById('hero-video');
             const videoSource = document.getElementById('video-source');
@@ -1203,6 +1215,20 @@
             } else {
                 videoElement.style.display = 'none';
             }
+
+            // Handle author photo
+            const photoUrl = config.author_photo_url || defaultConfig.author_photo_url;
+            const photoElement = document.getElementById('author-photo');
+            const placeholderElement = document.getElementById('author-photo-placeholder');
+            
+            if (photoUrl && photoUrl.trim() !== '') {
+                photoElement.src = photoUrl;
+                photoElement.style.display = 'block';
+                placeholderElement.style.display = 'none';
+            } else {
+                photoElement.style.display = 'none';
+                placeholderElement.style.display = 'flex';
+            }
         }
 
         // Initialize Element SDK
@@ -1223,7 +1249,8 @@
                     ["hero_subtitle", config.hero_subtitle || defaultConfig.hero_subtitle],
                     ["blog_map_title", config.blog_map_title || defaultConfig.blog_map_title],
                     ["latest_blogs_title", config.latest_blogs_title || defaultConfig.latest_blogs_title],
-                    ["hero_video_url", config.hero_video_url || defaultConfig.hero_video_url]
+                    ["hero_video_url", config.hero_video_url || defaultConfig.hero_video_url],
+                    ["author_photo_url", config.author_photo_url || defaultConfig.author_photo_url]
                 ])
             });
         }
@@ -1231,5 +1258,5 @@
         // Initialize page when DOM is loaded
         document.addEventListener('DOMContentLoaded', initializePage);
     </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99f7f5a8d77eb32e',t:'MTc2MzMwNjI5Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99f80b2c948c6aa6',t:'MTc2MzMwNzE3NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
