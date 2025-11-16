@@ -89,79 +89,17 @@
         }
 
         /* Hero Section with Video Background */
-        .hero {
-            background: linear-gradient(135deg, #1e3a8a 0%, #6366f1 50%, #7c3aed 100%);
-            color: white;
-            padding: 4rem 0;
-            text-align: center;
+        .video-container {
             position: relative;
+            width: 100%;
+            height: 60vh;
             overflow: hidden;
-            min-height: 60vh;
         }
 
-        .hero-video {
-            position: absolute;
-            top: 0;
-            left: 0;
+        .video-container video {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            z-index: 1;
-        }
-
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(30, 58, 138, 0.8) 0%, rgba(99, 102, 241, 0.7) 50%, rgba(124, 58, 237, 0.8) 100%);
-            z-index: 2;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            animation: shimmer 3s infinite;
-            z-index: 3;
-        }
-
-        @keyframes shimmer {
-            0% { left: -100%; }
-            100% { left: 100%; }
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
-
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            letter-spacing: -1px;
-        }
-
-        .hero p {
-            font-size: 1.25rem;
-            opacity: 0.9;
-            margin-bottom: 2rem;
         }
 
         .cta-button {
@@ -561,12 +499,16 @@
                 white-space: nowrap;
             }
 
-            .hero h1 {
-                font-size: 2.5rem;
+            #hero-title {
+                font-size: 2.5rem !important;
             }
 
-            .hero p {
-                font-size: 1.1rem;
+            #hero-subtitle {
+                font-size: 1.1rem !important;
+            }
+
+            #tagline {
+                font-size: 1rem !important;
             }
 
             .section-title {
@@ -647,16 +589,18 @@
      <li><a href="#contact">Contact</a></li>
     </ul>
    </nav>
-  </header>
-  <section class="hero section-offset" id="home">
-   <video autoplay muted loop class="w-full h-full object-cover">
-       <source src="AgnosticAgilityLogo-MP4-06102025.mp4" type="video/mp4">                
-   </video> Your browser does not support the video tag.
-   <div class="hero-overlay"></div>
-   <div class="hero-content">
-    <h1 id="hero-title">Agility &amp; Beyond</h1>
-    <p id="hero-subtitle">Insights on Leadership, Transformation &amp; People Wellness</p>
-    <p id="tagline">Transforming Organizations Through Agile Excellence</p><a href="#blog-map" class="cta-button">Explore Our Insights</a>
+  </header><!-- Hero Banner with Video -->
+  <section id="home" class="relative section-offset">
+   <div class="video-container" style="position: relative; width: 100%; height: 60vh; overflow: hidden;">
+    <video autoplay muted loop class="w-full h-full object-cover" style="width: 100%; height: 100%; object-fit: cover;"><source src="AgnosticAgilityLogo-MP4-06102025.mp4" type="video/mp4">
+    </video>
+   </div>
+   <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.4); display: flex; align-items: center; justify-content: center;">
+    <div class="text-center text-white p-8" style="text-align: center; color: white; padding: 2rem;">
+     <h1 id="hero-title" style="font-size: 3.5rem; font-weight: 800; margin-bottom: 1rem; letter-spacing: -1px;">Agility &amp; Beyond</h1>
+     <p id="hero-subtitle" style="font-size: 1.25rem; opacity: 0.9; margin-bottom: 1rem;">Insights on Leadership, Transformation &amp; People Wellness</p>
+     <p id="tagline" style="font-size: 1.1rem; opacity: 0.8; margin-bottom: 2rem;">Transforming Organizations Through Agile Excellence</p><button onclick="document.getElementById('blog-map').scrollIntoView({behavior: 'smooth'})" class="cta-button" style="background: white; color: #1e3a8a; padding: 1rem 2rem; border: none; border-radius: 50px; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease; text-decoration: none; display: inline-block;"> Explore Our Insights </button>
+    </div>
    </div>
   </section>
   <section class="blog-map section-offset" id="blog-map">
@@ -756,8 +700,10 @@
     <h2 class="section-title" style="font-family: 'Playfair Display', 'Georgia', serif; font-style: italic; font-weight: 700; letter-spacing: 1px;">Kiranmaye Cartier</h2>
     <div style="max-width: 900px; margin: 0 auto; text-align: left;">
      <div style="text-align: center; margin-bottom: 3rem;">
-      <div style="width: 200px; height: 200px; margin: 0 auto 2rem; border-radius: 50%; overflow: hidden; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15); border: 4px solid white;">
-       <img src="Kiranmaye Cartier pic 2.jpg">
+      <div style="width: 200px; height: 200px; margin: 0 auto 2rem; border-radius: 50%; overflow: hidden; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15); border: 4px solid white;"><img id="author-photo" src="" alt="Kiranmaye Cartier - Author" style="width: 100%; height: 100%; object-fit: cover; display: none;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+       <div id="author-photo-placeholder" style="width: 100%; height: 100%; background: linear-gradient(135deg, #e2e8f0, #cbd5e1); display: flex; align-items: center; justify-content: center; color: #6366f1; font-size: 3rem; font-weight: 700;">
+        KC
+       </div>
       </div>
       <p style="font-size: 1.2rem; color: #1e3a8a; font-weight: 600; line-height: 1.6;">Welcome to Agnostic Agility, the home of Kiranmaye Cartier's mission to transform organisations through practical, people-centred agile excellence.</p>
      </div>
@@ -887,7 +833,7 @@
                 category: "People Wellness",
                 readTime: "8 min read",
                 summary: "Discover how integrating wellness strategies into project delivery can combat burnout and create sustainable high-performance teams in today's volatile business environment.",
-                pdfUrl: https://drive.google.com/file/d/1cZi_VOWXgI_gFrfwXVPLAwEK-hbcWhdy/view?usp=sharing
+                pdfUrl: "#" // Replace with actual PDF URL when available
             },
             {
                 title: "Scrum Master Guide: Navigating Agile Team Through the 4 Stages of Bruce Tuckman's Model to High Performance",
@@ -1191,30 +1137,7 @@
                 }
             });
 
-            // Handle hero video background
-            const videoUrl = config.hero_video_url || defaultConfig.hero_video_url;
-            const videoElement = document.getElementById('hero-video');
-            const videoSource = document.getElementById('video-source');
-            
-            if (videoUrl && videoUrl.trim() !== '') {
-                videoSource.src = videoUrl;
-                videoElement.load();
-                videoElement.style.display = 'block';
-                
-                // Handle video load events
-                videoElement.addEventListener('loadeddata', () => {
-                    videoElement.play().catch(e => {
-                        console.log('Video autoplay prevented:', e);
-                    });
-                });
-                
-                videoElement.addEventListener('error', () => {
-                    console.log('Video failed to load, falling back to gradient background');
-                    videoElement.style.display = 'none';
-                });
-            } else {
-                videoElement.style.display = 'none';
-            }
+            // Hero video is now hardcoded in HTML - no dynamic configuration needed
 
             // Handle author photo
             const photoUrl = config.author_photo_url || defaultConfig.author_photo_url;
@@ -1258,5 +1181,5 @@
         // Initialize page when DOM is loaded
         document.addEventListener('DOMContentLoaded', initializePage);
     </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99f80b2c948c6aa6',t:'MTc2MzMwNzE3NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99f85c866576a44d',t:'MTc2MzMxMDUwNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
