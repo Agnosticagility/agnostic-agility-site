@@ -1,0 +1,1235 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agnostic Agility Ltd. - Professional Blog</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <style>
+        body {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #ffffff;
+            color: #1a1a1a;
+            line-height: 1.6;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #0c1220 0%, #1a202c 50%, #2d3748 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            height: 80px;
+        }
+
+        /* Scroll offset for sticky header */
+        .section-offset {
+            scroll-margin-top: 100px;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+
+
+        .logo-section {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .header-tagline {
+            font-size: 0.75rem;
+            font-weight: 400;
+            opacity: 0.9;
+            letter-spacing: 0.25px;
+            white-space: nowrap;
+            line-height: 1.3;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero Section with Video Background */
+        .hero {
+            background: linear-gradient(135deg, #1e3a8a 0%, #6366f1 50%, #7c3aed 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            min-height: 60vh;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.8) 0%, rgba(99, 102, 241, 0.7) 50%, rgba(124, 58, 237, 0.8) 100%);
+            z-index: 2;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            animation: shimmer 3s infinite;
+            z-index: 3;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            background: white;
+            color: #1e3a8a;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Blog Map Section */
+        .blog-map {
+            padding: 4rem 0;
+            background-color: #f8fafc;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            color: #1e3a8a;
+        }
+
+        /* New organized layout */
+        .category-navigation {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .category-tab {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 50px;
+            padding: 1rem 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            color: #64748b;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .category-tab:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            border-color: #6366f1;
+        }
+
+        .category-tab.active {
+            background: linear-gradient(135deg, #6366f1, #7c3aed);
+            color: white;
+            border-color: #6366f1;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.3);
+        }
+
+        .category-tab-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Featured categories showcase */
+        .featured-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .featured-category {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .featured-category::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .featured-category:hover::before {
+            left: 100%;
+        }
+
+        .featured-category:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15);
+        }
+
+        .category-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            border-color: #6366f1;
+        }
+
+        .category-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Category-specific colors */
+        .all-category .category-icon {
+            background: linear-gradient(135deg, #6366f1, #7c3aed);
+        }
+
+        .agility-category .category-icon {
+            background: linear-gradient(135deg, #059669, #10b981);
+        }
+
+        .leadership-category .category-icon {
+            background: linear-gradient(135deg, #dc2626, #ef4444);
+        }
+
+        .projects-category .category-icon {
+            background: linear-gradient(135deg, #d97706, #f59e0b);
+        }
+
+        .wellness-category .category-icon {
+            background: linear-gradient(135deg, #7c2d12, #ea580c);
+        }
+
+        .transformation-category .category-icon {
+            background: linear-gradient(135deg, #1e40af, #3b82f6);
+        }
+
+        .category-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #1e3a8a;
+        }
+
+        .category-card p {
+            color: #64748b;
+            font-size: 0.95rem;
+        }
+
+        /* Blog Cards Section */
+        .blog-section {
+            padding: 4rem 0;
+            background: white;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #e2e8f0;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .blog-header {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+        }
+
+        .blog-category {
+            display: inline-block;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        /* Category-specific blog badge colors */
+        .blog-category.agility {
+            background: linear-gradient(135deg, #059669, #10b981);
+        }
+
+        .blog-category.leadership {
+            background: linear-gradient(135deg, #dc2626, #ef4444);
+        }
+
+        .blog-category.projects {
+            background: linear-gradient(135deg, #d97706, #f59e0b);
+        }
+
+        .blog-category.wellness {
+            background: linear-gradient(135deg, #7c2d12, #ea580c);
+        }
+
+        .blog-category.transformation {
+            background: linear-gradient(135deg, #1e40af, #3b82f6);
+        }
+
+        .blog-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1e3a8a;
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+        }
+
+        .blog-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        .blog-content {
+            padding: 1.5rem;
+        }
+
+        .blog-summary {
+            color: #4b5563;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .read-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #6366f1;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .read-more:hover {
+            color: #7c3aed;
+        }
+
+        .read-more svg {
+            transition: transform 0.3s ease;
+        }
+
+        .read-more:hover svg {
+            transform: translateX(3px);
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #1e3a8a 0%, #6366f1 50%, #7c3aed 100%);
+            color: white;
+            padding: 3rem 0 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer p {
+            opacity: 0.8;
+            margin-bottom: 2rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 2rem;
+            margin-top: 2rem;
+            opacity: 0.7;
+        }
+
+        /* Active category highlighting */
+        .category-card.active {
+            border-color: #6366f1;
+            background: linear-gradient(135deg, #f0f4ff, #e0e7ff);
+        }
+
+        .blog-card.hidden {
+            display: none;
+        }
+
+        /* Category sections */
+        .category-section {
+            margin-bottom: 3rem;
+        }
+
+        .category-section-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #1e3a8a;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .category-section-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .category-section.agility .category-section-icon {
+            background: linear-gradient(135deg, #059669, #10b981);
+        }
+
+        .category-section.leadership .category-section-icon {
+            background: linear-gradient(135deg, #dc2626, #ef4444);
+        }
+
+        .category-section.projects .category-section-icon {
+            background: linear-gradient(135deg, #d97706, #f59e0b);
+        }
+
+        .category-section.wellness .category-section-icon {
+            background: linear-gradient(135deg, #7c2d12, #ea580c);
+        }
+
+        .category-section.transformation .category-section-icon {
+            background: linear-gradient(135deg, #1e40af, #3b82f6);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .header-tagline {
+                font-size: 0.65rem;
+                white-space: nowrap;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .category-navigation {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.75rem;
+            }
+
+            .category-tab {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+                padding: 0.75rem 1.5rem;
+            }
+
+            .featured-categories {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .nav-container {
+                padding: 0 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .category-tab {
+                font-size: 0.9rem;
+                padding: 0.6rem 1.2rem;
+            }
+
+            .category-tab-icon {
+                width: 18px;
+                height: 18px;
+            }
+
+            .featured-category {
+                padding: 1.5rem;
+            }
+        }
+
+
+    </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body>
+  <header class="header">
+   <nav class="nav-container">
+    <div class="logo-section">
+     <div class="logo" id="company-name">
+      Agnostic Agility Ltd.
+     </div>
+     <div class="header-tagline" id="header-tagline">
+      Agility without Dogma, Delivery Outcomes Balanced with People Wellness
+     </div>
+    </div>
+    <ul class="nav-menu">
+     <li><a href="#home">Home</a></li>
+     <li><a href="#blog-map">Blog Map</a></li>
+     <li><a href="#blogs">Latest Blogs</a></li>
+     <li><a href="#about">About Author</a></li>
+     <li><a href="#contact">Contact</a></li>
+    </ul>
+   </nav>
+  </header>
+  <section class="hero section-offset" id="home">
+   <video id="hero-video" class="hero-video" autoplay muted loop playsinline style="display: none;"><source id="video-source" src="" type="video/mp4"> Your browser does not support the video tag.
+   </video>
+   <div class="hero-overlay"></div>
+   <div class="hero-content">
+    <h1 id="hero-title">Agility &amp; Beyond</h1>
+    <p id="hero-subtitle">Insights on Leadership, Transformation &amp; People Wellness</p>
+    <p id="tagline">Transforming Organizations Through Agile Excellence</p><a href="#blog-map" class="cta-button">Explore Our Insights</a>
+   </div>
+  </section>
+  <section class="blog-map section-offset" id="blog-map">
+   <div class="container">
+    <h2 class="section-title" id="blog-map-title">Explore Our Blog Categories</h2><!-- Category Navigation Tabs -->
+    <div class="category-navigation">
+     <div class="category-tab active" data-category="all">
+      <div class="category-tab-icon">
+       <svg width="20" height="20" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+       </svg>
+      </div> All Categories
+     </div>
+     <div class="category-tab" data-category="Agility &amp; Beyond">
+      <div class="category-tab-icon">
+       <svg width="20" height="20" fill="currentColor" viewbox="0 0 24 24"><path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9z" />
+       </svg>
+      </div> Agility &amp; Beyond
+     </div>
+     <div class="category-tab" data-category="Leadership">
+      <div class="category-tab-icon">
+       <svg width="20" height="20" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+       </svg>
+      </div> Leadership
+     </div>
+     <div class="category-tab" data-category="Programmes &amp; Projects">
+      <div class="category-tab-icon">
+       <svg width="20" height="20" fill="currentColor" viewbox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z" /> <rect x="7" y="10" width="2" height="7" /> <rect x="11" y="7" width="2" height="10" /> <rect x="15" y="13" width="2" height="4" />
+       </svg>
+      </div> Programmes &amp; Projects
+     </div>
+     <div class="category-tab" data-category="People Wellness">
+      <div class="category-tab-icon">
+       <svg width="20" height="20" fill="currentColor" viewbox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+       </svg>
+      </div> People Wellness
+     </div>
+     <div class="category-tab" data-category="Transformation">
+      <div class="category-tab-icon">
+       <svg width="20" height="20" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+       </svg>
+      </div> Transformation
+     </div>
+    </div><!-- Featured Categories Showcase -->
+    <div class="featured-categories" id="featured-categories">
+     <div class="featured-category agility-category" data-category="Agility &amp; Beyond" style="cursor: pointer;">
+      <div style="width: 80px; height: 80px; margin: 0 auto 1.5rem; border-radius: 50%; background: linear-gradient(135deg, #059669, #10b981); display: flex; align-items: center; justify-content: center;">
+       <svg width="40" height="40" fill="white" viewbox="0 0 24 24"><path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9z" />
+       </svg>
+      </div>
+      <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; color: #1e3a8a;">Agility &amp; Beyond</h3>
+      <p style="color: #64748b; font-size: 0.95rem; line-height: 1.6;">Discover agile methodologies, frameworks, and advanced practices that go beyond traditional approaches to create truly adaptive organizations.</p>
+     </div>
+     <div class="featured-category leadership-category" data-category="Leadership" style="cursor: pointer;">
+      <div style="width: 80px; height: 80px; margin: 0 auto 1.5rem; border-radius: 50%; background: linear-gradient(135deg, #dc2626, #ef4444); display: flex; align-items: center; justify-content: center;">
+       <svg width="40" height="40" fill="white" viewbox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+       </svg>
+      </div>
+      <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; color: #1e3a8a;">Leadership</h3>
+      <p style="color: #64748b; font-size: 0.95rem; line-height: 1.6;">Master adaptive leadership strategies that inspire teams, navigate uncertainty, and drive meaningful organizational change.</p>
+     </div>
+     <div class="featured-category projects-category" data-category="Programmes &amp; Projects" style="cursor: pointer;">
+      <div style="width: 80px; height: 80px; margin: 0 auto 1.5rem; border-radius: 50%; background: linear-gradient(135deg, #d97706, #f59e0b); display: flex; align-items: center; justify-content: center;">
+       <svg width="40" height="40" fill="white" viewbox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z" /> <rect x="7" y="10" width="2" height="7" /> <rect x="11" y="7" width="2" height="10" /> <rect x="15" y="13" width="2" height="4" />
+       </svg>
+      </div>
+      <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; color: #1e3a8a;">Programmes &amp; Projects</h3>
+      <p style="color: #64748b; font-size: 0.95rem; line-height: 1.6;">Explore effective project management strategies that balance delivery excellence with team wellbeing and sustainable practices.</p>
+     </div>
+     <div class="featured-category wellness-category" data-category="People Wellness" style="cursor: pointer;">
+      <div style="width: 80px; height: 80px; margin: 0 auto 1.5rem; border-radius: 50%; background: linear-gradient(135deg, #7c2d12, #ea580c); display: flex; align-items: center; justify-content: center;">
+       <svg width="40" height="40" fill="white" viewbox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+       </svg>
+      </div>
+      <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; color: #1e3a8a;">People Wellness</h3>
+      <p style="color: #64748b; font-size: 0.95rem; line-height: 1.6;">Learn wellbeing strategies that create sustainable high performance while maintaining psychological safety and team resilience.</p>
+     </div>
+     <div class="featured-category transformation-category" data-category="Transformation" style="cursor: pointer;">
+      <div style="width: 80px; height: 80px; margin: 0 auto 1.5rem; border-radius: 50%; background: linear-gradient(135deg, #1e40af, #3b82f6); display: flex; align-items: center; justify-content: center;">
+       <svg width="40" height="40" fill="white" viewbox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+       </svg>
+      </div>
+      <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; color: #1e3a8a;">Transformation</h3>
+      <p style="color: #64748b; font-size: 0.95rem; line-height: 1.6;">Navigate organizational transformation with strategies that create lasting change while honoring both business needs and human values.</p>
+     </div>
+    </div>
+   </div>
+  </section>
+  <section class="blog-section section-offset" id="blogs">
+   <div class="container">
+    <h2 class="section-title" id="latest-blogs-title">Latest Insights</h2>
+    <div class="blog-grid" id="blog-grid"><!-- Blog cards will be populated by JavaScript -->
+    </div>
+   </div>
+  </section>
+  <section class="about-section section-offset" id="about" style="padding: 4rem 0; background-color: #f8fafc;">
+   <div class="container">
+    <h2 class="section-title" style="font-family: 'Playfair Display', 'Georgia', serif; font-style: italic; font-weight: 700; letter-spacing: 1px;">Kiranmaye Cartier</h2>
+    <div style="max-width: 900px; margin: 0 auto; text-align: left;">
+     <div style="text-align: center; margin-bottom: 3rem;">
+      <div style="width: 200px; height: 200px; margin: 0 auto 2rem; border-radius: 50%; background: linear-gradient(135deg, #e2e8f0, #cbd5e1); display: flex; align-items: center; justify-content: center;">
+       <svg width="80" height="80" fill="#6366f1" viewbox="0 0 24 24" opacity="0.6"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+       </svg>
+      </div>
+      <p style="font-size: 1.2rem; color: #1e3a8a; font-weight: 600; line-height: 1.6;">Welcome to Agnostic Agility, the home of Kiranmaye Cartier's mission to transform organisations through practical, people-centred agile excellence.</p>
+     </div>
+     <div style="margin-bottom: 2.5rem;">
+      <p style="font-size: 1.1rem; color: #4b5563; line-height: 1.8; margin-bottom: 1.5rem;">Kiranmaye is a passionate advocate for adaptive, sustainable change. With years of experience coaching teams and leaders, she believes deeply that the heart of any transformation lies not just in frameworks, but in people—and in how we treat complexity with compassion.</p>
+     </div>
+     <div style="margin-bottom: 2.5rem;">
+      <h3 style="font-size: 1.4rem; color: #1e3a8a; font-weight: 600; margin-bottom: 2rem; text-align: center;">Her mission unfolds through three interconnected pillars:</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem;"><!-- Mission Card 1: Navigate Complexity -->
+       <div style="background: linear-gradient(135deg, #fef2f2, #fee2e2); border-radius: 20px; padding: 2rem; position: relative; overflow: visible; box-shadow: 0 8px 32px rgba(220, 38, 38, 0.1); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 16px 48px rgba(220, 38, 38, 0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 32px rgba(220, 38, 38, 0.1)'">
+        <div style="position: absolute; top: 10px; right: 10px; width: 80px; height: 80px; opacity: 0.08; z-index: 1;">
+         <svg width="80" height="80" fill="#dc2626" viewbox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z">
+           <animatetransform attributename="transform" type="rotate" values="0 12 12;360 12 12" dur="8s" repeatcount="indefinite" />
+          </path>
+         </svg>
+        </div>
+        <div style="display: flex; align-items: center; margin-bottom: 1.5rem; position: relative; z-index: 2;">
+         <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #dc2626, #ef4444); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 1rem;">
+          <svg width="30" height="30" fill="white" viewbox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z">
+            <animatetransform attributename="transform" type="rotate" values="0 12 12;360 12 12" dur="6s" repeatcount="indefinite" />
+           </path>
+          </svg>
+         </div>
+         <h4 style="font-size: 1.3rem; color: #dc2626; font-weight: 700; margin: 0;">Navigate Complexity</h4>
+        </div>
+        <p style="font-size: 1rem; color: #4b5563; line-height: 1.7; margin: 0; position: relative; z-index: 2;">In a rapidly changing world, Kiranmaye supports individuals and organisations to stay focused on what truly matters—delivering meaningful outcomes, not just ticking boxes.</p>
+       </div><!-- Mission Card 2: Champion Well-being -->
+       <div style="background: linear-gradient(135deg, #f0fdf4, #dcfce7); border-radius: 20px; padding: 2rem; position: relative; overflow: visible; box-shadow: 0 8px 32px rgba(5, 150, 105, 0.1); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 16px 48px rgba(5, 150, 105, 0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 32px rgba(5, 150, 105, 0.1)'">
+        <div style="position: absolute; top: 10px; right: 10px; width: 80px; height: 80px; opacity: 0.08; z-index: 1;">
+         <svg width="80" height="80" fill="#059669" viewbox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z">
+           <animatetransform attributename="transform" type="scale" values="1;1.1;1" dur="3s" repeatcount="indefinite" />
+          </path>
+         </svg>
+        </div>
+        <div style="display: flex; align-items: center; margin-bottom: 1.5rem; position: relative; z-index: 2;">
+         <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #059669, #10b981); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 1rem;">
+          <svg width="30" height="30" fill="white" viewbox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z">
+            <animate attributename="fill" values="white;#f0fdf4;white" dur="4s" repeatcount="indefinite" />
+           </path>
+          </svg>
+         </div>
+         <h4 style="font-size: 1.3rem; color: #059669; font-weight: 700; margin: 0;">Champion Well-being</h4>
+        </div>
+        <p style="font-size: 1rem; color: #4b5563; line-height: 1.7; margin: 0; position: relative; z-index: 2;">She guides leaders to balance performance with psychological safety, encouraging practices that foster resilience, trust, and growth.</p>
+       </div><!-- Mission Card 3: Build Real Agility -->
+       <div style="background: linear-gradient(135deg, #faf5ff, #f3e8ff); border-radius: 20px; padding: 2rem; position: relative; overflow: visible; box-shadow: 0 8px 32px rgba(124, 58, 237, 0.1); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 16px 48px rgba(124, 58, 237, 0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 32px rgba(124, 58, 237, 0.1)'">
+        <div style="position: absolute; top: 10px; right: 10px; width: 80px; height: 80px; opacity: 0.08; z-index: 1;">
+         <svg width="80" height="80" fill="#7c3aed" viewbox="0 0 24 24"><path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9z">
+           <animatetransform attributename="transform" type="rotate" values="0 12 12;360 12 12" dur="5s" repeatcount="indefinite" />
+          </path>
+         </svg>
+        </div>
+        <div style="display: flex; align-items: center; margin-bottom: 1.5rem; position: relative; z-index: 2;">
+         <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #7c3aed, #8b5cf6); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 1rem;">
+          <svg width="30" height="30" fill="white" viewbox="0 0 24 24"><path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9z">
+            <animatetransform attributename="transform" type="rotate" values="0 12 12;-360 12 12" dur="7s" repeatcount="indefinite" />
+           </path>
+          </svg>
+         </div>
+         <h4 style="font-size: 1.3rem; color: #7c3aed; font-weight: 700; margin: 0;">Build Real Agility</h4>
+        </div>
+        <p style="font-size: 1rem; color: #4b5563; line-line: 1.7; margin: 0; position: relative; z-index: 2;">Rather than promoting rigid adherence to any particular agile framework, Kiranmaye invites her readers to challenge orthodoxies, experiment mindfully, and discover what really enables sustainable high performance.</p>
+       </div>
+      </div>
+     </div>
+     <div style="margin-bottom: 2.5rem;">
+      <p style="font-size: 1.1rem; color: #4b5563; line-height: 1.8; margin-bottom: 1.5rem;">Through her writing on Agnostic Agility, she offers insight, guidance, and provocation: challenging popular beliefs, surfacing hard questions, and inspiring change rooted in both human values and business impact. Her writing is for those who don't simply want "agile in name only," but seek real transformation—where teams feel empowered, leaders stay grounded, and results speak for themselves.</p>
+     </div>
+     <div style="background: linear-gradient(135deg, #f0f4ff, #e0e7ff); padding: 2rem; border-radius: 12px; border-left: 4px solid #6366f1;">
+      <p style="font-size: 1.1rem; color: #1e3a8a; line-height: 1.8; margin: 0; font-style: italic;">Whether you're a manager wrestling with scaling agile practices, business struggling with agility and underperforming teams, an HR leader wanting to create a healthier working culture, or someone simply curious about doing things differently whether using Agile, Waterfall, Lean or Hybrid, <strong>Agnostic Agility is your space to explore, learn, and grow.</strong></p>
+     </div>
+    </div>
+   </div>
+  </section>
+  <section class="contact-section section-offset" id="contact" style="padding: 4rem 0; background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);">
+   <div class="container">
+    <h2 class="section-title" style="margin-bottom: 2rem;">Get In Touch</h2>
+    <div style="max-width: 600px; margin: 0 auto; text-align: center;">
+     <p style="font-size: 1.2rem; color: #4b5563; margin-bottom: 3rem; line-height: 1.6;">Do you have any challenges you would like to talk about? Let's have a chat!</p>
+     <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;"><!-- Email Contact --> <a href="mailto:connect@agnosticagility.co.uk" style="display: flex; align-items: center; gap: 1rem; background: white; padding: 1.5rem 2rem; border-radius: 16px; text-decoration: none; color: #1e3a8a; font-weight: 600; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease, box-shadow 0.3s ease; border: 2px solid transparent;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 12px 40px rgba(0, 0, 0, 0.15)'; this.style.borderColor='#6366f1'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 32px rgba(0, 0, 0, 0.1)'; this.style.borderColor='transparent'">
+       <div style="width: 50px; height: 50px; background: linear-gradient(135deg, #6366f1, #7c3aed); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+        <svg width="24" height="24" fill="white" viewbox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+        </svg>
+       </div>
+       <div style="text-align: left;">
+        <div style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.25rem;">
+         Email Us
+        </div>
+        <div style="font-size: 0.95rem; color: #6b7280;">
+         connect@agnosticagility.co.uk
+        </div>
+       </div></a> <!-- LinkedIn Contact --> <a href="https://www.linkedin.com/in/agnostic-agility-878132379/" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; gap: 1rem; background: white; padding: 1.5rem 2rem; border-radius: 16px; text-decoration: none; color: #1e3a8a; font-weight: 600; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease, box-shadow 0.3s ease; border: 2px solid transparent;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 12px 40px rgba(0, 0, 0, 0.15)'; this.style.borderColor='#0077b5'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 32px rgba(0, 0, 0, 0.1)'; this.style.borderColor='transparent'">
+       <div style="width: 50px; height: 50px; background: linear-gradient(135deg, #0077b5, #005885); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+        <svg width="24" height="24" fill="white" viewbox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+        </svg>
+       </div>
+       <div style="text-align: left;">
+        <div style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.25rem;">
+         Connect on LinkedIn
+        </div>
+        <div style="font-size: 0.95rem; color: #6b7280;">
+         Agnostic Agility
+        </div>
+       </div></a>
+     </div>
+     <div style="margin-top: 3rem; padding: 2rem; background: linear-gradient(135deg, #f0f4ff, #e0e7ff); border-radius: 16px; border-left: 4px solid #6366f1;">
+      <p style="font-size: 1rem; color: #1e3a8a; margin: 0; line-height: 1.6;"><strong>Looking for speaking engagements, consulting opportunities, or collaboration?</strong><br>
+        We'd love to hear from you and explore how we can work together to drive meaningful transformation.</p>
+     </div>
+    </div>
+   </div>
+  </section>
+  <footer class="footer">
+   <div class="footer-content">
+    <h3>Agnostic Agility Ltd.</h3>
+    <p>Transforming organizations through agile excellence and people-centered approaches</p>
+    <div class="footer-bottom">
+     <p>© 2024 Agnostic Agility Ltd. All rights reserved.</p>
+    </div>
+   </div>
+  </footer>
+  <script>
+        // Blog data
+        const blogs = [
+            {
+                title: "Embedding People Wellness into Project Delivery to Fight Burnout in Volatile Times",
+                category: "People Wellness",
+                readTime: "8 min read",
+                summary: "Discover how integrating wellness strategies into project delivery can combat burnout and create sustainable high-performance teams in today's volatile business environment.",
+                pdfUrl: "#" // Replace with actual PDF URL when available
+            },
+            {
+                title: "Scrum Master Guide: Navigating Agile Team Through the 4 Stages of Bruce Tuckman's Model to High Performance",
+                category: "Agility & Beyond",
+                readTime: "12 min read",
+                summary: "A comprehensive guide for Scrum Masters on leveraging Tuckman's team development model to guide agile teams from formation to peak performance.",
+                pdfUrl: "#" // Replace with actual PDF URL when available
+            },
+            {
+                title: "Breaking Free from Framework Dogma",
+                category: "Programmes & Projects",
+                readTime: "10 min read",
+                summary: "Challenge conventional thinking and learn how to adapt frameworks to your unique organizational context rather than blindly following prescribed methodologies.",
+                pdfUrl: "#" // Replace with actual PDF URL when available
+            },
+            {
+                title: "Embedding People Wellness as Your Secret Weapon to Sustainable Project Delivery",
+                category: "People Wellness",
+                readTime: "9 min read",
+                summary: "Transform your project delivery approach by making people wellness a core strategy for achieving sustainable success and long-term organizational health.",
+                pdfUrl: "#" // Replace with actual PDF URL when available
+            },
+            {
+                title: "Adaptive Leadership in Uncertain Times",
+                category: "Leadership",
+                readTime: "11 min read",
+                summary: "Master the art of adaptive leadership to navigate uncertainty, inspire teams, and drive organizational resilience in an ever-changing business landscape.",
+                pdfUrl: "#" // Replace with actual PDF URL when available
+            },
+            {
+                title: "Scrum: Top 5 Anti-patterns",
+                category: "Agility & Beyond",
+                readTime: "7 min read",
+                summary: "Identify and eliminate the most common Scrum anti-patterns that undermine team effectiveness and learn practical strategies to avoid these pitfalls.",
+                pdfUrl: "#" // Replace with actual PDF URL when available
+            },
+            {
+                title: "Beyond the Buzzwords: What Real Organizational Transformation Actually Looks Like",
+                category: "Transformation",
+                readTime: "14 min read",
+                summary: "Cut through the transformation hype and discover what genuine organizational change requires—from shifting mindsets and culture to creating sustainable systems that honor both business outcomes and human values.",
+                pdfUrl: "#" // Replace with actual PDF URL when available
+            }
+        ];
+
+        // Default configuration
+        const defaultConfig = {
+            company_name: "Agnostic Agility Ltd.",
+            tagline: "Agility without Dogma, Delivery Outcomes Balanced with People Wellness",
+            hero_title: "Agility & Beyond",
+            hero_subtitle: "Insights on Leadership, Transformation & People Wellness",
+            blog_map_title: "Explore Our Blog Categories",
+            latest_blogs_title: "Latest Insights",
+            hero_video_url: ""
+        };
+
+        // Initialize the page
+        function initializePage() {
+            renderBlogs('all');
+            setupCategoryFilters();
+            setupFeaturedCategoryCards();
+        }
+
+        // Get category CSS class
+        function getCategoryClass(category) {
+            const categoryMap = {
+                'Agility & Beyond': 'agility',
+                'Leadership': 'leadership',
+                'Programmes & Projects': 'projects',
+                'People Wellness': 'wellness',
+                'Transformation': 'transformation'
+            };
+            return categoryMap[category] || '';
+        }
+
+        // Get category icon SVG
+        function getCategoryIcon(category) {
+            const icons = {
+                'Agility & Beyond': `<svg width="20" height="20" fill="white" viewBox="0 0 24 24">
+                    <path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9z"/>
+                </svg>`,
+                'Leadership': `<svg width="20" height="20" fill="white" viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                </svg>`,
+                'Programmes & Projects': `<svg width="20" height="20" fill="white" viewBox="0 0 24 24">
+                    <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/>
+                    <rect x="7" y="10" width="2" height="7"/>
+                    <rect x="11" y="7" width="2" height="10"/>
+                    <rect x="15" y="13" width="2" height="4"/>
+                </svg>`,
+                'People Wellness': `<svg width="20" height="20" fill="white" viewBox="0 0 24 24">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>`,
+                'Transformation': `<svg width="20" height="20" fill="white" viewBox="0 0 24 24">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>`
+            };
+            return icons[category] || '';
+        }
+
+        // Render blog cards
+        function renderBlogs(category) {
+            const blogGrid = document.getElementById('blog-grid');
+            
+            if (category === 'all') {
+                // Show ALL categories, including those without blogs
+                const allCategories = ['Agility & Beyond', 'Leadership', 'Programmes & Projects', 'People Wellness', 'Transformation'];
+                
+                blogGrid.innerHTML = allCategories.map(cat => {
+                    const categoryBlogs = blogs.filter(blog => blog.category === cat);
+                    const categoryClass = getCategoryClass(cat);
+                    const categoryIcon = getCategoryIcon(cat);
+                    
+                    return `
+                        <div class="category-section ${categoryClass}">
+                            <h3 class="category-section-title">
+                                <div class="category-section-icon">${categoryIcon}</div>
+                                ${cat}
+                            </h3>
+                            <div class="blog-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem;">
+                                ${categoryBlogs.length > 0 ? 
+                                    categoryBlogs.map(blog => `
+                                        <div class="blog-card" data-category="${blog.category}">
+                                            <div class="blog-header">
+                                                <div class="blog-category ${getCategoryClass(blog.category)}">${blog.category}</div>
+                                                <h3 class="blog-title">${blog.title}</h3>
+                                                <div class="blog-meta">
+                                                    <span>📖 ${blog.readTime}</span>
+                                                    <span>📅 ${new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}</span>
+                                                </div>
+                                            </div>
+                                            <div class="blog-content">
+                                                <p class="blog-summary">${blog.summary}</p>
+                                                <a href="${blog.pdfUrl}" target="_blank" rel="noopener noreferrer" class="read-more">
+                                                    Read Full Blog
+                                                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                                                        <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+                                                    </svg>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    `).join('') 
+                                    : 
+                                    `<div class="coming-soon-card">
+                                        <div style="text-align: center; padding: 3rem 2rem; background: linear-gradient(135deg, #f8fafc, #e2e8f0); border-radius: 16px; border: 2px dashed #cbd5e1;">
+                                            <div style="width: 80px; height: 80px; margin: 0 auto 1.5rem; border-radius: 50%; background: linear-gradient(135deg, #6366f1, #7c3aed); display: flex; align-items: center; justify-content: center; opacity: 0.7;">
+                                                <svg width="40" height="40" fill="white" viewBox="0 0 24 24">
+                                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/>
+                                                </svg>
+                                            </div>
+                                            <h3 style="font-size: 1.5rem; font-weight: 600; color: #1e3a8a; margin-bottom: 1rem;">Coming Soon!</h3>
+                                            <p style="color: #64748b; font-size: 1rem; line-height: 1.6; margin: 0;">
+                                                Exciting ${cat.toLowerCase()} content is being crafted. Check back soon for insightful articles and practical guidance.
+                                            </p>
+                                        </div>
+                                    </div>`
+                                }
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            } else {
+                // Show single category
+                const filteredBlogs = blogs.filter(blog => blog.category === category);
+                
+                if (filteredBlogs.length > 0) {
+                    blogGrid.innerHTML = `
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem;">
+                            ${filteredBlogs.map(blog => `
+                                <div class="blog-card" data-category="${blog.category}">
+                                    <div class="blog-header">
+                                        <div class="blog-category ${getCategoryClass(blog.category)}">${blog.category}</div>
+                                        <h3 class="blog-title">${blog.title}</h3>
+                                        <div class="blog-meta">
+                                            <span>📖 ${blog.readTime}</span>
+                                            <span>📅 ${new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}</span>
+                                        </div>
+                                    </div>
+                                    <div class="blog-content">
+                                        <p class="blog-summary">${blog.summary}</p>
+                                        <a href="${blog.pdfUrl}" target="_blank" rel="noopener noreferrer" class="read-more">
+                                            Read Full Blog
+                                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    `;
+                } else {
+                    // Show coming soon message for empty categories
+                    blogGrid.innerHTML = `
+                        <div style="display: flex; justify-content: center; align-items: center; min-height: 300px;">
+                            <div class="coming-soon-card" style="max-width: 500px; width: 100%;">
+                                <div style="text-align: center; padding: 4rem 3rem; background: linear-gradient(135deg, #f8fafc, #e2e8f0); border-radius: 20px; border: 2px dashed #cbd5e1; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);">
+                                    <div style="width: 100px; height: 100px; margin: 0 auto 2rem; border-radius: 50%; background: linear-gradient(135deg, #6366f1, #7c3aed); display: flex; align-items: center; justify-content: center; opacity: 0.8;">
+                                        <svg width="50" height="50" fill="white" viewBox="0 0 24 24">
+                                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/>
+                                        </svg>
+                                    </div>
+                                    <h3 style="font-size: 2rem; font-weight: 700; color: #1e3a8a; margin-bottom: 1.5rem;">Coming Soon!</h3>
+                                    <p style="color: #64748b; font-size: 1.2rem; line-height: 1.6; margin-bottom: 2rem;">
+                                        Exciting <strong>${category.toLowerCase()}</strong> content is being crafted with care. 
+                                    </p>
+                                    <p style="color: #6366f1; font-size: 1rem; font-weight: 600; margin: 0;">
+                                        📝 Check back soon for insightful articles and practical guidance!
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }
+            }
+        }
+
+        // Setup category filters
+        function setupCategoryFilters() {
+            const categoryTabs = document.querySelectorAll('.category-tab');
+            
+            categoryTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Remove active class from all tabs
+                    categoryTabs.forEach(t => t.classList.remove('active'));
+                    
+                    // Add active class to clicked tab
+                    tab.classList.add('active');
+                    
+                    // Get category and filter blogs
+                    const category = tab.dataset.category;
+                    renderBlogs(category);
+                    
+                    // Update featured categories visibility
+                    const featuredCategories = document.getElementById('featured-categories');
+                    if (category === 'all') {
+                        featuredCategories.style.display = 'grid';
+                    } else {
+                        featuredCategories.style.display = 'none';
+                    }
+                    
+                    // Scroll to blogs section
+                    document.getElementById('blogs').scrollIntoView({ 
+                        behavior: 'smooth' 
+                    });
+                });
+            });
+        }
+
+        // Setup featured category cards
+        function setupFeaturedCategoryCards() {
+            const featuredCards = document.querySelectorAll('.featured-category[data-category]');
+            
+            featuredCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    const category = card.dataset.category;
+                    
+                    // Update category tabs
+                    const categoryTabs = document.querySelectorAll('.category-tab');
+                    categoryTabs.forEach(tab => {
+                        tab.classList.remove('active');
+                        if (tab.dataset.category === category) {
+                            tab.classList.add('active');
+                        }
+                    });
+                    
+                    // Render blogs for selected category
+                    renderBlogs(category);
+                    
+                    // Hide featured categories
+                    const featuredCategories = document.getElementById('featured-categories');
+                    featuredCategories.style.display = 'none';
+                    
+                    // Scroll to blogs section
+                    document.getElementById('blogs').scrollIntoView({ 
+                        behavior: 'smooth' 
+                    });
+                });
+            });
+        }
+
+        // Update content based on config
+        function onConfigChange(config) {
+            const elements = {
+                'company-name': config.company_name || defaultConfig.company_name,
+                'header-tagline': config.tagline || defaultConfig.tagline,
+                'tagline': config.tagline || defaultConfig.tagline,
+                'hero-title': config.hero_title || defaultConfig.hero_title,
+                'hero-subtitle': config.hero_subtitle || defaultConfig.hero_subtitle,
+                'blog-map-title': config.blog_map_title || defaultConfig.blog_map_title,
+                'latest-blogs-title': config.latest_blogs_title || defaultConfig.latest_blogs_title
+            };
+
+            Object.entries(elements).forEach(([id, text]) => {
+                const element = document.getElementById(id);
+                if (element) {
+                    element.textContent = text;
+                }
+            });
+
+            // Handle video background
+            const videoUrl = config.hero_video_url || defaultConfig.hero_video_url;
+            const videoElement = document.getElementById('hero-video');
+            const videoSource = document.getElementById('video-source');
+            
+            if (videoUrl && videoUrl.trim() !== '') {
+                videoSource.src = videoUrl;
+                videoElement.load();
+                videoElement.style.display = 'block';
+                
+                // Handle video load events
+                videoElement.addEventListener('loadeddata', () => {
+                    videoElement.play().catch(e => {
+                        console.log('Video autoplay prevented:', e);
+                    });
+                });
+                
+                videoElement.addEventListener('error', () => {
+                    console.log('Video failed to load, falling back to gradient background');
+                    videoElement.style.display = 'none';
+                });
+            } else {
+                videoElement.style.display = 'none';
+            }
+        }
+
+        // Initialize Element SDK
+        if (window.elementSdk) {
+            window.elementSdk.init({
+                defaultConfig: defaultConfig,
+                onConfigChange: onConfigChange,
+                mapToCapabilities: (config) => ({
+                    recolorables: [],
+                    borderables: [],
+                    fontEditable: undefined,
+                    fontSizeable: undefined
+                }),
+                mapToEditPanelValues: (config) => new Map([
+                    ["company_name", config.company_name || defaultConfig.company_name],
+                    ["tagline", config.tagline || defaultConfig.tagline],
+                    ["hero_title", config.hero_title || defaultConfig.hero_title],
+                    ["hero_subtitle", config.hero_subtitle || defaultConfig.hero_subtitle],
+                    ["blog_map_title", config.blog_map_title || defaultConfig.blog_map_title],
+                    ["latest_blogs_title", config.latest_blogs_title || defaultConfig.latest_blogs_title],
+                    ["hero_video_url", config.hero_video_url || defaultConfig.hero_video_url]
+                ])
+            });
+        }
+
+        // Initialize page when DOM is loaded
+        document.addEventListener('DOMContentLoaded', initializePage);
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99f7f5a8d77eb32e',t:'MTc2MzMwNjI5Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
