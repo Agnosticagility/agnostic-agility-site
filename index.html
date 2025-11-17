@@ -88,6 +88,66 @@
             opacity: 0.8;
         }
 
+        /* Dropdown Menu Styles */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-toggle {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+            padding: 0.75rem 0;
+            min-width: 280px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            border: 1px solid #e2e8f0;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown:hover .dropdown-toggle svg {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-menu li {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 0.75rem 1.5rem;
+            color: #1e3a8a !important;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border-radius: 0;
+        }
+
+        .dropdown-menu a:hover {
+            background: linear-gradient(135deg, #f0f4ff, #e0e7ff);
+            color: #6366f1 !important;
+            opacity: 1;
+        }
+
         /* Hero Section with Video Background */
         .video-container {
             position: relative;
@@ -267,10 +327,6 @@
             background: linear-gradient(135deg, #dc2626, #ef4444);
         }
 
-        .projects-category .category-icon {
-            background: linear-gradient(135deg, #d97706, #f59e0b);
-        }
-
         .wellness-category .category-icon {
             background: linear-gradient(135deg, #7c2d12, #ea580c);
         }
@@ -339,10 +395,6 @@
 
         .blog-category.leadership {
             background: linear-gradient(135deg, #dc2626, #ef4444);
-        }
-
-        .blog-category.projects {
-            background: linear-gradient(135deg, #d97706, #f59e0b);
         }
 
         .blog-category.wellness {
@@ -476,16 +528,18 @@
             background: linear-gradient(135deg, #dc2626, #ef4444);
         }
 
-        .category-section.projects .category-section-icon {
-            background: linear-gradient(135deg, #d97706, #f59e0b);
-        }
-
         .category-section.wellness .category-section-icon {
             background: linear-gradient(135deg, #7c2d12, #ea580c);
         }
 
         .category-section.transformation .category-section-icon {
             background: linear-gradient(135deg, #1e40af, #3b82f6);
+        }
+
+        /* PDF Modal Loading Animation */
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         /* Responsive Design */
@@ -578,13 +632,21 @@
       Agnostic Agility Ltd.
      </div>
      <div class="header-tagline" id="header-tagline">
-      Agility without Dogma, Delivery Outcomes Balanced with People Wellness
+      Agility without Dogma, Powering Transformation & Delivery:Elevate People Wellness & Experience.
      </div>
     </div>
     <ul class="nav-menu">
      <li><a href="#home">Home</a></li>
-     <li><a href="#blog-map">Blog Map</a></li>
-     <li><a href="#blogs">Latest Blogs</a></li>
+     <li class="dropdown"><a href="#blogs" class="dropdown-toggle"> Blogs 
+       <svg width="12" height="12" fill="currentColor" viewbox="0 0 24 24" style="margin-left: 0.5rem; transition: transform 0.3s ease;"><path d="M7 10l5 5 5-5z" />
+       </svg></a>
+      <ul class="dropdown-menu">
+       <li><a href="#blogs" data-category="all">All Categories</a></li>
+       <li><a href="#blogs" data-category="Agility &amp; Beyond">Agility &amp; Beyond</a></li>
+       <li><a href="#blogs" data-category="Leadership">Leadership</a></li>
+       <li><a href="#blogs" data-category="People Wellness">People Wellness</a></li>
+       <li><a href="#blogs" data-category="Transformation: Programmes &amp; Projects">Transformation: Programmes &amp; Projects</a></li>
+      </ul></li>
      <li><a href="#about">About Author</a></li>
      <li><a href="#contact">Contact</a></li>
     </ul>
@@ -599,98 +661,45 @@
     <div class="text-center text-white p-8" style="text-align: center; color: white; padding: 2rem;">
      <h1 id="hero-title" style="font-size: 3.5rem; font-weight: 800; margin-bottom: 1rem; letter-spacing: -1px;">Agility &amp; Beyond</h1>
      <p id="hero-subtitle" style="font-size: 1.25rem; opacity: 0.9; margin-bottom: 1rem;">Insights on Leadership, Transformation &amp; People Wellness</p>
-     <p id="tagline" style="font-size: 1.1rem; opacity: 0.8; margin-bottom: 2rem;">Transforming Organizations Through Agile Excellence</p><button onclick="document.getElementById('blog-map').scrollIntoView({behavior: 'smooth'})" class="cta-button" style="background: white; color: #1e3a8a; padding: 1rem 2rem; border: none; border-radius: 50px; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease; text-decoration: none; display: inline-block;"> Explore Our Insights </button>
-    </div>
-   </div>
-  </section>
-  <section class="blog-map section-offset" id="blog-map">
-   <div class="container">
-    <h2 class="section-title" id="blog-map-title">Explore Our Blog Categories</h2><!-- Category Navigation Tabs -->
-    <div class="category-navigation">
-     <div class="category-tab active" data-category="all">
-      <div class="category-tab-icon">
-       <svg width="20" height="20" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-       </svg>
-      </div> All Categories
-     </div>
-     <div class="category-tab" data-category="Agility &amp; Beyond">
-      <div class="category-tab-icon">
-       <svg width="20" height="20" fill="currentColor" viewbox="0 0 24 24"><path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9z" />
-       </svg>
-      </div> Agility &amp; Beyond
-     </div>
-     <div class="category-tab" data-category="Leadership">
-      <div class="category-tab-icon">
-       <svg width="20" height="20" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
-       </svg>
-      </div> Leadership
-     </div>
-     <div class="category-tab" data-category="Programmes &amp; Projects">
-      <div class="category-tab-icon">
-       <svg width="20" height="20" fill="currentColor" viewbox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z" /> <rect x="7" y="10" width="2" height="7" /> <rect x="11" y="7" width="2" height="10" /> <rect x="15" y="13" width="2" height="4" />
-       </svg>
-      </div> Programmes &amp; Projects
-     </div>
-     <div class="category-tab" data-category="People Wellness">
-      <div class="category-tab-icon">
-       <svg width="20" height="20" fill="currentColor" viewbox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-       </svg>
-      </div> People Wellness
-     </div>
-     <div class="category-tab" data-category="Transformation">
-      <div class="category-tab-icon">
-       <svg width="20" height="20" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-       </svg>
-      </div> Transformation
-     </div>
-    </div><!-- Featured Categories Showcase -->
-    <div class="featured-categories" id="featured-categories">
-     <div class="featured-category agility-category" data-category="Agility &amp; Beyond" style="cursor: pointer;">
-      <div style="width: 80px; height: 80px; margin: 0 auto 1.5rem; border-radius: 50%; background: linear-gradient(135deg, #059669, #10b981); display: flex; align-items: center; justify-content: center;">
-       <svg width="40" height="40" fill="white" viewbox="0 0 24 24"><path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9z" />
-       </svg>
-      </div>
-      <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; color: #1e3a8a;">Agility &amp; Beyond</h3>
-      <p style="color: #64748b; font-size: 0.95rem; line-height: 1.6;">Discover agile methodologies, frameworks, and advanced practices that go beyond traditional approaches to create truly adaptive organizations.</p>
-     </div>
-     <div class="featured-category leadership-category" data-category="Leadership" style="cursor: pointer;">
-      <div style="width: 80px; height: 80px; margin: 0 auto 1.5rem; border-radius: 50%; background: linear-gradient(135deg, #dc2626, #ef4444); display: flex; align-items: center; justify-content: center;">
-       <svg width="40" height="40" fill="white" viewbox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
-       </svg>
-      </div>
-      <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; color: #1e3a8a;">Leadership</h3>
-      <p style="color: #64748b; font-size: 0.95rem; line-height: 1.6;">Master adaptive leadership strategies that inspire teams, navigate uncertainty, and drive meaningful organizational change.</p>
-     </div>
-     <div class="featured-category projects-category" data-category="Programmes &amp; Projects" style="cursor: pointer;">
-      <div style="width: 80px; height: 80px; margin: 0 auto 1.5rem; border-radius: 50%; background: linear-gradient(135deg, #d97706, #f59e0b); display: flex; align-items: center; justify-content: center;">
-       <svg width="40" height="40" fill="white" viewbox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z" /> <rect x="7" y="10" width="2" height="7" /> <rect x="11" y="7" width="2" height="10" /> <rect x="15" y="13" width="2" height="4" />
-       </svg>
-      </div>
-      <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; color: #1e3a8a;">Programmes &amp; Projects</h3>
-      <p style="color: #64748b; font-size: 0.95rem; line-height: 1.6;">Explore effective project management strategies that balance delivery excellence with team wellbeing and sustainable practices.</p>
-     </div>
-     <div class="featured-category wellness-category" data-category="People Wellness" style="cursor: pointer;">
-      <div style="width: 80px; height: 80px; margin: 0 auto 1.5rem; border-radius: 50%; background: linear-gradient(135deg, #7c2d12, #ea580c); display: flex; align-items: center; justify-content: center;">
-       <svg width="40" height="40" fill="white" viewbox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-       </svg>
-      </div>
-      <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; color: #1e3a8a;">People Wellness</h3>
-      <p style="color: #64748b; font-size: 0.95rem; line-height: 1.6;">Learn wellbeing strategies that create sustainable high performance while maintaining psychological safety and team resilience.</p>
-     </div>
-     <div class="featured-category transformation-category" data-category="Transformation" style="cursor: pointer;">
-      <div style="width: 80px; height: 80px; margin: 0 auto 1.5rem; border-radius: 50%; background: linear-gradient(135deg, #1e40af, #3b82f6); display: flex; align-items: center; justify-content: center;">
-       <svg width="40" height="40" fill="white" viewbox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-       </svg>
-      </div>
-      <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; color: #1e3a8a;">Transformation</h3>
-      <p style="color: #64748b; font-size: 0.95rem; line-height: 1.6;">Navigate organizational transformation with strategies that create lasting change while honoring both business needs and human values.</p>
-     </div>
+     <p id="tagline" style="font-size: 1.1rem; opacity: 0.8; margin-bottom: 2rem;">Transforming Organizations Through Agile Excellence</p><button onclick="document.getElementById('blogs').scrollIntoView({behavior: 'smooth'})" class="cta-button" style="background: white; color: #1e3a8a; padding: 1rem 2rem; border: none; border-radius: 50px; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease; text-decoration: none; display: inline-block;"> Explore Our Insights </button>
     </div>
    </div>
   </section>
   <section class="blog-section section-offset" id="blogs">
    <div class="container">
-    <h2 class="section-title" id="latest-blogs-title">Latest Insights</h2>
+    <h2 class="section-title" id="latest-blogs-title">Latest Insights</h2><!-- Category Filter Tabs -->
+    <div class="category-navigation" style="margin-bottom: 3rem;">
+     <div class="category-tab active" data-category="all">
+      <div class="category-tab-icon">
+       <svg width="24" height="24" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+       </svg>
+      </div> All Categories
+     </div>
+     <div class="category-tab" data-category="Agility &amp; Beyond">
+      <div class="category-tab-icon">
+       <svg width="24" height="24" fill="currentColor" viewbox="0 0 24 24"><path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9z" />
+       </svg>
+      </div> Agility &amp; Beyond
+     </div>
+     <div class="category-tab" data-category="Leadership">
+      <div class="category-tab-icon">
+       <svg width="24" height="24" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+       </svg>
+      </div> Leadership
+     </div>
+     <div class="category-tab" data-category="People Wellness">
+      <div class="category-tab-icon">
+       <svg width="24" height="24" fill="currentColor" viewbox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+       </svg>
+      </div> People Wellness
+     </div>
+     <div class="category-tab" data-category="Transformation: Programmes &amp; Projects">
+      <div class="category-tab-icon">
+       <svg width="24" height="24" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+       </svg>
+      </div> Transformation: Programmes &amp; Projects
+     </div>
+    </div>
     <div class="blog-grid" id="blog-grid"><!-- Blog cards will be populated by JavaScript -->
     </div>
    </div>
@@ -700,7 +709,7 @@
     <h2 class="section-title" style="font-family: 'Playfair Display', 'Georgia', serif; font-style: italic; font-weight: 700; letter-spacing: 1px;">Kiranmaye Cartier</h2>
     <div style="max-width: 900px; margin: 0 auto; text-align: left;">
      <div style="text-align: center; margin-bottom: 3rem;">
-      <div style="width: 200px; height: 200px; margin: 0 auto 2rem; border-radius: 50%; overflow: hidden; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15); border: 4px solid white;">
+     <div style="width: 200px; height: 200px; margin: 0 auto 2rem; border-radius: 50%; overflow: hidden; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15); border: 4px solid white;">
        <img src="Kiranmaye Cartier pic 2.jpg">
       </div>
       <p style="font-size: 1.2rem; color: #1e3a8a; font-weight: 600; line-height: 1.6;">Welcome to Agnostic Agility, the home of Kiranmaye Cartier's mission to transform organisations through practical, people-centred agile excellence.</p>
@@ -813,7 +822,22 @@
      </div>
     </div>
    </div>
-  </section>
+  </section><!-- PDF Viewer Modal -->
+  <div id="pdf-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.9); z-index: 10000; overflow: hidden;">
+   <div style="position: relative; width: 100%; height: 100%; display: flex; flex-direction: column;"><!-- Modal Header -->
+    <div style="background: #1e3a8a; color: white; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);">
+     <h3 id="pdf-title" style="margin: 0; font-size: 1.2rem; font-weight: 600;"></h3>
+     <div style="display: flex; gap: 1rem; align-items: center;"><button onclick="openPDFInNewTab()" style="background: rgba(255, 255, 255, 0.2); border: 1px solid rgba(255, 255, 255, 0.3); color: white; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; font-size: 0.9rem; transition: background 0.3s ease;" onmouseover="this.style.background='rgba(255, 255, 255, 0.3)'" onmouseout="this.style.background='rgba(255, 255, 255, 0.2)'"> Open in New Tab </button> <button onclick="closePDFViewer()" style="background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; padding: 0.5rem; border-radius: 4px; transition: background 0.3s ease;" onmouseover="this.style.background='rgba(255, 255, 255, 0.2)'" onmouseout="this.style.background='none'"> ✕ </button>
+     </div>
+    </div><!-- PDF Content -->
+    <div style="flex: 1; position: relative; background: #f5f5f5;"><iframe id="pdf-iframe" style="width: 100%; height: 100%; border: none; background: white;" frameborder="0"></iframe> <!-- Loading indicator -->
+     <div id="pdf-loading" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: #1e3a8a;">
+      <div style="width: 50px; height: 50px; border: 4px solid #e2e8f0; border-top: 4px solid #1e3a8a; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 1rem;"></div>
+      <p style="font-size: 1.1rem; font-weight: 600;">Loading PDF...</p>
+     </div>
+    </div>
+   </div>
+  </div>
   <footer class="footer">
    <div class="footer-content">
     <h3>Agnostic Agility Ltd.</h3>
@@ -824,57 +848,52 @@
    </div>
   </footer>
   <script>
-        // Blog data
+        // Blog data with embedded PDFs
         const blogs = [
             {
                 title: "Embedding People Wellness into Project Delivery to Fight Burnout in Volatile Times",
                 category: "People Wellness",
                 readTime: "8 min read",
                 summary: "Discover how integrating wellness strategies into project delivery can combat burnout and create sustainable high-performance teams in today's volatile business environment.",
-                pdfUrl: "https://drive.google.com/file/d/1cZi_VOWXgI_gFrfwXVPLAwEK-hbcWhdy/view?usp=sharing" // Replace with actual PDF URL when available
+                pdfUrl: "https://drive.google.com/file/d/1cZi_VOWXgI_gFrfwXVPLAwEK-hbcWhdy/view",
+                hasContent: true
             },
             {
-                title: "Scrum Master Guide: Navigating Agile Team Through the 4 Stages of Bruce Tuckman's Model to High Performance",
+                title: "Scrum Master Guide: Navigating Agile Teams from Formation to High Performance",
                 category: "Agility & Beyond",
                 readTime: "12 min read",
                 summary: "A comprehensive guide for Scrum Masters on leveraging Tuckman's team development model to guide agile teams from formation to peak performance.",
-                pdfUrl: "#" // Replace with actual PDF URL when available
+                hasContent: false
             },
             {
                 title: "Breaking Free from Framework Dogma",
-                category: "Programmes & Projects",
+                category: "Transformation: Programmes & Projects",
                 readTime: "10 min read",
                 summary: "Challenge conventional thinking and learn how to adapt frameworks to your unique organizational context rather than blindly following prescribed methodologies.",
-                pdfUrl: "#" // Replace with actual PDF URL when available
+                hasContent: false
             },
             {
                 title: "Embedding People Wellness as Your Secret Weapon to Sustainable Project Delivery",
                 category: "People Wellness",
                 readTime: "9 min read",
                 summary: "Transform your project delivery approach by making people wellness a core strategy for achieving sustainable success and long-term organizational health.",
-                pdfUrl: "#" // Replace with actual PDF URL when available
+                hasContent: false
             },
             {
                 title: "Adaptive Leadership in Uncertain Times",
                 category: "Leadership",
                 readTime: "11 min read",
                 summary: "Master the art of adaptive leadership to navigate uncertainty, inspire teams, and drive organizational resilience in an ever-changing business landscape.",
-                pdfUrl: "#" // Replace with actual PDF URL when available
+                hasContent: false
             },
             {
                 title: "Scrum: Top 5 Anti-patterns",
                 category: "Agility & Beyond",
                 readTime: "7 min read",
                 summary: "Identify and eliminate the most common Scrum anti-patterns that undermine team effectiveness and learn practical strategies to avoid these pitfalls.",
-                pdfUrl: "#" // Replace with actual PDF URL when available
+                hasContent: false
             },
-            {
-                title: "Beyond the Buzzwords: What Real Organizational Transformation Actually Looks Like",
-                category: "Transformation",
-                readTime: "14 min read",
-                summary: "Cut through the transformation hype and discover what genuine organizational change requires—from shifting mindsets and culture to creating sustainable systems that honor both business outcomes and human values.",
-                pdfUrl: "#" // Replace with actual PDF URL when available
-            }
+
         ];
 
         // Default configuration
@@ -883,7 +902,6 @@
             tagline: "Agility without Dogma, Delivery Outcomes Balanced with People Wellness",
             hero_title: "Agility & Beyond",
             hero_subtitle: "Insights on Leadership, Transformation & People Wellness",
-            blog_map_title: "Explore Our Blog Categories",
             latest_blogs_title: "Latest Insights",
             hero_video_url: "",
             author_photo_url: ""
@@ -895,7 +913,7 @@
         function initializePage() {
             renderBlogs('all');
             setupCategoryFilters();
-            setupFeaturedCategoryCards();
+            setupDropdownNavigation();
         }
 
         // Get category CSS class
@@ -903,9 +921,8 @@
             const categoryMap = {
                 'Agility & Beyond': 'agility',
                 'Leadership': 'leadership',
-                'Programmes & Projects': 'projects',
                 'People Wellness': 'wellness',
-                'Transformation': 'transformation'
+                'Transformation: Programmes & Projects': 'transformation'
             };
             return categoryMap[category] || '';
         }
@@ -919,16 +936,10 @@
                 'Leadership': `<svg width="20" height="20" fill="white" viewBox="0 0 24 24">
                     <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
                 </svg>`,
-                'Programmes & Projects': `<svg width="20" height="20" fill="white" viewBox="0 0 24 24">
-                    <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/>
-                    <rect x="7" y="10" width="2" height="7"/>
-                    <rect x="11" y="7" width="2" height="10"/>
-                    <rect x="15" y="13" width="2" height="4"/>
-                </svg>`,
                 'People Wellness': `<svg width="20" height="20" fill="white" viewBox="0 0 24 24">
                     <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
                 </svg>`,
-                'Transformation': `<svg width="20" height="20" fill="white" viewBox="0 0 24 24">
+                'Transformation: Programmes & Projects': `<svg width="20" height="20" fill="white" viewBox="0 0 24 24">
                     <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                 </svg>`
             };
@@ -941,7 +952,7 @@
             
             if (category === 'all') {
                 // Show ALL categories, including those without blogs
-                const allCategories = ['Agility & Beyond', 'Leadership', 'Programmes & Projects', 'People Wellness', 'Transformation'];
+                const allCategories = ['Agility & Beyond', 'Leadership', 'People Wellness', 'Transformation: Programmes & Projects'];
                 
                 blogGrid.innerHTML = allCategories.map(cat => {
                     const categoryBlogs = blogs.filter(blog => blog.category === cat);
@@ -968,12 +979,20 @@
                                             </div>
                                             <div class="blog-content">
                                                 <p class="blog-summary">${blog.summary}</p>
-                                                <a href="${blog.pdfUrl}" target="_blank" rel="noopener noreferrer" class="read-more">
-                                                    Read Full Blog
-                                                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
-                                                        <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
-                                                    </svg>
-                                                </a>
+                                                ${blog.hasContent ? 
+                                                    `<button onclick="openPDFViewer('${blog.title}', '${blog.pdfUrl}')" class="read-more" style="background: none; border: none; cursor: pointer; padding: 0; font: inherit;">
+                                                        Read Full Blog
+                                                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                                                            <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+                                                        </svg>
+                                                    </button>` :
+                                                    `<div class="coming-soon-badge" style="display: inline-flex; align-items: center; gap: 0.5rem; color: #6366f1; font-weight: 600; opacity: 0.7;">
+                                                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                                                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/>
+                                                        </svg>
+                                                        Coming Soon
+                                                    </div>`
+                                                }
                                             </div>
                                         </div>
                                     `).join('') 
@@ -1015,12 +1034,20 @@
                                     </div>
                                     <div class="blog-content">
                                         <p class="blog-summary">${blog.summary}</p>
-                                        <a href="${blog.pdfUrl}" target="_blank" rel="noopener noreferrer" class="read-more">
-                                            Read Full Blog
-                                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
-                                                <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
-                                            </svg>
-                                        </a>
+                                        ${blog.hasContent ? 
+                                            `<button onclick="openPDFViewer('${blog.title}', '${blog.pdfUrl}')" class="read-more" style="background: none; border: none; cursor: pointer; padding: 0; font: inherit;">
+                                                Read Full Blog
+                                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                                                    <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+                                                </svg>
+                                            </button>` :
+                                            `<div class="coming-soon-badge" style="display: inline-flex; align-items: center; gap: 0.5rem; color: #6366f1; font-weight: 600; opacity: 0.7;">
+                                                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/>
+                                                </svg>
+                                                Coming Soon
+                                            </div>`
+                                        }
                                     </div>
                                 </div>
                             `).join('')}
@@ -1067,30 +1094,19 @@
                     // Get category and filter blogs
                     const category = tab.dataset.category;
                     renderBlogs(category);
-                    
-                    // Update featured categories visibility
-                    const featuredCategories = document.getElementById('featured-categories');
-                    if (category === 'all') {
-                        featuredCategories.style.display = 'grid';
-                    } else {
-                        featuredCategories.style.display = 'none';
-                    }
-                    
-                    // Scroll to blogs section
-                    document.getElementById('blogs').scrollIntoView({ 
-                        behavior: 'smooth' 
-                    });
                 });
             });
         }
 
-        // Setup featured category cards
-        function setupFeaturedCategoryCards() {
-            const featuredCards = document.querySelectorAll('.featured-category[data-category]');
+        // Setup dropdown navigation
+        function setupDropdownNavigation() {
+            const dropdownLinks = document.querySelectorAll('.dropdown-menu a[data-category]');
             
-            featuredCards.forEach(card => {
-                card.addEventListener('click', () => {
-                    const category = card.dataset.category;
+            dropdownLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    
+                    const category = link.dataset.category;
                     
                     // Update category tabs
                     const categoryTabs = document.querySelectorAll('.category-tab');
@@ -1104,10 +1120,6 @@
                     // Render blogs for selected category
                     renderBlogs(category);
                     
-                    // Hide featured categories
-                    const featuredCategories = document.getElementById('featured-categories');
-                    featuredCategories.style.display = 'none';
-                    
                     // Scroll to blogs section
                     document.getElementById('blogs').scrollIntoView({ 
                         behavior: 'smooth' 
@@ -1115,6 +1127,8 @@
                 });
             });
         }
+
+
 
         // Update content based on config
         function onConfigChange(config) {
@@ -1124,7 +1138,6 @@
                 'tagline': config.tagline || defaultConfig.tagline,
                 'hero-title': config.hero_title || defaultConfig.hero_title,
                 'hero-subtitle': config.hero_subtitle || defaultConfig.hero_subtitle,
-                'blog-map-title': config.blog_map_title || defaultConfig.blog_map_title,
                 'latest-blogs-title': config.latest_blogs_title || defaultConfig.latest_blogs_title
             };
 
@@ -1168,7 +1181,6 @@
                     ["tagline", config.tagline || defaultConfig.tagline],
                     ["hero_title", config.hero_title || defaultConfig.hero_title],
                     ["hero_subtitle", config.hero_subtitle || defaultConfig.hero_subtitle],
-                    ["blog_map_title", config.blog_map_title || defaultConfig.blog_map_title],
                     ["latest_blogs_title", config.latest_blogs_title || defaultConfig.latest_blogs_title],
                     ["hero_video_url", config.hero_video_url || defaultConfig.hero_video_url],
                     ["author_photo_url", config.author_photo_url || defaultConfig.author_photo_url]
@@ -1176,8 +1188,74 @@
             });
         }
 
+        // PDF Viewer Functions
+        let currentPDFUrl = '';
+
+        function openPDFViewer(title, pdfUrl) {
+            currentPDFUrl = pdfUrl;
+            
+            // Set title
+            document.getElementById('pdf-title').textContent = title;
+            
+            // Show modal
+            document.getElementById('pdf-modal').style.display = 'block';
+            
+            // Show loading indicator
+            document.getElementById('pdf-loading').style.display = 'block';
+            
+            // Convert Google Drive URL to embeddable format
+            let embedUrl = pdfUrl;
+            if (pdfUrl.includes('drive.google.com')) {
+                // Extract file ID from Google Drive URL
+                const fileIdMatch = pdfUrl.match(/\/file\/d\/([a-zA-Z0-9-_]+)/);
+                if (fileIdMatch) {
+                    const fileId = fileIdMatch[1];
+                    embedUrl = `https://drive.google.com/file/d/${fileId}/preview`;
+                }
+            }
+            
+            // Load PDF in iframe
+            const iframe = document.getElementById('pdf-iframe');
+            iframe.src = embedUrl;
+            
+            // Hide loading indicator when iframe loads
+            iframe.onload = function() {
+                document.getElementById('pdf-loading').style.display = 'none';
+            };
+            
+            // Prevent body scrolling when modal is open
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePDFViewer() {
+            document.getElementById('pdf-modal').style.display = 'none';
+            document.getElementById('pdf-iframe').src = '';
+            document.body.style.overflow = 'auto';
+            currentPDFUrl = '';
+        }
+
+        function openPDFInNewTab() {
+            if (currentPDFUrl) {
+                window.open(currentPDFUrl, '_blank', 'noopener,noreferrer');
+            }
+        }
+
+        // Close modal when clicking outside the content
+        document.getElementById('pdf-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closePDFViewer();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && document.getElementById('pdf-modal').style.display === 'block') {
+                closePDFViewer();
+            }
+        });
+
         // Initialize page when DOM is loaded
         document.addEventListener('DOMContentLoaded', initializePage);
     </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99f85c866576a44d',t:'MTc2MzMxMDUwNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99fe4a1a85d1b32e',t:'MTc2MzM3MjY2Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
