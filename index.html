@@ -858,35 +858,40 @@
                 readTime: "8 min read",
                 summary: "Discover how integrating wellness strategies into project delivery can combat burnout and create sustainable high-performance teams in today's volatile business environment.",
                 pdfUrl: "https://drive.google.com/file/d/1cZi_VOWXgI_gFrfwXVPLAwEK-hbcWhdy/view",
-                hasContent: true
+                hasContent: true,
+                slug: "embedding-people-wellness-into-project-delivery-to-fight-burnout-in-volatile-times"
             },
             {
                 title: "Scrum Master Guide: Navigating Agile Teams from Formation to High Performance",
                 category: "Agility & Beyond",
                 readTime: "12 min read",
                 summary: "A comprehensive guide for Scrum Masters on leveraging Tuckman's team development model to guide agile teams from formation to peak performance.",
-                hasContent: false
+                hasContent: false,
+                slug: "scrum-master-guide-navigating-agile-teams-from-formation-to-high-performance"
             },
             {
                 title: "Breaking Free from Framework Dogma",
                 category: "Transformation: Programmes & Projects",
                 readTime: "10 min read",
                 summary: "Challenge conventional thinking and learn how to adapt frameworks to your unique organizational context rather than blindly following prescribed methodologies.",
-                hasContent: false
+                hasContent: false,
+                slug: "breaking-free-from-framework-dogma"
             },
             {
                 title: "Adaptive Leadership in Uncertain Times",
                 category: "Leadership",
                 readTime: "11 min read",
                 summary: "Master the art of adaptive leadership to navigate uncertainty, inspire teams, and drive organizational resilience in an ever-changing business landscape.",
-                hasContent: false
+                hasContent: false,
+                slug: "adaptive-leadership-in-uncertain-times"
             },
             {
                 title: "Scrum: Top 5 Anti-patterns",
                 category: "Agility & Beyond",
                 readTime: "7 min read",
                 summary: "Identify and eliminate the most common Scrum anti-patterns that undermine team effectiveness and learn practical strategies to avoid these pitfalls.",
-                hasContent: false
+                hasContent: false,
+                slug: "scrum-top-5-anti-patterns"
             },
 
         ];
@@ -903,6 +908,11 @@
         };
 
 
+
+        // Generate blog URL
+        function generateBlogUrl(slug) {
+            return `https://www.agnosticagility.co.uk/${slug}`;
+        }
 
         // Initialize the page
         function initializePage() {
@@ -1030,7 +1040,7 @@
                                     <div class="blog-content">
                                         <p class="blog-summary">${blog.summary}</p>
                                         ${blog.hasContent ? 
-                                            `<button onclick="openPDFViewer('${blog.title}', '${blog.pdfUrl}')" class="read-more" style="background: none; border: none; cursor: pointer; padding: 0; font: inherit;">
+                                            `<button onclick="openBlogPage('${blog.slug}', '${blog.title}', '${blog.pdfUrl}')" class="read-more" style="background: none; border: none; cursor: pointer; padding: 0; font: inherit;">
                                                 Read Full Blog
                                                 <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
                                                     <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
@@ -1183,6 +1193,87 @@
             });
         }
 
+        // Blog page function
+        function openBlogPage(slug, title, pdfUrl) {
+            const blogUrl = generateBlogUrl(slug);
+            
+            // Show a notification with the URL
+            showUrlNotification(blogUrl);
+            
+            // Also open the PDF viewer for now since the actual blog pages don't exist yet
+            openPDFViewer(title, pdfUrl);
+        }
+
+        // Show URL notification
+        function showUrlNotification(url) {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: linear-gradient(135deg, #6366f1, #7c3aed);
+                color: white;
+                padding: 1rem 1.5rem;
+                border-radius: 12px;
+                box-shadow: 0 8px 32px rgba(99, 102, 241, 0.3);
+                z-index: 10001;
+                font-weight: 600;
+                font-size: 0.9rem;
+                max-width: 400px;
+                word-break: break-all;
+                animation: slideIn 0.3s ease-out;
+            `;
+            
+            notification.innerHTML = `
+                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H6.99C4.58 7 2.6 8.98 2.6 11.39v1.22C2.6 15.02 4.58 17 6.99 17H11v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm5-6h4.01C19.42 7 21.4 8.98 21.4 11.39v1.22C21.4 15.02 19.42 17 17.01 17H13v-1.9h4c1.71 0 3.1-1.39 3.1-3.1s-1.39-3.1-3.1-3.1H13V7z"/>
+                    </svg>
+                    <div>
+                        <div style="margin-bottom: 0.25rem;">Blog URL Generated:</div>
+                        <div style="font-size: 0.8rem; opacity: 0.9;">${url}</div>
+                    </div>
+                </div>
+            `;
+            
+            // Add animation styles
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes slideIn {
+                    from { transform: translateX(100%); opacity: 0; }
+                    to { transform: translateX(0); opacity: 1; }
+                }
+                @keyframes slideOut {
+                    from { transform: translateX(0); opacity: 1; }
+                    to { transform: translateX(100%); opacity: 0; }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            document.body.appendChild(notification);
+            
+            // Auto-remove after 5 seconds
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease-in';
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.parentNode.removeChild(notification);
+                    }
+                }, 300);
+            }, 5000);
+            
+            // Click to dismiss
+            notification.addEventListener('click', () => {
+                notification.style.animation = 'slideOut 0.3s ease-in';
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.parentNode.removeChild(notification);
+                    }
+                }, 300);
+            });
+        }
+
         // PDF Viewer Functions
         let currentPDFUrl = '';
 
@@ -1252,5 +1343,5 @@
         // Initialize page when DOM is loaded
         document.addEventListener('DOMContentLoaded', initializePage);
     </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a0004e934bdb32e',t:'MTc2MzM5MDgwMy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a004f4327bd6aa6',t:'MTc2MzM5Mzg0OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
